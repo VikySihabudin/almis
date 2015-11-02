@@ -1,0 +1,17 @@
+﻿<?xml version="1.0"?>
+<toolbar>
+  <item id="ZoomIn" type="button"  img="nav_zoomin.png" text="Zoom In" dojoType="dijit.form.Button" imgdis="nav_zoomin.png"/>
+  <item id="sep1" type="separator"/>
+  <item id="ZoomOut" type="button"  img="nav_zoomout.png" text="Zoom Out" dojoType="dijit.form.Button" imgdis="nav_zoomout.png"/>
+  <item id="sep2" type="separator"/>
+  <item id="FullExten" type="button" img="nav_fullextent.png" text="Full Extent" dojoType="dijit.form.Button" imgdis="nav_fullextent.png"/>
+  <item id="sep3" type="separator"/>
+  <item id="PrevExtent" type="button"  img="nav_previous.png" text="Prev Extent" dojoType="dijit.form.Button" imgdis="nav_previous.png"/>
+  <item id="sep4" type="separator"/>
+  <item id="NextExtent" type="button"  img="nav_next.png" text="Nex Extent" dojoType="dijit.form.Button" imgdis="nav_next.png"/>
+  <item id="sep5" type="separator"/>
+  <item id="Pan"   type="button" img="nav_pan.png" text="Pan" dojoType="dijit.form.Button"    imgdis="nav_pan.png"  />
+  <item id="sep6" type="separator"/>
+  <item id="Deactive"   type="button" img="nav_decline.png" text="Deactive" dojoType="dijit.form.Button"    imgdis="nav_decline.png"  />
+</toolbar>
+

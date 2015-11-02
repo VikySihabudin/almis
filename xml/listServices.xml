@@ -1,0 +1,27 @@
+﻿<rows>
+  
+  <row id="1">
+    <cell>1</cell>
+    <cell>SP001</cell>
+    <cell>Adaro Persada Mandiri</cell>
+    <cell>Akhmad Saepullah</cell>
+    <cell>Kehutanan</cell>
+    <cell>Manager</cell>
+    <cell>View^ServicesProjectForm.aspx</cell>
+    <cell>Edit^ServicesProjectForm.aspx</cell>
+    <cell>Delete^ServicesProjectForm.aspx</cell>  
+  </row>
+  
+  <row id="2">
+    <cell>2</cell>
+    <cell>SP002</cell>
+    <cell>Waindo Specterra</cell>
+    <cell>Muhammad Lapapi</cell>
+    <cell>Kehutanan</cell>
+    <cell>SPV</cell>
+    <cell>View^ServicesProjectForm.aspx</cell>
+    <cell>Edit^ServicesProjectForm.aspx</cell>
+    <cell>Delete^ServicesProjectForm.aspx</cell>  
+  </row>
+
+</rows>

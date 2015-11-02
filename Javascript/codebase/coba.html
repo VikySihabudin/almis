@@ -1,0 +1,26 @@
+<html>
+<head>
+<script src="dhtmlxcommon.js"></script>
+<script src="dhtmlxaccordion.js"></script>
+<link rel="stylesheet" type="text/css" href="skins/dhtmlxaccordion_dhx_skyblue.css">
+<script src="dhtmlxcontainer.js"></script>
+</head>
+<body onload="doOnLoad();">
+	<div id="accordObj" style="position: relative; width: 320px; height: 400px;"></div>
+<script>
+
+var dhxAccord;
+function doOnLoad() {
+    dhxAccord = new dhtmlXAccordion("accordObj");
+    //dhxAccord.setSkin("dhx_black");
+    dhxAccord.addItem("a1", "Main Page");
+    dhxAccord.addItem("a2", "Site Navigation");
+    dhxAccord.addItem("a3", "Support & Feedback");
+    dhxAccord.addItem("a4", "Comments");
+    // dhxAccord.openItem("a1");
+    // dhxAccord._enableOpenEffect = true;
+    }
+
+</script>
+</body>
+</html>

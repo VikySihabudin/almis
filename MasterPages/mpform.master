@@ -1,0 +1,328 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="mpform.master.cs" Inherits="MasterPages_mpalmis" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+
+
+    <%--css dhtmlx--%>
+
+
+  
+    <link rel="stylesheet" type="text/CSS" href="../JavaScript/codebase/dhtmlxtabbar.css" />
+    <link rel="stylesheet" type="text/CSS" href="../JavaScript/codebase/dhtmlxcalendar.css" />
+    <link rel="stylesheet" type="text/CSS" href="../JavaScript/dhtmlxsuite/dhtmlxgrid/codebase/dhtmlxgrid.css" />
+    <link rel="stylesheet" type="text/CSS" href="../JavaScript/codebase/skins/dhtmlxgrid_dhx_skyblue.css" />
+    <link rel="stylesheet" type="text/CSS" href="../JavaScript/codebase/skins/dhtmlxaccordion_dhx_blue.css" />
+    <link rel="stylesheet" type="text/CSS" href="../JavaScript/dhtmlxsuite/dhtmlxtoolbar/codebase/skins/dhtmlxtoolbar_dhx_skyblue.css" />
+    <link rel="stylesheet" type="text/CSS" href="../JavaScript/codebase/skins/dhtmlxgrid_pgn_bricks.css" />
+    <link rel="stylesheet" type="text/CSS" href="../JavaScript/dhtmlxsuite/dhtmlxCombo/codebase/dhtmlxcombo.css" />
+    <%--<link rel="stylesheet" type="text/CSS" href="../JavaScript/dhtmlxSuite/dhtmlxchart/codebase/dhtmlxchart.css" />--%>
+    <link rel="stylesheet" type="text/CSS" href="../JavaScript/dhtmlxSuite/dhtmlxLayout/codebase/dhtmlxlayout.css" />
+    <link rel="stylesheet" type="text/CSS" href="../JavaScript/dhtmlxSuite/dhtmlxLayout/codebase/skins/dhtmlxlayout_dhx_skyblue.css" />
+    <link rel="stylesheet" type="text/CSS" href="../JavaScript/dhtmlxSuite/dhtmlxWindows/codebase/dhtmlxwindows.css" />
+    <link rel="stylesheet" type="text/CSS" href="../JavaScript/dhtmlxSuite/dhtmlxWindows/codebase/skins/dhtmlxwindows_dhx_skyblue.css" />
+
+    <script src="../JavaScript/codebase/dhtmlxcommon.js" type="text/javascript"></script>
+    <script src="../JavaScript/dhtmlxSuite/dhtmlxTabbar/codebase/dhtmlxtabbar.js" type="text/javascript"></script>
+    <script src="../JavaScript/dhtmlxSuite/dhtmlxTabbar/codebase/dhtmlxtabbar_start.js" type="text/javascript"></script>
+<%--    <script src="../JavaScript/dhtmlxSuite/dhtmlxCalendar/codebase/dhtmlxcalendar.js" type="text/javascript"></script>
+    <script src="../JavaScript/dhtmlxSuite/dhtmlxAccordion/codebase/dhtmlxaccordion.js" type="text/javascript"></script>
+    <script src="../JavaScript/dhtmlxSuite/dhtmlxAccordion/codebase/dhtmlxcontainer.js"type="text/javascript"></script>--%>
+    <script src="../JavaScript/codebase/dhtmlxgrid.js" type="text/javascript"></script>
+    <script src="../JavaScript/codebase/dhtmlxgridcell.js" type="text/javascript"></script>
+    <script src="../JavaScript/codebase/excells/dhtmlxgrid_excell_link.js" type="text/javascript"></script>
+    <script src="../JavaScript/dhtmlxSuite/dhtmlxLayout/codebase/dhtmlxlayout.js" type="text/javascript"></script>
+    <script src="../JavaScript/dhtmlxSuite/dhtmlxLayout/codebase/dhtmlxcontainer.js" type="text/javascript"></script>
+<%--    <script src="../JavaScript/dhtmlxSuite/dhtmlxTree/codebase/dhtmlxtree.js" type="text/javascript" ></script>
+--%>    <script src="../JavaScript/codebase/excells/dhtmlxgrid_excell_link.js" type="text/javascript"></script>
+    <script src="../JavaScript/dhtmlxSuite/dhtmlxGrid/codebase/ext/dhtmlxgrid_srnd.js" type="text/javascript"></script>
+    <script src="../JavaScript/dhtmlxSuite/dhtmlxGrid/codebase/ext/dhtmlxgrid_filter.js" type="text/javascript"></script>
+    <script src="../JavaScript/codebase/ext/dhtmlxgrid_pgn.js" type="text/javascript"></script>
+    <script src="../JavaScript/dhtmlxsuite/dhtmlxtoolbar/codebase/dhtmlxToolbar.js" type="text/javascript"></script>
+    <script src="../JavaScript/codebase/ext/dhtmlxgrid_group2.js" type="text/javascript"></script>
+<%--    <script src="../JavaScript/dhtmlxSuite/dhtmlxchart/codebase/dhtmlxchart.js" type="text/javascript"></script>
+--%>    <script src="../JavaScript/dhtmlxSuite/dhtmlxCombo/codebase/dhtmlxcombo.js" type="text/javascript"></script>
+    <script src="../JavaScript/codebase/ext/dhtmlxgrid_nxml.js" type="text/javascript"></script>
+    <script src="../JavaScript/dhtmlxSuite/dhtmlxWindows/codebase/dhtmlxwindows.js" type="text/javascript"></script>
+    <script src="../JavaScript/dhtmlxSuite/dhtmlxWindows/codebase/dhtmlxcontainer.js" type="text/javascript"></script>
+    <script src="../JavaScript/dhtmlxSuite/dhtmlxCombo/codebase/ext/dhtmlxcombo_extra.js"></script>
+    <script src="../JavaScript/dhtmlxSuite/dhtmlxLayout/sources/patterns/dhtmlxlayout_pattern4g.js" type="text/javascript"></script>
+
+    <script type="text/javascript">        djConfig = { parseOnLoad: true }</script>
+    <script type="text/javascript" language="javascript">
+        try {
+
+        }
+        catch (e) {
+            alert(e.description);
+        }
+    </script>
+      
+
+    <%--Akhir Dhtmlx--%>
+
+
+    <%--Awal Bootstrap--%>
+  
+ 
+
+<%--    <link href="../Css/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="../Css/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />--%>
+<%--
+    <link href="../Css/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../Css/bootstrap/css/bootstrap-theme.css" rel="stylesheet" type="text/css" />
+
+    <script src="../Css/bootstrap/js/bootstrap.js" type="text/javascript"></script>--%>
+   <%-- <script src="../Css/bootstrap/js/npm.js" type="text/javascript"></script>--%>
+
+    
+    <link href="../Css/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../Css/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+    <script src="../Scripts/jquery.min.js" type="text/javascript"></script>
+    <script src="../Css/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+
+    <%--Akhir Bootstrap--%>
+
+
+    <%--script google api untuk datepicker--%>
+    <script src="../Css/js/1.6/jquery.min.js" type="text/javascript"></script>
+    <link href="../Css/js/1.8/jquery-ui.css" rel="stylesheet" type="text/CSS" />
+    <script src="../Css/js/1.8/jquery-ui.min.js" type="text/javascript"></script>
+    <%--akhir--%>
+
+    <script src="../Javascript/lookup.js"></script>
+
+
+    <script src="../JavaScript/jquery.min.js" type="text/javascript"></script>
+    <script src="../JavaScript/jquery-ui-1.10.3.custom.js" type="text/javascript"></script>
+    <link rel="Stylesheet" type="text/css" href="../css/jquery-ui-1.10.3.custom.css" />
+
+    <link href="../Css/jquery-ui.css" rel="stylesheet" type="text/css" />
+
+    <script src="../Javascript/angka.js"></script>
+    
+  
+</head>
+<body>
+
+
+<div class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="../Pages/Home.aspx">ALMIS</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Land Compensation<span class="caret"></span></a>
+          <ul class="dropdown-menu">	  
+        <li><a href="../Pages_Landcomp/MasterIdentitasList.aspx">Master Identitas</a></li>
+        <li><a href="../Pages_Landcomp/PraRegistrasiList.aspx">Pra Register</a></li>
+        <li><a href="../Pages_Landcomp/PengecekanLapanganList.aspx">Pengecekan Lapangan</a></li>
+		<li><a href="../Pages_Landcomp/RegistrasiList.aspx">Registrasi</a></li>
+		<li><a href="../Pages_Landcomp/PengukuranList.aspx">Pengukuran TO</a></li>
+        <li><a href="../Pages_Landcomp/NegosiasiList.aspx">Negosiasi</a></li>
+		<li><a href="../Pages_Landcomp/VisumList.aspx">Verifikasi</a></li>
+		<li><a href="../Pages_Landcomp/PemberkasanSatuList.aspx">Pemberkasan</a></li>
+		<li><a href="../Pages_Landcomp/PembayaranList.aspx">Pembayaran</a></li>
+		<li><a href="../Pages_Landcomp/PemberkasanDuaList.aspx">Finalisasi</a></li>
+		<li><a href="../Pages_Landcomp/SerahTerimaBerkas.aspx">Serah Terima Berkas</a></li>
+          </ul>
+        </li>
+
+		<li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Land Use<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Project</a></li>
+            <li><a href="#">Status Registrasi</a></li>
+            <li><a href="#">Tipe Registrasi</a></li>
+            <li><a href="#">Asset</a></li>
+			<li><a href="#">Progres Land Use</a></li>
+          </ul>
+        </li>
+
+
+		<li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Land Secure<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Tipe Pengalaman</a></li>
+            <li><a href="#">Status Pengalaman</a></li>
+            <li><a href="#">Asset</a></li>
+          </ul>
+        </li>
+
+
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Land Utilization<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Tipe Komersialisasi</a></li>
+            <li><a href="#">Status Komersialisasi</a></li>
+            <li><a href="#">End of Life Status</a></li>
+            <li><a href="#">Asset</a></li>
+          </ul>
+        </li>
+
+
+		<li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Land Litifgation<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Klim Dari User</a></li>
+            <li><a href="#">Penyiapan Dokumen </a></li>
+            <li><a href="#">Verifikasi Dokumen</a></li>
+            <li><a href="#">Survei Lahan Klaim</a></li>
+			<li><a href="#">Pengajuan Gugatan</a></li>
+		  </ul>
+        </li>
+
+		<li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Land Certifikasion<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Permohonan Sletifikasi</a></li>
+            <li><a href="#">Penyiapan Dokumen</a></li>
+            <li><a href="#">Tanda Batas Atas Lahan</a></li>
+            <li><a href="#">Surat Permohonan</a></li>
+			<li><a href="#">Pembayaran SPS</a></li>
+			<li><a href="#">Berita Acara Hasil Pengukuran</a></li>
+            <li><a href="#">Pendaftran Peta Bidang Tanah</a></li>
+			<li><a href="#">Pembayaran SPS pemeriksaan Tanah dan SPS Pemetaan</a></li>
+			<li><a href="#">Tanda Bukti Setor</a></li>
+            <li><a href="#">Risalah Pemeriksaan Tanah Risalah Pengolahan Data Dan <br />Berita Acara Pemeriksaan Lapangan</a></li>
+			<li><a href="#">Pemeriksaan Data Yuridis</a></li>
+			<li><a href="#">Risalah Data Yuridis dan Data Fisik</a></li>
+			<li><a href="#">SK pemberian HGB</a></li>
+			<li><a href="#">Pembayaran BPHTB</a></li>
+			<li><a href="#">Sertifikasi Pemberian HGB</a></li>
+		  </ul>
+
+        <li><a href="#">Reminder</a></li>
+
+        <li><a href="#">Report</a></li>
+
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin Tools <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../Pages_Admintools/UserManagementList.aspx">User Management</a></li>
+            <li><a href="../Pages_Admintools/GroupManagementList.aspx">Group Management</a></li>
+            <li><a href="../Pages_Admintools/MasterMenu.aspx">Master Menu</a></li>
+              <li><a href="../Pages_Admintools/CodesModul.aspx">Master Codes</a></li>
+          </ul>
+        </li>
+
+
+
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span>
+        <asp:Label ID="lblnm" runat="server" Text=""></asp:Label>
+
+        </a></li>
+        
+          <li><a href="../Pages/LogOut.aspx"><span class="glyphicon glyphicon-log-in"></span> LogOut</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+  
+<div class="container">
+ <%-- <h3>Collapsible Navbar</h3>
+  <p>In this example, the navigation bar is hidden on small screens and replaced by a button in the top right corner (try to re-size this window).
+  <p>Only when the button is clicked, the navigation bar will be displayed.</p>--%>
+</div>
+
+
+
+
+<%--    <form id="form1" runat="server">
+    <div>
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>--%>
+
+        <form role="form" class="form-horizontal" action="#" id="form1" runat="server">
+        <div id="backLookup" style="background-image: url(../img/backGroundGelap.png); width: 0px; height: 0px; visibility: visible; position: relative; z-index: -1;"></div>
+        <div id="lookup" style="width: 0px; height: 0px; visibility: hidden; 
+            -moz-border-radius-bottomleft: 5px; -moz-border-radius-bottomright: 5px;
+            -moz-border-radius-topleft: 10px; -moz-border-radius-topright: 10px; border: 1px solid #000;">
+            <div id="judul" style="background-color: #ababab; vertical-align: middle; position: relative; height: 25px;
+                -moz-border-radius-topleft: 5px; -moz-border-radius-topright: 5px;
+                margin-left: 0px; padding-left: 10px; padding-right: -10px;">
+            </div>
+                <div id="contentLookup" style="vertical-align: middle; position: relative; height: 265px; margin-top: 5px; margin-left: 5px; margin-right: 5px;">
+                    <div style="padding-top: 5px; padding-left: 5px;">
+                        <input type='text' id='lookupKey' value='' onkeypress="enterPressed(event,'lookupSearch(document.getElementById(\'lookupKey\').value);');" />&nbsp;&nbsp;
+                        <input type='button' onclick="lookupSearch(document.getElementById('lookupKey').value);" value='Cari' />
+                        &nbsp;&nbsp;<input type="button" value="Tutup" onclick="hideLookup('lookup');" />
+                        <a href="MasterIdentitasForm.aspx?param1=I">
+                        <input type="button" value="Tambah Baru"/>
+                        </a>
+                       
+                    </div>
+                    <div style=" width:100%; height:228px;">
+                    <div id="gridLookup" style="width:100%;height:100%;background-color:white;"></div>
+                    </div>
+                </div>
+        </div>
+        <div id="loadDiv" style="width: 0px; height: 0px; visibility:hidden;">
+            <img src="../img/circle.gif" alt="Loading..." style="position:relative;" />
+            <!--img src="../img/circle.gif" alt="Loading..." style="position:relative;" /-->
+        </div>
+
+        <%--utk modul prareg dan registrasi--%>
+
+        <div id="backLookup2" style="background-image: url(../img/backGroundGelap.png); width: 0px; height: 0px; visibility: visible; position: relative; z-index: -1;"></div>
+        <div id="lookup2" style="width: 0px; height: 0px; visibility: hidden; 
+            -moz-border-radius-bottomleft: 5px; -moz-border-radius-bottomright: 5px;
+            -moz-border-radius-topleft: 10px; -moz-border-radius-topright: 10px; border: 1px solid #000;">
+            <div id="judul2" style="background-color: red; vertical-align: middle; position: relative; height: 25px;
+                -moz-border-radius-topleft: 5px; -moz-border-radius-topright: 5px;
+                margin-left: 0px; padding-left: 10px; padding-right: -10px;">
+            </div>
+                <div id="contentLookup2" style="vertical-align: middle; position: relative; height: 265px; margin-top: 5px; margin-left: 5px; margin-right: 5px;">
+                    <div style="padding-top: 5px; padding-left: 5px;">
+                        <input type='text' id='lookupKey2' value='' onkeypress="enterPressed(event,'lookupSearch2(document.getElementById(\'lookupKey2\').value);');" />&nbsp;&nbsp;
+                        <input type='button' onclick="lookupSearch2(document.getElementById('lookupKey2').value);" value='Cari' />
+                        &nbsp;&nbsp;<input type="button" value="Tutup" onclick="hideLookup('lookup2');" />
+                    </div>
+                    
+                    <div style=" width:100%; height:228px;">
+                    <div id="gridLookup2" style="width:100%;height:100%;background-color:white;"></div>
+                    </div>
+
+                </div>
+        </div>
+        <div id="loadDiv2" style="width: 0px; height: 0px; visibility:hidden;">
+            <img src="../img/circle.gif" alt="Loading..." style="position:relative;" />
+            <!--img src="../img/circle.gif" alt="Loading..." style="position:relative;" /-->
+        </div>
+
+
+    
+            <div class="container">	
+                <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+                </asp:ContentPlaceHolder>
+        </div>
+
+    </form>
+
+</body>
+</html>

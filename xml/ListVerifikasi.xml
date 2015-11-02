@@ -1,0 +1,41 @@
+﻿<rows>
+  <row id="1">
+    <cell>1</cell>
+    <cell>VR0001</cell>
+    <cell>KL0001</cell>
+    <cell>RAHMAT</cell>
+    <cell>BOGOR</cell>
+    <cell>SUKASARI</cell>
+    <cell>SUKAMAJU</cell>
+    <cell>Di Ajukan Ke Pengadilan</cell>
+    <cell>View^VerifikasiForm.aspx</cell>
+    <cell>Edit^VerifikasiForm.aspx</cell>
+    <cell>Delete^VerifikasiForm.aspx</cell>
+  </row>
+  <row id="2">
+    <cell>2</cell>
+    <cell>VR0002</cell>
+    <cell>KL0002</cell>
+    <cell>Papi</cell>
+    <cell>BANDUNG</cell>
+    <cell>SUKASARI</cell>
+    <cell>SUKAMAJU</cell>
+    <cell>Di Ajukan KE Jaksaan</cell>
+    <cell>View^VerifikasiForm.aspx</cell>
+    <cell>Edit^VerifikasiForm.aspx</cell>
+    <cell>Delete^VerifikasiForm.aspx</cell>
+  </row>
+  <row id="3">
+    <cell>3</cell>
+    <cell>VR0001</cell>
+    <cell>KL0001</cell>
+    <cell>Joni</cell>
+    <cell>BOGOR</cell>
+    <cell>SUKASARI</cell>
+    <cell>SUKAMAJU</cell>
+    <cell>Di Ajukan Ke Polisian</cell>
+    <cell>View^VerifikasiForm.aspx</cell>
+    <cell>Edit^VerifikasiForm.aspx</cell>
+    <cell>Delete^VerifikasiForm.aspx</cell>
+  </row>
+</rows>
