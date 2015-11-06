@@ -18,42 +18,52 @@
 
 <h2>Pemberkasan</h2>
     
-    <hr class="style-four">
+    <hr />
 
-    <form role="form" class="form-horizontal">
+    <div role="form" class="form-horizontal">
+        <div class="form-group">
+            <label for="nama" class="control-label col-md-2">Nama Perusahaan</label>
+            <div class="col-md-3"> 
+                <asp:DropDownList ID="ddprs" runat="server" class="form-control">
+                </asp:DropDownList>
+            </div>
+        </div>
+    </div>
+
+    <div role="form" class="form-horizontal">
         <div class="form-group">
             <label for="identitas" class="control-label col-md-2">No Pemberkasan</label>
             <div class="col-md-3"><asp:TextBox id="txtNoPemberkasanSatu" type="text" runat="server" class="form-control input-md" placeholder= "..." /></div>
         </div>
-    </form>
+    </div>
 
-    <form role="form" class="form-horizontal">
+    <div role="form" class="form-horizontal">
         <div class="form-group">
             <label for="identitas" class="control-label col-md-2">No Registrasi</label>
             <div class="col-md-3"><asp:TextBox id="txtNoRegistrasi" type="text" runat="server" class="form-control input-md" placeholder= "..." /></div>
         </div>
-    </form>
+    </div>
 
-    <form role="form" class="form-horizontal">
+    <div role="form" class="form-horizontal">
         <div class="form-group">
             <label for="identitas" class="control-label col-md-2">No PID</label>
             <div class="col-md-3"><asp:TextBox id="txtPID" type="text" runat="server" class="form-control input-md" placeholder= "..." /></div>
         </div>
-    </form>
+    </div>
 
-    <form role="form" class="form-horizontal">
+    <div role="form" class="form-horizontal">
         <div class="form-group">
             <label for="identitas" class="control-label col-md-2">No Negoisasi</label>
             <div class="col-md-3"><asp:TextBox id="txtNoNegosiasi" type="text" runat="server" class="form-control input-md" placeholder= "..." /></div>
         </div>
-    </form>
+    </div>
 
-    <form role="form" class="form-horizontal">
+    <div role="form" class="form-horizontal">
         <div class="form-group">
             <label for="identitas" class="control-label col-md-2">No Visum</label>
             <div class="col-md-3"><asp:TextBox id="txtNoVisum" type="text" runat="server" class="form-control input-md" placeholder= "..." /></div>
         </div>
-    </form>
+    </div>
 
 
         <div role="form" class="form-horizontal">
@@ -111,12 +121,12 @@
 
     <%}%>
 
-    <form role="form" class="form-horizontal">
+    <div role="form" class="form-horizontal">
         <div class="form-group">
             <asp:Label  ID="LLanjut"  runat="server" for="identitas" class="control-label col-md-2" Text="Lanjut" Font-Bold="True"></asp:Label>
             <div class="col-md-3"><asp:DropDownList ID="ddLanjut" runat="server" class="form-control input-md"></asp:DropDownList></div>
         </div>
-    </form>
+    </div>
 
     <%if (groups.ToString() != "1")
     { %>        
@@ -127,12 +137,12 @@
 
     <%}%>
 
-    <form role="form" class="form-horizontal">
+    <div role="form" class="form-horizontal">
         <div class="form-group">
             <label  ID="LKeterangan"for="identitas" class="control-label col-md-2">Keterangan</label>
             <div class="col-md-3"><asp:TextBox id="txtKeterangan" class="form-control input-md" TextMode="multiline" Columns="15" Rows="3" runat="server" /></div>
         </div>
-    </form>
+    </div>
 
     <%if (groups.ToString() != "1")
     { %>        
@@ -143,7 +153,7 @@
 
     <%}%> 
 
-    <form role="form" class="form-horizontal">
+    <div role="form" class="form-horizontal">
         <div class="form-group">
             <asp:Label  ID="LEksepsi"  runat="server" for="identitas" class="control-label col-md-2" Text="Eksepsi" Font-Bold="True"></asp:Label>
             <div class="col-md-3">
@@ -151,14 +161,14 @@
            
             </div>
         </div>
-    </form>
+    </div>
 
-    <form role="form" class="form-horizontal">
+    <div role="form" class="form-horizontal">
         <div class="form-group">
             <asp:Label  ID="LKEksepsi"   runat="server"  for="identitas" class="control-label col-md-2" Text="Keterangan Eksepsi" Font-Bold="True"></asp:Label>
             <div class="col-md-3"> <asp:TextBox id="txtKetEks" class="form-control input-md" TextMode="multiline" Columns="15" Rows="3" runat="server" /></div>
         </div>
-    </form>
+    </div>
 
     <%if (groups.ToString() != "1")
     { %>        
@@ -224,6 +234,7 @@
     var btnDelete = document.getElementById("btnDelete");
     var btnSave = document.getElementById("btnSave");
     var btnCancel = document.getElementById("btnCancel");
+    var ddprs = document.getElementById("<%= ddprs.ClientID %>");
 
 
     var hidMode = document.getElementById('hidMode');
@@ -312,7 +323,7 @@
             case "Save":
                 if (txtNoPemberkasanSatu.value == '') { alert('No Pemberkasan Harus di Assign'); }
                 else {
-                    Edit(hidMode.value)
+                    CRUD(hidMode.value)
                 }
                 break;
 
@@ -321,7 +332,7 @@
                 else {
                     if (objBtn.id == 'btnSave') {
                         if (confirm("Hapus Data Ini?"))
-                            Delete(hidMode.value);
+                            CRUD(hidMode.value);
                     }
                 }
                 break;
@@ -336,22 +347,10 @@
         }
     }
 
-    function Delete() {
-
-            var s = ""
-                + "rnd=" + Math.random() * 4
-			    + "&sm=CRUD"
-                + "&param1=D"
-                + "&param2=" + txtNoPemberkasanSatu.value
-                + "&param3="
-
-        // alert(s);
-        dhtmlxAjax.post(localURL, s, outputResponse);
-
-    }
 
 
-    function Edit(tipe) {
+
+    function CRUD(tipe) {
         var s = ""
                 + "rnd=" + Math.random() * 4
 			    + "&sm=CRUD"
@@ -366,15 +365,12 @@
                 + "&param9=" + eksepsi.value
                 + "&param10=" + txtKeterangan.value
                 + "&param11=" + txtKetEks.value
-                + "&param12=" 
-                + "&param13=" 
-                + "&param14=" 
+                + "&param12="
+                + "&param13="
+                + "&param15=" + ddprs.value
+                + "";
         //alert(s);
         dhtmlxAjax.post(localURL, s, outputResponse);
-//        if (autorisasi.value.indexOf("A") == -1)
-//            btnAdd.disabled = true;
-//        else if (autorisasi.value.indexOf("A") != -1)
-//            btnAdd.disabled = false;
     }
 
     function bindFormPemberkasanSatu(loader) 

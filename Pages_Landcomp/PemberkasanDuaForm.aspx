@@ -17,7 +17,17 @@
 
 <h2>Finalisasi</h2>
     
-    <hr class="style-four">
+    <hr />
+
+     <div role="form" class="form-horizontal">
+    	<div class="form-group">
+            <label for="nama" class="control-label col-md-2">Nama Perusahaan</label>
+            <div class="col-md-3"> 
+                <asp:DropDownList ID="ddprs" runat="server" class="form-control">
+                </asp:DropDownList>
+            </div>
+        </div>
+     </div>
 
     <div role="form" class="form-horizontal">
         <div class="form-group">
@@ -213,7 +223,8 @@
     var btnCancel = document.getElementById("btnCancel");
     var btnDelete = document.getElementById("btnDelete");
     var hidMode = document.getElementById('hidMode');
-
+    
+    var ddprs = document.getElementById("<%= ddprs.ClientID %>");
    
 
     function validasi() {
@@ -289,13 +300,13 @@
             case "Save":
                 //alert(hidMode.value);
 
-                Edit(hidMode.value)
+                CRUD(hidMode.value)
                 break;
 
             case "Delete":
 //                alert(hidMode.value);
                 if (confirm("Hapus Data Ini?"))
-                    Delete(hidMode.value);
+                    CRUD(hidMode.value);
                 break;
 
             case "Cancel":
@@ -372,41 +383,7 @@
         //        clearTeknik();
     }
 
-    function Edit(tipe) {
-        var s = ""
-                + "rnd=" + Math.random() * 4
-			    + "&sm=CRUD"
-                + "&param1=" + tipe.replace("param1=", "")
-                + "&param2=" + txtNoPemberkasanDua.value
-                + "&param3="
-                + "&param4=" + txtNoRegistrasi.value
-                + "&param5=" + txtPID.value
-                + "&param6=" + txtNoNegosiasi.value
-                + "&param7=" + txtNoVisum.value
-                + "&param8=" + txtNoPemberkasanSatu.value
-                
-                + "&param9=" + txtNoPembayaran.value
-                + "&param10=" + txtNoPembayaran.value
-                + "&param11=" + txtKeterangan.value
-                + "&param12=" + ddLSelesai.value
-                + "&param13=" + eksepsi.value
-                + "&param14=" + txtKetEksepsi.value
-                + "&param15=" 
-
-                + "&param16=" 
-                + "&param17="
-     
-
-
-
-        dhtmlxAjax.post(localURL, s, outputResponse);
-        //        if (autorisasi.value.indexOf("A") == -1)
-        //            btnAdd.disabled = true;
-        //        else if (autorisasi.value.indexOf("A") != -1)
-        //            btnAdd.disabled = false;
-    }
-
-    function Delete(tipe) {
+    function CRUD(tipe) {
         var s = ""
                 + "rnd=" + Math.random() * 4
 			    + "&sm=CRUD"
@@ -429,16 +406,16 @@
 
                 + "&param16="
                 + "&param17="
-
+                + "&param18=" + ddprs.value
+                + "";
+     
 
 
 
         dhtmlxAjax.post(localURL, s, outputResponse);
-        //        if (autorisasi.value.indexOf("A") == -1)
-        //            btnAdd.disabled = true;
-        //        else if (autorisasi.value.indexOf("A") != -1)
-        //            btnAdd.disabled = false;
     }
+
+  
 
     // bind
     function bindFormPemberkasanDua(loader) {

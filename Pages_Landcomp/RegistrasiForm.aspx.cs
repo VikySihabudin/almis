@@ -37,7 +37,12 @@ public partial class Pages_RegistrasiForm : System.Web.UI.Page
         
         if (!IsPostBack)
         {
-            //HakAkses();
+            if (Session["userid"] is object)
+            {
+                userid = Session["userid"].ToString();
+            }
+
+            isiPerusa();
             isiJenisKelamin();
             isiPekerjaan();
             isiTandaIdentitas();
@@ -57,6 +62,26 @@ public partial class Pages_RegistrasiForm : System.Web.UI.Page
             if (normal && (Request.Params["sm"] is object)) normal = ServiceSelect(Request.Params["sm"].ToString());
             HakAkses();
         }
+    }
+
+    public void isiPerusa()
+    {
+
+        query = @"SELECT perusaNamass,perusaIdents FROM USRPRS 
+                  INNER JOIN PERUSA
+	                ON UsrprsPerusa = perusaIdents
+                   WHERE UsrprsUserss =" + "'" + userid + "'" + "";
+
+        dt = getDataTable(query);
+        if (dt.Rows.Count > 0)
+        {
+            ddprs.Items.Clear();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                ddprs.Items.Add(new ListItem(dt.Rows[i]["perusaNamass"].ToString(), dt.Rows[i]["perusaIdents"].ToString()));
+            }
+        }
+        dt.Dispose();
     }
 
     public void HakAkses()
@@ -242,7 +267,7 @@ public partial class Pages_RegistrasiForm : System.Web.UI.Page
     {
         query = @"SELECT  codessCodess ,
                             codessDescs1
-                    FROM    almis.CODESS
+                    FROM    ALMIS.CODESS
                     WHERE   codessHeadss = 2
                             AND codessStatss = 1";
         dt = getDataTable(query);
@@ -261,7 +286,7 @@ public partial class Pages_RegistrasiForm : System.Web.UI.Page
     {
         query = @"SELECT  codessCodess ,
                             codessDescs1
-                    FROM    almis.CODESS
+                    FROM    ALMIS.CODESS
                     WHERE   codessHeadss = 4
                             AND codessStatss = 1
                     ORDER BY codessCodess DESC";
@@ -281,7 +306,7 @@ public partial class Pages_RegistrasiForm : System.Web.UI.Page
     {
         query = @"SELECT  codessCodess ,
                             codessDescs1
-                    FROM    almis.CODESS
+                    FROM    ALMIS.CODESS
                     WHERE   codessHeadss = 1
                             AND codessStatss = 1";
         dt = getDataTable(query);
@@ -300,7 +325,7 @@ public partial class Pages_RegistrasiForm : System.Web.UI.Page
 
         query = @"SELECT  codessCodess ,
                             codessDescs1
-                    FROM    almis.CODESS
+                    FROM    ALMIS.CODESS
                     WHERE   codessHeadss = 3
                             AND codessStatss = 1";
         dt = getDataTable(query);
@@ -319,7 +344,7 @@ public partial class Pages_RegistrasiForm : System.Web.UI.Page
     {
         query = @"SELECT  codessCodess ,
                             codessDescs1
-                    FROM    almis.CODESS
+                    FROM    ALMIS.CODESS
                     WHERE   codessHeadss = 5
                             AND NOT codessCodess IN (0,3,4)";
         dt = getDataTable(query);
@@ -337,7 +362,7 @@ public partial class Pages_RegistrasiForm : System.Web.UI.Page
     {
         query = @"SELECT  codessCodess ,
                             codessDescs1
-                    FROM    almis.CODESS
+                    FROM    ALMIS.CODESS
                     WHERE   codessHeadss = 7
                             AND NOT codessCodess IN (0,3,4)";
         dt = getDataTable(query);
@@ -362,7 +387,7 @@ public partial class Pages_RegistrasiForm : System.Web.UI.Page
     {
         query = @"SELECT  codessCodess ,
                             codessDescs1
-                    FROM    almis.CODESS
+                    FROM    ALMIS.CODESS
                     WHERE   codessHeadss = 16
                             AND codessStatss = 1";
         dt = getDataTable(query);
@@ -381,7 +406,7 @@ public partial class Pages_RegistrasiForm : System.Web.UI.Page
     {
         query = @"SELECT  codessCodess ,
                             codessDescs1
-                    FROM    almis.CODESS
+                    FROM    ALMIS.CODESS
                     WHERE   codessHeadss = 17
                             AND codessStatss = 1";
         dt = getDataTable(query);
@@ -419,7 +444,7 @@ public partial class Pages_RegistrasiForm : System.Web.UI.Page
             sql = @"
                     SELECT  codessCodess ,
                             codessDescs1
-                    FROM    almis.CODESS
+                    FROM    ALMIS.CODESS
                     WHERE   codessHeadss = " + param1 + " AND codessStatss = 1";
 
 
@@ -449,7 +474,7 @@ public partial class Pages_RegistrasiForm : System.Web.UI.Page
 
         query = @"SELECT  codessCodess ,
                             codessDescs1
-                    FROM    almis.CODESS
+                    FROM    ALMIS.CODESS
                     WHERE   codessHeadss = 15
                             AND codessStatss = 1";
         dt = getDataTable(query);
@@ -469,7 +494,7 @@ public partial class Pages_RegistrasiForm : System.Web.UI.Page
 
         query = @"SELECT  codessCodess ,
                             codessDescs1
-                    FROM    almis.CODESS
+                    FROM    ALMIS.CODESS
                     WHERE   codessHeadss = 14
                             AND codessStatss = 1";
         dt = getDataTable(query);
@@ -711,8 +736,8 @@ public partial class Pages_RegistrasiForm : System.Web.UI.Page
 
 
                 ALMIS.ExecuteSTP eSTP_IA = new ALMIS.ExecuteSTP();
-                eSTP_IA.Datas();
-                eSTP_IA.List9("P_REGIST_D", param1IA, param2IA, "", param3IA, param4IA, param5IA, param6IA, "", "");
+                eSTP_IA.Datas(); 
+                eSTP_IA.save9("P_REGIST_D", param1IA, param2IA, "", param3IA, param4IA, param5IA, param6IA,"","");
 
                 return false;
 
@@ -725,7 +750,7 @@ public partial class Pages_RegistrasiForm : System.Web.UI.Page
                 ALMIS.ExecuteSTP eSTP_SA = new ALMIS.ExecuteSTP();
                 eSTP_SA.Datas();
                 DataSet ds_SA = new DataSet();
-                ds_SA = eSTP_SA.List9("P_REGIST_D", param1SA, param2SA, "", "param3IA", "", "","","","");
+                ds_SA = eSTP_SA.List9("P_REGIST_D", param1SA, param2SA, "", param3SA, "", "","","","");
 
                 dt = ds_SA.Tables[0];
 
@@ -757,7 +782,7 @@ public partial class Pages_RegistrasiForm : System.Web.UI.Page
 
                 ALMIS.ExecuteSTP eSTP_DA = new ALMIS.ExecuteSTP();
                 eSTP_DA.Datas();
-                eSTP_DA.save9("P_REGIST_D", param1DA, param2DA, "", "", "", param3DA, "", "","");
+                eSTP_DA.save8("P_REGIST_D", param1DA, param2DA, "", "", "", param3DA,"","");
 
                 return false;
 
@@ -813,7 +838,7 @@ public partial class Pages_RegistrasiForm : System.Web.UI.Page
                 ALMIS.ExecuteSTP eSTPa = new ALMIS.ExecuteSTP();
                 eSTPa.Datas();
                 DataSet dsa = new DataSet();
-                dsa = eSTPa.List9("P_REGIST_D", Param1a, Param2a, "", "", "", "", "", "","");
+                dsa = eSTPa.List9("P_REGIST_D", Param1a, Param2a, "", "", "", "","","","");
 
                 dt = dsa.Tables[0];
 
@@ -972,7 +997,7 @@ public partial class Pages_RegistrasiForm : System.Web.UI.Page
         String param33 = ""; if (Request.Params["param33"] is object) param33 = Request.Params["param33"].ToString();
         String param34 = ""; if (Request.Params["param34"] is object) param34 = Request.Params["param34"].ToString();
         String param35 = ""; if (Request.Params["param35"] is object) param35 = Request.Params["param35"].ToString();
-        String param36 = ""; if (Request.Params["param36"] is object) param36 = Request.Params["param36"].ToString();        
+        String param36 = ""; if (Request.Params["param36"] is object) param36 = Request.Params["param36"].ToString();
         //String sql = "";
         String output = "";
 
@@ -1009,7 +1034,7 @@ public partial class Pages_RegistrasiForm : System.Web.UI.Page
                 ALMIS.ExecuteSTP eSTP = new ALMIS.ExecuteSTP();
                 eSTP.Datas();
                 DataSet ds = new DataSet();
-                eSTP.save36("P_REGIST", param1, param2, param3, param4, param5, param6, param7, param8, param9, param10, param11, param12, param13, param14, param15, param16, param17, param18, param19, param20, param21, param22, param23, param24, param25, param26, param27, param28, param29, param30, param31, userid, param33, param34, param35, param36);
+                eSTP.save36("P_REGIST", param1, param2, param3, param4, param5, param6, param7, param8, param9, param10, param11, param12, param13, param14, param15, param16, param17, param18, param19, param20, param21, param22, param23, param24, param25, param26, param27, param28, param29, param30, param31, userid, param33, param34, param35, "0");
 
                 return output;
             }
@@ -1158,7 +1183,6 @@ public partial class Pages_RegistrasiForm : System.Web.UI.Page
         string _stDates = DateTime.Today.ToString("yyyyMMdd");
 
         string param1 = Request.Params["param1"].ToString();
-       // string param3 = Request.Params["param3"].ToString();
         string param4 = Request.Params["param4"].ToString();
         string param5 = Request.Params["param5"].ToString();
         string user = Request.Params["user"].ToString();
@@ -1177,17 +1201,17 @@ public partial class Pages_RegistrasiForm : System.Web.UI.Page
         eSTP.Datas();
         DataSet ds = new DataSet();
 
-        eSTP.save9("P_REGIST_D", param1, IDRegistrasi,"", "param5", param4, _stKeterangan,"","","");
+        eSTP.save9("P_REGIST_D", param1, IDRegistrasi, "", param4, param5, _stKeterangan, "", "","");
 
-        if (param5 == "1") { param5 = "10"; }
-        if (param5 == "2") { param5 = "11"; }
-        if (param5 == "3") { param5 = "12"; }
-        if (param5 == "4") { param5 = "13"; }
+        if (param4=="1"){param4 = "10";}
+        if (param4=="2"){param4 = "11";}
+        if (param4=="3"){param4 = "12";}
+        if (param4  =="4"){param4 = "13";}
 
         if (extension != ".exe")
         {
 
-            uf.UploadFilesWeb("I", user, _stDates, "Registrasi", param5, uploadFolder, IDRegistrasi, _stNomor + extension, _stNamaFile, param4,"","");
+            uf.UploadFilesWeb("I", user, _stDates, "Registrasi", param4, uploadFolder, IDRegistrasi, _stNomor + extension, _stNamaFile, param5,"","");
         }
 
         var _stOutput = IDRegistrasi;

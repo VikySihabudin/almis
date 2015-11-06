@@ -28,7 +28,7 @@
          <div class="form-group">
 
             <div class="col-md-8">
-            <asp:Label ID="Label1" runat="server" Text="Label">PIC PerusahaanPemohon Sertipikasi Mengajukan Permohonan LMS Support Kepada APM</asp:Label>
+            <asp:Label ID="Label1" runat="server" Text="Label">PIC Perusahaan Pemohon Sertipikasi Mengajukan Permohonan Land Management Support Support Kepada APM</asp:Label>
             </div>
 
         </div>
@@ -80,7 +80,7 @@
          <div class="form-group">
 
             <div class="col-md-8">
-            <asp:Label ID="Label4" runat="server" Text="Label">Manajemen APM Menunjuk PIC LMS Untuk Land Management Support</asp:Label>
+            <asp:Label ID="Label4" runat="server" Text="Label">Manajemen APM Menunjuk PIC Land Management Support Untuk Land Management Support</asp:Label>
             </div>
 
         </div>
@@ -126,7 +126,7 @@
          <div class="form-group">
 
             <div class="col-md-8">
-            <asp:Label ID="Label7" runat="server" Text="Label">PIC LMS Mengadakan Koordinasi Awal dengan PIC Perusahaan Pemohon Sertipikasi</asp:Label>
+            <asp:Label ID="Label7" runat="server" Text="Label">PIC Land Management Support Mengadakan Koordinasi Awal dengan PIC Perusahaan Pemohon Sertipikasi</asp:Label>
             </div>
 
         </div>
@@ -167,7 +167,7 @@
          <div class="form-group">
 
             <div class="col-md-8">
-            <asp:Label ID="Label10" runat="server" Text="Label">PIC LMS Menyusun Proposal LMS</asp:Label>
+            <asp:Label ID="Label10" runat="server" Text="Label">PIC Land Management Support Menyusun Proposal Land Management Support</asp:Label>
             </div>
 
         </div>
@@ -213,7 +213,7 @@
            <div class="form-group">
 
             <div class="col-md-8">
-            <asp:Label ID="Label13" runat="server" Text="Label">PICLMS Meminta Persetujuan Proposal Kepada Manajemen Pemohon Dan Manajemen APM</asp:Label>
+            <asp:Label ID="Label13" runat="server" Text="Label">PIC Land Management Support Meminta Persetujuan Proposal Kepada Manajemen Pemohon Dan Manajemen APM</asp:Label>
             </div>
 
         </div>
@@ -258,7 +258,7 @@
           <div class="form-group">
 
             <div class="col-md-8">
-            <asp:Label ID="Label16" runat="server" Text="Label">PIC LMS Menyusun LMS Approval Dan Meminta Persetujuan Dari Chief Legal Officer (CLO) PT. Adaro Energy, Tbk</asp:Label>
+            <asp:Label ID="Label16" runat="server" Text="Label">PIC Land Management Support Menyusun Land Management Support Approval Dan Meminta Persetujuan Dari Chief Legal Officer (CLO) PT. Adaro Energy, Tbk</asp:Label>
             </div>
 
         </div>
@@ -303,7 +303,7 @@
           <div class="form-group">
 
             <div class="col-md-8">
-            <asp:Label ID="Label19" runat="server" Text="Label">PIC LMS Mengadakan Koordinasi Lanjutan Dengan PIC Perusahaan Pemohon Sertipikasi</asp:Label>
+            <asp:Label ID="Label19" runat="server" Text="Label">PIC Land Management Support Mengadakan Koordinasi Lanjutan Dengan PIC Perusahaan Pemohon Sertipikasi</asp:Label>
             </div>
 
         </div>
@@ -348,7 +348,7 @@
           <div class="form-group">
 
             <div class="col-md-8">
-            <asp:Label ID="Label22" runat="server" Text="Label">PIC LMS Membuat Opening File LMS</asp:Label>
+            <asp:Label ID="Label22" runat="server" Text="Label">PIC Land Management Support Membuat Opening File Land Management Support</asp:Label>
             </div>
 
         </div>

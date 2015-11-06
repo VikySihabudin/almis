@@ -1,519 +1,150 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="mptamp2.master.cs" Inherits="MasterPages_mptamp" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="mptamp2.master.cs" Inherits="MasterPages_mptamp2" %>
 
-<!DOCTYPE html>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
-    <title>Aplikasi Almis</title>
+    <title></title>
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 
+<body>
 
 
-    <link rel="shortcut icon" href="../images/LogoIcoAdaro.jpg" type="image/x-icon" />	
-        <%--css dhtmlx--%>
+<style type="text/css">	
+	
+body {padding: 0; margin: 0;}
 
+#wrap	{
+		width: 100%;
+		height: 50px; 
+		margin: 0; 
+		z-index: 99;
+		position: relative;
+		background-color: #366b82;
+		}
+	
+	.navbar		{
+				height: 50px;
+				padding: 0;
+				margin: 0;
+				position: absolute;
+				border-right: 1px solid #54879d;
+				}
+			
+		.navbar li 	{
+					height: auto;
+					width: 150px; 
+					float: left; 
+					text-align: center; 
+					list-style: none; 
+					font: normal bold 12px/1.2em Arial, Verdana, Helvetica;  
+					padding: 0;
+					margin: 0;
+					background-color: #366b82;					
+					}
 
-  
-    <link rel="stylesheet" type="text/CSS" href="../JavaScript/codebase/dhtmlxtabbar.css" />
-    <link rel="stylesheet" type="text/CSS" href="../JavaScript/codebase/dhtmlxcalendar.css" />
-    <link rel="stylesheet" type="text/CSS" href="../JavaScript/dhtmlxsuite/dhtmlxgrid/codebase/dhtmlxgrid.css" />
-    <link rel="stylesheet" type="text/CSS" href="../JavaScript/codebase/skins/dhtmlxgrid_dhx_skyblue.css" />
-    <link rel="stylesheet" type="text/CSS" href="../JavaScript/codebase/skins/dhtmlxaccordion_dhx_blue.css" />
-    <link rel="stylesheet" type="text/CSS" href="../JavaScript/dhtmlxsuite/dhtmlxtoolbar/codebase/skins/dhtmlxtoolbar_dhx_skyblue.css" />
-    <link rel="stylesheet" type="text/CSS" href="../JavaScript/codebase/skins/dhtmlxgrid_pgn_bricks.css" />
-    <link rel="stylesheet" type="text/CSS" href="../JavaScript/dhtmlxsuite/dhtmlxCombo/codebase/dhtmlxcombo.css" />
-    <%--<link rel="stylesheet" type="text/CSS" href="../JavaScript/dhtmlxSuite/dhtmlxchart/codebase/dhtmlxchart.css" />--%>
-    <link rel="stylesheet" type="text/CSS" href="../JavaScript/dhtmlxSuite/dhtmlxLayout/codebase/dhtmlxlayout.css" />
-    <link rel="stylesheet" type="text/CSS" href="../JavaScript/dhtmlxSuite/dhtmlxLayout/codebase/skins/dhtmlxlayout_dhx_skyblue.css" />
-    <link rel="stylesheet" type="text/CSS" href="../JavaScript/dhtmlxSuite/dhtmlxWindows/codebase/dhtmlxwindows.css" />
-    <link rel="stylesheet" type="text/CSS" href="../JavaScript/dhtmlxSuite/dhtmlxWindows/codebase/skins/dhtmlxwindows_dhx_skyblue.css" />
+			.navbar a	{							
+						padding: 18px 0; 
+						border-left: 1px solid #54879d;
+						border-right: 1px solid #1f5065;
+						text-decoration: none;
+						color: white;
+						display: block;
+						}
 
-    <script src="../JavaScript/codebase/dhtmlxcommon.js" type="text/javascript"></script>
-    <script src="../JavaScript/dhtmlxSuite/dhtmlxTabbar/codebase/dhtmlxtabbar.js" type="text/javascript"></script>
-    <script src="../JavaScript/dhtmlxSuite/dhtmlxTabbar/codebase/dhtmlxtabbar_start.js" type="text/javascript"></script>
-<%--    <script src="../JavaScript/dhtmlxSuite/dhtmlxCalendar/codebase/dhtmlxcalendar.js" type="text/javascript"></script>
-    <script src="../JavaScript/dhtmlxSuite/dhtmlxAccordion/codebase/dhtmlxaccordion.js" type="text/javascript"></script>
-    <script src="../JavaScript/dhtmlxSuite/dhtmlxAccordion/codebase/dhtmlxcontainer.js"type="text/javascript"></script>--%>
-    <script src="../JavaScript/codebase/dhtmlxgrid.js" type="text/javascript"></script>
-    <script src="../JavaScript/codebase/dhtmlxgridcell.js" type="text/javascript"></script>
-    <script src="../JavaScript/codebase/excells/dhtmlxgrid_excell_link.js" type="text/javascript"></script>
-    <script src="../JavaScript/dhtmlxSuite/dhtmlxLayout/codebase/dhtmlxlayout.js" type="text/javascript"></script>
-    <script src="../JavaScript/dhtmlxSuite/dhtmlxLayout/codebase/dhtmlxcontainer.js" type="text/javascript"></script>
-<%--    <script src="../JavaScript/dhtmlxSuite/dhtmlxTree/codebase/dhtmlxtree.js" type="text/javascript" ></script>
---%>    <script src="../JavaScript/codebase/excells/dhtmlxgrid_excell_link.js" type="text/javascript"></script>
-    <script src="../JavaScript/dhtmlxSuite/dhtmlxGrid/codebase/ext/dhtmlxgrid_srnd.js" type="text/javascript"></script>
-    <script src="../JavaScript/dhtmlxSuite/dhtmlxGrid/codebase/ext/dhtmlxgrid_filter.js" type="text/javascript"></script>
-    <script src="../JavaScript/codebase/ext/dhtmlxgrid_pgn.js" type="text/javascript"></script>
-    <script src="../JavaScript/dhtmlxsuite/dhtmlxtoolbar/codebase/dhtmlxToolbar.js" type="text/javascript"></script>
-    <script src="../JavaScript/codebase/ext/dhtmlxgrid_group2.js" type="text/javascript"></script>
-<%--    <script src="../JavaScript/dhtmlxSuite/dhtmlxchart/codebase/dhtmlxchart.js" type="text/javascript"></script>
---%>    <script src="../JavaScript/dhtmlxSuite/dhtmlxCombo/codebase/dhtmlxcombo.js" type="text/javascript"></script>
-    <script src="../JavaScript/codebase/ext/dhtmlxgrid_nxml.js" type="text/javascript"></script>
-    <script src="../JavaScript/dhtmlxSuite/dhtmlxWindows/codebase/dhtmlxwindows.js" type="text/javascript"></script>
-    <script src="../JavaScript/dhtmlxSuite/dhtmlxWindows/codebase/dhtmlxcontainer.js" type="text/javascript"></script>
-    <script src="../JavaScript/dhtmlxSuite/dhtmlxCombo/codebase/ext/dhtmlxcombo_extra.js"></script>
-    <script src="../JavaScript/dhtmlxSuite/dhtmlxLayout/sources/patterns/dhtmlxlayout_pattern4g.js" type="text/javascript"></script>
+				.navbar li:hover, a:hover	{background-color: #54879d;}
+								
+				.navbar li ul 	{
+								display: none;
+								height: auto;									
+								margin: 0;
+								padding: 0;								
+								}
+				
+				.navbar li:hover ul {
+									display: block;									
+									}
+									
+				.navbar li ul li	{background-color: #54879d;}
+				
+				.navbar li ul li a 	{
+									border-left: 1px solid #1f5065; 
+									border-right: 1px solid #1f5065; 
+									border-top: 1px solid #74a3b7; 
+									border-bottom: 1px solid #1f5065; 
+									}
+				
+				.navbar li ul li a:hover	{background-color: #366b82;}
+									
 
-    <script type="text/javascript">        djConfig = { parseOnLoad: true }</script>
-    <script type="text/javascript" language="javascript">
-        try {
+</style>							
+	
+	 <div id="wrap">
+		  <ul class="navbar">
+			 <li><a href="#">Home</a></li>
+			 <li><a href="#">Retrievals</a>
+				<ul>
+				   <li><a href="#">Data Listing</a></li>
+				   <li><a href="#">Web Scheduling</a></li>
+				   <li><a href="#">Mapping Application</a></li>
+				</ul>         
+			 </li>
+			 <li><a href="#">Reporting</a>
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1
+                  <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Page 1-1</a></li>
+                    <li><a href="#">Page 1-2</a></li>
+                    <li><a href="#">Page 1-3</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">Page 2</a></li>
+                <li><a href="#">Page 3</a></li>
+              </ul>        
+			 </li>
+			 <li><a href="#">Business Intelligence</a>
+				<ul>
+				   <li><a href="#">Business Dashboard</a></li>
+				   <li><a href="#">Web Pivot Table</a></li>
+				   <li><a href="#">Interactive Report</a></li>
+				   <li><a href="#">What-If Analysis</a></li>
+				</ul>         
+			 </li>
+			 <li><a href="#">Data Maintenance</a>
+				<ul>
+				   <li><a href="#">Database CRUD</a></li>
+				   <li><a href="#">Database Update</a></li>
+				   <li><a href="#">Order Entry</a></li>
+				   <li><a href="#">Drag-and-Drop Application</a></li>
+				</ul>         
+			 </li>
+			 <li><a href="#">B2B Portal</a>
+				<ul>
+				   <li><a href="#">B2B Portal</a></li>
+				   <li><a href="#">Secure Data-Driven Listings</a></li>
+				   <li><a href="#">Secure Shopping Cart</a></li>
+				</ul>         
+			 </li>
+		  </ul>
+		 </div>
+         
 
-        }
-        catch (e) {
-            alert(e.description);
-        }
-    </script>
-      
-
-    <%--Akhir Dhtmlx--%>
-
-
-    <%--Awal Bootstrap--%>
-  
- 
-
-<%--    <link href="../Css/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
-    <link href="../Css/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />--%>
-<%--
-    <link href="../Css/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="../Css/bootstrap/css/bootstrap-theme.css" rel="stylesheet" type="text/css" />
-
-    <script src="../Css/bootstrap/js/bootstrap.js" type="text/javascript"></script>--%>
-   <%-- <script src="../Css/bootstrap/js/npm.js" type="text/javascript"></script>--%>
-
-    
-    <link href="../Css/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="../Css/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
-    <script src="../Scripts/jquery.min.js" type="text/javascript"></script>
-    <script src="../Css/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-
-    <%--Akhir Bootstrap--%>
-
-
-
-
-    <script src="../Javascript/lookup.js"></script>
-
-
-    <script src="../JavaScript/jquery.min.js" type="text/javascript"></script>
-    <script src="../JavaScript/jquery-ui-1.10.3.custom.js" type="text/javascript"></script>
-    <link rel="Stylesheet" type="text/css" href="../css/jquery-ui-1.10.3.custom.css" />
-
-    <link href="../Css/jquery-ui.css" rel="stylesheet" type="text/css" />
-
-    <script src="../Javascript/angka.js"></script>
-
-
-    <!-- Bootstrap core CSS -->
-    <link href="../Css/bootstrap/css/bootstrap.css" rel="stylesheet" />
-
-    <!--external css-->
-    <link href="../Css/tampilan/font-awesome.css" rel="stylesheet" />
-    <link href="../Css/tampilan/jquery.gritter.css" rel="stylesheet" />
-
-<%--    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="assets/js/gritter/css/jquery.gritter.css" />--%>
-        
-    <!-- Custom styles for this template -->
-
-    <link href="../Css/tampilan/style.css" rel="stylesheet" />
-    <link href="../Css/tampilan/style-responsive.css" rel="stylesheet" />
-
-<%--    <link href="assets/css/style.css" rel="stylesheet">
-    <link href="assets/css/style-responsive.css" rel="stylesheet">--%>
-
-<%--<body>
-
-      <section id="container" >
-      <!-- **********************************************************************************************************************************************************
-      TOP BAR CONTENT & NOTIFICATIONS
-      *********************************************************************************************************************************************************** -->
-      <!--header start-->
-      <header class="header black-bg">
-              <div class="sidebar-toggle-box">
-                  <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Menu Almis"></div>
-              </div>
-            <!--logo start-->
-            <a href="../Pages/home.aspx" class="logo"><b>Aplikasi Adaro Land Management Informasi System</b></a>
-            <!--logo end-->
-
-            <div class="top-menu">
-            	<ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="../Pages/Logout.aspx">Logout</a></li>
-            	</ul>
-            </div>
-        </header>
-      <!--header end-->
-      
-      <!-- **********************************************************************************************************************************************************
-      MAIN SIDEBAR MENU
-      *********************************************************************************************************************************************************** -->
-      <!--sidebar start-->
-      <aside>
-          <div id="sidebar"  class="nav-collapse ">
-              <!-- sidebar menu start-->
-              <ul class="sidebar-menu" id="nav-accordion">
-              <img src="../images/logo_adaro.png" width="120px" height="120px" alt=""/>
-              	  <p class="centered"><a href="../Pages/Home.aspx"><img src="../images/logo_adaro.png" class="img-circle" width="60"></a></p>
-              	  <h5 class="centered">                  
-                    <asp:Label ID="lblnm" runat="server" Text=""></asp:Label>
-              	  </h5>
-              	  	
-
-              <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="fa fa-book"></i>
-                          <span>Land Compensation</span>
-                      </a>
-                      <ul class="sub">
-                        <li><a href="../Pages_Landcomp/MasterIdentitasList.aspx">Master Identitas</a></li>
-                        <li><a href="../Pages_Landcomp/PraRegistrasiList.aspx">Pra Register</a></li>
-                        <li><a href="../Pages_Landcomp/PengecekanLapanganList.aspx">Pengecekan Lapangan</a></li>
-	                    <li><a href="../Pages_Landcomp/RegistrasiList.aspx">Registrasi</a></li>
-	                    <li><a href="../Pages_Landcomp/PengukuranList.aspx">Pengukuran TO</a></li>
-                        <li><a href="../Pages_Landcomp/NegosiasiList.aspx">Negosiasi</a></li>
-	                    <li><a href="../Pages_Landcomp/VisumList.aspx">Verifikasi</a></li>
-	                    <li><a href="../Pages_Landcomp/PemberkasanSatuList.aspx">Pemberkasan</a></li>
-	                    <li><a href="../Pages_Landcomp/PembayaranList.aspx">Pembayaran</a></li>
-	                    <li><a href="../Pages_Landcomp/PemberkasanDuaList.aspx">Finalisasi</a></li>
-	                    <li><a href="../Pages_Landcomp/SerahTerimaBerkas.aspx">Serah Terima Berkas</a></li>
-                      </ul>
-              </li>
-
-              <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="fa fa-book"></i>
-                          <span>Land Compensation Report</span>
-                      </a>
-                      <ul class="sub">
-                        <li><a href="../Pages_Reoprt_Landcomp/R_PraRegistrasi.aspx">Report Praregistrasi</a></li>
-                        <li><a href="../Pages_Reoprt_Landcomp/R_PengecekanLapangan.aspx">Report Pengecekan Lapangan</a></li>
-                        <li><a href="../Pages_Reoprt_Landcomp/R_Registrasi.aspx">Report Registrasi</a></li>
-                        <li><a href="../Pages_Reoprt_Landcomp/R_Registrasi_detail.aspx">Report Registrasi Detail</a></li>
-                        <li><a href="../Pages_Reoprt_Landcomp/R_Pengukuran.aspx">Report Pengukuran T0</a></li>
-                        <li><a href="../Pages_Reoprt_Landcomp/R_PraNegosiasi.aspx">Report Negosiasi</a></li>
-                        <li><a href="../Pages_Reoprt_Landcomp/R_Negosiasi.aspx">Report Negosiasi Detail</a></li>
-                        <li><a href="../Pages_Reoprt_Landcomp/R_Visum.aspx">Report Verifikasi</a></li>
-                        <li><a href="../Pages_Reoprt_Landcomp/R_Visum_detail.aspx">Report Verifikasi Detail</a></li>
-                        <li><a href="../Pages_Reoprt_Landcomp/R_PraRegistrasi.aspx">Report Finalisasi</a></li>
-                        <li><a href="../Pages_Reoprt_Landcomp/R_PraRegistrasi.aspx">Report Finalisasi Detail</a></li>
-                      </ul>
-              </li>
-
-              <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="fa fa-book"></i>
-                          <span>Land Compensation Map</span>
-                      </a>
-                      <ul class="sub">
-                        <li><a href="../Map_Landcomp/Top.aspx">Top Priority</a></li>
-                        <li><a href="../Map_Landcomp/FiveYear.aspx">Five Years</a></li>
-                        <li><a href="../Map_Landcomp/LOM.aspx">LOM</a></li>
-                        <li><a href="../Map_Landcomp/Other.aspx">Other</a></li>
-
-                      </ul>
-              </li>
-
-              <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="fa fa-book"></i>
-                          <span>Land Use</span>
-                      </a>
-                      <ul class="sub">
-                        <li><a href="#">Project</a></li>
-                        <li><a href="#">Status Registrasi</a></li>
-                        <li><a href="#">Tipe Registrasi</a></li>
-                        <li><a href="#">Asset</a></li>
-			            <li><a href="#">Progres Land Use</a></li>
-                      </ul>
-              </li>
-
-              <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="fa fa-book"></i>
-                          <span>Land Secure</span>
-                      </a>
-                      <ul class="sub">
-                        <li><a href="#">Tipe Pengalaman</a></li>
-                        <li><a href="#">Status Pengalaman</a></li>
-                        <li><a href="#">Asset</a></li>
-                      </ul>
-              </li>
-
-              <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="fa fa-book"></i>
-                          <span>Land Utilization</span>
-                      </a>
-                      <ul class="sub">
-                        <li><a href="#">Tipe Komersialisasi</a></li>
-                        <li><a href="#">Status Komersialisasi</a></li>
-                        <li><a href="#">End of Life Status</a></li>
-                        <li><a href="#">Asset</a></li>
-                      </ul>
-              </li>
-
-              <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="fa fa-book"></i>
-                          <span>Land Litigation</span>
-                      </a>
-                      <ul class="sub">
-                        <li><a href="../Pages_LandLiti/KlaimUserList.aspx">Klaim User</a></li>
-                        <li><a href="../Pages_LandLiti/PersiapanDocumentList.aspx">Persiapan Dokumen </a></li>
-                        <li><a href="../Pages_LandLiti/VerifikasiList.aspx">Verifikasi Dokumen</a></li>
-                        <li><a href="../Pages_LandLiti/LegalList.aspx">Legal</a></li>
-                      </ul>
-              </li>
-
-            <li class="sub-menu">
-                <a href="#">
-                    <i class="fa fa-book"></i>
-                    <span>Izin Lokasi</span>
-                </a>
-                        <ul class="sub">
-                        <li><a href="../Pages_Reminder/PersiapanList.aspx">Persiapan</a></li>
-                        <li><a href="../Pages_Reminder/ProsesPengurusanList.aspx">Proses Pengurusan</a></li>
-                        <li><a href="../Pages_Reminder/ProsesIzinLokasiList.aspx">Proses Izin Lokasi</a></li>
-                        <li><a href="../Pages_Reminder/PelaporanList.aspx">Pelaporan</a></li>
-                      </ul>
-
-            </li>
-
-              <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="fa fa-book"></i>
-                          <span>Land Certification</span>
-                      </a>
-                      <ul class="sub">
-                        <li><a href="../Pages_LandCert/ServicesProjectList.aspx">Request Form</a></li>
-                        <li><a href="../Pages_LandCert/FirstCoordinationMeetingList.aspx">First Coordination Meeting</a></li>
-                        <li><a href="../Pages_LandCert/PropoalLandManagementServicesList.aspx">Propoal Land Management Services</a></li>
-                        <li><a href="../Pages_LandCert/LandManagementSupportList.aspx">Land Management Support</a></li>
-			            <li><a href="../Pages_LandCert/LMSAddFileForm.aspx">LMS Add File</a></li>
-		                <li><a href="../Pages_LandCert/ProsesLmsList.aspx">Proses Land Management Support</a></li>
-                        <li><a href="../Pages_LandCert/PersiapanInternalList.aspx">Pesiapan Internal</a></li>
-			            <li><a href="../Pages_LandCert/TahapanProsesBpnList.aspx">Tahapan Proses BPN</a></li>
-                        <li><a href="../Pages_LandCert/TahapanPerolehanProdukList.aspx">Tahapan Perolehan Produk</a></li>
-			          
-                     </ul>
-              </li>t
-
-             
-
-
-
-              <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="fa fa-cogs"></i>
-                          <span>Admin Tools </span>
-                      </a>
-                      <ul class="sub">
-                        <li><a href="../Pages_Admintools/UserManagementList.aspx">User Management</a></li>
-                        <li><a href="../Pages_Admintools/GroupManagementList.aspx">Group Management</a></li>
-                        <li><a href="../Pages_Admintools/MasterMenu.aspx">Master Menu</a></li>
-                        <li><a href="../Pages_Admintools/CodesModul.aspx">Master Codes</a></li>
-                        <li><a href="../Pages_Admintools/MasterPerusahaanList.aspx">Master Perusahaan</a></li>
-                      </ul>
-              </li>
-
-
-  
-				  
-              </ul>
-              <!-- sidebar menu end-->
-          </div>
-      </aside> 
-      <!--sidebar end-->
-   
-<form id="form1" runat="server">
-    <div>
-        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
-        
-        </asp:ContentPlaceHolder>
-    </div>
-    </form>
-
-       <form role="form" class="form-horizontal" action="#" id="form1" runat="server">
-        <div id="backLookup" style="background-image: url(../img/backGroundGelap.png); width: 0px; height: 0px; visibility: visible; position: relative; z-index: -1;"></div>
-        <div id="lookup" style="width: 0px; height: 0px; visibility: hidden; 
-            -moz-border-radius-bottomleft: 5px; -moz-border-radius-bottomright: 5px;
-            -moz-border-radius-topleft: 10px; -moz-border-radius-topright: 10px; border: 1px solid #000;">
-            <div id="judul" style="background-color: #ababab; vertical-align: middle; position: relative; height: 25px;
-                -moz-border-radius-topleft: 5px; -moz-border-radius-topright: 5px;
-                margin-left: 0px; padding-left: 10px; padding-right: -10px;">
-            </div>
-                <div id="contentLookup" style="vertical-align: middle; position: relative; height: 265px; margin-top: 5px; margin-left: 5px; margin-right: 5px;">
-                    <div style="padding-top: 5px; padding-left: 5px;">
-                        <input type='text' id='lookupKey' value='' onkeypress="enterPressed(event,'lookupSearch(document.getElementById(\'lookupKey\').value);');" />&nbsp;&nbsp;
-                        <input type='button' onclick="lookupSearch(document.getElementById('lookupKey').value);" value='Cari' />
-                        &nbsp;&nbsp;<input type="button" value="Tutup" onclick="hideLookup('lookup');" />
-                        <a href="MasterIdentitasForm.aspx?param1=I">
-                        <input type="button" value="Tambah Baru"/>
-                        </a>
-                       
-                    </div>
-                    <div style=" width:100%; height:228px;">
-                    <div id="gridLookup" style="width:100%;height:100%;background-color:white;"></div>
-                    </div>
-                </div>
-        </div>
-        <div id="loadDiv" style="width: 0px; height: 0px; visibility:hidden;">
-            <img src="../img/circle.gif" alt="Loading..." style="position:relative;" />
-            <!--img src="../img/circle.gif" alt="Loading..." style="position:relative;" /-->
-        </div>
-
-        <%--utk modul prareg dan registrasi--%>
-
-        <div id="backLookup2" style="background-image: url(../img/backGroundGelap.png); width: 0px; height: 0px; visibility: visible; position: relative; z-index: -1;"></div>
-        <div id="lookup2" style="width: 0px; height: 0px; visibility: hidden; 
-            -moz-border-radius-bottomleft: 5px; -moz-border-radius-bottomright: 5px;
-            -moz-border-radius-topleft: 10px; -moz-border-radius-topright: 10px; border: 1px solid #000;">
-            <div id="judul2" style="background-color: red; vertical-align: middle; position: relative; height: 25px;
-                -moz-border-radius-topleft: 5px; -moz-border-radius-topright: 5px;
-                margin-left: 0px; padding-left: 10px; padding-right: -10px;">
-            </div>
-                <div id="contentLookup2" style="vertical-align: middle; position: relative; height: 265px; margin-top: 5px; margin-left: 5px; margin-right: 5px;">
-                    <div style="padding-top: 5px; padding-left: 5px;">
-                        <input type='text' id='lookupKey2' value='' onkeypress="enterPressed(event,'lookupSearch2(document.getElementById(\'lookupKey2\').value);');" />&nbsp;&nbsp;
-                        <input type='button' onclick="lookupSearch2(document.getElementById('lookupKey2').value);" value='Cari' />
-                        &nbsp;&nbsp;<input type="button" value="Tutup" onclick="hideLookup('lookup2');" />
-                    </div>
-                    
-                    <div style=" width:100%; height:228px;">
-                    <div id="gridLookup2" style="width:100%;height:100%;background-color:white;"></div>
-                    </div>
-
-                </div>
-        </div>
-        <div id="loadDiv2" style="width: 0px; height: 0px; visibility:hidden;">
-            <img src="../img/circle.gif" alt="Loading..." style="position:relative;" />
-            <!--img src="../img/circle.gif" alt="Loading..." style="position:relative;" /-->
-        </div>
- <section id="main-content">
-     <section class="wrapper">
-                      
+    <form id="form1" runat="server">
                 <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
         
                 </asp:ContentPlaceHolder>
-           </section><! --/wrapper -->
-      </section><!-- /MAIN CONTENT -->
-    </form>
-    
-    <!-- js placed at the end of the document so the pages load faster -->
-<%--    <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/jjquery-1.8.3.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
-    <script src="assets/js/jquery.scrollTo.min.js"></script>
-    <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>--%>
-
-
-    <script src="../Css/tampilan/js/jquery.js"></script>
-    <script src="../Css/tampilan/js/jquery-1.8.3.min.js"></script>
-    <script src="../Css/tampilan/js/bootstrap.min.js"></script>
-    <script class="include" type="text/javascript" src="../Css/tampilan/js/jquery.dcjqaccordion.2.7.js"></script>
-    <script src="../Css/tampilan/js/jquery.scrollTo.min.js"></script>
-    <script src="../Css/tampilan/js/jquery.nicescroll.js"></script>
-    <!--common script for all pages-->
-  <%--  <script src="assets/js/common-scripts.js"></script>--%>
-
-    <script src="../Css/tampilan/js/common-scripts.js"></script>
-
-    <%--script google api untuk datepicker--%>
-    <%--<script src="../Css/js/1.6/jquery.min.js" type="text/javascript"></script>--%>
-    <link href="../Css/js/1.8/jquery-ui.css" rel="stylesheet" type="text/CSS" />
-    <script src="../Css/js/1.8/jquery-ui.min.js" type="text/javascript"></script>
-    <%--akhir--%>
-
-
-          <script type="text/javascript">
-              var menu = document.querySelector('.sub');
-              var anchors = menu.getElementsByTagName('a');
-
-              for (var i = 0; i < anchors.length; i += 1) {
-                  anchors[i].addEventListener('click', function () { clickHandler(anchors[i]) }, false);
-              }
-
-              function clickHandler(anchor) {
-                  var hasClass = anchor.getAttribute('class');
-                  if (hasClass !== 'active') {
-                      anchor.setAttribute('class', 'active');
-                  }
-              }
-          </script>
-
-</script>
-
-
-</body>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Aplikasi Almis</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-</head>
-<body>
-
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">ADARO</a>
-    </div>
-    <div>
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Page 1</a></li>
-        <li><a href="#">Page 2</a></li>
-        <li><a href="#">Page 3</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+     </form>
   
-<div class="container">
-  <div class="jumbotron">
-    <h1>My first Bootstrap website!</h1>      
-    <p>This page will grow as we add more and more components from Bootstrap...</p>      
-    <a href="#" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-search"></span> Search</a>
-  </div>
-
-  <div class="row">
-    <div class="col-md-3">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-    </div>
-    <div class="col-md-3"> 
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    </div>
-    <div class="col-md-3"> 
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-    </div>
-    <div class="col-md-3">
-      <ul class="nav nav-pills nav-stacked">
-        <li class="active"><a href="#">Home</a></li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu 1 <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Submenu 1-1</a></li>
-            <li><a href="#">Submenu 1-2</a></li>
-            <li><a href="#">Submenu 1-3</a></li>                        
-          </ul>
-        </li>
-        <li><a href="#">Menu 2</a></li>
-        <li><a href="#">Menu 3</a></li>
-      </ul>
-    </div>
-    <div class="clearfix visible-lg"></div>
-  </div>
-</div>
 </body>
 </html>
+
+
+    	
 
 

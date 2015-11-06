@@ -24,7 +24,7 @@
          <div class="form-group">
 
             <div class="col-md-8">
-            <asp:Label ID="Label9" runat="server" Text="Label">BPN Sesuai Kewenangan Menerbitkan SK Pemberian HAT</asp:Label>
+            <asp:Label ID="Label9" runat="server" Text="Label">BPN Sesuai Kewenangan Menerbitkan SK Pemberian Hak Atas Tanah</asp:Label>
             </div>
 
         </div>
@@ -101,6 +101,8 @@
 			</div>
 
         </div>
+
+	<hr />  
 
             <div class="form-group">
 
@@ -246,6 +248,8 @@
             <label for="nama" class="control-label col-md-1">Tanggal SK</label>
             <div class="col-md-2"><asp:TextBox ID="TextBox9" class="form-control input-md" runat="server" value= ""></asp:TextBox></div>
         </div>
+
+    	<hr />  
 
             <div class="form-group">
 

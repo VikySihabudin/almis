@@ -8,7 +8,7 @@
 
 
 
-<h2>List Legal</h2>  
+<h2>Legal</h2>  
 <hr />
 <div class="form-group"> 
      <div class="col-lg-12" style=" width:100%; height:100%;">

@@ -118,7 +118,7 @@
     function listPembayaran() {
         listPembayaran = new dhtmlXGridObject('gridPembayaran');
         listPembayaran.setImagePath("../JavaScript/codebase/imgs/");
-        listPembayaran.setHeader("No,No Pembayaran,No Registrasi,No PID,Assignee,Status,Nama Penjual,Kode Perusahaan,Action,#cspan,#cspan");
+        listPembayaran.setHeader("No,No Pembayaran,No Registrasi,No PID,Assignee,Status,Nama Penjual,Nama Perusahaan,Action,#cspan,#cspan");
         listPembayaran.attachHeader("#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,,,#rspan");
         listPembayaran.setInitWidths("40,145,145,145,145,145,170,170,65,65,65")
         listPembayaran.setColAlign("left,left,left,left,left,left,left,left,left,left");

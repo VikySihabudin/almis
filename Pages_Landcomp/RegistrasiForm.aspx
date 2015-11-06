@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/mptamp.master" AutoEventWireup="true" CodeFile="RegistrasiForm.aspx.cs" Inherits="Pages_RegistrasiForm" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/MPtamp.master" AutoEventWireup="true" CodeFile="RegistrasiForm.aspx.cs" Inherits="Pages_RegistrasiForm" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
 
@@ -16,23 +16,33 @@
 <asp:HiddenField ID="namaFile" runat="server" />
 
 
-
 <h1>Registrasi</h1>
 	
-	<hr class="style-four">
+	<hr />
+
+
+	<div role="form" class="form-horizontal" action="#">
+		<div class="form-group">
+            <label for="nama" class="control-label col-md-2">Nama Perusahaan</label>
+            <div class="col-md-3"> 
+                <asp:DropDownList ID="ddprs" runat="server" class="form-control">
+                </asp:DropDownList>
+            </div>
+        </div>
+    </div>
     
     
 	<div role="form" class="form-horizontal" action="#">
         <div class="form-group">
-            <label for="identitas" class="control-label col-lg-2">Nomor Registrasi</label>
-            <div class="col-lg-3"><asp:TextBox ID="txtNoRegister" class="form-control input-lg" runat="server"></asp:TextBox></div>			
+            <label for="identitas" class="control-label col-md-2">Nomor Registrasi</label>
+            <div class="col-md-3"><asp:TextBox ID="txtNoRegister" class="form-control input-md" runat="server"></asp:TextBox></div>			
         </div>
     </div>
 
     <div role="form" class="form-horizontal" action="#">
         <div class="form-group">
-            <label for="identitas" class="control-label col-lg-2">Nomor PL</label>
-            <div class="col-lg-3"><asp:TextBox ID="txtNoPL" class="form-control input-lg" runat="server"></asp:TextBox></div>			
+            <label for="identitas" class="control-label col-md-2">Nomor PL</label>
+            <div class="col-md-3"><asp:TextBox ID="txtNoPL" class="form-control input-md" runat="server"></asp:TextBox></div>			
         </div>
     </div>
 
@@ -42,15 +52,15 @@
 
     <div role="form" class="form-horizontal" action="#">
         <div class="form-group">
-            <label for="identitas" class="control-label col-lg-2">Nomor Identitas</label>
-            <div class="col-lg-3"><asp:TextBox ID="txtNoIdentitasPenjual" class="form-control input-lg" runat="server"></asp:TextBox></div>			
+            <label for="identitas" class="control-label col-md-2">Nomor Identitas</label>
+            <div class="col-md-3"><asp:TextBox ID="txtNoIdentitasPenjual" class="form-control input-md" runat="server"></asp:TextBox></div>			
         </div>
     </div>
 
     <div role="form" class="form-horizontal" action="#">
         <div class="form-group">
-            <label for="identitas" class="control-label col-lg-2">Nama</label>
-            <div class="col-lg-3"><asp:TextBox ID="txtNamaPenjual" class="form-control input-lg" runat="server"></asp:TextBox></div>			
+            <label for="identitas" class="control-label col-md-2">Nama</label>
+            <div class="col-md-3"><asp:TextBox ID="txtNamaPenjual" class="form-control input-md" runat="server"></asp:TextBox></div>			
         </div>
     </div>
 
@@ -60,104 +70,104 @@
 
     <div role="form" class="form-horizontal" action="#">
         <div class="form-group">
-            <label for="identitas" class="control-label col-lg-2">Nomor Identitas</label>
-            <div class="col-lg-3"><asp:TextBox ID="txtNoIdentitasPemilik" class="form-control input-lg" runat="server"></asp:TextBox></div>			
-                     <input type="button" id="btnCari" value="Cari"  class="btn btn-lg btn-success" onclick="lookupIdentitas(1)" />  
+            <label for="identitas" class="control-label col-md-2">Nomor Identitas</label>
+            <div class="col-md-3"><asp:TextBox ID="txtNoIdentitasPemilik" class="form-control input-md" runat="server"></asp:TextBox></div>			
+                     <input type="button" id="btnCari" value="Cari"  class="btn btn-md btn-success" onclick="lookupIdentitas(1)" />  
         </div>
     </div>
 
     <div role="form" class="form-horizontal" action="#">
         <div class="form-group">
-            <label for="identitas" class="control-label col-lg-2">Nama</label>
-            <div class="col-lg-3"><asp:TextBox ID="txtNamaPemilik" class="form-control input-lg" runat="server"></asp:TextBox></div>			
+            <label for="identitas" class="control-label col-md-2">Nama</label>
+            <div class="col-md-3"><asp:TextBox ID="txtNamaPemilik" class="form-control input-md" runat="server"></asp:TextBox></div>			
         </div>
     </div>
 
      <div role="form" class="form-horizontal" action="#">
         <div class="form-group">
-            <label for="identitas" class="control-label col-lg-2">Jenis Kelamin</label>
-            <div class="col-lg-3">
-                <asp:DropDownList ID="ddJenisKelamin" runat="server" class="form-control input-lg"></asp:DropDownList>
+            <label for="identitas" class="control-label col-md-2">Jenis Kelamin</label>
+            <div class="col-md-3">
+                <asp:DropDownList ID="ddJenisKelamin" runat="server" class="form-control input-md"></asp:DropDownList>
             </div>			
         </div>
     </div>
 
      <div class="form-group" class="form-horizontal" action="#">
 
-            <label for="nama" class="control-label col-lg-2">Tempat Tanggal Lahir</label>
-            <div class="col-sm-2"><asp:TextBox ID="txtTempatLahir" class="form-control input-lg" runat="server"></asp:TextBox></div>
-			<div class="col-sm-2"><asp:TextBox ID="txtTglLahir" class="form-control input-lg" runat="server" type="text"></asp:TextBox></div>
+            <label for="nama" class="control-label col-md-2">Tempat Tanggal Lahir</label>
+            <div class="col-sm-2"><asp:TextBox ID="txtTempatLahir" class="form-control input-md" runat="server"></asp:TextBox></div>
+			<div class="col-sm-2"><asp:TextBox ID="txtTglLahir" class="form-control input-md" runat="server" type="text"></asp:TextBox></div>
       
      </div>
 
      <div role="form" class="form-horizontal" action="#">
         <div class="form-group">
-            <label for="identitas" class="control-label col-lg-2">Pekerjaan</label>
-            <div class="col-lg-3"> <asp:DropDownList ID="ddPekerjaan" runat="server" class="form-control input-lg"></asp:DropDownList></div>			
+            <label for="identitas" class="control-label col-md-2">Pekerjaan</label>
+            <div class="col-md-3"> <asp:DropDownList ID="ddPekerjaan" runat="server" class="form-control input-md"></asp:DropDownList></div>			
         </div>
     </div>
 
     <div role="form" class="form-horizontal" action="#">
         <div class="form-group">
-            <label for="identitas" class="control-label col-lg-2">Nomor Induk Pegawai</label>
-            <div class="col-lg-3"><asp:TextBox ID="txtNoIndukPegawai" class="form-control input-lg" runat="server"></asp:TextBox></div>			
+            <label for="identitas" class="control-label col-md-2">Nomor Induk Pegawai</label>
+            <div class="col-md-3"><asp:TextBox ID="txtNoIndukPegawai" class="form-control input-md" runat="server"></asp:TextBox></div>			
         </div>
     </div>
 
     <div role="form" class="form-horizontal" action="#">
         <div class="form-group">
-            <label for="identitas" class="control-label col-lg-2">Alamat</label>
-            <div class="col-lg-3"><asp:TextBox id="txtAlamat" TextMode="multiline" Columns="15" Rows="3" runat="server" class="form-control input-lg" placeholder= "..." /></div>			
+            <label for="identitas" class="control-label col-md-2">Alamat</label>
+            <div class="col-md-3"><asp:TextBox id="txtAlamat" TextMode="multiline" Columns="15" Rows="3" runat="server" class="form-control input-md" placeholder= "..." /></div>			
         </div>
     </div>
 
     <div role="form" class="form-horizontal" action="#">
         <div class="form-group">
-            <label for="identitas" class="control-label col-lg-2">Tanda Identitas yang Berlaku</label>
-            <div class="col-lg-3"><asp:DropDownList ID="ddTandaIdentitas" class="form-control input-lg" runat="server"></asp:DropDownList></div>			
+            <label for="identitas" class="control-label col-md-2">Tanda Identitas yang Berlaku</label>
+            <div class="col-md-3"><asp:DropDownList ID="ddTandaIdentitas" class="form-control input-md" runat="server"></asp:DropDownList></div>			
         </div>
     </div>
 
     <div role="form" class="form-horizontal" action="#">
         <div class="form-group">
-            <label for="identitas" class="control-label col-lg-2">Nomor Handphone</label>
-            <div class="col-lg-3"><asp:TextBox id="txtNoHandphone" type="text" runat="server" class="form-control input-lg" placeholder= "..." /></div>			
+            <label for="identitas" class="control-label col-md-2">Nomor Handphone</label>
+            <div class="col-md-3"><asp:TextBox id="txtNoHandphone" type="text" runat="server" class="form-control input-md" placeholder= "..." /></div>			
         </div>
     </div>
 
     <div role="form" class="form-horizontal" action="#">
         <div class="form-group">
-            <label for="identitas" class="control-label col-lg-2">Status Menikah</label>
-            <div class="col-lg-3">
-                <asp:DropDownList ID="ddStatus" class="form-control input-lg" runat="server"></asp:DropDownList>
+            <label for="identitas" class="control-label col-md-2">Status Menikah</label>
+            <div class="col-md-3">
+                <asp:DropDownList ID="ddStatus" class="form-control input-md" runat="server"></asp:DropDownList>
             </div>			
         </div>
     </div>
 
     <div role="form" class="form-horizontal" action="#">
         <div class="form-group">
-            <label for="identitas" class="control-label col-lg-2">Nama Pasangan</label>
-            <div class="col-lg-3"><asp:TextBox id="txtNamaPasangan" type="text" runat="server" class="form-control input-lg" placeholder= "..." /></div>			
+            <label for="identitas" class="control-label col-md-2">Nama Pasangan</label>
+            <div class="col-md-3"><asp:TextBox id="txtNamaPasangan" type="text" runat="server" class="form-control input-md" placeholder= "..." /></div>			
         </div>
     </div>
 
      <div class="form-group" class="form-horizontal" action="#">
-            <label for="nama" class="control-label col-lg-2">Tempat Tanggal Lahir</label>
-            <div class="col-sm-2"><asp:TextBox ID="txtTempatLahirPasangan" class="form-control input-lg" runat="server"></asp:TextBox></div>
-			<div class="col-sm-2"><asp:TextBox ID="txtTglLahirPasangan" class="form-control input-lg" runat="server" type="text"></asp:TextBox></div>
+            <label for="nama" class="control-label col-md-2">Tempat Tanggal Lahir</label>
+            <div class="col-sm-2"><asp:TextBox ID="txtTempatLahirPasangan" class="form-control input-md" runat="server"></asp:TextBox></div>
+			<div class="col-sm-2"><asp:TextBox ID="txtTglLahirPasangan" class="form-control input-md" runat="server" type="text"></asp:TextBox></div>
      </div>
 
      <div role="form" class="form-horizontal" action="#">
         <div class="form-group">
-            <label for="identitas" class="control-label col-lg-2">Tahun Menikah</label>
-            <div class="col-lg-3"><asp:TextBox id="txtTahunMenikah" type="text" runat="server" class="form-control input-lg" placeholder= "..." /></div>			
+            <label for="identitas" class="control-label col-md-2">Tahun Menikah</label>
+            <div class="col-md-3"><asp:TextBox id="txtTahunMenikah" type="text" runat="server" class="form-control input-md" placeholder= "..." /></div>			
         </div>
     </div>
 
  <hr />
 
        <div class="form-group">
-       <div class="col-lg-10">
+       <div class="col-md-10">
             <div style=" width:100%; height:130px;">
                 <div id="gridAnak" style=" width:100%; height:100%; background-color:white; border: 1px solid #A4BED4">
             </div>
@@ -167,7 +177,7 @@
    
               
        <div class="form-group">
-            <div class="col-lg-10">
+            <div class="col-md-10">
             <div style=" width:100%; height:130px;">
                 <div id="gridAyah" style=" width:100%; height:100%; background-color:white; border: 1px solid #A4BED4">
             </div>
@@ -177,7 +187,7 @@
 
         
        <div class="form-group">
-            <div class="col-lg-10">
+            <div class="col-md-10">
             <div style=" width:100%; height:130px;">
                 <div id="gridIbu" style=" width:100%; height:100%; background-color:white; border: 1px solid #A4BED4"> 
             </div>
@@ -187,7 +197,7 @@
 
         
        <div class="form-group">
-            <div class="col-lg-10">
+            <div class="col-md-10">
             <div style=" width:100%; height:130px;">
                 <div id="gridSaudara" style=" width:100%; height:100%; background-color:white; border: 1px solid #A4BED4">
             </div>
@@ -198,24 +208,24 @@
 
      <div role="form" class="form-horizontal" action="#">
         <div class="form-group">
-            <label for="identitas" class="control-label col-lg-5">Apakah pemilik lahan pernah membebaskan lahan ke PT. Adaro Indonesia ?</label>
-            <div class="col-lg-3">
-                <asp:DropDownList ID="DDQuest1" class="form-control input-lg" runat="server">
+            <label for="identitas" class="control-label col-md-5">Apakah pemilik lahan pernah membebaskan lahan ke PT. Adaro Indonesia ?</label>
+            <div class="col-md-3">
+                <asp:DropDownList ID="DDQuest1" class="form-control input-md" runat="server">
                 </asp:DropDownList>
                 <br />
-                <input id="txtBerapaKaliQuest1" type="text" runat="server" class="form-control input-lg" placeholder="..." onkeypress="return numbersonly(event, false)"/>
+                <input id="txtBerapaKaliQuest1" type="text" runat="server" class="form-control input-md" placeholder="..." onkeypress="return numbersonly(event, false)"/>
             </div>			
         </div>
     </div>
 
     <div role="form" class="form-horizontal" action="#">
         <div class="form-group">
-            <label for="identitas" class="control-label col-lg-5">Apakah pemilik lahan pernah melakukan claim <br />ke PT. Adaro Indonesia ?</label>
-            <div class="col-lg-3">
-                <asp:DropDownList ID="ddQuest2" class="form-control input-lg" runat="server">
+            <label for="identitas" class="control-label col-md-5">Apakah pemilik lahan pernah melakukan claim <br />ke PT. Adaro Indonesia ?</label>
+            <div class="col-md-3">
+                <asp:DropDownList ID="ddQuest2" class="form-control input-md" runat="server">
                 </asp:DropDownList>
                 <br />
-                <input id="txtBerapaKaliQuest2" type="text" runat="server" class="form-control input-lg" placeholder="..." onkeypress="return numbersonly(event, false)"/>
+                <input id="txtBerapaKaliQuest2" type="text" runat="server" class="form-control input-md" placeholder="..." onkeypress="return numbersonly(event, false)"/>
             </div>			
         </div>
     </div>
@@ -225,12 +235,12 @@
 	<br />
 
     <div role="form" class="form-horizontal">
-        <div class="col-lg-13">            
-            <div class="col-sm-2"><asp:CheckBox id="chAlasHak" runat="server" CssClass="form-control checkbox-lg" onclick="valala()" Text="Alas Hak" /></div>
-            <div class="col-lg-2"><asp:DropDownList ID="ddSHM" class="form-control input-lg" runat="server"></asp:DropDownList></div>
+        <div class="col-md-13">            
+            <div class="col-sm-2"><asp:CheckBox id="chAlasHak" runat="server" CssClass="form-control checkbox-md" onclick="valala()" Text="Alas Hak" /></div>
+            <div class="col-md-2"><asp:DropDownList ID="ddSHM" class="form-control input-md" runat="server"></asp:DropDownList></div>
             <label for="identitas" class="control-label col-sm-2">Nomor</label>
-            <div class="col-sm-2"><asp:TextBox id="txtShmNomor" type="text" runat="server" class="form-control input-lg" placeholder= "..." /></div>
-            <div class="col-sm-2"><input type="button" id="btnCekSHM" value="cek" onclick="cekDuplikat()" class="btn btn-lg btn-success" /></div> 
+            <div class="col-sm-2"><asp:TextBox id="txtShmNomor" type="text" runat="server" class="form-control input-md" placeholder= "..." /></div>
+            <div class="col-sm-2"><input type="button" id="btnCekSHM" value="cek" onclick="cekDuplikat()" class="btn btn-md btn-success" /></div> 
         </div>
     </div>
 
@@ -238,7 +248,7 @@
 
     <div role="form" class="form-horizontal" action="#">
         <div class="form-group">
-        <div class="col-lg-3">
+        <div class="col-md-3">
             <asp:Label runat="server" ID="myThrobber" Style="display: none;"><img align="absmiddle" alt="" src="../images/uploading.gif"/></asp:Label>
                 <asp:AjaxFileUpload ID="AjaxFileUploadIdentitasLahan" runat="server"
                     onuploadcomplete="AjaxFileUploadIdentitasLahan_UploadComplete" 
@@ -252,7 +262,7 @@
     </div>
 
        <div class="form-group">
-            <div class="col-lg-10">
+            <div class="col-md-10">
             <div style=" width:100%; height:130px;">
                 <div id="gridAlasHak" style=" width:100%; height:100%; background-color:white; border: 1px solid #A4BED4"></div>	
             </div>                                     
@@ -263,9 +273,9 @@
 
     <div role="form" class="form-horizontal" action="#">
         <div class="form-group">
-            <div class="col-lg-2"><asp:DropDownList ID="ddPerolehanLahan" class="form-control input-lg" runat="server" onChange="javascript:DDKelengkapan()"></asp:DropDownList></div>
-            <div class="col-lg-3"><asp:DropDownList ID="ddKelengkapan" class="form-control input-lg" runat="server"></asp:DropDownList></div>
-            <div class="col-lg-3">
+            <div class="col-md-2"><asp:DropDownList ID="ddPerolehanLahan" class="form-control input-md" runat="server" onChange="javascript:DDKelengkapan()"></asp:DropDownList></div>
+            <div class="col-md-3"><asp:DropDownList ID="ddKelengkapan" class="form-control input-md" runat="server"></asp:DropDownList></div>
+            <div class="col-md-3">
             <asp:Label runat="server" ID="myThrobber2" Style="display: none;"><img align="absmiddle" alt="" src="../images/uploading.gif"/></asp:Label>
                 <asp:AjaxFileUpload ID="AjaxFileUploadKelengkapan" runat="server"
                     onuploadcomplete="AjaxFileUploadKelengkapan_UploadComplete" 
@@ -279,7 +289,7 @@
     </div>
 
     <div class="form-group">
-        <div class="col-lg-10">
+        <div class="col-md-10">
             <div style=" width:100%; height:130px;">
                  <div id="gridPerolehanLahan" style=" width:100%; height:100%; background-color:white; border: 1px solid #A4BED4"></div>		
             </div>                                     
@@ -291,22 +301,22 @@
 
     <div role="form" class="form-horizontal" action="#">
         <div class="form-group">
-            <label for="identitas" class="control-label col-lg-2">Tahun Penguasaan Lahan</label>
-            <div class="col-lg-3"><asp:TextBox ID="txtTahunPemguasaan" class="form-control input-lg" runat="server"></asp:TextBox></div>			
+            <label for="identitas" class="control-label col-md-2">Tahun Penguasaan Lahan</label>
+            <div class="col-md-3"><asp:TextBox ID="txtTahunPemguasaan" class="form-control input-md" runat="server"></asp:TextBox></div>			
         </div>
     </div>
 
     <div role="form" class="form-horizontal">
         <div class="form-group">
-            <label for="identitas" class="control-label col-lg-2">Lokasi Tanah</label>
-            <div class="col-lg-2">
-                <asp:DropDownList ID="ddKabupaten" runat="server" class="form-control input-lg"></asp:DropDownList>
+            <label for="identitas" class="control-label col-md-2">Lokasi Tanah</label>
+            <div class="col-md-2">
+                <asp:DropDownList ID="ddKabupaten" runat="server" class="form-control input-md"></asp:DropDownList>
             </div>
-            <div class="col-lg-2">
-                <asp:DropDownList ID="ddKecamatan" runat="server" class="form-control input-lg"></asp:DropDownList>
+            <div class="col-md-2">
+                <asp:DropDownList ID="ddKecamatan" runat="server" class="form-control input-md"></asp:DropDownList>
             </div>
-            <div class="col-lg-2">
-                <asp:DropDownList ID="ddDesa" runat="server" class="form-control input-lg"></asp:DropDownList>
+            <div class="col-md-2">
+                <asp:DropDownList ID="ddDesa" runat="server" class="form-control input-md"></asp:DropDownList>
             </div>
         </div>
     </div>
@@ -314,8 +324,8 @@
     <div role="form" class="form-horizontal" action="#">
         <div class="form-group">
 
-            <label for="identitas" class="control-label col-lg-2">Luas Lahan</label>
-            <div class="col-lg-3"><asp:TextBox ID="txtLuasLahan" class="form-control input-lg" runat="server" onkeypress="return numbersonly(event, false)"></asp:TextBox>
+            <label for="identitas" class="control-label col-md-2">Luas Lahan</label>
+            <div class="col-md-3"><asp:TextBox ID="txtLuasLahan" class="form-control input-md" runat="server" onkeypress="return numbersonly(event, false)"></asp:TextBox>
             
             
             </div>	
@@ -328,19 +338,19 @@
     <div id="dialogKondisiLahan" title="Kondisi Lahan" style="font-size:small;">
     <div role="form" class="form-horizontal">
         <div class="form-group">
-            <label for="identitas" class="control-label col-lg-3">Kondisi Lahan</label>
-            <div class="col-lg-5">
-                <asp:DropDownList ID="ddKondisiLahan" runat="server" class="form-control input-lg"></asp:DropDownList>
+            <label for="identitas" class="control-label col-md-3">Kondisi Lahan</label>
+            <div class="col-md-5">
+                <asp:DropDownList ID="ddKondisiLahan" runat="server" class="form-control input-md"></asp:DropDownList>
             </div>
-            <div class="col-lg-3">
-                <asp:TextBox ID="txtKondisiLahan" class="form-control input-lg" runat="server"></asp:TextBox>
+            <div class="col-md-3">
+                <asp:TextBox ID="txtKondisiLahan" class="form-control input-md" runat="server"></asp:TextBox>
             </div>
         </div>
     </div>
     <div role="form" class="form-horizontal">
         <div class="form-group">
-            <div class="col-lg-11" align="right">
-                <input type="button" id="PopupbtnSaveKondisiLahan" value="Save" runat="server" class="btn btn-lg btn-default" onclick="SaveKondisiLahan()" />
+            <div class="col-md-11" align="right">
+                <input type="button" id="PopupbtnSaveKondisiLahan" value="Save" runat="server" class="btn btn-md btn-default" onclick="SaveKondisiLahan()" />
             </div>
         </div>
     </div>
@@ -349,14 +359,14 @@
 
     <div role="form" class="form-horizontal">
         <div class="form-group">
-            <div class="col-lg-10" align="right">
-                <input type="button" onclick="PopupKondisiLahan()" id="btnTambahKondisiLahan" value="Tambah" class="btn btn-info btn-lg" />
+            <div class="col-md-10" align="right">
+                <input type="button" onclick="PopupKondisiLahan()" id="btnTambahKondisiLahan" value="Tambah" class="btn btn-info btn-md" />
             </div>
         </div>
     </div>
 
        <div class="form-group">
-            <div class="col-lg-10">
+            <div class="col-md-10">
             <div style=" width:100%; height:130px;">
                 <div id="gridKondisiLahan" style=" width:100%; height:100%; background-color:white; border: 1px solid #A4BED4">
             </div>
@@ -369,19 +379,19 @@
     <div id="dialogInfrastruktur" title="Infrastruktur" style="font-size:small;">
     <div role="form" class="form-horizontal">
         <div class="form-group">
-            <label for="identitas" class="control-label col-lg-3">Infrastruktur</label>
-            <div class="col-lg-5">
-                <asp:DropDownList ID="ddInfrastruktur" runat="server" class="form-control input-lg"></asp:DropDownList>
+            <label for="identitas" class="control-label col-md-3">Infrastruktur</label>
+            <div class="col-md-5">
+                <asp:DropDownList ID="ddInfrastruktur" runat="server" class="form-control input-md"></asp:DropDownList>
             </div>
-            <div class="col-lg-3">
-                <asp:TextBox ID="txtInfrastruktur" class="form-control input-lg" runat="server"></asp:TextBox>
+            <div class="col-md-3">
+                <asp:TextBox ID="txtInfrastruktur" class="form-control input-md" runat="server"></asp:TextBox>
             </div>
         </div>
     </div>
     <div role="form" class="form-horizontal">
         <div class="form-group">
-            <div class="col-lg-11" align="right">
-                <input type="button" ID="btnTambahInfastruktur" value="Save" class="btn btn-lg btn-default" onclick="SaveInfrastruktur()" />
+            <div class="col-md-11" align="right">
+                <input type="button" ID="btnTambahInfastruktur" value="Save" class="btn btn-md btn-default" onclick="SaveInfrastruktur()" />
             </div>
         </div>
     </div>
@@ -390,14 +400,14 @@
 
     <div role="form" class="form-horizontal">
         <div class="form-group">
-            <div class="col-lg-10" align="right">
-                <input type="button" onclick="PopupInfrastruktur()" id="Button2" value="Tambah" class="btn btn-info btn-lg" />
+            <div class="col-md-10" align="right">
+                <input type="button" onclick="PopupInfrastruktur()" id="Button2" value="Tambah" class="btn btn-info btn-md" />
             </div>
         </div>
     </div>
     
            <div class="form-group">
-            <div class="col-lg-10">
+            <div class="col-md-10">
             <div style=" width:100%; height:130px;">
                 <div id="gridInfrastruktur" style=" width:100%; height:100%; background-color:white; border: 1px solid #A4BED4">
             </div>
@@ -410,21 +420,21 @@
 
     <div role="form" class="form-horizontal" action="#">
         <div class="form-group">
-            <label for="identitas" class="control-label col-lg-2">Batas Lahan</label>
-            <label for="identitas" class="control-label col-lg-1">Utara</label>
-            <div class="col-lg-2"><asp:TextBox ID="txtBatasUtara" class="form-control input-lg" runat="server" onkeypress="return numbersonly(event, false)"></asp:TextBox></div>
-            <label for="identitas" class="control-label col-lg-1">Selatan</label>		
-            <div class="col-lg-2"><asp:TextBox ID="txtBatasSelatan" class="form-control input-lg" runat="server" onkeypress="return numbersonly(event, false)"></asp:TextBox></div>
+            <label for="identitas" class="control-label col-md-2">Batas Lahan</label>
+            <label for="identitas" class="control-label col-md-1">Utara</label>
+            <div class="col-md-2"><asp:TextBox ID="txtBatasUtara" class="form-control input-md" runat="server" onkeypress="return numbersonly(event, false)"></asp:TextBox></div>
+            <label for="identitas" class="control-label col-md-1">Selatan</label>		
+            <div class="col-md-2"><asp:TextBox ID="txtBatasSelatan" class="form-control input-md" runat="server" onkeypress="return numbersonly(event, false)"></asp:TextBox></div>
         </div>
     </div>
 
     <div role="form" class="form-horizontal" action="#">
         <div class="form-group">
-            <label for="identitas" class="control-label col-lg-2">&nbsp;</label>
-            <label for="identitas" class="control-label col-lg-1">Timur</label>
-            <div class="col-lg-2"><asp:TextBox ID="txtBatasTimur" class="form-control input-lg" runat="server" onkeypress="return numbersonly(event, false)"></asp:TextBox></div>
-            <label for="identitas" class="control-label col-lg-1">Barat</label>		
-            <div class="col-lg-2"><asp:TextBox ID="txtBatasBarat" class="form-control input-lg" runat="server" onkeypress="return numbersonly(event, false)"></asp:TextBox></div>
+            <label for="identitas" class="control-label col-md-2">&nbsp;</label>
+            <label for="identitas" class="control-label col-md-1">Timur</label>
+            <div class="col-md-2"><asp:TextBox ID="txtBatasTimur" class="form-control input-md" runat="server" onkeypress="return numbersonly(event, false)"></asp:TextBox></div>
+            <label for="identitas" class="control-label col-md-1">Barat</label>		
+            <div class="col-md-2"><asp:TextBox ID="txtBatasBarat" class="form-control input-md" runat="server" onkeypress="return numbersonly(event, false)"></asp:TextBox></div>
         </div>
     </div>
 
@@ -432,36 +442,36 @@
 
     <div role="form" class="form-horizontal" action="#">
         <div class="form-group">
-            <label for="identitas" class="control-label col-lg-5">Apakah lahan pernah menjadi sengketa ?</label>
-            <div class="col-lg-3">
-               <asp:DropDownList ID="ddSengketa" class="form-control input-lg" runat="server">
+            <label for="identitas" class="control-label col-md-5">Apakah lahan pernah menjadi sengketa ?</label>
+            <div class="col-md-3">
+               <asp:DropDownList ID="ddSengketa" class="form-control input-md" runat="server">
                 </asp:DropDownList>
                 <br />
-                <input id="txtPernahSengketa" type="text" runat="server" class="form-control input-lg" placeholder="..." onkeypress="return numbersonly(event, false)"/>
+                <input id="txtPernahSengketa" type="text" runat="server" class="form-control input-md" placeholder="..." onkeypress="return numbersonly(event, false)"/>
             </div>			
         </div>
     </div>
 
     <div role="form" class="form-horizontal" action="#">
         <div class="form-group">
-            <label for="identitas" class="control-label col-lg-5">Apakah lahan pernah menjadi diagunkan ?</label>
-            <div class="col-lg-3">
-               <asp:DropDownList ID="ddDiagunkan" class="form-control input-lg" runat="server">
+            <label for="identitas" class="control-label col-md-5">Apakah lahan pernah menjadi diagunkan ?</label>
+            <div class="col-md-3">
+               <asp:DropDownList ID="ddDiagunkan" class="form-control input-md" runat="server">
                 </asp:DropDownList>
                 <br />
-                <input id="txtPernahDiagunkan" type="text" runat="server" class="form-control input-lg" placeholder="..." onkeypress="return numbersonly(event, false)"/>
+                <input id="txtPernahDiagunkan" type="text" runat="server" class="form-control input-md" placeholder="..." onkeypress="return numbersonly(event, false)"/>
             </div>			
         </div>
     </div>
 
     <div role="form" class="form-horizontal" action="#">
         <div class="form-group">
-            <label for="identitas" class="control-label col-lg-5">Apakah alas hak pecahan dari alas hak orang lain ?</label>
-            <div class="col-lg-3">
-               <asp:DropDownList ID="DDPecahanAlasHak" class="form-control input-lg" runat="server">
+            <label for="identitas" class="control-label col-md-5">Apakah alas hak pecahan dari alas hak orang lain ?</label>
+            <div class="col-md-3">
+               <asp:DropDownList ID="DDPecahanAlasHak" class="form-control input-md" runat="server">
                 </asp:DropDownList>
                 <br />
-                <input id="txtTahunPecahanAlasHak" type="text" runat="server" class="form-control input-lg" placeholder="..." onkeypress="return numbersonly(event, false)"/>
+                <input id="txtTahunPecahanAlasHak" type="text" runat="server" class="form-control input-md" placeholder="..." onkeypress="return numbersonly(event, false)"/>
             </div>			
         </div>
     </div>
@@ -470,9 +480,9 @@
 
     <div role="form" class="form-horizontal" action="#">
         <div class="form-group">
-            <label for="identitas" class="control-label col-lg-2">Keterangan</label>
-            <div class="col-lg-3"><asp:TextBox id="txtKeterangan" class="form-control input-lg" TextMode="multiline" Columns="15" Rows="3" runat="server" /></div>			
-            <%--<label for="identitas" class="control-label col-lg-2">Eksepsi</label>--%>
+            <label for="identitas" class="control-label col-md-2">Keterangan</label>
+            <div class="col-md-3"><asp:TextBox id="txtKeterangan" class="form-control input-md" TextMode="multiline" Columns="15" Rows="3" runat="server" /></div>			
+            <%--<label for="identitas" class="control-label col-md-2">Eksepsi</label>--%>
 
 
     <%if (groups.ToString() != "1")
@@ -484,8 +494,8 @@
 
     <%}%> 
 
-            <asp:Label ID="LEksepsi" for="identitas"  class="control-label col-lg-2" runat="server" Text="Ekspesi" Font-Bold="True"></asp:Label>
-            <div class="col-lg-3"><asp:CheckBox ID="chkEksepsi" runat="server" text="Ya" CssClass="form-control checkbox-lg" onclick="valeks"/></div>
+            <asp:Label ID="LEksepsi" for="identitas"  class="control-label col-md-2" runat="server" Text="Ekspesi" Font-Bold="True"></asp:Label>
+            <div class="col-md-3"><asp:CheckBox ID="chkEksepsi" runat="server" text="Ya" CssClass="form-control checkbox-md" onclick="valeks"/></div>
 
     <%if (groups.ToString() != "1")
     { %>        
@@ -501,7 +511,7 @@
 
     <div role="form" class="form-horizontal" action="#">
         <div class="form-group">
-        <%--<label for="identitas" class="control-label col-lg-2">Lanjut</label>--%>
+        <%--<label for="identitas" class="control-label col-md-2">Lanjut</label>--%>
 
     <%if (groups.ToString() != "1")
     { %>        
@@ -512,9 +522,9 @@
 
     <%}%> 
 
-         <asp:Label ID="LLanjut" for="identitas"  class="control-label col-lg-2" runat="server" Text="Lanjut" Font-Bold="True"></asp:Label>
-            <div class="col-lg-3">
-                <asp:DropDownList ID="ddLanjut" class="form-control input-lg" runat="server">
+         <asp:Label ID="LLanjut" for="identitas"  class="control-label col-md-2" runat="server" Text="Lanjut" Font-Bold="True"></asp:Label>
+            <div class="col-md-3">
+                <asp:DropDownList ID="ddLanjut" class="form-control input-md" runat="server">
                 </asp:DropDownList> 
             </div>
 
@@ -536,8 +546,8 @@
 
     <%}%>  
 
-            <asp:Label ID="LKEksepsi" for="identitas"  class="control-label col-lg-2" runat="server" Text="Keterangan Ekspesi" Font-Bold="True"></asp:Label>
-            <div class="col-lg-3"><asp:TextBox id="txtKetEksepsi" class="form-control input-lg" TextMode="multiline" Columns="15" Rows="3" runat="server" /></div>	
+            <asp:Label ID="LKEksepsi" for="identitas"  class="control-label col-md-2" runat="server" Text="Keterangan Ekspesi" Font-Bold="True"></asp:Label>
+            <div class="col-md-3"><asp:TextBox id="txtKetEksepsi" class="form-control input-md" TextMode="multiline" Columns="15" Rows="3" runat="server" /></div>	
 
     <%if (groups.ToString() != "1")
     { %>        
@@ -560,22 +570,12 @@
         </div>
    </div>
 
-    <%--Footer Awal--%>
-     <footer class="site-footer">
-          <div class="text-center">
-              2015 - Aplikasi Almis
-              <a href="#" class="go-top">
-                  <i class="fa fa-angle-up"></i>
-              </a>
-          </div>
-      </footer>
-    <%--Footer Akhir--%>
 
 
 
     <script src="../JavaScript/jquery.min.js" type="text/javascript"></script>
     <script src="../JavaScript/jquery-ui-1.10.3.custom.js" type="text/javascript"></script>
-    <link rel="Stylesheet" type="text/css" href="../Css/jquery-ui-1.10.3.custom.css" />
+    <link rel="Stylesheet" type="text/css" href="../css/jquery-ui-1.10.3.custom.css" />
 
 
 <script type="text/javascript">
@@ -919,6 +919,7 @@
     //var btnUploadSurat = document.getElementById("btnUploadSurat");
     var btnTambahKondisiLahan = document.getElementById("btnTambahKondisiLahan");
     var Button2 = document.getElementById("Button2");
+    var ddprs = document.getElementById("<%= ddprs.ClientID %>");
 
 
     
@@ -1328,7 +1329,7 @@
         switch (objBtn.value) {
             case "Save":
                 //alert(hidMode.value);
-                Edit(hidMode.value)
+                CRUD(hidMode.value)
                 break;
 
             case "Delete":
@@ -1336,7 +1337,7 @@
                 if (objBtn.id == 'btnSave') {
                     
                     if (confirm("Hapus Data Ini?"))
-                        Delete(hidMode.value);
+                        CRUD(hidMode.value);
                 }
                 break;
 
@@ -1349,18 +1350,7 @@
         }
     }
 
-    function Delete() {
 
-        var s = ""
-                + "rnd=" + Math.random() * 4
-			    + "&sm=CRUD"
-                + "&param1=D"
-                + "&param2=" + txtNoRegister.value
-                + "&param3="
-        // alert(s);
-        dhtmlxAjax.post(localURL, s, outputResponse);
-
-    }
 
     function cekDuplikat() {
             var s = ""
@@ -1429,7 +1419,7 @@
     }
 
 
-    function Edit(tipe) {
+    function CRUD(tipe) {
         var s = ""
                 + "rnd=" + Math.random() * 4
 			    + "&sm=CRUD"
@@ -1467,6 +1457,8 @@
                 + "&param32=" 
                 + "&param33=" 
                 + "&param34="
+                + "&param35=" + ddprs.value
+                + "";
 
         //alert(s);
 
@@ -1642,8 +1634,8 @@
                 + "&user=" + b[2]
 			    + "&wilay=" + b[3]
 			    + "&param1=IK"
-			    + "&param5=" + ddPerolehanLahan.value
-			    + "&param4=" + ddKelengkapan.value
+			    + "&param4=" + ddPerolehanLahan.value
+			    + "&param5=" + ddKelengkapan.value
 			    + "";
 +"";
 //alert(s);

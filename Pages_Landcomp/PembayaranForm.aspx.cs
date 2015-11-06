@@ -34,7 +34,12 @@ public partial class Pages_PembayaranForm : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            
+            if (Session["userid"] is object)
+            {
+                userid = Session["userid"].ToString();
+            }
+
+            isiPerusa();
             isiBerkas();
             isiLanjut();
             bool normal = true;
@@ -86,6 +91,25 @@ public partial class Pages_PembayaranForm : System.Web.UI.Page
         return url;
     }
 
+    public void isiPerusa()
+    {
+
+        query = @"SELECT perusaNamass,perusaIdents FROM USRPRS 
+                  INNER JOIN PERUSA
+	                ON UsrprsPerusa = perusaIdents
+                   WHERE UsrprsUserss =" + "'" + userid + "'" + "";
+
+        dt = getDataTable(query);
+        if (dt.Rows.Count > 0)
+        {
+            ddprs.Items.Clear();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                ddprs.Items.Add(new ListItem(dt.Rows[i]["perusaNamass"].ToString(), dt.Rows[i]["perusaIdents"].ToString()));
+            }
+        }
+        dt.Dispose();
+    }
 
 
     public void HakAkses()
@@ -400,7 +424,7 @@ public partial class Pages_PembayaranForm : System.Web.UI.Page
                 ALMIS.ExecuteSTP eSTP = new ALMIS.ExecuteSTP();
                 eSTP.Datas();
                 DataSet ds = new DataSet();
-                eSTP.save25("P_PMBYRN", param1, param2, param3, param4, param5, param6, param7, param8, param9, param10, param11, param12, param13, param14, param15, param16, param17, param18, param19, param20, param21, userid, param23, param24, param25);
+                eSTP.save25("P_PMBYRN", param1, param2, param3, param4, param5, param6, param7, param8, param9, param10, param11, param12, param13, param14, param15, param16, param17, param18, param19, param20, param21, userid, param23, param24, "0");
 
                 return output;
             }

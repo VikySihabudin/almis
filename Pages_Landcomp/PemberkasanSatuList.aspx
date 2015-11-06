@@ -140,7 +140,7 @@
     function listPemberkasan() {
         listPemberkasan = new dhtmlXGridObject('gridPemberkasan');
         listPemberkasan.setImagePath("../JavaScript/codebase/imgs/");
-        listPemberkasan.setHeader("No,No Berkas,No Registrasi,No PID,Assignee,Nama Penjual,Kode Perusahaan,Action,#cspan,#cspan");
+        listPemberkasan.setHeader("No,No Berkas,No Registrasi,No PID,Assignee,Nama Penjual,Nama Perusahaan,Action,#cspan,#cspan");
         listPemberkasan.attachHeader("#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,,,#rspan");
         listPemberkasan.setInitWidths("40,166,166,166,166,236,236,65,65,65");
         listPemberkasan.setColAlign("left,left,left,left,left,left,left,left,left,left");

@@ -104,6 +104,8 @@
 
         </div>
 
+    	<hr />  
+
             <div class="form-group">
 
             <div class="col-md-1">
@@ -187,6 +189,8 @@
 			</div>
 
         </div>
+
+    	<hr />  
 
             <div class="form-group">
 
@@ -273,6 +277,8 @@
 
         </div>
 
+    	<hr />  
+
             <div class="form-group">
 
             <div class="col-md-1">
@@ -356,6 +362,8 @@
 			</div>
 
         </div>
+
+    	<hr />  
 
 
             <div class="form-group">
@@ -475,6 +483,8 @@
 
         </div>
 
+    	<hr />  
+
             <div class="form-group">
 
             <div class="col-md-1">
@@ -558,6 +568,8 @@
 			</div>
 
         </div>
+
+    	<hr />  
 
             <div class="form-group">
 

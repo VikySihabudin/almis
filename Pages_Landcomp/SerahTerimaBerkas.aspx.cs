@@ -33,11 +33,38 @@ public partial class Pages_SerahTerimaBerkas : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["userid"] is object)
+        {
+            userid = Session["userid"].ToString();
+        }
+
+        isiPerusa();
+
         bool normal = true;
         if (normal && (Request.Params["sm"] is object)) normal = ServiceSelect(Request.Params["sm"].ToString());
         HakAkses();
         isiTeknis();
 
+    }
+
+    public void isiPerusa()
+    {
+
+        query = @"SELECT perusaNamass,perusaIdents FROM USRPRS 
+                  INNER JOIN PERUSA
+	                ON UsrprsPerusa = perusaIdents
+                   WHERE UsrprsUserss =" + "'" + userid + "'" + "";
+
+        dt = getDataTable(query);
+        if (dt.Rows.Count > 0)
+        {
+            ddprs.Items.Clear();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                ddprs.Items.Add(new ListItem(dt.Rows[i]["perusaNamass"].ToString(), dt.Rows[i]["perusaIdents"].ToString()));
+            }
+        }
+        dt.Dispose();
     }
 
 
@@ -114,7 +141,7 @@ public partial class Pages_SerahTerimaBerkas : System.Web.UI.Page
                 ALMIS.ExecuteSTP eSTP_L = new ALMIS.ExecuteSTP();
                 eSTP_L.Datas();
                 DataSet ds_L = new DataSet();
-                ds_L = eSTP_L.List11("P_SRHTRM", param1L, "", "", "", "", "", "", userid, "","","");
+                ds_L = eSTP_L.List12("P_SRHTRM", param1L, "", "", "", "", "", "", userid, "","","", "");
 
                 dt = ds_L.Tables[0];
 
@@ -168,7 +195,7 @@ public partial class Pages_SerahTerimaBerkas : System.Web.UI.Page
                 ALMIS.ExecuteSTP eSTP_LS = new ALMIS.ExecuteSTP();
                 eSTP_LS.Datas();
                 DataSet ds_LS = new DataSet();
-                ds_L = eSTP_LS.List11("P_SRHTRM", param1LS, "", "", param2LS, "", "", userid, groups, "", "", "");
+                ds_L = eSTP_LS.List12("P_SRHTRM", param1LS, "", "", param2LS, "", "", userid, groups, "", "", "", "");
 
                 dt = ds_L.Tables[0];
 
@@ -210,7 +237,7 @@ public partial class Pages_SerahTerimaBerkas : System.Web.UI.Page
                 ALMIS.ExecuteSTP eSTP = new ALMIS.ExecuteSTP();
                 eSTP.Datas();
                 DataSet ds = new DataSet();
-                ds = eSTP.List11("P_SRHTRM", Param1, Param2, "", "", "", "", "","","","","");
+                ds = eSTP.List12("P_SRHTRM", Param1, Param2, "", "", "", "", "", "", "", "", "", "");
 
                 dt = ds.Tables[0];
 
@@ -258,6 +285,7 @@ public partial class Pages_SerahTerimaBerkas : System.Web.UI.Page
         String param9 = ""; if (Request.Params["param9"] is object) param9 = Request.Params["param9"].ToString();
         String param10 = ""; if (Request.Params["param10"] is object) param10 = Request.Params["param10"].ToString();
         String param11 = ""; if (Request.Params["param11"] is object) param11 = Request.Params["param11"].ToString();
+        String param12 = ""; if (Request.Params["param12"] is object) param12 = Request.Params["param12"].ToString();
 
         String sql = "";
         String output = "";
@@ -281,7 +309,7 @@ public partial class Pages_SerahTerimaBerkas : System.Web.UI.Page
                     ALMIS.ExecuteSTP eSTP = new ALMIS.ExecuteSTP();
                     eSTP.Datas();
                     DataSet ds = new DataSet();
-                    ds = eSTP.List11("[almis].[P_SRHTRM]", "X", param2, param3, param4, param5, param6, userid, groups, param9,param10,param11);
+                    ds = eSTP.List12("[almis].[P_SRHTRM]", "X", param2, param3, param4, param5, param6, param7, userid, param9, param10, param11, param12);
                     dt = ds.Tables[0];
 
                     if (dt.Rows.Count == 0)
@@ -299,7 +327,7 @@ public partial class Pages_SerahTerimaBerkas : System.Web.UI.Page
                 eSTP.Datas();
                 DataSet ds = new DataSet();
 
-                eSTP.save11("[almis].[P_SRHTRM]", param1, param2, param3, userid, param5, param6, userid, groups, param9, param10, param11);
+                eSTP.save12("[almis].[P_SRHTRM]", param1, param2, param3, userid, param5, param6, param7, userid, param9, param10, param11, "0");
 
                 return output;
             }

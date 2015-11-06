@@ -77,7 +77,7 @@
          <div class="form-group">
 
             <div class="col-md-8">
-            <asp:Label ID="Label5" runat="server" Text="Label">PIC GR Menerima Surat Keputusan Bupati / Walikota Untuk Pemberian Izin Lokasi Dan Menyampaikannya Kepada PIC IL</asp:Label>
+            <asp:Label ID="Label5" runat="server" Text="Label">PIC GR Menerima Surat Keputusan Bupati / Walikota Untuk Pemberian Izin Lokasi Dan Menyampaikannya Kepada PIC Izin Lokasi</asp:Label>
             </div>
 
         </div>
@@ -121,7 +121,7 @@
         <div class="form-group">
 
             <div class="col-md-8">
-            <asp:Label ID="Label1" runat="server" Text="Label">PIC IL Menyampaikan Surat Keputusan Bupati / Walikota Tentang Pemberian Izin Lokasi Kepada Manajemen Perusahaan Dan Menyampaikan Fotocopi Surat Keputusan Bupati / Walikota Izin Lokasi Tersebut Kepada Tim Legal / Handling Lawyer</asp:Label>
+            <asp:Label ID="Label1" runat="server" Text="Label">PIC Izin Lokasi Menyampaikan Surat Keputusan Bupati / Walikota Tentang Pemberian Izin Lokasi Kepada Manajemen Perusahaan Dan Menyampaikan Fotocopi Surat Keputusan Bupati / Walikota Izin Lokasi Tersebut Kepada Tim Legal / Handling Lawyer</asp:Label>
             </div>
 
         </div>
@@ -182,7 +182,7 @@
     <div class="form-group">
             <div class="col-md-10">
        
-                     <input type="button" id="btnCancel" value="Cancel" class="btn btn-lg btn-default"  onclick="btnClick(this)" PostBackUrl="~/Pages/PraRegistrasiForm.aspx"/> 
+                     <input type="button" id="btnCancel" value="Cancel" class="btn btn-lg btn-default"  onclick="btnClick(this)" /> 
                      <input type="button" id="btnSave" value="Save"  class="btn btn-lg btn-success" onclick="btnClick(this)" />  
             </div>
     </div>

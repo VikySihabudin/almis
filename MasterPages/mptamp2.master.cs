@@ -9,7 +9,7 @@ using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Configuration;
 
-public partial class MasterPages_mptamp : System.Web.UI.MasterPage
+public partial class MasterPages_mptamp2 : System.Web.UI.MasterPage
 {
     protected String userid = "";
 
@@ -20,21 +20,16 @@ public partial class MasterPages_mptamp : System.Web.UI.MasterPage
         {
             userid = Session["userid"].ToString();
 
-            if (Session["namass"] is object)
-            {
-
-                lblnm.Text = Session["namass"].ToString();
-            }
 
         }
 
-        if (!(Session["userid"] is object))
-        {
-            Response.Write("<script language=\"javascript\" type=\"text/javascript\">");
-            Response.Write("alert('Session sudah habis. Silakan login kembali.');");
-            Response.Write("location.href = '../Pages/login.aspx';");
-            Response.Write("</script>");
-        }
+        //if (!(Session["userid"] is object))
+        //{
+        //    Response.Write("<script language=\"javascript\" type=\"text/javascript\">");
+        //    Response.Write("alert('Session sudah habis. Silakan login kembali.');");
+        //    Response.Write("location.href = '../Pages/login.aspx';");
+        //    Response.Write("</script>");
+        //}
 
     }
 }

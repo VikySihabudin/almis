@@ -11,7 +11,7 @@
 
 
 
-    <link rel="shortcut icon" href="../images/LogoIcoAdaro.jpg" type="image/x-icon" />	
+    <link rel="shortcut icon" href="../images/logo_adaro.jpg" type="image/x-icon" />	
         <%--css dhtmlx--%>
 
 
@@ -136,7 +136,7 @@
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Menu Almis"></div>
               </div>
             <!--logo start-->
-            <a href="../Pages/home.aspx" class="logo"><b>Aplikasi Adaro Land Management Informasi System</b></a>
+            <a href="../Pages/home.aspx" class="logo"><b>Adaro Land Management Informasi System</b></a>
             <!--logo end-->
 
             <div class="top-menu">
@@ -252,6 +252,16 @@
                         <li><a href="#">Status Komersialisasi</a></li>
                         <li><a href="#">End of Life Status</a></li>
                         <li><a href="#">Asset</a></li>
+                      </ul>
+              </li>
+
+              <li class="sub-menu">
+                      <a href="javascript:;" >
+                          <i class="fa fa-book"></i>
+                          <span>Land Compliance</span>
+                      </a>
+                      <ul class="sub">
+                        <li><a href="../Pages_Landcompla/LandcomplaList.aspx">Land Compliance</a></li>
                       </ul>
               </li>
 
@@ -398,6 +408,7 @@
                 <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
         
                 </asp:ContentPlaceHolder>
+
            </section><! --/wrapper -->
       </section><!-- /MAIN CONTENT -->
     </form>

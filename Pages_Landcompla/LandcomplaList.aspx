@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TahapanPerolehanProdukList.aspx.cs" Inherits="Pages_LandCert_TahapanPerolehanProdukList"  MasterPageFile="~/MasterPages/mptamp.master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="LandcomplaList.aspx.cs" Inherits="Pages_Landcompla_LandcomplaList" MasterPageFile="~/MasterPages/mptamp.master" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
@@ -6,7 +6,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
 
-<h2>Tahapan Perolehan Produk</h2>  
+<h2>Land Compliance</h2>  
 <hr />
 
         <div class="form-group">
@@ -45,7 +45,7 @@
         <div class="form-group">
             <div class="col-lg-12">
             <div style=" width:100%; height:400px;">
-                <div id="gridTahapan" style=" width:100%; height:100%; background-color:white; border: 1px solid #A4BED4"></div>
+                <div id="gridCompliance" style=" width:100%; height:100%; background-color:white; border: 1px solid #A4BED4"></div>
                 <div id="pageMasterIdentitas"> </div>
             </div>
             </div>
@@ -65,8 +65,8 @@
 
 <script type="text/javascript">
 
-    var localURL = "TahapanPerolehanProdukList.aspx";
-    var newURL = "TahapanPerolehanProdukForm.aspx?param1=I";
+    var localURL = "LandcomplaList.aspx";
+    var newURL = "LandcomplaForm.aspx?param1=I";
     var ddprg = document.getElementById("<%= ddprg.ClientID %>");
     var txtDateAwal = document.getElementById("<%= txtDateAwal.ClientID %>");
     var txtDateAkhir = document.getElementById("<%= txtDateAkhir.ClientID %>");
@@ -74,8 +74,8 @@
     var btnRefresh = document.getElementById("btnRefresh");
 
 
-    lisTahapan();
-    //SearchlisTahapan();
+    listCompliance();
+    //SearchlistCompliance();
 
     function tambah(lo) {
         var url = window.location.toString();
@@ -85,7 +85,7 @@
 
     }
 
-
+    
 
     $(function txtDateAwal() {
         $("[id$=txtDateAwal]").datepicker({
@@ -116,7 +116,7 @@
 
     }
 
-    function SearchlisTahapan(id) {
+    function SearchlistCompliance(id) {
 
         var s = ""
 			+ "rnd=" + Math.random() * 4
@@ -126,26 +126,26 @@
             + "&param4="
             + "&param5="
 			+ "";
-        lisTahapan.clearAll();
-        //lisTahapan.loadXML(localURL + "?" + s);
-        //lisTahapan.loadXML("../xml/lisTahapan.xml");
+        listCompliance.clearAll();
+        //listCompliance.loadXML(localURL + "?" + s);
+        //listCompliance.loadXML("../xml/listCompliance.xml");
     }
 
 
-    function lisTahapan() {
-        lisTahapan = new dhtmlXGridObject('gridTahapan');
-        lisTahapan.setImagePath("../JavaScript/codebase/imgs/");
-        lisTahapan.setHeader("No.,No. Pelorehan Produk,Tahapan Proses BPN,No. Persiapan Internal,No. Management Service, No. Management Support, Status, Action,#cspan,#cspan,#cspan");
-        lisTahapan.setInitWidths("50,200,200,200,200,200,200,62,62,62");
-        lisTahapan.setColAlign("left,left,left,left,left,left,left,left,left,left");
-        lisTahapan.setColTypes("ed,ed,ed,ed,ed,ed,ed,link,link,link");
-        lisTahapan.init();
-        lisTahapan.setSkin("dhx_skyblue");
+    function listCompliance() {
+        listCompliance = new dhtmlXGridObject('gridCompliance');
+        listCompliance.setImagePath("../JavaScript/codebase/imgs/");
+        listCompliance.setHeader("No.,No. Compliance, Company, PIC, Project Analyst, Status, Action,#cspan,#cspan,#cspan");
+        listCompliance.setInitWidths("50,200,200,200,200,200,62,62,62");
+        listCompliance.setColAlign("left,left,left,left,left,left,left,left,left");
+        listCompliance.setColTypes("ed,ed,ed,ed,ed,ed,link,link,link");
+        listCompliance.init();
+        listCompliance.setSkin("dhx_skyblue");
 
-        lisTahapan.setColSorting("str,str,str,str,str,str,str,str");
-        lisTahapan.attachHeader("#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter");
-        lisTahapan.enablePaging(true, 15, 5, "pageMasterIdentitas", true);
-        lisTahapan.setPagingSkin("bricks");
+        listCompliance.setColSorting("str,str,str,str,str,str,str");
+        listCompliance.attachHeader("#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter");
+        listCompliance.enablePaging(true, 15, 5, "pageMasterIdentitas", true);
+        listCompliance.setPagingSkin("bricks");
     }
 
     function refresh() {
@@ -160,8 +160,8 @@
             + "&param4=" + txtDateAwal.value
             + "&param5=" + txtDateAkhir.value
 			+ "";
-            lisTahapan.clearAll();
-            lisTahapan.loadXML(localURL + "?" + s);
+            listCompliance.clearAll();
+            listCompliance.loadXML(localURL + "?" + s);
             //alert(s);
         }
     }
@@ -175,8 +175,8 @@
             + "&param4="
             + "&param5="
 			+ "";
-        lisTahapan.clearAll();
-        lisTahapan.loadXML(localURL + "?" + s);
+        listCompliance.clearAll();
+        listCompliance.loadXML(localURL + "?" + s);
         //alert(s);
     }
 

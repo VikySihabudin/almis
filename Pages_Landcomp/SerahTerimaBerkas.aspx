@@ -29,6 +29,15 @@
 
 							<div class="tab-pane active" id="tab1">
 
+                    <div role="form" class="form-horizontal">
+                             <div class="form-group">
+                                <label for="nama" class="control-label col-md-2">Nama Perusahaan</label>
+                                <div class="col-md-3"> 
+                                    <asp:DropDownList ID="ddprs" runat="server" class="form-control">
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+                    </div>
                                 <div role="form" class="form-horizontal">
                                     <div class="form-group">
                                         <label for="identitas" class="control-label col-md-2">
@@ -174,6 +183,8 @@
      var btnCancel = document.getElementById("btnCancel");
      var btnDelete = document.getElementById("btnDelete");
      var hiIdentitas = document.getElementById("hiIdentitas");
+     var ddprs = document.getElementById("<%= ddprs.ClientID %>");
+     
 
      lock();
      listTerimaBerkas();
@@ -301,18 +312,20 @@
 
      function Edit(tipe) {
 
-             var s = ""
-                        + "rnd=" + Math.random() * 4
-			            + "&sm=CRUD"
-                        + "&param1=I"
-                        + "&param2="
-                        + "&param3=" + txtNoRegistrasi.value
-                        + "&param4=" + txtNama.value
-                        + "&param5=" + txtSerahkanKepada.value
-                        + "&param6="
-                        + "&param7="
-                        + "&param8="
-                        + "&param9="
+         var s = ""
+                    + "rnd=" + Math.random() * 4
+                    + "&sm=CRUD"
+                    + "&param1=I"
+                    + "&param2="
+                    + "&param3=" + txtNoRegistrasi.value
+                    + "&param4=" + txtNama.value
+                    + "&param5=" + txtSerahkanKepada.value
+                    + "&param6="
+                    + "&param7="
+                    + "&param8="
+                    + "&param9="
+                    + "&param11=" + ddprs.value
+                    + "";
 
              //alert(s);
              dhtmlxAjax.post(localURL, s, outputResponse);

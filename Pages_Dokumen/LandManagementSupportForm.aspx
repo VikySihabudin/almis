@@ -12,12 +12,12 @@
 
 
 
-<h1>Form Land Management Support</h1>
+<h1>Form Project Approval</h1>
 	
 	<hr />    
 
     
-	<form role="form" class="form-horizontal" action="#">
+	<div role="form" class="form-horizontal" action="#">
         <div class="form-group">
             <label for="identitas" class="control-label col-md-2">Date</label>
             <div class="col-md-3"><asp:TextBox ID="txtNoIdentitas" class="form-control input-md" runat="server" value=""></asp:TextBox></div>			           
@@ -97,7 +97,7 @@
     </div>
 
 
-</form>
+</div>
 
     <%--Footer Awal--%>
      <footer class="site-footer">

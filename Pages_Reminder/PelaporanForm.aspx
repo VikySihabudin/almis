@@ -19,7 +19,7 @@
         
 		<div class="form-group">
             <label for="nama" class="control-label col-md-2">No Pelaporan</label>
-            <div class="col-md-2"><asp:TextBox ID="txtIzinLok" class="form-control input-md" runat="server" value= ""></asp:TextBox></div>
+            <div class="col-md-2"><asp:TextBox ID="txtNoPelaporan" class="form-control input-md" runat="server" value= ""></asp:TextBox></div>
         </div>
 
     <hr />  
@@ -40,7 +40,7 @@
             </div>
 
 			<div class="col-md-1">
-		    <asp:TextBox id="TextBox4" type="text" runat="server" class="form-control" />
+		    <asp:TextBox id="txtDateDay" type="text" runat="server" class="form-control" />
 			</div>
 
             <div class="col-md-1">
@@ -48,7 +48,7 @@
             </div>
 
 			<div class="col-md-1">
-		    <asp:TextBox id="TextBox5" type="text" runat="server" class="form-control" />
+		    <asp:TextBox id="txtDay" type="text" runat="server" class="form-control" />
 			</div>
 
             <div class="col-md-1">
@@ -56,10 +56,13 @@
             </div>
 
 			<div class="col-md-1">
-		    <asp:TextBox id="TextBox6" type="text" runat="server" class="form-control" />
+		    <asp:TextBox id="txtStopDate" type="text" runat="server" class="form-control" />
 			</div>
 
         </div>
+
+    <hr />
+
 
             <div class="form-group">
 
@@ -68,7 +71,7 @@
             </div>
 
 			<div class="col-md-2">
-		    <asp:TextBox id="TextBox28" type="text" runat="server" class="form-control" />
+		    <asp:TextBox id="txtTanggal" type="text" runat="server" class="form-control" />
 			</div>
 
             <div class="col-md-1">
@@ -76,11 +79,11 @@
             </div>
 
 			<div class="col-md-2">
-		    <asp:TextBox id="TextBox39" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
+		    <asp:TextBox id="txtKeterangan" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
 			</div>
 
             <div class="col-md-1">
-            <input type="button" id="Button12" value="Upload" class="btn btn-info btn-md" onclick="refresh()" />
+            <input type="button" id="btnUpload" value="Upload" class="btn btn-info btn-md" onclick="refresh()" />
             </div>
 
             </div>
@@ -101,7 +104,7 @@
             </div>
 
             <div class="col-md-4">
-            <asp:CheckBox ID="CheckBox4" runat="server" class="control-label"/>
+            <asp:CheckBox ID="CboPelaporanRutin" runat="server" class="control-label"/>
             </div>
 
         </div>
@@ -113,7 +116,7 @@
          <div class="form-group">
 
             <div class="col-md-8">
-            <asp:Label ID="Label1" runat="server" Text="Label">PIC IL Berkoordinasi Dengan Tim Legal, PIC, LC, PIC GR Dan PIC Adm Paling Lambat 1 Bulan Sebelum Masa Berlaku Izin Lokasi Berakhir, Mempersiapkan Dokumen Permohonan Perpanjangan Izin Lokasi : Surat Permohonan Perpanjangan Izin Lokasi, Legalitas Perusahaan Dan Fotocopi Izin Lokasi.</asp:Label>
+            <asp:Label ID="Label1" runat="server" Text="Label">PIC Izin Lokasi Berkoordinasi Dengan Tim Legal, PIC, LandComp, PIC GR Dan PIC Adm Paling Lambat 1 Bulan Sebelum Masa Berlaku Izin Lokasi Berakhir, Mempersiapkan Dokumen Permohonan Perpanjangan Izin Lokasi : Surat Permohonan Perpanjangan Izin Lokasi, Legalitas Perusahaan Dan Fotocopi Izin Lokasi.</asp:Label>
             </div>
 
         </div>
@@ -125,7 +128,7 @@
             </div>
 
 			<div class="col-md-1">
-		    <asp:TextBox id="TextBox1" type="text" runat="server" class="form-control" />
+		    <asp:TextBox id="txtDateDay2" type="text" runat="server" class="form-control" />
 			</div>
 
             <div class="col-md-1">
@@ -133,7 +136,7 @@
             </div>
 
 			<div class="col-md-1">
-		    <asp:TextBox id="TextBox2" type="text" runat="server" class="form-control" />
+		    <asp:TextBox id="txtDay2" type="text" runat="server" class="form-control" />
 			</div>
 
             <div class="col-md-1">
@@ -141,10 +144,12 @@
             </div>
 
 			<div class="col-md-1">
-		    <asp:TextBox id="TextBox3" type="text" runat="server" class="form-control" />
+		    <asp:TextBox id="txtStopDate2" type="text" runat="server" class="form-control" />
 			</div>
 
         </div>
+
+    <hr />  
 
             <div class="form-group">
 
@@ -153,7 +158,7 @@
             </div>
 
 			<div class="col-md-2">
-		    <asp:TextBox id="TextBox8" type="text" runat="server" class="form-control" />
+		    <asp:TextBox id="txtTanggal3" type="text" runat="server" class="form-control" />
 			</div>
 
             <div class="col-md-1">
@@ -161,11 +166,11 @@
             </div>
 
 			<div class="col-md-2">
-		    <asp:TextBox id="TextBox9" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
+		    <asp:TextBox id="txtKeterangan3" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
 			</div>
 
             <div class="col-md-1">
-            <input type="button" id="Button1" value="Upload" class="btn btn-info btn-md" onclick="refresh()" />
+            <input type="button" id="BtnUpload3" value="Upload" class="btn btn-info btn-md" onclick="refresh()" />
             </div>
 
             </div>
@@ -197,7 +202,7 @@
             </div>
 
 			<div class="col-md-2">
-		    <asp:TextBox id="TextBox7" type="text" runat="server" class="form-control" />
+		    <asp:TextBox id="txtNoIzinLokasi" type="text" runat="server" class="form-control" />
 			</div>
 
             <div class="col-md-1">
@@ -205,18 +210,18 @@
             </div>
 
 			<div class="col-md-2">
-		    <asp:TextBox id="TextBox10" type="text" runat="server" class="form-control" />
+		    <asp:TextBox id="txtTanggalIzinLokasi" type="text" runat="server" class="form-control" />
 			</div>
 
 
 
-            <div class="col-md-1">
+<%--            <div class="col-md-1">
             <input type="button" id="Button13" value="Upload" class="btn btn-info btn-md" onclick="refresh()" />
-            </div>
+            </div>--%>
 
         </div>
 
-  
+      <hr />  
 
             <div class="form-group">
 
@@ -225,7 +230,7 @@
             </div>
 
 			<div class="col-md-2">
-		    <asp:TextBox id="TextBox11" type="text" runat="server" class="form-control" />
+		    <asp:TextBox id="txtTanggal4" type="text" runat="server" class="form-control" />
 			</div>
 
             <div class="col-md-1">
@@ -233,11 +238,11 @@
             </div>
 
 			<div class="col-md-2">
-		    <asp:TextBox id="TextBox12" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
+		    <asp:TextBox id="txtKeterangan4" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
 			</div>
 
             <div class="col-md-1">
-            <input type="button" id="Button2" value="Upload" class="btn btn-info btn-md" onclick="refresh()" />
+            <input type="button" id="BtnUpload4" value="Upload" class="btn btn-info btn-md" onclick="refresh()" />
             </div>
 
             </div>
@@ -299,23 +304,12 @@
 <script type="text/javascript">
 
     var localURL = "LMSAddFileForm.aspx";
+    var txtNoPelaporan = document.getElementById("<%= txtNoPelaporan.ClientID %>");
+    var txtDay = document.getElementById("<%= txtDay.ClientID %>");
 
 
-
-    var txtIzinLok = document.getElementById("<%= txtIzinLok.ClientID %>");
-
-
-
-    listRequest();
-    listfirst();
-    //SearchlistRequest();
-    //listPLM();
-    //listPA();
-    listPIL();
-
-
-    $(function txtTgl() {
-        $("[id$=txtTgl]").datepicker({
+    $(function txtDateDay() {
+        $("[id$=txtDateDay]").datepicker({
             dateFormat: "yy-mm-dd",
             buttonImageOnly: true,
             changeYear: true,
@@ -324,7 +318,69 @@
         });
     });
 
-  
+    $(function txtDay() {
+        $("[id$=txtDay]").datepicker({
+            dateFormat: "yy-mm-dd",
+            buttonImageOnly: true,
+            changeYear: true,
+            changeMonth: true,
+            yearRange: "1900:2100"
+        });
+    });
+
+    $(function txtStopDate() {
+        $("[id$=txtStopDate]").datepicker({
+            dateFormat: "yy-mm-dd",
+            buttonImageOnly: true,
+            changeYear: true,
+            changeMonth: true,
+            yearRange: "1900:2100"
+        });
+    });
+
+//------------------
+
+    $(function txtDateDay2() {
+        $("[id$=txtDateDay2]").datepicker({
+            dateFormat: "yy-mm-dd",
+            buttonImageOnly: true,
+            changeYear: true,
+            changeMonth: true,
+            yearRange: "1900:2100"
+        });
+    });
+
+    $(function txtDay2() {
+        $("[id$=txtDay2]").datepicker({
+            dateFormat: "yy-mm-dd",
+            buttonImageOnly: true,
+            changeYear: true,
+            changeMonth: true,
+            yearRange: "1900:2100"
+        });
+    });
+
+    $(function txtStopDate2() {
+        $("[id$=txtStopDate2]").datepicker({
+            dateFormat: "yy-mm-dd",
+            buttonImageOnly: true,
+            changeYear: true,
+            changeMonth: true,
+            yearRange: "1900:2100"
+        });
+    });
+
+    //--------------------
+
+    $(function txtTanggalIzinLokasi() {
+        $("[id$=txtTanggalIzinLokasi]").datepicker({
+            dateFormat: "yy-mm-dd",
+            buttonImageOnly: true,
+            changeYear: true,
+            changeMonth: true,
+            yearRange: "1900:2100"
+        });
+    });
 
     function SearchlistRequest() {
         var s = ""

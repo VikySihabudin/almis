@@ -10,9 +10,20 @@
 
 
     <h2>Approval Pembayaran</h2>
-        <hr class="style-four"></hr>
+        <hr />
 
-            <form role="form" class="form-horizontal">
+     <div role="form" class="form-horizontal">
+    	<div class="form-group">
+            <label for="nama" class="control-label col-md-2">Nama Perusahaan</label>
+            <div class="col-md-3"> 
+                <asp:DropDownList ID="ddprs" runat="server" class="form-control">
+                </asp:DropDownList>
+            </div>
+        </div>
+     </div>
+
+
+            <div role="form" class="form-horizontal">
                 <div class="form-group">
                     <label for="identitas" class="control-label col-md-2">
                     No Pembayaran
@@ -28,10 +39,10 @@
                     <input id="txtTglAppSectionHead" type="text" runat="server" class="form-control input-md"  />
                     </div>
                 </div>
-            </form>
+            </div>
 
             
-            <form role="form" class="form-horizontal">
+            <div role="form" class="form-horizontal">
                 <div class="form-group">
                     <label for="identitas" class="control-label col-md-2">
                     No Registrasi
@@ -47,10 +58,10 @@
                     <input id="txtTglAppManager" type="text" runat="server" class="form-control input-md"  />
                     </div>
                 </div>
-            </form>
+            </div>
             
 
-            <form role="form" class="form-horizontal">
+            <div role="form" class="form-horizontal">
                 <div class="form-group">
                     <label for="identitas" class="control-label col-md-2">
                     PID
@@ -66,9 +77,9 @@
                     <input id="txtTglDiterimaSurvey" type="text" runat="server" class="form-control input-md"  />
                     </div>
                 </div>
-            </form>
+            </div>
 
-            <form role="form" class="form-horizontal">
+            <div role="form" class="form-horizontal">
                 <div class="form-group">
                     <label for="identitas" class="control-label col-md-2">
                     No Negosiasi
@@ -84,9 +95,9 @@
                     <input id="txtTglAppGMEksternal" type="text" runat="server" class="form-control input-md"  />
                     </div>
                 </div>
-            </form>
+            </div>
 
-            <form role="form" class="form-horizontal">
+            <div role="form" class="form-horizontal">
                 <div class="form-group">
                     <label for="identitas" class="control-label col-md-2">
                     No Visum
@@ -102,9 +113,9 @@
                     <input id="txtTglAppBOD" type="text" runat="server" class="form-control input-md"  />
                     </div>
                 </div>
-            </form>
+            </div>
 
-            <form role="form" class="form-horizontal">
+            <div role="form" class="form-horizontal">
                 <div class="form-group">
                     <label for="identitas" class="control-label col-md-2">
                     No Pemberkasan
@@ -120,10 +131,10 @@
                     <input id="txtTglAppDiterimaAccounting" type="text" runat="server" class="form-control input-md"  />
                     </div>
                 </div>
-            </form>
+            </div>
 
 
-            <form role="form" class="form-horizontal">
+            <div role="form" class="form-horizontal">
                 <div class="form-group">
                     <label for="identitas" class="control-label col-md-2">
                     Pengembalian Berkas
@@ -140,10 +151,10 @@
                     <input id="txtJumlahp" type="text" runat="server" class="form-control input-md"  onkeypress="return numbersonly(event, false)"/>
                     </div>                
                 </div>
-            </form>
+            </div>
             <hr />
 
-            <form role="form" class="form-horizontal">
+            <div role="form" class="form-horizontal">
                 <div class="form-group">
                     <label for="identitas" class="control-label col-md-2">
                     Nama Perusahaan
@@ -164,7 +175,7 @@
         </div>
                  </div>
 
-            </form>
+            </div>
 
     <%if (groups.ToString() != "1")
     { %>        
@@ -175,7 +186,7 @@
 
     <%}%>
 
-            <form role="form" class="form-horizontal">
+            <div role="form" class="form-horizontal">
                 <div class="form-group">
                     <asp:Label ID="LLanjut" for="identitas"  class="control-label col-md-2" runat="server" Text="Lanjut" Font-Bold="True"></asp:Label>
                     <div class="col-md-3">
@@ -183,7 +194,7 @@
                      </asp:DropDownList>
                     </div>
                 </div>
-            </form>
+            </div>
 
     <%if (groups.ToString() != "1")
     { %>        
@@ -194,7 +205,7 @@
 
     <%}%>
 
-            <form role="form" class="form-horizontal">
+            <div role="form" class="form-horizontal">
             <div class="form-group">
              <label for="identitas" class="control-label col-md-2">
                     Keterangan
@@ -203,7 +214,7 @@
                     <asp:TextBox id="txtKeterangan" TextMode="multiline" Columns="15" Rows="3" runat="server" class="form-control input-md" placeholder= "..."  />
                     </div>
             </div>
-            </form>
+            </div>
 
     <%if (groups.ToString() != "1")
     { %>        
@@ -214,7 +225,7 @@
 
     <%}%>
 
-            <form role="form" class="form-horizontal">
+            <div role="form" class="form-horizontal">
                 <div class="form-group">
                     <asp:Label ID="LEksepsi" for="identitas"  class="control-label col-md-2" runat="server" Text="Eksepsi" Font-Bold="True"></asp:Label>
                     
@@ -227,7 +238,7 @@
                     <asp:TextBox id="txtKetEks" TextMode="multiline" Columns="15" Rows="3" runat="server" class="form-control input-md" placeholder= "..."  />
                     </div>
                 </div>
-            </form>
+            </div>
 
     <%if (groups.ToString() != "1")
     { %>        
@@ -256,7 +267,7 @@
 
 
           
-        <%--<form id="form1" runat="server">--%>
+        <%--<div id="form1" runat="server">--%>
         <table border="0" cellpadding="0" cellspacing="0">
             <tr>
                 <td align="center">
@@ -339,6 +350,8 @@
     var btnCari = document.getElementById("btnCari");
     var hidMode = document.getElementById('hidMode');
     var txtNamaPerusahaan = document.getElementById("<%= txtNamaPerusahaan.ClientID %>");
+    
+    var ddprs = document.getElementById("<%= ddprs.ClientID %>");
 
     function validasi() {
         if (document.getElementById("<%= chkEksepsi.ClientID %>").checked) {
@@ -527,12 +540,33 @@
         var params = '&' + params;
 
         var s = ""
-			+ "rnd=" + Math.random() * 4
-			+ "&sm=CRUD"
-		    + "&param1=D"
-            + "&param2=" + txtNoPembayaran.value
-            + "&param3=" 
-			+ "";
+                 + "rnd=" + Math.random() * 4
+                 + "&sm=CRUD"
+                 + "&param1=D"
+                 + "&param2=" + txtNoPembayaran.value
+                 + "&param3="
+                 + "&param4=" + txtNoRegistrasi.value
+                 + "&param5=" + txtPID.value
+                 + "&param6=" + txtNoNegosiasi.value
+                 + "&param7=" + txtNoVisum.value
+                 + "&param8=" + txtNoPemberkasan.value
+                 + "&param9=" + txtTglAppSectionHead.value
+                 + "&param10=" + txtTglAppManager.value
+                 + "&param11=" + txtTglDiterimaSurvey.value
+                 + "&param12=" + txtTglAppGMEksternal.value
+                 + "&param13=" + txtTglAppBOD.value
+                 + "&param14=" + txtTglAppDiterimaAccounting.value
+                 + "&param15=" + ddBerkas.value
+                 + "&param16=" + txtPerusahaan.value
+                 + "&param17=" + txtKeterangan.value
+                 + "&param18=" + ddLanjut.value
+                 + "&param19=" + eksepsi.value
+                 + "&param20=" + txtKetEks.value
+                 + "&param21="
+                 + "&param22="
+                 + "&param23="
+                 + "&param24=" + ddprs.value
+                 + "";
 
         // alert(s);
         dhtmlxAjax.post(localURL, s, outputResponse);
@@ -546,7 +580,7 @@
 			    + "&sm=CRUD"
                 + "&param1=" + tipe.replace("param1=", "")
                 + "&param2=" + txtNoPembayaran.value
-                + "&param3=" 
+                + "&param3="
                 + "&param4=" + txtNoRegistrasi.value
                 + "&param5=" + txtPID.value
                 + "&param6=" + txtNoNegosiasi.value
@@ -564,9 +598,11 @@
                 + "&param18=" + ddLanjut.value
                 + "&param19=" + eksepsi.value
                 + "&param20=" + txtKetEks.value
-                + "&param21=" 
-                + "&param22=" 
+                + "&param21="
+                + "&param22="
                 + "&param23="
+                + "&param24=" + ddprs.value
+                + "";
        
 
         dhtmlxAjax.post(localURL, s, outputResponse);

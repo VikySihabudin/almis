@@ -8,7 +8,7 @@
 
 
 
-<h2>List Verifikasi</h2>  
+<h2>Verifikasi</h2>  
 <hr />
 <div class="form-group"> 
      <div class="col-lg-12" style=" width:100%; height:100%;">
@@ -167,15 +167,15 @@
     function listVerikasi() {
         listVerikasi = new dhtmlXGridObject('gridlegal');
         listVerikasi.setImagePath("../JavaScript/codebase/imgs/");
-        listVerikasi.setHeader("No,No Verifikasi,No Persiapan Dokumen,No Claim,Nama,Kabupaten,Kecamatan,Status,Action,#cspan,#cspan");
-        listVerikasi.attachHeader("#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,,,#rspan");
-        listVerikasi.setInitWidths("40,160,160,160,160,160,160,160,45,45,45");
-        listVerikasi.setColAlign("left,left,left,left,left,left,left,left,left,left,left");
-        listVerikasi.setColTypes("ed,ed,ed,ed,ed,ed,ed,ed,link,link,link");
+        listVerikasi.setHeader("No,No Verifikasi,No Persiapan Dokumen,No Claim,Nama,Kabupaten,Kecamatan,Status,Nama Perusahaan,Action,#cspan,#cspan");
+        listVerikasi.attachHeader("#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,,,#rspan");
+        listVerikasi.setInitWidths("40,160,160,160,160,160,160,160,160,45,45,45");
+        listVerikasi.setColAlign("left,left,left,left,left,left,left,left,left,left,left,left");
+        listVerikasi.setColTypes("ed,ed,ed,ed,ed,ed,ed,ed,ed,link,link,link");
         listVerikasi.init();
         listVerikasi.setSkin("dhx_skyblue");
 
-        listVerikasi.setColSorting("str,str,str,str,str,str,str,str,str,str,str");
+        listVerikasi.setColSorting("str,str,str,str,str,str,str,str,str,str,str,str");
         listVerikasi.enablePaging(true, 15, 5, "pageVerifikasi", true);
         listVerikasi.setPagingSkin("bricks");
     }

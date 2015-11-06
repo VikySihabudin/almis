@@ -6,7 +6,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
 
-<h2>List Persiapan Document</h2>  
+<h2>Persiapan Document</h2>  
 <hr />
 
         <div class="form-group">
