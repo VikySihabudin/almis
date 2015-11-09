@@ -136,7 +136,7 @@
     function listRegistrasi() {
         listRegistrasi = new dhtmlXGridObject('gridRegistrasi');
         listRegistrasi.setImagePath("../JavaScript/codebase/imgs/");
-        listRegistrasi.setHeader("No,No Pra Registrasi,No Registrasi,No Pengecekan Lapangan,Assignee,Status,Nama Penjual,Kode Perusahaan,Action,#cspan,#cspan");
+        listRegistrasi.setHeader("No,No Pra Registrasi,No Registrasi,No Pengecekan Lapangan,Assignee,Status,Nama Penjual,Nama Perusahaan,Action,#cspan,#cspan");
         listRegistrasi.attachHeader("#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,,,#rspan");
         listRegistrasi.setInitWidths("50,150,160,160,110,130,140,140,76,76,76");
         listRegistrasi.setColAlign("left,left,left,left,left,left,left,left,left,left,left");

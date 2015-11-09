@@ -576,7 +576,8 @@ public partial class Pages_RegistrasiForm : System.Web.UI.Page
                 Response.Write(dt.Rows[0]["registEkspsi"].ToString() + "|"); //44
                 Response.Write(dt.Rows[0]["registLanjut"].ToString() + "|"); //45
                 Response.Write(dt.Rows[0]["registKeteks"].ToString() + "|"); //46
-				
+				Response.Write(dt.Rows[0]["registKodper"].ToString() + "|"); //47
+
                 dt.Dispose();
 
                 Response.End();

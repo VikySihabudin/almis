@@ -232,7 +232,7 @@ public partial class Pages_PengecekanLapanganForm : System.Web.UI.Page
                 Response.Write(dt.Rows[0]["praregLokkec"].ToString() + "|"); //14
                 Response.Write(dt.Rows[0]["praregLokdes"].ToString() + "|"); //15
                 Response.Write(dt.Rows[0]["MidentNamass"].ToString() + "|"); //16
-
+                Response.Write(dt.Rows[0]["penlapKodper"].ToString() + "|"); //17
 
                 dt.Dispose();
 

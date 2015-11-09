@@ -565,6 +565,7 @@
         ddJenis.disabled = true;
         txtKeteranganJenis.disabled = true;
         FilePengecekan.disabled = true;
+        ddprs.disabled = true;
 
     }
 
@@ -585,13 +586,11 @@
         ddJenis.disabled = true;
         txtKeteranganJenis.disabled = true;
         FilePengecekan.disabled = true;
-       
-        //cbTest.disabled = true;
+        ddprs.disabled = true;
+
     }
     function lockPengecekanLapanganEdit() {
-        //            txtNoPL.disabled = true;
-        //            txtNoPR.disabled = true;
-        //            txtNamaPenjual.disabled = true;
+
         txtNoPL.disabled = true;
         txtNoPR.disabled = true;
         txtNamaPenjual.disabled = true;
@@ -599,7 +598,7 @@
         ddKabupaten.disabled = true;
         ddKecamatan.disabled = true;
         ddDesa.disabled = true;
-//        ddLanjut.disabled = true;
+
         txtKetEksepsi.disabled = false;
         txtKeterangan.disabled = false;
     }
@@ -627,7 +626,7 @@
 //            ddDesa.value = b[15];
             txtNamaPenjual.value = b[16];
             document.getElementById("<%= ddDesa.ClientID %>").value = b[15];
-            //            alert(b[15]);
+            ddprs.value = b[17];
             ReloadDetail(b[0]);
         }
     }

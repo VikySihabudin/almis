@@ -733,6 +733,7 @@
             txtTglLahirIbu.value = b[20];
             txtPekerjaanIbu.value = b[21];
             txtAlamatIbu.value = b[22];
+            ddprs.value = b[23];
 
         }
     }
@@ -1029,6 +1030,8 @@
 
         PopupTglLhrAnak.disabled = true;
 
+        ddprs.disabled = true;
+
         document.getElementById('btnSave').style.visibility = 'hidden';
         document.getElementById('Button1').style.visibility = 'hidden';
         document.getElementById('btnAddSaudara').style.visibility = 'hidden';
@@ -1071,6 +1074,8 @@
         PopuptxtAlmtSaudara.disabled = true;
 
         PopupTglLhrAnak.disabled = true;
+
+        ddprs.disabled = true;
 
         document.getElementById('Button1').style.visibility = 'hidden';
         document.getElementById('btnAddSaudara').style.visibility = 'hidden';

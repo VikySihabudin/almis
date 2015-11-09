@@ -279,13 +279,13 @@ $(function txtTglLahir() {
         switch (objBtn.value) {
             case "Save":
                 //alert(hidMode.value);
-                Edit(hidMode.value);
+                CRUD(hidMode.value);
                 break;
 
             case "Delete":
                 if (objBtn.id == 'btnSave') {
                     if (confirm("Hapus Data Ini?"))
-                        Delete(hidMode.value);
+                        CRUD(hidMode.value);
 //                    alert('del');
                 }
                 break;
@@ -307,37 +307,8 @@ $(function txtTglLahir() {
         }
     }
 
-    function Delete() {
 
-        var url = window.location.toString();
-        //ambil bagian parameternya
-        url.match(/\?(.+)$/);
-        var params = RegExp.$1;
-        // pisahkan parameter URL ke associative array
-        var params = '&' + params;
-
-        var s = ""
-			+ "rnd=" + Math.random() * 4
-			+ "&sm=CRUD"
-			+ "&param1=D"
-            + "&param2=" + txtPraRegistrasi.value
-            + "&param3="
-            + "&param4=" + txtNoIdentitas.value
-            + "&param5=" + ddKabupaten.value
-            + "&param6=" + ddKecamatan.value
-            + "&param7=" + ddDesa.value
-            + "&param8=" + ddLanjut.value
-            + "&param9="
-            + "&param10="
-            + "&param11=" + ddprs.value
-			+ "";
-
-         //alert(s);
-        dhtmlxAjax.post(localURL, s, outputResponse);
-
-    }
-
-    function Edit(tipe) {
+    function CRUD(tipe) {
 
         if (txtNoIdentitas.value != '') {
             var s = ""
@@ -388,6 +359,7 @@ $(function txtTglLahir() {
             document.getElementById("<%= ddDesa.ClientID %>").value = b[12];
             //ddDesa.value = b[12];
             ddLanjut.value = b[13];
+            ddprs.value = b[14];
         }
     }
 
@@ -402,6 +374,7 @@ $(function txtTglLahir() {
         txtAlamat.disabled = true;
         txtNoHandphone.disabled = true;
         ddTandaIdentitas.disabled = true;
+
     }
 
 
@@ -420,6 +393,7 @@ $(function txtTglLahir() {
         ddKecamatan.disabled = true;
         ddDesa.disabled = true;
         ddLanjut.disabled = true;
+        ddprs.disabled = true;
         document.getElementById('btnSave').style.visibility = 'hidden';
         document.getElementById('btnCari').style.visibility = 'hidden';
 
@@ -448,6 +422,7 @@ $(function txtTglLahir() {
         ddKecamatan.disabled = true;
         ddDesa.disabled = true;
         ddLanjut.disabled = true;
+        ddprs.disabled = true;
         document.getElementById('btnCari').style.visibility = 'hidden';
     }
     
@@ -479,6 +454,9 @@ $(function txtTglLahir() {
                 break;
             case "noedit":
                 alert("Data Pra Registrasi Tidak Dapat Di Edit Karena Sudah Dilalukan Pengecekan Lapangan");
+                break;
+            case "notam":
+                alert("Data Tidak Bisa Di Tambah");
                 break;
             case "gagal":
                 alert("Data Gagal Disimpan");

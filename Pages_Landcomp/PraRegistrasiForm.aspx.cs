@@ -260,6 +260,8 @@ public partial class Pages_PraRegistrasiForm : System.Web.UI.Page
                 Response.Write(dt.Rows[0]["praregLokkec"].ToString() + "|"); //11
                 Response.Write(dt.Rows[0]["praregLokdes"].ToString() + "|"); //12
                 Response.Write(dt.Rows[0]["praregLanjut"].ToString() + "|"); //13
+                Response.Write(dt.Rows[0]["praregKodper"].ToString() + "|"); //14
+                
              
                  dt.Dispose();
 
@@ -367,7 +369,8 @@ public partial class Pages_PraRegistrasiForm : System.Web.UI.Page
                 ALMIS.ExecuteSTP eSTP = new ALMIS.ExecuteSTP();
                 eSTP.Datas();
                 DataSet ds = new DataSet();
-                eSTP.save12("P_PRAREG", "X", param2, param3, param4, param5, param6, param7, param8, userid, param10, param11, "0");
+                ds = eSTP.List12("P_PRAREG", "X", param2, param3, param4, param5, param6, param7, param8, userid, param10, param11, "0");
+                dt = ds.Tables[0];
 
                 if (dt.Rows.Count > 0)
                 {
@@ -377,13 +380,14 @@ public partial class Pages_PraRegistrasiForm : System.Web.UI.Page
                     if (output == "D")
                         output = "nodelete";
 
+                    if (output == "D")
+                        output = "notam";
+
+
 
                     return output;
                 }
 
-
-
-                return output;
             }
 
             if (output == "I" || output == "E" || output == "D")

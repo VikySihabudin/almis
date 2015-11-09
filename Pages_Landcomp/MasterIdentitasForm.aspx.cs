@@ -396,6 +396,8 @@ public partial class Pages_MasterIdentitasForm : System.Web.UI.Page
                 Response.Write(dt.Rows[0]["MidentTglIbu"].ToString() + "|");
                 Response.Write(dt.Rows[0]["MidentKrjIbu"].ToString() + "|");
                 Response.Write(dt.Rows[0]["MidentAlmIbu"].ToString() + "|");
+                Response.Write(dt.Rows[0]["Midentkodper"].ToString() + "|");
+                
                 
 
                 dt.Dispose();

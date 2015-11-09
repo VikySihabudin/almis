@@ -1084,7 +1084,7 @@
             }
             ddLanjut.value = b[45];
             txtKetEksepsi.value = b[46];
-        
+            ddprs.value = b[47];
 
         }
 
@@ -1191,7 +1191,9 @@
         ddPerolehanLahan.disabled = true;
         ddKelengkapan.disabled = true;
 
-//        fileSurat.disabled = true;
+        //        fileSurat.disabled = true;
+
+        ddprs.disabled = true;
 
         document.getElementById('btnTambahKondisiLahan').style.visibility = 'hidden';
         document.getElementById('btnTambahInfastruktur').style.visibility = 'hidden';
@@ -1304,6 +1306,7 @@
         ddKelengkapan.disabled = true;
 
 //        fileSurat.disabled = true;
+        ddprs.disabled = true;
 
         document.getElementById('btnTambahKondisiLahan').style.visibility = 'hidden';
         document.getElementById('btnTambahInfastruktur').style.visibility = 'hidden';
