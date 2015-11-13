@@ -137,7 +137,7 @@ require([
 
 
           //Create Find Task using the URL of the map service to search
-          findTask = new FindTask("http://192.168.0.89:6080/arcgis/rest/services/adaro/WEBGIS_ADARO/MapServer");
+          findTask = new FindTask("http://localhost:6080/arcgis/rest/services/SampleWorldCities/MapServer");
 
 
           map.on("load", function () {
@@ -232,7 +232,7 @@ require([
 
           _lankomInfoTemplate.setContent("${PID}<br>" +
               _lankomInfoContent);
-          var lankom = new ArcGISDynamicMapServiceLayer("http://192.168.0.89:6080/arcgis/rest/services/adaro/WEBGIS_ADARO/MapServer",
+          var lankom = new ArcGISDynamicMapServiceLayer("http://localhost:6080/arcgis/rest/services/SampleWorldCities/MapServer",
           {
               "opacity": 0,
               visible: true

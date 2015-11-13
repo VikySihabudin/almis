@@ -353,7 +353,17 @@ public partial class Pages_UserManagementForm : System.Web.UI.Page
         {
             output = param1;
 
-            if (output == "E" )
+
+
+
+            //if (output == "I")
+            //{ 
+            
+            
+            
+            //}
+
+            if (output == "I" )
             {
                 ALMIS.ExecuteSTP eSTP = new ALMIS.ExecuteSTP();
                 eSTP.Datas();
@@ -363,18 +373,20 @@ public partial class Pages_UserManagementForm : System.Web.UI.Page
 
                 if (dt.Rows.Count > 0)
                 {
+                    if (output == "E")
+                        output = "noedit";
 
-                   
-                        eSTP.Datas();
-                        eSTP.save10("P_USERSS", param1, param2, param3, param4, param5, param6, userid, "", param9, param10);
-                        return output;
-                   
+                    if (output == "D")
+                        output = "nodelete";
+
+                    if (output == "I")
+                        output = "notambah";
+
+                    return output;
                 }
-                output = "noedit";
-                return output;
             }
 
-            if (output == "D" || output == "I")
+            if (output == "D" || output == "I" || output == "E")
             {
 
                 ALMIS.ExecuteSTP eSTP = new ALMIS.ExecuteSTP();

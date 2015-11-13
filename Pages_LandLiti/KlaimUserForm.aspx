@@ -14,15 +14,29 @@
 
 <h1>Form Claim User</h1>
 	
-	<hr class="style-four">    
+	<hr />    
     
-	<form role="form" class="form-horizontal" action="#">
+	<div role="form" class="form-horizontal">
+
+        <div class="form-group">
+            <label for="identitas" class="control-label col-md-2">Nama Perusahaan</label>
+            <div class="col-md-3">
+                <asp:DropDownList ID="ddprs" runat="server" class="form-control">
+                </asp:DropDownList>
+            </div>			           
+        </div>
+
+
         <div class="form-group">
             <label for="identitas" class="control-label col-md-2">Nomor Claim</label>
             <div class="col-md-3"><asp:TextBox ID="txtnoclain" class="form-control input-md" runat="server" ></asp:TextBox></div>			           
         </div>
 
-        
+        <div class="form-group">
+            <label for="identitas" class="control-label col-md-2">Nomor Identitas</label>
+            <div class="col-md-3"><asp:TextBox ID="txtNmrIdn" class="form-control input-md" runat="server" ></asp:TextBox></div>			           
+        </div>        
+
 		<div class="form-group">
             <label for="nama" class="control-label col-md-2">Nama</label>
             <div class="col-md-3"><asp:TextBox ID="txtNama" class="form-control input-md" runat="server"></asp:TextBox></div>
@@ -171,7 +185,7 @@
     </div>
 
 
-</form>
+</div>
 
     <%--Footer Awal--%>
      <footer class="site-footer">
@@ -207,16 +221,19 @@
     var txtketshm = document.getElementById("<%= txtketshm.ClientID %>");
     var FileKlaimUser = document.getElementById("<%= FileKlaimUser.ClientID %>");
 
+    var ddprs = document.getElementById("<%=ddprs.ClientID%>");
+    var txtNmrIdn = document.getElementById("<%=txtNmrIdn.ClientID%>");
+    
 
     txtnoclain.disabled = true;
 
     listAlas();
   
-    SearchlistAlas();
+    
     terimaURL();
     ListAlas();
     listktp();
-
+    
     function terimaURL() {
 
 
@@ -309,7 +326,9 @@
             ddKabupaten.value = b[4];
             ddKecamatan.value = b[5];
             ddDesa.value = b[6];
+            txtNmrIdn.value = b[7];
         }
+        SearchlistAlas();
     }
 
 
@@ -326,7 +345,7 @@
         ddKabupaten.disabled = true;
         ddKecamatan.disabled = true;
         ddDesa.disabled = true;
-
+        txtNmrIdn.disabled = true;
 
         document.getElementById('btnSave').style.visibility = 'hidden';
 
@@ -346,20 +365,22 @@
         ddKabupaten.disabled = true;
         ddKecamatan.disabled = true;
         ddDesa.disabled = true;
+        txtNmrIdn.disabled = true;
 
     }
 
 
     function SearchlistAlas() {
         var s = ""
+
         + "rnd=" + Math.random() * 4
-        + "&sm=L"
-        + "&param1=L"
-        + "&param2=4"
+		+ "&sm=DOCpic"
+		+ "&IDKlaimUser=" + txtnoclain.value
+		+ "&param1=L"
         + "";
-        listAlas.clearAll();
-        listAlas.loadXML("../xml/listalas.xml");
-        //listplegal.loadXML(localURL + "?" + s);
+        ListAlas.clearAll();
+        ListAlas.loadXML(localURL + "?" + s);
+        
     }
 
     function btnClick(objBtn) {
@@ -393,13 +414,14 @@
                 + "&param1=" + hidMode.value
                 + "&param2=" + txtnoclain.value
                 + "&param3="
-                + "&param4="
+                + "&param4=" + txtNmrIdn.value
                 + "&param5=" + txtNama.value
                 + "&param6=" + txtAlamat.value
                 + "&param7=" + txtNoHandphone.value
                 + "&param8=" + ddKabupaten.value
                 + "&param9=" + ddKecamatan.value
                 + "&param10=" + ddDesa.value
+                + "&param13=" + ddprs.value
                 + "";
 
         dhtmlxAjax.post(localURL, s, outputResponse);
@@ -608,7 +630,7 @@
                 + "&user=" + b[2]
 			    + "&wilay=" + b[3]
 			    + "&param1=I"
-			    + "&param5=" + ddListAlas.value
+			    + "&param5=" + ddshm.value
 			    + "";
         +"";
         centerLoadingImage();
@@ -729,7 +751,7 @@
             var s = ""
 			    + "rnd=" + Math.random() * 4
 			    + "&sm=ListUploadIdentitasLahan"
-			    + "&IDRegistrasi=" + nomorRegister
+			    + "&IDRegistrasi=" + txtnoclain.value
 			    + "&param1=UI"
 
 			    + "";
@@ -765,8 +787,8 @@
                     + "&param1=UI"
                     + "";
             centerLoadingImage();
-            listAlasHak.clearAll();
-            listAlasHak.loadXML(localURL + "?" + s, function () {
+            listktp.clearAll();
+            listktp.loadXML(localURL + "?" + s, function () {
                 hideLoadingImage();
             });
             //  alert(s);

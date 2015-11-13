@@ -167,7 +167,7 @@ public partial class Pages_LandLiti_VerifikasiForm : System.Web.UI.Page
                 Response.Write(dt.Rows[0]["ClausrLokDes"].ToString() + "|"); //5
                 Response.Write(dt.Rows[0]["VerdokNmrVrd"].ToString() + "|"); //6
                 Response.Write(dt.Rows[0]["VerdokLitiga"].ToString() + "|"); //7
-            
+                Response.Write(dt.Rows[0]["VerdokKodPer"].ToString() + "|"); //8
 
                 dt.Dispose();
 
@@ -206,6 +206,7 @@ public partial class Pages_LandLiti_VerifikasiForm : System.Web.UI.Page
         String param6 = ""; if (Request.Params["param6"] is object) param6 = Request.Params["param6"].ToString();
         String param7 = ""; if (Request.Params["param7"] is object) param7 = Request.Params["param7"].ToString();
         String param8 = ""; if (Request.Params["param8"] is object) param8 = Request.Params["param8"].ToString();
+        String param9 = ""; if (Request.Params["param9"] is object) param9 = Request.Params["param9"].ToString();
 
         String sql = "";
         String output = "";
@@ -223,7 +224,7 @@ public partial class Pages_LandLiti_VerifikasiForm : System.Web.UI.Page
 
                 eSTP.Datas();
                 DataSet ds = new DataSet();
-                ds = eSTP.List8("P_PREDOK", "X", param2, "", param4, "", "", "", "");
+                ds = eSTP.List9("P_VERDOK", "X", param2, "", param4, "", "", "", "", "");
                 dt = ds.Tables[0];
 
                 if (dt.Rows.Count > 0)
@@ -241,7 +242,7 @@ public partial class Pages_LandLiti_VerifikasiForm : System.Web.UI.Page
                 }
 
                 eSTP.Datas();
-                eSTP.save8("P_PREDOK", param1, param2, param3, param4, userid, param6, param7, param8);
+                eSTP.save9("P_VERDOK", param1, param2, param3, param4, userid, param6, param7, param8, param9);
 
                 return output;
             }

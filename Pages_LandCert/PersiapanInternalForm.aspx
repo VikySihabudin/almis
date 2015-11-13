@@ -39,7 +39,7 @@
             </div>
 
 			<div class="col-md-2">
-		    <asp:TextBox id="TextBox11" type="text" runat="server" class="form-control" />
+		    <asp:TextBox id="txtTanggal" type="text" runat="server" class="form-control" />
 			</div>
 
             <div class="col-md-1">
@@ -47,11 +47,11 @@
             </div>
 
 			<div class="col-md-2">
-		    <asp:TextBox id="TextBox12" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
+		    <asp:TextBox id="txtKeterangan" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
 			</div>
 
             <div class="col-md-1">
-            <input type="button" id="Button5" value="Upload" class="btn btn-info btn-md" onclick="refresh()" />
+            <input type="button" id="BtnUpload" value="Upload" class="btn btn-info btn-md" onclick="refresh()" />
             </div>
 
             </div>
@@ -84,7 +84,7 @@
             </div>
 
 			<div class="col-md-1">
-		    <asp:TextBox id="TextBox35" type="text" runat="server" class="form-control" />
+		    <asp:TextBox id="txtDateDay2" type="text" runat="server" class="form-control" />
 			</div>
 
             <div class="col-md-1">
@@ -92,7 +92,7 @@
             </div>
 
 			<div class="col-md-1">
-		    <asp:TextBox id="TextBox36" type="text" runat="server" class="form-control" />
+		    <asp:TextBox id="txtDay2" type="text" runat="server" class="form-control" />
 			</div>
 
             <div class="col-md-1">
@@ -100,7 +100,7 @@
             </div>
 
 			<div class="col-md-1">
-		    <asp:TextBox id="TextBox37" type="text" runat="server" class="form-control" />
+		    <asp:TextBox id="txtStopDate2" type="text" runat="server" class="form-control" />
 			</div>
 
         </div>
@@ -114,7 +114,7 @@
             </div>
 
 			<div class="col-md-2">
-		    <asp:TextBox id="TextBox1" type="text" runat="server" class="form-control" />
+		    <asp:TextBox id="txtTanggal2" type="text" runat="server" class="form-control" />
 			</div>
 
             <div class="col-md-1">
@@ -122,7 +122,7 @@
             </div>
 
 			<div class="col-md-2">
-		    <asp:TextBox id="TextBox2" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
+		    <asp:TextBox id="txtKeterangan2" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
 			</div>
 
             <div class="col-md-1">
@@ -159,7 +159,7 @@
             </div>
 
 			<div class="col-md-2">
-		    <asp:TextBox id="TextBox3" type="text" runat="server" class="form-control" />
+		    <asp:TextBox id="txtTanggal3" type="text" runat="server" class="form-control" />
 			</div>
 
             <div class="col-md-1">
@@ -167,11 +167,11 @@
             </div>
 
 			<div class="col-md-2">
-		    <asp:TextBox id="TextBox4" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
+		    <asp:TextBox id="txtKeterangan3" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
 			</div>
 
             <div class="col-md-1">
-            <input type="button" id="Button2" value="Upload" class="btn btn-info btn-md" onclick="refresh()" />
+            <input type="button" id="BtnUpload3" value="Upload" class="btn btn-info btn-md" onclick="refresh()" />
             </div>
 
             </div>
@@ -219,6 +219,74 @@
     listGridPersItl();
     listGridPersItl2();
     listGridPersItl3();
+
+    //------tgl 1
+
+    $(function txtTanggal() {
+        $("[id$=txtTanggal]").datepicker({
+            dateFormat: "yy-mm-dd",
+            buttonImageOnly: true,
+            changeYear: true,
+            changeMonth: true,
+            yearRange: "1900:2100"
+        });
+    });
+
+
+    //------tgl 2
+
+    $(function txtTanggal2() {
+        $("[id$=txtTanggal2]").datepicker({
+            dateFormat: "yy-mm-dd",
+            buttonImageOnly: true,
+            changeYear: true,
+            changeMonth: true,
+            yearRange: "1900:2100"
+        });
+    });
+
+    $(function txtDateDay2() {
+        $("[id$=txtDateDay2]").datepicker({
+            dateFormat: "yy-mm-dd",
+            buttonImageOnly: true,
+            changeYear: true,
+            changeMonth: true,
+            yearRange: "1900:2100"
+        });
+    });
+
+    $(function txtDay2() {
+        $("[id$=txtDay2]").datepicker({
+            dateFormat: "yy-mm-dd",
+            buttonImageOnly: true,
+            changeYear: true,
+            changeMonth: true,
+            yearRange: "1900:2100"
+        });
+    });
+
+    $(function txtStopDate2() {
+        $("[id$=txtStopDate2]").datepicker({
+            dateFormat: "yy-mm-dd",
+            buttonImageOnly: true,
+            changeYear: true,
+            changeMonth: true,
+            yearRange: "1900:2100"
+        });
+    });
+
+
+    //------tgl 3
+
+    $(function txtTanggal3() {
+        $("[id$=txtTanggal3]").datepicker({
+            dateFormat: "yy-mm-dd",
+            buttonImageOnly: true,
+            changeYear: true,
+            changeMonth: true,
+            yearRange: "1900:2100"
+        });
+    });
 
     function listGridPersItl() {
         listPLM = new dhtmlXGridObject('GridPersItl');

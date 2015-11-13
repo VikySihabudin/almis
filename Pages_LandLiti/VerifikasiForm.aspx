@@ -136,7 +136,7 @@
         <div class="form-group">
             <asp:Label  ID="LEksepsi" runat="server"  for="identitas" class="control-label col-md-2" Text="Litigasi" Font-Bold="True"></asp:Label>
             <div class="col-md-3">
-            <asp:CheckBox ID="cbLitigasi" runat="server"  CssClass="form-control checkbox-md" onclick="validasi()" /></div>
+            <asp:CheckBox ID="cbLitigasi" runat="server"  CssClass="form-control checkbox-md" onclick="validasi()"/></div>
         </div>
     </div>
 
@@ -191,6 +191,9 @@
     listVer();
     SearchlistVer();
     listNotulen();
+
+
+
 
 
     function terimaURL() {
@@ -265,10 +268,13 @@
                 break;
 
             case "Delete":
-                if (objBtn.id == 'btnSave') {
-                    if (confirm("Hapus Data Ini?"))
-                        CRUD(hidMode.value);
-                }
+
+                    if (objBtn.id == 'btnSave') {
+                        if (confirm("Hapus Data Ini?"))
+                            CRUD(hidMode.value);
+                    }
+               
+
                 break;
 
             case "Cancel":
@@ -288,15 +294,15 @@
 	+ "&sm=CRUD"
     + "&param1=" + hidMode.value
     + "&param2=" + txtNoVerDoc.value
-    + "&param3="
+    + "&param3=" 
     + "&param4=" + txtPerDoc.value
-    + "&param5=" +
-    + "&param6=" +
-    + "&param7=" +
-    + "&param8=" +
-    + "&param9=" +
+    + "&param5=" 
+    + "&param6=" 
+    + "&param7=" + ddprs.value
+    + "&param8="  
+    + "&param9=" + litigasi.value
     + "";
-    
+  
     dhtmlxAjax.post(localURL, s, outputResponse);
 
     }
@@ -346,6 +352,14 @@
         }
     }
 
+    function validasi() {
+        if (document.getElementById("<%= cbLitigasi.ClientID %>").checked) {
+            litigasi.value = '1';
+            } else {
+            litigasi.value = '0';
+            }
+        }
+
     function bindFormVerDok(loader) {
         //alert(loader.xmlDoc.responseText);
         var a = loader.xmlDoc.responseText;
@@ -364,7 +378,13 @@
             ddDesa.value = b[5];
 
             txtNoVerDoc.value = b[6];
-            cbLitigasi.value = b[7];
+
+            if (b[7] == '1') {
+                document.getElementById("<%= cbLitigasi.ClientID %>").checked = true;
+                litigasi.value = b[7];
+            }
+
+            ddprs.value = b[8];
 
         }
     }
@@ -380,6 +400,7 @@
         ddKecamatan.disabled = true;
         ddDesa.disabled = true;
         cbLitigasi.disabled = true;
+        ddprs.disabled = true;
 
 
         document.getElementById('btnSave').style.visibility = 'hidden';
@@ -408,6 +429,7 @@
         ddKecamatan.disabled = true;
         ddDesa.disabled = true;
         cbLitigasi.disabled = true;
+        ddprs.disabled = true;
     }
 
 

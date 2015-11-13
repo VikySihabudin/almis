@@ -71,7 +71,7 @@ public partial class Pages_LandLiti_LegalList : System.Web.UI.Page
                 ALMIS.ExecuteSTP eSTP_L = new ALMIS.ExecuteSTP();
                 eSTP_L.Datas();
                 DataSet ds_L = new DataSet();
-                ds_L = eSTP_L.List5("P_LEGALL", param1L, param2L, "", param4L, param5L);
+                ds_L = eSTP_L.List10("P_LEGALL", param1L, param2L, "", param4L, param5L, "", "", "", "", "");
 
                 dt = ds_L.Tables[0];
 
@@ -85,21 +85,20 @@ public partial class Pages_LandLiti_LegalList : System.Web.UI.Page
                     Random r = new Random();
                     Response.Write("<row id=\"" + (i + 1).ToString() + "\">");
                     Response.Write("<cell>" + (i + 1).ToString() + "</cell>"); // Untuk Membuat Angka
-                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["LegallNmrPersDok"].ToString()) + "</cell>");
-                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["LegallDatess"].ToString()) + "</cell>");
-                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["LegallUserDt"].ToString()) + "</cell>");
-                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["LegallKodPer"].ToString()) + "</cell>");
-                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["LegallFlaggg"].ToString()) + "</cell>");
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["LegallNmrLeg"].ToString()) + "</cell>");
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["VerdokNmrVrd"].ToString()) + "</cell>");
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["PredokNmrDok"].ToString()) + "</cell>");
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["ClausrNmrClm"].ToString()) + "</cell>");
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["ClausrNamass"].ToString()) + "</cell>");
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["ClausrLokDes"].ToString()) + "</cell>");
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["perusaNamass"].ToString()) + "</cell>");
 
-
-                    if (dt.Rows[i]["ClausrNmrClm"].ToString() != "")
+                    Response.Write("<cell>" + RemoveWhiteSpace("View^LegalForm.aspx?rand=" + r.Next() + "&param1=V" + "&param2=" + dt.Rows[i]["VerdokNmrVrd"].ToString() + "") + "</cell>");
+                    Response.Write("<cell>" + RemoveWhiteSpace("Edit^LegalForm.aspx?rand=" + r.Next() + "&param1=E" + "&param2=" + dt.Rows[i]["VerdokNmrVrd"].ToString() + "") + "</cell>");
+                    
+                    if (dt.Rows[i]["LegallNmrLeg"].ToString() != "")    
                     {
-
-
-                        Response.Write("<cell>" + RemoveWhiteSpace("View^LegalForm.aspx?rand=" + r.Next() + "&param1=V" + "&param2=" + dt.Rows[i]["LegallNmrPersDok"].ToString() + "") + "</cell>");
-                        Response.Write("<cell>" + RemoveWhiteSpace("Edit^LegalForm.aspx?rand=" + r.Next() + "&param1=E" + "&param2=" + dt.Rows[i]["LegallNmrPersDok"].ToString() + "") + "</cell>");
-                        Response.Write("<cell>" + RemoveWhiteSpace("Delete^LegalForm.aspx?rand=" + r.Next() + "&param1=D" + "&param2=" + dt.Rows[i]["LegallNmrPersDok"].ToString() + "") + "</cell>");
-
+                        Response.Write("<cell>" + RemoveWhiteSpace("Delete^LegalForm.aspx?rand=" + r.Next() + "&param1=D" + "&param2=" + dt.Rows[i]["VerdokNmrVrd"].ToString() + "") + "</cell>");
                     }
 
                     Response.Write("</row>");

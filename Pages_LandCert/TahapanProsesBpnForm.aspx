@@ -37,7 +37,7 @@
             </div>
 
 			<div class="col-md-2">
-		    <asp:TextBox id="TextBox11" type="text" runat="server" class="form-control" />
+		    <asp:TextBox id="txtTanggal" type="text" runat="server" class="form-control" />
 			</div>
 
             <div class="col-md-1">
@@ -45,11 +45,11 @@
             </div>
 
 			<div class="col-md-2">
-		    <asp:TextBox id="TextBox12" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
+		    <asp:TextBox id="txtKeterangan" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
 			</div>
 
             <div class="col-md-1">
-            <input type="button" id="Button2" value="Upload" class="btn btn-info btn-md" onclick="refresh()" />
+            <input type="button" id="BtnUpload" value="Upload" class="btn btn-info btn-md" onclick="refresh()" />
             </div>
 
             </div>
@@ -83,7 +83,7 @@
             </div>
 
 			<div class="col-md-1">
-		    <asp:TextBox id="TextBox4" type="text" runat="server" class="form-control" />
+		    <asp:TextBox id="txtDateDay" type="text" runat="server" class="form-control" />
 			</div>
 
             <div class="col-md-1">
@@ -91,7 +91,7 @@
             </div>
 
 			<div class="col-md-1">
-		    <asp:TextBox id="TextBox5" type="text" runat="server" class="form-control" />
+		    <asp:TextBox id="txtDay" type="text" runat="server" class="form-control" />
 			</div>
 
             <div class="col-md-1">
@@ -99,7 +99,7 @@
             </div>
 
 			<div class="col-md-1">
-		    <asp:TextBox id="TextBox6" type="text" runat="server" class="form-control" />
+		    <asp:TextBox id="txtStopDate" type="text" runat="server" class="form-control" />
 			</div>
 
         </div>
@@ -113,7 +113,7 @@
             </div>
 
 			<div class="col-md-2">
-		    <asp:TextBox id="TextBox28" type="text" runat="server" class="form-control" />
+		    <asp:TextBox id="txtTanggal2" type="text" runat="server" class="form-control" />
 			</div>
 
             <div class="col-md-1">
@@ -121,11 +121,11 @@
             </div>
 
 			<div class="col-md-2">
-		    <asp:TextBox id="TextBox39" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
+		    <asp:TextBox id="txtKeterangan2" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
 			</div>
 
             <div class="col-md-1">
-            <input type="button" id="Button12" value="Upload" class="btn btn-info btn-md" onclick="refresh()" />
+            <input type="button" id="BtnUpload2" value="Upload" class="btn btn-info btn-md" onclick="refresh()" />
             </div>
 
             </div>
@@ -146,7 +146,7 @@
             </div>
 
             <div class="col-md-4">
-            <asp:CheckBox ID="CheckBox4" runat="server" class="control-label"/>
+            <asp:CheckBox ID="CmbSudahBayar2" runat="server" class="control-label"/>
             </div>
 
         </div>
@@ -169,7 +169,7 @@
             </div>
 
 			<div class="col-md-1">
-		    <asp:TextBox id="TextBox1" type="text" runat="server" class="form-control" />
+		    <asp:TextBox id="txtDateDay3" type="text" runat="server" class="form-control" />
 			</div>
 
             <div class="col-md-1">
@@ -177,7 +177,7 @@
             </div>
 
 			<div class="col-md-1">
-		    <asp:TextBox id="TextBox2" type="text" runat="server" class="form-control" />
+		    <asp:TextBox id="txtDay3" type="text" runat="server" class="form-control" />
 			</div>
 
             <div class="col-md-1">
@@ -185,7 +185,7 @@
             </div>
 
 			<div class="col-md-1">
-		    <asp:TextBox id="TextBox3" type="text" runat="server" class="form-control" />
+		    <asp:TextBox id="txtStopDate3" type="text" runat="server" class="form-control" />
 			</div>
 
         </div>
@@ -199,7 +199,7 @@
             </div>
 
 			<div class="col-md-2">
-		    <asp:TextBox id="TextBox7" type="text" runat="server" class="form-control" />
+		    <asp:TextBox id="txtTanggal4" type="text" runat="server" class="form-control" />
 			</div>
 
             <div class="col-md-1">
@@ -207,11 +207,11 @@
             </div>
 
 			<div class="col-md-2">
-		    <asp:TextBox id="TextBox8" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
+		    <asp:TextBox id="txtKeterangan4" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
 			</div>
 
             <div class="col-md-1">
-            <input type="button" id="Button1" value="Upload" class="btn btn-info btn-md" onclick="refresh()" />
+            <input type="button" id="BtnUpload4" value="Upload" class="btn btn-info btn-md" onclick="refresh()" />
             </div>
 
             </div>
@@ -232,7 +232,7 @@
             </div>
 
             <div class="col-md-4">
-            <asp:CheckBox ID="CheckBox1" runat="server" class="control-label"/>
+            <asp:CheckBox ID="CmbDokumenPetaBidangSebelumTerbit4" runat="server" class="control-label"/>
             </div>
 
         </div>
@@ -256,7 +256,7 @@
             </div>
 
 			<div class="col-md-1">
-		    <asp:TextBox id="TextBox9" type="text" runat="server" class="form-control" />
+		    <asp:TextBox id="txtDateDay5" type="text" runat="server" class="form-control" />
 			</div>
 
             <div class="col-md-1">
@@ -264,7 +264,7 @@
             </div>
 
 			<div class="col-md-1">
-		    <asp:TextBox id="TextBox10" type="text" runat="server" class="form-control" />
+		    <asp:TextBox id="txtDay5" type="text" runat="server" class="form-control" />
 			</div>
 
             <div class="col-md-1">
@@ -272,7 +272,7 @@
             </div>
 
 			<div class="col-md-1">
-		    <asp:TextBox id="TextBox13" type="text" runat="server" class="form-control" />
+		    <asp:TextBox id="txtStopDate5" type="text" runat="server" class="form-control" />
 			</div>
 
         </div>
@@ -286,7 +286,7 @@
             </div>
 
 			<div class="col-md-2">
-		    <asp:TextBox id="TextBox14" type="text" runat="server" class="form-control" />
+		    <asp:TextBox id="txtTanggal6" type="text" runat="server" class="form-control" />
 			</div>
 
             <div class="col-md-1">
@@ -294,11 +294,11 @@
             </div>
 
 			<div class="col-md-2">
-		    <asp:TextBox id="TextBox15" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
+		    <asp:TextBox id="Keterangan6" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
 			</div>
 
             <div class="col-md-1">
-            <input type="button" id="Button3" value="Upload" class="btn btn-info btn-md" onclick="refresh()" />
+            <input type="button" id="BtnUpload6" value="Upload" class="btn btn-info btn-md" onclick="refresh()" />
             </div>
 
             </div>
@@ -319,7 +319,7 @@
             </div>
 
             <div class="col-md-4">
-            <asp:CheckBox ID="CheckBox2" runat="server" class="control-label"/>
+            <asp:CheckBox ID="CmbDokumenPetaBidangSebelumTerbit6" runat="server" class="control-label"/>
             </div>
 
         </div>
@@ -342,7 +342,7 @@
             </div>
 
 			<div class="col-md-1">
-		    <asp:TextBox id="TextBox35" type="text" runat="server" class="form-control" />
+		    <asp:TextBox id="txtDateDay7" type="text" runat="server" class="form-control" />
 			</div>
 
             <div class="col-md-1">
@@ -350,7 +350,7 @@
             </div>
 
 			<div class="col-md-1">
-		    <asp:TextBox id="TextBox36" type="text" runat="server" class="form-control" />
+		    <asp:TextBox id="txtDay7" type="text" runat="server" class="form-control" />
 			</div>
 
             <div class="col-md-1">
@@ -358,7 +358,7 @@
             </div>
 
 			<div class="col-md-1">
-		    <asp:TextBox id="TextBox37" type="text" runat="server" class="form-control" />
+		    <asp:TextBox id="txtStopDate7" type="text" runat="server" class="form-control" />
 			</div>
 
         </div>
@@ -373,7 +373,7 @@
             </div>
 
 			<div class="col-md-2">
-		    <asp:TextBox id="TextBox19" type="text" runat="server" class="form-control" />
+		    <asp:TextBox id="txtTanggal8" type="text" runat="server" class="form-control" />
 			</div>
 
             <div class="col-md-1">
@@ -381,11 +381,11 @@
             </div>
 
 			<div class="col-md-2">
-		    <asp:TextBox id="TextBox20" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
+		    <asp:TextBox id="txtKeterangan8" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
 			</div>
 
             <div class="col-md-1">
-            <input type="button" id="Button4" value="Upload" class="btn btn-info btn-md" onclick="refresh()" />
+            <input type="button" id="BtnUpload8" value="Upload" class="btn btn-info btn-md" onclick="refresh()" />
             </div>
 
             </div>

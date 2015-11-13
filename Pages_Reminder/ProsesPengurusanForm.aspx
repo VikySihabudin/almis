@@ -271,11 +271,11 @@
 			</div>
 
             <div class="col-md-1">
-            <asp:Label ID="txtStopDate6" runat="server" Text="Label">Stop Date</asp:Label>
+            <asp:Label ID="Label399" runat="server" Text="Label">Stop Date</asp:Label>
             </div>
 
 			<div class="col-md-1">
-		    <asp:TextBox id="TextBox24" type="text" runat="server" class="form-control" />
+		    <asp:TextBox id="txtStopDate6" type="text" runat="server" class="form-control" />
 			</div>
 
         </div>
@@ -947,7 +947,7 @@
             yearRange: "1900:2100"
         });
     });
-
+ 
 
     $(function txtStopDate2() {
         $("[id$=txtStopDate2]").datepicker({
@@ -1077,15 +1077,15 @@
         });
     });
 
-//    $(function txtStopDate6() {
-//        $("[id$=txtStopDate6]").datepicker({
-//            dateFormat: "yy-mm-dd",
-//            buttonImageOnly: true,
-//            changeYear: true,
-//            changeMonth: true,
-//            yearRange: "1900:2100"
-//        });
-//    });
+    $(function txtStopDate6() {
+        $("[id$=txtStopDate6]").datepicker({
+            dateFormat: "yy-mm-dd",
+            buttonImageOnly: true,
+            changeYear: true,
+            changeMonth: true,
+            yearRange: "1900:2100"
+        });
+    });
 
     //----7
 
@@ -1213,6 +1213,38 @@
             yearRange: "1900:2100"
         });
     });
+
+    //------19
+    $(function txtDateDay19() {
+        $("[id$=txtDateDay19]").datepicker({
+            dateFormat: "yy-mm-dd",
+            buttonImageOnly: true,
+            changeYear: true,
+            changeMonth: true,
+            yearRange: "1900:2100"
+        });
+    });
+
+    $(function txtDay19() {
+        $("[id$=txtDay19]").datepicker({
+            dateFormat: "yy-mm-dd",
+            buttonImageOnly: true,
+            changeYear: true,
+            changeMonth: true,
+            yearRange: "1900:2100"
+        });
+    });
+
+    $(function txtStopDate19() {
+        $("[id$=txtStopDate19]").datepicker({
+            dateFormat: "yy-mm-dd",
+            buttonImageOnly: true,
+            changeYear: true,
+            changeMonth: true,
+            yearRange: "1900:2100"
+        });
+    });
+
 
     //And
 

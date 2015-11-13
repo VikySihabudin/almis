@@ -277,13 +277,13 @@
         switch (objBtn.value) {
             case "Save":
                 //alert(hidMode.value);
-                Insert(hidMode.value)
+                CRUD(hidMode.value)
                 break;
 
             case "Edit":
                 if (txtNewPass.value == txtconfirmasiPassword.value) {
                     //alert(hidMode.value);
-                    Edit(hidMode.value)
+                    CRUD(hidMode.value)
                 }
                 else {
                     alert("Kombinasi Password Dan Konfirmasi Password Salah");
@@ -293,7 +293,7 @@
 
             case "Delete":
                 if (confirm("Hapus Data Ini?"))
-                    Delete(hidMode.value);
+                    CRUD(hidMode.value);
                 break;
 
             
@@ -372,7 +372,7 @@
                 alert("Kata Sandi Password Lama Salah");
                 break;
             case "notambah":
-                alert("Data Tidak Bisa Di Tambah Karena Sudah Ada");
+                alert("Data Tidak Bisa Di Tambah Karena Username Sudah Ada");
                 SearchlistPrs();
                 break;
              case "gagal":
@@ -384,7 +384,7 @@
         }
     }
 
-    function Edit(tipe) {
+    function CRUD(tipe) {
         var s = ""
                 + "rnd=" + Math.random() * 4
 			    + "&sm=CRUD"
@@ -395,37 +395,7 @@
                 + "&param5=" + ddGroup.value
                 + "&param6=" + ddStatusActive.value
                 + "&param7="
-                + "&param8=" + txtPassword.value
-        dhtmlxAjax.post(localURL, s, outputResponse);
-    }
-
-    function Delete(tipe) {
-            var s = ""
-                + "rnd=" + Math.random() * 4
-			    + "&sm=CRUD"
-                + "&param1=D"
-                + "&param2=" + txtUserId.value
-                + "&param3=" + txtNama.value
-                + "&param4=" + txtPassword.value
-                + "&param5=" + ddGroup.value
-                + "&param6=" + ddStatusActive.value
-                + "&param7="
-                + "&param8="
-            dhtmlxAjax.post(localURL, s, outputResponse);
-        }
-
-    function Insert(tipe) {
-        var s = ""
-            + "rnd=" + Math.random() * 4
-			+ "&sm=CRUD"
-            + "&param1=I"
-            + "&param2=" + txtUserId.value
-            + "&param3=" + txtNama.value
-            + "&param4=" + txtPassword.value
-            + "&param5=" + ddGroup.value
-            + "&param6=" + ddStatusActive.value
-            + "&param7="
-            + "&param8="
+                + "&param8=" 
         dhtmlxAjax.post(localURL, s, outputResponse);
     }
 

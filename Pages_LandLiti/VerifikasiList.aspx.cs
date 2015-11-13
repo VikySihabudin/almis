@@ -69,8 +69,12 @@ public partial class Pages_LandLiti_VerifikasiList : System.Web.UI.Page
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["perusaNamass"].ToString()) + "</cell>");
                     Response.Write("<cell>" + RemoveWhiteSpace("View^VerifikasiForm.aspx?rand=" + r.Next() + "&param1=V" + "&param2=" + dt.Rows[i]["PredokNmrDok"].ToString() + "") + "</cell>");
                     Response.Write("<cell>" + RemoveWhiteSpace("Edit^VerifikasiForm.aspx?rand=" + r.Next() + "&param1=E" + "&param2=" + dt.Rows[i]["PredokNmrDok"].ToString() + "") + "</cell>");
-                    Response.Write("<cell>" + RemoveWhiteSpace("Delete^VerifikasiForm.aspx?rand=" + r.Next() + "&param1=D" + "&param2=" + dt.Rows[i]["PredokNmrDok"].ToString() + "") + "</cell>");
 
+                    if (dt.Rows[i]["VerdokNmrVrd"].ToString() != "")
+                    {
+                        Response.Write("<cell>" + RemoveWhiteSpace("Delete^VerifikasiForm.aspx?rand=" + r.Next() + "&param1=D" + "&param2=" + dt.Rows[i]["PredokNmrDok"].ToString() + "") + "</cell>");
+                    }
+                    
                     Response.Write("</row>");
                 }
                 Response.Write("</rows>");

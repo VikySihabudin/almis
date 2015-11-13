@@ -31,6 +31,12 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["userid"] is object)
+        {
+            userid = Session["userid"].ToString();
+        }
+
+        isiPerusa();
 
         isikabupaten();
         isiKecamatan();
@@ -40,6 +46,26 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
         bool normal = true;
         if (normal && (Request.Params["sm"] is object)) normal = ServiceSelect(Request.Params["sm"].ToString());
 
+    }
+
+    public void isiPerusa()
+    {
+
+        query = @"SELECT perusaNamass,perusaIdents FROM USRPRS 
+                  INNER JOIN PERUSA
+	                ON UsrprsPerusa = perusaIdents
+                   WHERE UsrprsUserss =" + "'" + userid + "'" + "";
+
+        dt = getDataTable(query);
+        if (dt.Rows.Count > 0)
+        {
+            ddprs.Items.Clear();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                ddprs.Items.Add(new ListItem(dt.Rows[i]["perusaNamass"].ToString(), dt.Rows[i]["perusaIdents"].ToString()));
+            }
+        }
+        dt.Dispose();
     }
 
     public void isiShm()
@@ -159,6 +185,8 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
                 Response.Write(dt.Rows[0]["ClausrLokKab"].ToString() + "|"); //4
                 Response.Write(dt.Rows[0]["ClausrLokKec"].ToString() + "|"); //5
                 Response.Write(dt.Rows[0]["ClausrLokDes"].ToString() + "|"); //6
+                Response.Write(dt.Rows[0]["ClausrNmrIdn"].ToString() + "|"); //7
+                
 
                 dt.Dispose();
 
@@ -170,18 +198,6 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
             case "CRUD":
                 Response.ContentType = "text/plain";
                 Response.Write(CRUD());
-                Response.End();
-                return false;
-
-            //case "Delete":
-            //    Response.ContentType = "text/plain";
-            //    Response.Write(Delete());
-            //    Response.End();
-            //    return false;
-
-            case "dd":
-                Response.ContentType = "text/plain";
-                Response.Write(Admin());
                 Response.End();
                 return false;
 
@@ -256,7 +272,7 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
                 ALMIS.ExecuteSTP eSTPx = new ALMIS.ExecuteSTP();
                 eSTPx.Datas();
                 DataSet dsx = new DataSet();
-                dsx = eSTPx.List7("P_BERKS1_D", param1, IDKlaimUser, "", "", "", "", "");
+                dsx = eSTPx.List7("P_CLAUSR_D", param1, IDKlaimUser, "", "", "", "", "");
 
                 dt = dsx.Tables[0];
 
@@ -270,7 +286,7 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
 
                     Response.Write("<cell>" + (i + 1).ToString() + "</cell>");
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["codessDescs1"].ToString()) + "</cell>");
-                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["berks1Ketrgn"].ToString()) + "</cell>");
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["ClausrKetrgn"].ToString()) + "</cell>");
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["hdocumFiless"].ToString()) + "</cell>");
 
                     Response.Write("<cell>" + "Download^" + path_pic + "?sm=df&amp;namafile=" + dt.Rows[i]["hdocumIdLink"].ToString() + "&amp;filelama=" + dt.Rows[i]["hdocumFiless"].ToString() + "</cell>");
@@ -301,35 +317,7 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
         isiDesa();
     }
 
-    private String Admin()
-    {
-        var Param1 = Request.Params["param1"].ToString();
-        var Param2 = Request.Params["param2"].ToString();
-        string output = "";
 
-        try
-        {
-            ALMIS.ExecuteSTP eSTP = new ALMIS.ExecuteSTP();
-            eSTP.Datas();
-            DataSet ds = new DataSet();
-            ds = eSTP.List2("almis.C_ADMINS", Param1, Param2);
-
-            dt = ds.Tables[0];
-
-
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                output += dt.Rows[i]["namass"].ToString() + "|";
-                output += dt.Rows[i]["idents"].ToString() + "*";
-            }
-            dt.Dispose();
-        }
-        catch (Exception ex)
-        {
-            Response.Write(ex.Message);
-        }
-        return output;
-    }
 
     private String CRUD()
     {
@@ -473,12 +461,12 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
         eSTP.Datas();
         DataSet ds = new DataSet();
 
-        eSTP.save7("P_BERKS1_D", param1, IDKlaimUser, "", param5, _stKeterangan, "", "");
+        eSTP.save7("P_CLAUSR_D", param1, IDKlaimUser, "", param5, _stKeterangan, "", "");
 
         if (extension != ".exe")
         {
 
-            uf.UploadFilesWeb("I", user, _stDates, "KlaimUser", param5, uploadFolder, IDKlaimUser, _stNomor + extension, _stNamaFile, _stUploadKeterangan, "", "");
+            uf.UploadFilesWeb("I", user, _stDates, "Claim User", param5, uploadFolder, IDKlaimUser, _stNomor + extension, _stNamaFile, _stUploadKeterangan, "", "");
         }
 
         var _stOutput = ID;

@@ -242,17 +242,14 @@
                       </ul>
               </li>
 
-              <li class="sub-menu">
+             <li class="sub-menu">
                       <a href="javascript:;" >
                           <i class="fa fa-book"></i>
                           <span>Land Utilization</span>
                       </a>
                       <ul class="sub">
-                        <li><a href="#">Tipe Komersialisasi</a></li>
-                        <li><a href="#">Status Komersialisasi</a></li>
-                        <li><a href="#">End of Life Status</a></li>
-                        <li><a href="#">Asset</a></li>
-                      </ul>
+		                <li><a href="../Pages_LandUtil/KelasLahanList.aspx">Kelas Lahan</a></li>
+                     </ul>
               </li>
 
               <li class="sub-menu">
@@ -309,11 +306,7 @@
                         <li><a href="../Pages_LandCert/TahapanPerolehanProdukList.aspx">Tahapan Perolehan Produk</a></li>
 			          
                      </ul>
-              </li>t
-
-             
-
-
+              </li>
 
               <li class="sub-menu">
                       <a href="javascript:;" >

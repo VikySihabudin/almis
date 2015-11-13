@@ -338,6 +338,16 @@
         });
     });
 
+    $(function txtTanggal() {
+        $("[id$=txtTanggal]").datepicker({
+            dateFormat: "yy-mm-dd",
+            buttonImageOnly: true,
+            changeYear: true,
+            changeMonth: true,
+            yearRange: "1900:2100"
+        });
+    });
+
 //------------------
 
     $(function txtDateDay2() {
@@ -370,7 +380,47 @@
         });
     });
 
-    //--------------------
+    $(function txtTanggal2() {
+        $("[id$=txtTanggal2]").datepicker({
+            dateFormat: "yy-mm-dd",
+            buttonImageOnly: true,
+            changeYear: true,
+            changeMonth: true,
+            yearRange: "1900:2100"
+        });
+    });
+
+    //--------
+
+    $(function txtDateDay3() {
+        $("[id$=txtDateDay3]").datepicker({
+            dateFormat: "yy-mm-dd",
+            buttonImageOnly: true,
+            changeYear: true,
+            changeMonth: true,
+            yearRange: "1900:2100"
+        });
+    });
+
+    $(function txtDay3() {
+        $("[id$=txtDay3]").datepicker({
+            dateFormat: "yy-mm-dd",
+            buttonImageOnly: true,
+            changeYear: true,
+            changeMonth: true,
+            yearRange: "1900:2100"
+        });
+    });
+
+    $(function txtStopDate3() {
+        $("[id$=txtStopDate3]").datepicker({
+            dateFormat: "yy-mm-dd",
+            buttonImageOnly: true,
+            changeYear: true,
+            changeMonth: true,
+            yearRange: "1900:2100"
+        });
+    });
 
     $(function txtTanggalIzinLokasi() {
         $("[id$=txtTanggalIzinLokasi]").datepicker({
@@ -381,6 +431,30 @@
             yearRange: "1900:2100"
         });
     });
+
+    $(function txtTanggal3() {
+        $("[id$=txtTanggal3]").datepicker({
+            dateFormat: "yy-mm-dd",
+            buttonImageOnly: true,
+            changeYear: true,
+            changeMonth: true,
+            yearRange: "1900:2100"
+        });
+    });
+
+    $(function txtTanggal4() {
+        $("[id$=txtTanggal4]").datepicker({
+            dateFormat: "yy-mm-dd",
+            buttonImageOnly: true,
+            changeYear: true,
+            changeMonth: true,
+            yearRange: "1900:2100"
+        });
+    });
+
+    //--------------------
+
+
 
     function SearchlistRequest() {
         var s = ""

@@ -40,7 +40,7 @@
             </div>
 
 			<div class="col-md-2">
-		    <asp:TextBox id="TextBox1" type="text" runat="server" class="form-control" />
+		    <asp:TextBox id="txtTanggal" type="text" runat="server" class="form-control" />
 			</div>
 
             <div class="col-md-1">
@@ -48,17 +48,14 @@
             </div>
 
 			<div class="col-md-2">
-		    <asp:TextBox id="TextBox2" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
+		    <asp:TextBox id="txtKeterangan" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
 			</div>
 
             <div class="col-md-1">
-            <input type="button" id="Button2" value="Upload" class="btn btn-info btn-md" onclick="refresh()" />
+            <input type="button" id="BtnUpload" value="Upload" class="btn btn-info btn-md" onclick="refresh()" />
             </div>
 
             </div>
-
-
-    
     <div class="form-group">
        <div class="col-md-10">
             <div style=" width:1050px; height:150px;">
@@ -67,11 +64,6 @@
             </div>
     </div>
     </div>
-
-
-
-
-
 
 	<hr />  
     <br />
@@ -92,7 +84,7 @@
             </div>
 
 			<div class="col-md-2">
-		    <asp:TextBox id="TextBox3" type="text" runat="server" class="form-control" />
+		    <asp:TextBox id="txtTanggal2" type="text" runat="server" class="form-control" />
 			</div>
 
             <div class="col-md-1">
@@ -100,11 +92,11 @@
             </div>
 
 			<div class="col-md-2">
-		    <asp:TextBox id="TextBox4" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
+		    <asp:TextBox id="txtKeterangan2" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
 			</div>
 
             <div class="col-md-1">
-            <input type="button" id="Button1" value="Upload" class="btn btn-info btn-md" onclick="refresh()" />
+            <input type="button" id="BtnUpload2" value="Upload" class="btn btn-info btn-md" onclick="refresh()" />
             </div>
 
             </div>
@@ -138,7 +130,7 @@
             </div>
 
 			<div class="col-md-2">
-		    <asp:TextBox id="TextBox5" type="text" runat="server" class="form-control" />
+		    <asp:TextBox id="txtTanggal3" type="text" runat="server" class="form-control" />
 			</div>
 
             <div class="col-md-1">
@@ -146,11 +138,11 @@
             </div>
 
 			<div class="col-md-2">
-		    <asp:TextBox id="TextBox6" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
+		    <asp:TextBox id="txtKeterangan3" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
 			</div>
 
             <div class="col-md-1">
-            <input type="button" id="Button3" value="Upload" class="btn btn-info btn-md" onclick="refresh()" />
+            <input type="button" id="BtnUpload3" value="Upload" class="btn btn-info btn-md" onclick="refresh()" />
             </div>
 
             </div>
@@ -179,7 +171,7 @@
             </div>
 
 			<div class="col-md-2">
-		    <asp:TextBox id="TextBox7" type="text" runat="server" class="form-control" />
+		    <asp:TextBox id="txtTanggal4" type="text" runat="server" class="form-control" />
 			</div>
 
             <div class="col-md-1">
@@ -187,11 +179,11 @@
             </div>
 
 			<div class="col-md-2">
-		    <asp:TextBox id="TextBox8" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
+		    <asp:TextBox id="Keterangan4" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
 			</div>
 
             <div class="col-md-1">
-            <input type="button" id="Button4" value="Upload" class="btn btn-info btn-md" onclick="refresh()" />
+            <input type="button" id="BtnUpload4" value="Upload" class="btn btn-info btn-md" onclick="refresh()" />
             </div>
 
             </div>
@@ -225,7 +217,7 @@
             </div>
 
 			<div class="col-md-2">
-		    <asp:TextBox id="TextBox11" type="text" runat="server" class="form-control" />
+		    <asp:TextBox id="txtTanggal5" type="text" runat="server" class="form-control" />
 			</div>
 
             <div class="col-md-1">
@@ -233,11 +225,11 @@
             </div>
 
 			<div class="col-md-2">
-		    <asp:TextBox id="TextBox12" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
+		    <asp:TextBox id="txtKeterangan5" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
 			</div>
 
             <div class="col-md-1">
-            <input type="button" id="Button5" value="Upload" class="btn btn-info btn-md" onclick="refresh()" />
+            <input type="button" id="BtnUpload5" value="Upload" class="btn btn-info btn-md" onclick="refresh()" />
             </div>
 
             </div>  
@@ -270,7 +262,7 @@
             </div>
 
 			<div class="col-md-2">
-		    <asp:TextBox id="TextBox9" type="text" runat="server" class="form-control" />
+		    <asp:TextBox id="txtTanggal6" type="text" runat="server" class="form-control" />
 			</div>
 
             <div class="col-md-1">
@@ -278,11 +270,11 @@
             </div>
 
 			<div class="col-md-2">
-		    <asp:TextBox id="TextBox10" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
+		    <asp:TextBox id="txtKeterangan6" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
 			</div>
 
             <div class="col-md-1">
-            <input type="button" id="Button6" value="Upload" class="btn btn-info btn-md" onclick="refresh()" />
+            <input type="button" id="BtnUpload6" value="Upload" class="btn btn-info btn-md" onclick="refresh()" />
             </div>
 
             </div>
@@ -315,7 +307,7 @@
             </div>
 
 			<div class="col-md-2">
-		    <asp:TextBox id="TextBox13" type="text" runat="server" class="form-control" />
+		    <asp:TextBox id="txtTanggal7" type="text" runat="server" class="form-control" />
 			</div>
 
             <div class="col-md-1">
@@ -323,7 +315,7 @@
             </div>
 
 			<div class="col-md-2">
-		    <asp:TextBox id="TextBox14" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
+		    <asp:TextBox id="txtKeterangan7" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
 			</div>
 
             <div class="col-md-1">
@@ -360,7 +352,7 @@
             </div>
 
 			<div class="col-md-2">
-		    <asp:TextBox id="TextBox15" type="text" runat="server" class="form-control" />
+		    <asp:TextBox id="txtTanggal8" type="text" runat="server" class="form-control" />
 			</div>
 
             <div class="col-md-1">
@@ -368,11 +360,11 @@
             </div>
 
 			<div class="col-md-2">
-		    <asp:TextBox id="TextBox16" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
+		    <asp:TextBox id="txtKeterangan8" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
 			</div>
 
             <div class="col-md-1">
-            <input type="button" id="Button8" value="Upload" class="btn btn-info btn-md" onclick="refresh()" />
+            <input type="button" id="BtnUpload8" value="Upload" class="btn btn-info btn-md" onclick="refresh()" />
             </div>
 
             </div>
@@ -405,7 +397,7 @@
             </div>
 
 			<div class="col-md-2">
-		    <asp:TextBox id="TextBox17" type="text" runat="server" class="form-control" />
+		    <asp:TextBox id="txtTanggal9" type="text" runat="server" class="form-control" />
 			</div>
 
             <div class="col-md-1">
@@ -413,11 +405,11 @@
             </div>
 
 			<div class="col-md-2">
-		    <asp:TextBox id="TextBox18" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
+		    <asp:TextBox id="txtKeterangan9" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
 			</div>
 
             <div class="col-md-1">
-            <input type="button" id="Button9" value="Upload" class="btn btn-info btn-md" onclick="refresh()" />
+            <input type="button" id="btnUpload9" value="Upload" class="btn btn-info btn-md" onclick="refresh()" />
             </div>
 
             </div>
@@ -469,6 +461,133 @@
     listgridProsLMS7();
     listgridProsLMS8();
     listgridProsLMS9();
+
+    //------tgl 1
+
+    $(function txtTanggal() {
+        $("[id$=txtTanggal]").datepicker({
+            dateFormat: "yy-mm-dd",
+            buttonImageOnly: true,
+            changeYear: true,
+            changeMonth: true,
+            yearRange: "1900:2100"
+        });
+    });
+
+
+    //------tgl 2
+
+    $(function txtTanggal2() {
+        $("[id$=txtTanggal2]").datepicker({
+            dateFormat: "yy-mm-dd",
+            buttonImageOnly: true,
+            changeYear: true,
+            changeMonth: true,
+            yearRange: "1900:2100"
+        });
+    });
+
+
+    //------tgl 3
+
+    $(function txtTanggal3() {
+        $("[id$=txtTanggal3]").datepicker({
+            dateFormat: "yy-mm-dd",
+            buttonImageOnly: true,
+            changeYear: true,
+            changeMonth: true,
+            yearRange: "1900:2100"
+        });
+    });
+
+    //------tgl 4
+
+
+    $(function txtTanggal4() {
+        $("[id$=txtTanggal4]").datepicker({
+            dateFormat: "yy-mm-dd",
+            buttonImageOnly: true,
+            changeYear: true,
+            changeMonth: true,
+            yearRange: "1900:2100"
+        });
+    });
+
+
+    //------tgl 5
+
+
+    $(function txtTanggal5() {
+        $("[id$=txtTanggal5]").datepicker({
+            dateFormat: "yy-mm-dd",
+            buttonImageOnly: true,
+            changeYear: true,
+            changeMonth: true,
+            yearRange: "1900:2100"
+        });
+    });
+
+    //------tgl 6
+
+
+    $(function txtTanggal6() {
+        $("[id$=txtTanggal6]").datepicker({
+            dateFormat: "yy-mm-dd",
+            buttonImageOnly: true,
+            changeYear: true,
+            changeMonth: true,
+            yearRange: "1900:2100"
+        });
+    });
+
+    //------tgl 7
+
+    $(function txtTanggal7() {
+        $("[id$=txtTanggal7]").datepicker({
+            dateFormat: "yy-mm-dd",
+            buttonImageOnly: true,
+            changeYear: true,
+            changeMonth: true,
+            yearRange: "1900:2100"
+        });
+    });
+
+
+    //------tgl 8
+
+    $(function txtTanggal8() {
+        $("[id$=txtTanggal8]").datepicker({
+            dateFormat: "yy-mm-dd",
+            buttonImageOnly: true,
+            changeYear: true,
+            changeMonth: true,
+            yearRange: "1900:2100"
+        });
+    });
+
+    //------tgl 9
+
+    $(function txtTanggal9() {
+        $("[id$=txtTanggal9]").datepicker({
+            dateFormat: "yy-mm-dd",
+            buttonImageOnly: true,
+            changeYear: true,
+            changeMonth: true,
+            yearRange: "1900:2100"
+        });
+    });
+
+    //------tgl 10
+
+    $(function txtTanggal0() {
+        $("[id$=txtTanggal0]").datepicker({
+            dateFormat: "yy-mm-dd",
+            buttonImageOnly: true,
+            changeYear: true,
+            changeMonth: true,
+            yearRange: "1900:2100"
+        });
+    });
 
 
     function listgridProsLMS1() {

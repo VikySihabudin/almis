@@ -13,7 +13,7 @@
 <div class="form-group"> 
      <div class="col-lg-12" style=" width:100%; height:100%;">
            <div class="col-sm-2">
-                <asp:DropDownList ID="ddprg" runat="server" class="form-control" >
+                <asp:DropDownList ID="ddprg" runat="server" class="form-control" onclick="handleClick()" >
                 </asp:DropDownList>
             </div>
 
@@ -30,7 +30,7 @@
             </div>
 
             <div class="col-lg-1">
-                <input type="button" id="btnRefresh" value="Refresh" class="btn btn-info btn-md"  />
+                <input type="button" id="btnRefresh" value="Refresh" class="btn btn-info btn-md" onclick="refresh()" />
             </div>
 
 
@@ -113,6 +113,7 @@
         //alert(s);
         dhtmlxAjax.post(localURLForm, s);
     }
+
     function SearchlistLegal(id) {
 
         var s = ""
@@ -141,8 +142,8 @@
             + "&param5=" + txtDateAkhir.value
 			+ "";
             listLegal.clearAll();
-            listLegal.loadXML("../xml/ListLegal.xml");
-            //listLegal.loadXML(localURL + "?" + s);
+            //listLegal.loadXML("../xml/ListLegal.xml");
+            listLegal.loadXML(localURL + "?" + s);
             //alert(s);
         }
     }
@@ -166,7 +167,7 @@
     function listLegal() {
         listLegal = new dhtmlXGridObject('gridlegal');
         listLegal.setImagePath("../JavaScript/codebase/imgs/");
-        listLegal.setHeader("No,No Verifikasi,No Claim,Nama,Kabupaten,Kecamatan,Desa,Status,Action,#cspan,#cspan");
+        listLegal.setHeader("No,No Legal,No Verifikasi,No Persiapan,No Claim,Nama,Desa,Nama Perushaan,Action,#cspan,#cspan");
         listLegal.attachHeader("#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,,,#rspan");
         listLegal.setInitWidths("40,160,160,160,160,160,160,160,45,45,45");
         listLegal.setColAlign("left,left,left,left,left,left,left,left,left,left,left");
