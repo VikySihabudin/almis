@@ -34,7 +34,11 @@
 
         <div class="form-group">
             <label for="identitas" class="control-label col-md-2">Nomor Identitas</label>
-            <div class="col-md-3"><asp:TextBox ID="txtNmrIdn" class="form-control input-md" runat="server" ></asp:TextBox></div>			           
+            <div class="col-md-3"><asp:TextBox ID="txtNmrIdn" class="form-control input-md" runat="server" ></asp:TextBox></div>
+			<div class="col-md-1">
+                     <input type="button" id="btnCari" value="Cari"  class="btn btn-md btn-success" onclick="OpenDialog()" />  
+            </div>            
+            			           
         </div>        
 
 		<div class="form-group">
@@ -83,10 +87,18 @@
         </div>
     </div>
 
-            <div role="form" class="form-horizontal">
+
+
+     <div role="form" class="form-horizontal">
         <div class="form-group">            
             <div class="col-md-3"><asp:DropDownList ID="ddshm" class="form-control input-md" runat="server"></asp:DropDownList></div>
             <div class="col-md-3"><asp:TextBox id="txtketshm" class="form-control input-md" TextMode="multiline" Columns="15" Rows="3" runat="server" /></div>
+
+
+ <%if (Upload.ToString().Equals("I") )
+ { %>
+        <div class="hidden" >
+<%}%>  
             <div class="col-md-3">
                 
                 <asp:Label runat="server" ID="Label2" Style="display: none;"><img align="absmiddle" alt="" src="../images/uploading.gif"/></asp:Label>
@@ -101,25 +113,16 @@
 
             
             </div>    
+ <%if (Upload.ToString().Equals("I") )
+ { %>
+</div>
+<%}%>  
+
                     
         </div>
     </div>
 
 
-<%--         <div role="form" class="form-horizontal">
-        <div class="form-group">
-            <label for="identitas" class="control-label col-md-2">Alas Hak</label>
-            <div class="col-md-3">
-                <asp:DropDownList ID="DropDownList4" runat="server" class="form-control input-md">
-                    <asp:ListItem Text="SHM" Value="1"></asp:ListItem>
-                    <asp:ListItem Text="SKT" Value="2"></asp:ListItem>
-               </asp:DropDownList>
-            </div>
-
-           
-            <div class="col-md-3"><input type="button" id="BtnDoc" value="Upload File Alas Hak"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>
-        </div>
-    </div>--%>
 
        <div class="form-group">
        <div class="col-md-10">
@@ -130,47 +133,6 @@
         </div>
         </div>
 
-        <hr />
-
-            <h4>Upload File KTP:</h4>
-	<br />
-
-    <div role="form" class="form-horizontal" action="#">
-        <div class="form-group">
-        <div class="col-md-3">
-            <asp:Label runat="server" ID="myThrobber" Style="display: none;"><img align="absmiddle" alt="" src="../images/uploading.gif"/></asp:Label>
-                <asp:AjaxFileUpload ID="AjaxFileUploadIdentitasLahan" runat="server"
-                    onuploadcomplete="AjaxFileUploadIdentitasLahan_UploadComplete" 
-                    ThrobberID="myThrobber" 
-                    MaximumNumberOfFiles="8" 
-                    AllowedFileTypes="jpg,jpeg,png,pdf,doc,docx,xls,xlxs,txt,zip,rar,7z"
-                    OnClientUploadComplete="onClientUploadCompleteIdentitasLahan"
-                    ViewStateMode="Inherit"
-                    />
-
-            </div>
-        </div>
-    </div>
-
-       <div class="form-group">
-            <div class="col-md-10">
-            <div style=" width:100%; height:130px;">
-                <div id="gridktp" style=" width:100%; height:100%; background-color:white; border: 1px solid #A4BED4"></div>	
-            </div>                                     
-            </div>
-        </div>
-
- 
-
-
-<%--         <div class="form-group">
-            <label for="nama" class="control-label col-md-2">Upload KTP </label>
-            <div class="col-md-3">
-                <input type="button" onclick="PopupAmbilFoto()" id="btnUpKtp" value="Upload" class="btn btn-info btn-md" />
-           </div>
-
-        </div>--%>
-
 
 
     <br /><hr />
@@ -178,7 +140,7 @@
     <div class="form-group">
             <div class="col-md-10">
        
-                     <input type="button" id="btnCancel" value="Cancel" class="btn btn-lg btn-default"  onclick="btnClick(this)" PostBackUrl="~/Pages/KlaimUserForm.aspx"/> 
+                     <input type="button" id="btnCancel" value="Cancel" class="btn btn-lg btn-default"  onclick="btnClick(this)"/> 
                      <input type="button" id="btnSave" value="Save"  class="btn btn-lg btn-success" onclick="btnClick(this)" />  
               
             </div>
@@ -198,10 +160,39 @@
       </footer>
     <%--Footer Akhir--%>
 
+
+<%--DIALOG--%>
+
+<div id="dialogKlaim" title="Cari Identitas" style="font-size:small;">
+    <div role="form" class="form-horizontal" >
+
+    <div class="form-group">
+            <div class="col-md-5">
+       
+                     <input type="button" id="btnTmbhBru" value="Tambah Baru"  class="btn btn-md btn-success" onclick="tambah()" />  
+              
+            </div>
+    </div>
+
+       <div class="form-group">
+       <div class="col-md-10">
+            <div style=" width:560px; height:250px;">
+                <div id="GridIdentitas" style=" width:100%; height:100%; background-color:white; border: 1px solid #A4BED4"></div>
+                <div id="PageIdentitas"> </div>
+            </div>
+        </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+
 <script type="text/javascript">
     var localURL = "KlaimUserForm.aspx";
     var newUrl = "KlaimUserList.aspx";
-
+    var newURLIdn = "../Pages_Landcomp/MasterIdentitasForm.aspx";
     var txtnoclain = document.getElementById("<%=txtnoclain.ClientID%>");
     var txtNama = document.getElementById("<%=txtNama.ClientID%>");
     var txtAlamat = document.getElementById("<%=txtAlamat.ClientID%>");
@@ -216,6 +207,8 @@
     var btnCari = document.getElementById("btnCari");
     var btnUpKtp = document.getElementById('btnUpKtp');
     var hidMode = document.getElementById('hidMode');
+    var btnCari = document.getElementById('btnCari');
+    
 
     var ddshm = document.getElementById("<%= ddshm.ClientID %>");
     var txtketshm = document.getElementById("<%= txtketshm.ClientID %>");
@@ -227,12 +220,67 @@
 
     txtnoclain.disabled = true;
 
-    listAlas();
+   
   
-    
-    terimaURL();
     ListAlas();
-    listktp();
+    listIdentitas();
+    terimaURL();
+    SearchlistIdentitas();
+
+
+
+
+    function tambah() {
+        var url = window.location.toString();
+        url = url.replace(localURL, newURLIdn);
+        window.open(url);
+
+    }
+
+    $(function () {
+        $("#dialogKlaim").dialog
+        ({
+            autoOpen: false,
+            width: 610,
+            height: 400,
+            modal: true
+        });
+
+        $(".btnSubmit").on("click", function () {
+
+            $("#dialogKlaim").dialog("close");
+        });
+    });
+
+    function OpenDialog() {
+
+        $("#dialogKlaim").dialog("open");
+
+    }
+
+    function onRowSelected(rowId, cellIndex) {
+
+        txtNmrIdn.value = listIdentitas.cells(rowId, 1).getValue();
+        txtNama.value = listIdentitas.cells(rowId, 2).getValue();
+        txtAlamat.value = listIdentitas.cells(rowId, 3).getValue();
+        txtNoHandphone.value = listIdentitas.cells(rowId, 4).getValue();
+
+        $("#dialogKlaim").dialog("close");
+
+    }
+
+
+    function SearchlistIdentitas(id) {
+
+        var s = ""
+			+ "rnd=" + Math.random() * 4
+			+ "&sm=L"
+            + "&param1=LI"
+			+ "";
+        listIdentitas.clearAll();
+        listIdentitas.loadXML(localURL + "?" + s);
+    }
+    
     
     function terimaURL() {
 
@@ -252,6 +300,7 @@
             splitparam(params);
         } else {
             hidMode.value = 'I';
+            lockKlaimUserEdit();
         }
 
     }
@@ -347,13 +396,21 @@
         ddDesa.disabled = true;
         txtNmrIdn.disabled = true;
 
+        ddprs.disabled = true;
+
         document.getElementById('btnSave').style.visibility = 'hidden';
+        document.getElementById('btnCari').style.visibility = 'hidden';
 
 
     }
 
     function lockKlaimUserEdit() {
         txtnoclain.disabled = true;
+        txtNama.disabled = true;
+        txtAlamat.disabled = true;
+        txtNoHandphone.disabled = true;
+        txtNmrIdn.disabled = true;
+
     }
 
     function lockKlaimUserDelete() {
@@ -361,11 +418,9 @@
         txtNama.disabled = true;
         txtAlamat.disabled = true;
         txtNoHandphone.disabled = true;
-
-        ddKabupaten.disabled = true;
-        ddKecamatan.disabled = true;
-        ddDesa.disabled = true;
         txtNmrIdn.disabled = true;
+        ddprs.disabled = true;
+        document.getElementById('btnCari').style.visibility = 'hidden';
 
     }
 
@@ -477,6 +532,27 @@
         listAlas.setPagingSkin("bricks");
         listAlas.setColSorting("str,str,str");
     }
+
+    function listIdentitas() {
+        listIdentitas = new dhtmlXGridObject('GridIdentitas');
+        listIdentitas.setImagePath("../JavaScript/codebase/imgs/");
+        listIdentitas.setHeader("No,No Identitas,Nama,Alamat,No Handphone");
+        listIdentitas.setInitWidths("40,150,150,150,150");
+        listIdentitas.setColAlign("left,left,left,left,left");
+        listIdentitas.setColTypes("ro,ro,ro,ro,ro");
+        listIdentitas.init();
+        listIdentitas.setSkin("dhx_skyblue");
+
+        listIdentitas.attachEvent("onRowSelect", onRowSelected);
+
+        listIdentitas.setColSorting("str,str,str,str,str");
+        listIdentitas.attachHeader("#text_filter,#text_filter,#text_filter,#text_filter,#text_filter");
+        listIdentitas.enablePaging(true, 15, 5, "PageIdentitas", true);
+        listIdentitas.setPagingSkin("bricks");
+
+    }
+
+
 
     function changeKabupaten(obj) {
         var ji = 0;
@@ -659,6 +735,12 @@
 
     }
 
+
+
+
+
+
+
     function ListAlas() {
         ListAlas = new dhtmlXGridObject('gridalas');
         ListAlas.setImagePath("../JavaScript/codebase/imgs/");
@@ -670,19 +752,6 @@
         ListAlas.setSkin("dhx_skyblue");
         ListAlas.setPagingSkin("bricks");
         ListAlas.setColSorting("str,str,str,str,str");
-    }
-
-    function listktp() {
-        listktp = new dhtmlXGridObject('gridktp');
-        listktp.setImagePath("../JavaScript/codebase/imgs/");
-        listktp.setHeader("No,Nama Ktp,File,Action");
-        listktp.setInitWidths("40,300,300,200");
-        listktp.setColAlign("left,left,left,left");
-        listktp.setColTypes("ro,ro,ro,link");
-        listktp.init();
-        listktp.setSkin("dhx_skyblue");
-        listktp.setPagingSkin("bricks");
-        listktp.setColSorting("str,str,str,str");
     }
 
     function SaveIdentitasLahan(id, nama) {

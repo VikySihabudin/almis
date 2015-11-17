@@ -310,6 +310,18 @@
 
               <li class="sub-menu">
                       <a href="javascript:;" >
+                          <i class="fa fa-book"></i>
+                          <span>Land Map</span>
+                      </a>
+                      <ul class="sub">
+                        <li><a href="../Pages_LandMap/almisgis/index.html">Map Adaro Indonesia</a></li>
+                        <li><a href="#">Map Balangan Coal</a></li>
+                        <li><a href="#">Map Mustika Indah Permai</a></li>
+                      </ul>
+              </li>
+
+              <li class="sub-menu">
+                      <a href="javascript:;" >
                           <i class="fa fa-cogs"></i>
                           <span>Admin Tools </span>
                       </a>

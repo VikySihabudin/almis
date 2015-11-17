@@ -26,11 +26,14 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
     protected String except = "";
     protected String userid = "";
     protected String groups = "";
-
+    protected String Upload = "";
     string _stFAsli;
 
     protected void Page_Load(object sender, EventArgs e)
     {
+
+        Upload = Request.Params["param1"].ToString();
+
         if (Session["userid"] is object)
         {
             userid = Session["userid"].ToString();
@@ -172,7 +175,7 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
                 ALMIS.ExecuteSTP eSTP = new ALMIS.ExecuteSTP();
                 eSTP.Datas();
                 DataSet ds = new DataSet();
-                ds = eSTP.List14("almis.P_CLAUSR", Param1, Param2, "", "", "", "", "", "", "", "", "","","","");
+                ds = eSTP.List14("P_CLAUSR", Param1, Param2, "", "", "", "", "", "", "", "", "","","","");
 
                 dt = ds.Tables[0];
 
@@ -195,9 +198,52 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
                 Response.End();
                 return false;
 
+            case "L":
+
+                var param1L = Request.Params["param1"].ToString();
+           
+                ALMIS.ExecuteSTP eSTP_L = new ALMIS.ExecuteSTP();
+                eSTP_L.Datas();
+                DataSet ds_L = new DataSet();
+                ds_L = eSTP_L.List7("P_CLAUSR_D", param1L, "", "", "", "", "", "");
+
+                dt = ds_L.Tables[0];
+
+                Response.ContentType = "application/xhtml+xml";
+                Response.Write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+                Response.Write("<rows>");
+
+  
+
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    Random r = new Random();
+                    Response.Write("<row id=\"" + (i + 1).ToString() + "\">");
+                    Response.Write("<cell>" + (i + 1).ToString() + "</cell>"); // Untuk Membuat Angka
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["MidentIdents"].ToString()) + "</cell>");
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["MidentNamass"].ToString()) + "</cell>");
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["MidentAlamat"].ToString()) + "</cell>");
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["MidentNmrHps"].ToString()) + "</cell>");
+
+                    Response.Write("</row>");
+                }
+                Response.Write("</rows>");
+                dt.Dispose();
+
+                Response.End();
+                Response.End();
+
+                return false;
+
             case "CRUD":
                 Response.ContentType = "text/plain";
                 Response.Write(CRUD());
+                Response.End();
+                return false;
+
+            case "dd":
+                Response.ContentType = "text/plain";
+                Response.Write(KabKec());
                 Response.End();
                 return false;
 
@@ -310,6 +356,36 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
                 Response.End();
                 return true;
         }
+    }
+
+    private String KabKec()
+    {
+        var Param1 = Request.Params["param1"].ToString();
+        var Param2 = Request.Params["param2"].ToString();
+        string output = "";
+
+        try
+        {
+            ALMIS.ExecuteSTP eSTP = new ALMIS.ExecuteSTP();
+            eSTP.Datas();
+            DataSet ds = new DataSet();
+            ds = eSTP.List2("C_ADMINS", Param1, Param2);
+
+            dt = ds.Tables[0];
+
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                output += dt.Rows[i]["namass"].ToString() + "|";
+                output += dt.Rows[i]["idents"].ToString() + "*";
+            }
+            dt.Dispose();
+        }
+        catch (Exception ex)
+        {
+            Response.Write(ex.Message);
+        }
+        return output;
     }
 
     protected void ddKecamatan_SelectedIndexChanged(object sender, EventArgs e)
@@ -474,41 +550,6 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
         return _stOutput;
     }
 
-    public void AjaxFileUploadIdentitasLahan_UploadComplete(object sender, AjaxControlToolkit.AjaxFileUploadEventArgs e)
-    {
 
-        if (Session["userid"] is object)
-        {
-            userid = Session["userid"].ToString();
-        }
-
-        //string user = "";
-        string wilayah = "";
-
-        ALMIS.generateNUm gn = new ALMIS.generateNUm();
-        gn.Datas();
-
-        string _stNomor;
-
-        string _stDates = DateTime.Today.ToString("yyyyMMdd");
-
-        string uploadFolder = Request.PhysicalApplicationPath + "uploadDocument\\";
-
-        ALMIS.paramz ext = new ALMIS.paramz();
-
-        ext.setExtension(Path.GetExtension(e.FileName));
-
-        if (ext.getExtsion() != ".exe")
-        {
-            _stFAsli = System.IO.Path.GetFileName(e.FileName);
-
-
-            _stNomor = gn.GenerateNumber("", 101, 10, _stDates, userid);
-
-            AjaxFileUploadIdentitasLahan.SaveAs(uploadFolder + _stNomor + ext.getExtsion());
-            e.PostedUrl = string.Format(e.FileName + "|" + _stNomor + "|" + userid + "|" + wilayah);
-
-        }
-    }
 
 }
