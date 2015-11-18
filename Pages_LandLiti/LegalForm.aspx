@@ -359,6 +359,9 @@
             txtTglSrt.value = b[10];
             
         }
+
+        SearchlistLegal();
+        SearchlistNotulen();
     }
 
     function lockLegalView() {
@@ -417,16 +420,32 @@
 
 
 
+
+
+
+
     function SearchlistLegal() {
         var s = ""
         + "rnd=" + Math.random() * 4
-        + "&sm=L"
-        + "&param1=L"
-        + "&param2=4"
+        + "&sm=LP"
+        + "&param1=LP"
+        + "&param2=" + txtNoPer.value
         + "";
         listLegal.clearAll();
-        listLegal.loadXML("../xml/FormLegal.xml");
-        //listLegal.loadXML(localURL + "?" + s);
+        listLegal.loadXML(localURL + "?" + s);
+    }
+
+    function SearchlistNotulen() {
+        var s = ""
+
+        + "rnd=" + Math.random() * 4
+		+ "&sm=DOCpic"
+		+ "&IDPerdok=" + txtNoPer.value
+		+ "&param1=L"
+        + "";
+        listNotulen.clearAll();
+        listNotulen.loadXML(localURL + "?" + s);
+
     }
 
     function listLegal() {

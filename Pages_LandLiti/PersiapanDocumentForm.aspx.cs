@@ -26,9 +26,25 @@ public partial class Pages_LandLiti_PersiapanDocumentForm : System.Web.UI.Page
     protected String except = "";
     protected String userid = "";
     protected String groups = "";
+    protected String param1 = "";
+    protected String param2 = "";
+    protected String param3 = "";
+    protected String param4 = "";
+    protected String param5 = "";
+    protected String param6 = "";
+    protected String param7 = "";
+    protected String param8 = "";
+    protected String param9 = "";
 
     protected void Page_Load(object sender, EventArgs e)
     {
+
+        if (Session["userid"] is object)
+        {
+            userid = Session["userid"].ToString();
+        }
+
+        isiPerusa();
 
         isikabupaten();
         isiKecamatan();
@@ -38,6 +54,26 @@ public partial class Pages_LandLiti_PersiapanDocumentForm : System.Web.UI.Page
         if (normal && (Request.Params["sm"] is object)) normal = ServiceSelect(Request.Params["sm"].ToString());
 
 
+    }
+
+    public void isiPerusa()
+    {
+
+        query = @"SELECT perusaNamass,perusaIdents FROM USRPRS 
+                  INNER JOIN PERUSA
+	                ON UsrprsPerusa = perusaIdents
+                   WHERE UsrprsUserss =" + "'" + userid + "'" + "";
+
+        dt = getDataTable(query);
+        if (dt.Rows.Count > 0)
+        {
+            ddprs.Items.Clear();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                ddprs.Items.Add(new ListItem(dt.Rows[i]["perusaNamass"].ToString(), dt.Rows[i]["perusaIdents"].ToString()));
+            }
+        }
+        dt.Dispose();
     }
 
     public void isikabupaten()
@@ -117,14 +153,13 @@ public partial class Pages_LandLiti_PersiapanDocumentForm : System.Web.UI.Page
         {
             case "V":
 
-
-                var Param1 = Request.Params["param1"].ToString();
-                var Param2 = Request.Params["param2"].ToString();
+                param1 = Request.Params["param1"].ToString();
+                param2 = Request.Params["param2"].ToString();
 
                 ALMIS.ExecuteSTP eSTP = new ALMIS.ExecuteSTP();
                 eSTP.Datas();
                 DataSet ds = new DataSet();
-                ds = eSTP.List8("P_PREDOK", Param1, Param2, "", "", "", "", "","");
+                ds = eSTP.List8("P_PREDOK", param1, param2, "", "", "", "", "", "");
 
                 dt = ds.Tables[0];
 
@@ -136,7 +171,7 @@ public partial class Pages_LandLiti_PersiapanDocumentForm : System.Web.UI.Page
                 Response.Write(dt.Rows[0]["ClausrLokKab"].ToString() + "|"); //3
                 Response.Write(dt.Rows[0]["ClausrLokKec"].ToString() + "|"); //4
                 Response.Write(dt.Rows[0]["ClausrLokDes"].ToString() + "|"); //5
-
+                Response.Write(dt.Rows[0]["PredokKodPer"].ToString() + "|"); //6
                 dt.Dispose();
 
 
@@ -144,9 +179,48 @@ public partial class Pages_LandLiti_PersiapanDocumentForm : System.Web.UI.Page
                 Response.End();
                 return false;
 
+            case "L":
+
+                param1 = Request.Params["param1"].ToString();
+                param2 = Request.Params["param2"].ToString();
+
+                ALMIS.ExecuteSTP eSTP_SA = new ALMIS.ExecuteSTP();
+                eSTP_SA.Datas();
+                DataSet ds_SA = new DataSet();
+                ds_SA = eSTP_SA.List9("P_PREDOK_D", param1, param2, "", "", "", "", "", "", "");
+
+                dt = ds_SA.Tables[0];
+
+                Response.ContentType = "application/xhtml+xml";
+                Response.Write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+                Response.Write("<rows>");
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    Random r = new Random();
+                    Response.Write("<row id=\"" + (i + 1).ToString() + "\">");
+                    Response.Write("<cell>" + (i + 1).ToString() + "</cell>"); // Untuk Membuat Angka
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["PredokNmrPid"].ToString()) + "</cell>");
+                    Response.Write("<cell>" + RemoveWhiteSpace("Delete^javascript:Hapus(\"" + "DA" + "\",\"" + "D" + "\",\"" + dt.Rows[i]["PredokNmrPid"].ToString() + "\");^_self") + "</cell>");
+
+                    Response.Write("</row>");
+                }
+                Response.Write("</rows>");
+                dt.Dispose();
+
+                Response.End();
+                Response.End();
+
+                return false;
+
             case "CRUD":
                 Response.ContentType = "text/plain";
                 Response.Write(CRUD());
+                Response.End();
+                return false;
+
+            case "CRUD_D":
+                Response.ContentType = "text/plain";
+                Response.Write(CRUD_D());
                 Response.End();
                 return false;
 
@@ -166,14 +240,15 @@ public partial class Pages_LandLiti_PersiapanDocumentForm : System.Web.UI.Page
 
         }
 
-        String param1 = ""; if (Request.Params["param1"] is object) param1 = Request.Params["param1"].ToString();
-        String param2 = ""; if (Request.Params["param2"] is object) param2 = Request.Params["param2"].ToString();
-        String param3 = ""; if (Request.Params["param3"] is object) param3 = Request.Params["param3"].ToString();
-        String param4 = ""; if (Request.Params["param4"] is object) param4 = Request.Params["param4"].ToString();
-        String param5 = ""; if (Request.Params["param5"] is object) param5 = Request.Params["param5"].ToString();
-        String param6 = ""; if (Request.Params["param6"] is object) param6 = Request.Params["param6"].ToString();
-        String param7 = ""; if (Request.Params["param7"] is object) param7 = Request.Params["param7"].ToString();
-        String param8 = ""; if (Request.Params["param8"] is object) param8 = Request.Params["param8"].ToString();
+        param1 = Request.Params["param1"].ToString();
+        param2 = Request.Params["param2"].ToString();
+        param3 = Request.Params["param3"].ToString();
+        param4 = Request.Params["param4"].ToString();
+        param5 = Request.Params["param5"].ToString();
+        param6 = Request.Params["param6"].ToString();
+        param7 = Request.Params["param7"].ToString();
+        param8 = Request.Params["param8"].ToString();
+
 
         String sql = "";
         String output = "";
@@ -210,6 +285,77 @@ public partial class Pages_LandLiti_PersiapanDocumentForm : System.Web.UI.Page
 
                 eSTP.Datas();
                 eSTP.save8("P_PREDOK", param1, param2, param3, param4, userid, param6, param7, param8);
+
+                return output;
+            }
+            else
+                output = "gagal";
+        }
+        catch (Exception ex)
+        {
+            Response.Write(ex.Message);
+            Response.End();
+            return ex.Message;
+        }
+
+        return output;
+    }
+
+    private String CRUD_D()
+    {
+
+        if (Session["userid"] is object)
+        {
+            userid = Session["userid"].ToString();
+
+        }
+
+        param1 = Request.Params["param1"].ToString();
+        param2 = Request.Params["param2"].ToString();
+        param3 = Request.Params["param3"].ToString();
+        param4 = Request.Params["param4"].ToString();
+        param5 = Request.Params["param5"].ToString();
+        param6 = Request.Params["param6"].ToString();
+        param7 = Request.Params["param7"].ToString();
+        param8 = Request.Params["param8"].ToString();
+        param9 = Request.Params["param9"].ToString();
+
+        String sql = "";
+        String output = "";
+
+
+
+        try
+        {
+
+            output = param1;
+
+            if (output == "I" || output == "E" || output == "D")
+            {
+                ALMIS.ExecuteSTP eSTP = new ALMIS.ExecuteSTP();
+
+                eSTP.Datas();
+                DataSet ds = new DataSet();
+                ds = eSTP.List9("P_PREDOK_D", "X", param2, "", param4, param5, "", "", "", "");
+                dt = ds.Tables[0];
+                if (output == "I")
+                {
+                    if (dt.Rows.Count > 0)
+                    {
+
+                        if (output == "I")
+                            output = "noadd";
+
+                        return output;
+                    }
+                }
+                eSTP.Datas();
+                eSTP.save9("P_PREDOK_D", param1, param2, param3, param4, param5, userid, param7, param8, param9);
+
+                if (output == "I")
+                    output = "ID";
+                if (output == "D")
+                    output = "DD";
 
                 return output;
             }

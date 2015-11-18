@@ -86,7 +86,7 @@
 
       <div class="form-group">
        <div class="col-lg-10">
-            <div style=" width:650px; height:130px;">
+            <div style=" width:650px; height:180px;">
                 <div id="gridVer" style=" width:100%; height:100%; background-color:white; border: 1px solid #A4BED4">
             </div>
             </div>
@@ -107,12 +107,12 @@
         <div class="form-group">
         <div class="col-md-3">
             <asp:Label runat="server" ID="myThrobber" Style="display: none;"><img align="absmiddle" alt="" src="../images/uploading.gif"/></asp:Label>
-                <asp:AjaxFileUpload ID="AjaxFileUploadIdentitasLahan" runat="server"
-                    onuploadcomplete="AjaxFileUploadIdentitasLahan_UploadComplete" 
+                <asp:AjaxFileUpload ID="AjaxFileUploadVerifikasi" runat="server"
+                    onuploadcomplete="AjaxFileUploadVerifikasi_UploadComplete" 
                     ThrobberID="myThrobber" 
                     MaximumNumberOfFiles="8" 
                     AllowedFileTypes="jpg,jpeg,png,pdf,doc,docx,xls,xlxs,txt,zip,rar,7z"
-                    OnClientUploadComplete="onClientUploadCompleteIdentitasLahan"
+                    OnClientUploadComplete="onClientUploadCompleteVerifikasi"
                     ViewStateMode="Inherit"
                     />
 
@@ -123,7 +123,7 @@
 
            <div class="form-group">
             <div class="col-md-10">
-            <div style=" width:650px; height:130px;">
+            <div style=" width:650px; height:180px;">
                 <div id="gridNotulen" style=" width:100%; height:100%; background-color:white; border: 1px solid #A4BED4"></div>	
             </div>                                     
             </div>
@@ -189,7 +189,7 @@
 
     terimaURL();
     listVer();
-    SearchlistVer();
+    
     listNotulen();
 
 
@@ -387,6 +387,9 @@
             ddprs.value = b[8];
 
         }
+
+        SearchlistVer();
+        SearchlistNotulen();
     }
 
     function lockVerDokView() {
@@ -438,13 +441,12 @@
     function SearchlistVer() {
         var s = ""
         + "rnd=" + Math.random() * 4
-        + "&sm=L"
-        + "&param1=L"
-        + "&param2=4"
+        + "&sm=LP"
+        + "&param1=LP"
+        + "&param2=" + txtPerDoc.value
         + "";
         listVer.clearAll();
-        listVer.loadXML("../xml/FormLegal.xml");
-        //listplegal.loadXML(localURL + "?" + s);
+        listVer.loadXML(localURL + "?" + s);
     }
 
     function listVer() {
@@ -483,14 +485,111 @@
         });
     });
 
-    function onClientUploadCompleteIdentitasLahan(sender, e) {
+    function SearchlistNotulen() {
+        var s = ""
+
+        + "rnd=" + Math.random() * 4
+		+ "&sm=DOCpic"
+		+ "&IDPerdok=" + txtPerDoc.value
+		+ "&param1=L"
+        + "";
+        //alert(s);
+        listNotulen.clearAll();
+        listNotulen.loadXML(localURL + "?" + s);
+
+    }
+
+    function onClientUploadCompleteVerifikasi(sender, e) {
         document.getElementById('<%=namaFile.ClientID %>').value = e.get_postedUrl();
-        ReloadIdentitasLahan(document.getElementById('<%=txtNoVerDoc.ClientID %>').value, document.getElementById('<%=namaFile.ClientID %>').value);
+        ReloadVerifikasi(document.getElementById('<%=txtPerDoc.ClientID %>').value, document.getElementById('<%=namaFile.ClientID %>').value);
         alert('Data Berasil diUpload');
     }
 
 
+    function ReloadVerifikasi(id, nama) {
 
+        SaveVerifikasi(id, nama);
+
+        var s = ""
+			    + "rnd=" + Math.random() * 4
+			    + "&sm=DOCpic"
+			    + "&IDPerdok=" + txtPerDoc.value
+			    + "&param1=L"
+
+			    + "";
+        centerLoadingImage();
+        listNotulen.clearAll();
+        listNotulen.loadXML(localURL + "?" + s, function () {
+            hideLoadingImage();
+        });
+
+    }
+
+    function reloadphoto(id) {
+
+        //SaveKlaimUser(id, nama, ket);
+
+        var s = ""
+			    + "rnd=" + Math.random() * 4
+			    + "&sm=DOCpic"
+			    + "&IDPerdok=" + txtPerDoc.value
+			    + "&param1=L"
+
+			    + "";
+        centerLoadingImage();
+        listNotulen.clearAll();
+        listNotulen.loadXML(localURL + "?" + s, function () {
+            hideLoadingImage();
+        });
+
+    }
+
+    function SaveVerifikasi(id, nama) {
+        var a = nama;
+        //alert(a);
+        if (a != '') {
+            var b = new Array();
+            b = a.split('|');
+        }
+        //        alert(b[0]);
+        var s = ""
+			    + "rnd=" + Math.random() * 4
+			    + "&sm=SavePic"
+			    + "&IDPerdok=" + txtPerDoc.value
+			    + "&NAMA=" + b[0]
+			    + "&KETERANGAN=" 
+			    + "&NOMOR=" + b[1]
+                + "&user=" + b[2]
+			    + "&wilay=" + b[3]
+			    + "&param1=I"
+			    + "&param5=99"
+			    + "";
+        +"";
+        centerLoadingImage();
+        listNotulen.clearAll();
+        listNotulen.loadXML(localURL + "?" + s, function () {
+            hideLoadingImage();
+        });
+
+    }
+
+    function ReloadDetail(nomorPerdok) {
+
+        //        alert(nomorBayar);
+        var s = ""
+			    + "rnd=" + Math.random() * 4
+			    + "&sm=DOCpic"
+			    + "&IDPerdok=" + nomorPerdok
+			    + "&param1=LD"
+
+			    + "";
+        centerLoadingImage();
+        listNotulen.clearAll();
+        listNotulen.loadXML(localURL + "?" + s, function () {
+            hideLoadingImage();
+        });
+
+    }
 
 
 

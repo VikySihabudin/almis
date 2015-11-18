@@ -315,7 +315,12 @@
                       </a>
                       <ul class="sub">
                         <li><a href="../Pages_LandMap/almisgis/index.html">Map Adaro Indonesia</a></li>
-                        <li><a href="#">Map Balangan Coal</a></li>
+                        <li><a href="javascript:;" >Map Balangan Coal</a>
+                        <ul class="sub">
+					      <li><a href="../Pages/R_Registrasi.aspx">Registrasi</a></li>
+					      <li><a href="../Pages/R_Registrasi_detail.aspx">Registrasi Detail</a></li>
+					    </ul>
+                        </li>
                         <li><a href="#">Map Mustika Indah Permai</a></li>
                       </ul>
               </li>

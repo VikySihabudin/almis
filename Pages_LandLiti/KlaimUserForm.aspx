@@ -241,8 +241,8 @@
         $("#dialogKlaim").dialog
         ({
             autoOpen: false,
-            width: 610,
-            height: 400,
+            width: 620,
+            height: 420,
             modal: true
         });
 

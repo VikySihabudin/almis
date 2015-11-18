@@ -16,9 +16,19 @@
 
 <h1>Form Persiapan Document</h1>
 	
-	<hr class="style-four">    
+	<hr />    
     
-	<form role="form" class="form-horizontal" action="#">
+	<div role="form" class="form-horizontal" >
+
+        <div class="form-group">
+            <label for="identitas" class="control-label col-md-2">Nama Perusahaan</label>
+            <div class="col-md-3">
+                <asp:DropDownList ID="ddprs" runat="server" class="form-control">
+                </asp:DropDownList>
+            </div>			           
+        </div>
+
+
         <div class="form-group">
             <label for="identitas" class="control-label col-md-2">Nomor Persiapan Document</label>
             <div class="col-md-3"><asp:TextBox ID="txtPerDoc" class="form-control input-md" runat="server" onkeypress="return numbersonly(event, false)"></asp:TextBox></div>			
@@ -55,8 +65,11 @@
 		<br />
 
         <div class="form-group">
-            <div class="col-md-3">
-                <input type="button" onclick="PopupTbhAnk()" id="btnTambah" value="Tambah" class="btn btn-info btn-md" />
+            <label for="nama" class="control-label col-md-2">No PID</label>
+            <div class="col-md-2"><asp:TextBox ID="txtPid" class="form-control input-md"  runat="server"></asp:TextBox></div>
+
+            <div class="col-md-2">
+                <input type="button" onclick="CRUD_D()" id="btnTambah" value="Tambah" class="btn btn-info btn-md" />
                 
             </div>
         </div>
@@ -80,7 +93,7 @@
               
             </div>
     </div>
-</form>
+</div>
 
     <%--Footer Awal--%>
      <footer class="site-footer">
@@ -105,16 +118,21 @@
     var ddKabupaten = document.getElementById("<%= ddKabupaten.ClientID %>");
     var ddKecamatan = document.getElementById("<%= ddKecamatan.ClientID %>");
     var ddDesa = document.getElementById("<%= ddDesa.ClientID %>");
+
+    var ddprs = document.getElementById("<%= ddprs.ClientID %>");
+
+    var txtPid = document.getElementById("<%= txtPid.ClientID %>");
     
     var hidMode = document.getElementById("hidMode");
 
     var btnSave = document.getElementById("btnSave");
     var btnCancel = document.getElementById("btnCancel");
-
+    var btnTambah = document.getElementById("btnTambah");
+    
 
     listPID();
     terimaURL();
-
+    
 
     function terimaURL() {
 
@@ -197,22 +215,75 @@
             ddKabupaten.value = b[3];
             ddKecamatan.value = b[4];
             ddDesa.value = b[5];
-
+            ddprs.value = b[6];
         }
+        SearchlistPID();
+    }
+
+    function CRUD_D() {
+        var s = ""
+                + "rnd=" + Math.random() * 4
+			    + "&sm=CRUD_D"
+                + "&param1=I" 
+                + "&param2=" + txtNoClam.value
+                + "&param3="
+                + "&param4="
+                + "&param5=" + txtPid.value
+                + "&param6="
+                + "&param7="
+                + "&param8=" + ddprs.value
+                + "&param9="
+                + "";
+
+        dhtmlxAjax.post(localURL, s, outputResponse);
+        SearchlistPID();
+    }
+
+    function Hapus(sm, param1, param5) {
+        var r = confirm("Delete?");
+        if (r == true) {
+            var s = ""
+                    + "rnd=" + Math.random() * 4
+			        + "&sm=CRUD_D"
+                    + "&param1=" + param1
+                    + "&param2=" + txtNoClam.value
+                    + "&param3="
+                    + "&param4="
+                    + "&param5=" + param5
+                    + "&param6="
+                    + "&param7="
+                    + "&param8=" + ddprs.value
+                    + "&param9="
+                    + "";
+            dhtmlxAjax.post(localURL, s, outputResponse);
+            SearchlistPID();
+        }
+    }
+
+    function SearchlistPID(id) {
+
+        var s = ""
+			+ "rnd=" + Math.random() * 4
+			+ "&sm=L"
+            + "&param1=L"
+            + "&param2=" + txtNoClam.value
+			+ "";
+        listPID.clearAll();
+        listPID.loadXML(localURL + "?" + s);
     }
 
 
     function listPID() {
         listPID = new dhtmlXGridObject('gridPID');
         listPID.setImagePath("../JavaScript/codebase/imgs/");
-        listPID.setHeader("No,PID");
-        listPID.setInitWidths("40,100");
-        listPID.setColAlign("left,left");
-        listPID.setColTypes("ro,ro");
+        listPID.setHeader("No,No PID,Aksi");
+        listPID.setInitWidths("40,200,150");
+        listPID.setColAlign("left,left,left");
+        listPID.setColTypes("ro,ro,link");
         listPID.init();
         listPID.setSkin("dhx_skyblue");
         listPID.setPagingSkin("bricks");
-        listPID.setColSorting("str,str");
+        listPID.setColSorting("str,str,str");
     }
 
 
@@ -226,9 +297,10 @@
         ddKabupaten.disabled = true;
         ddKecamatan.disabled = true;
         ddDesa.disabled = true;
-
-
+        txtPid.disabled = true;
+        ddprs.disabled = true;
         document.getElementById('btnSave').style.visibility = 'hidden';
+        document.getElementById('btnTambah').style.visibility = 'hidden';
     }
 
     function lockPerDokEdit() {
@@ -239,6 +311,8 @@
         ddKabupaten.disabled = true;
         ddKecamatan.disabled = true;
         ddDesa.disabled = true;
+
+
     }
 
     function lockPerDokDelete() {
@@ -249,6 +323,9 @@
         ddKabupaten.disabled = true;
         ddKecamatan.disabled = true;
         ddDesa.disabled = true;
+        txtPid.disabled = true;
+        ddprs.disabled = true;
+        document.getElementById('btnTambah').style.visibility = 'hidden';
 
     }
 
@@ -284,6 +361,10 @@
                 + "&param2=" + txtPerDoc.value
                 + "&param3=" 
                 + "&param4=" + txtNoClam.value
+                + "&param5="
+                + "&param6="
+                + "&param7=" + ddprs.value
+                + "&param8="
                 + "";
 
         dhtmlxAjax.post(localURL, s, outputResponse);
@@ -312,8 +393,27 @@
                 //window.location.replace(newUrl);
                 close();
                 break;
+            case "ID":
+                txtPid.value = "";
+                alert("Data Berhasil di Input");
+                //window.location.replace(newUrl);
+                //close();
+                break;
+            case "DD":
+                txtPid.value = "";
+                alert("Data Berhasil di Delete");
+                //window.location.replace(newUrl);
+                //close();
+                break;
             case "nodelete":
                 alert("Data Persiapan Dokumen Tidak Dapat Dihapus Karena Sudah Dilalukan Verifikasi Dokumen");
+                break;
+            case "noadd":
+                alert("Data PID Sudah Ada");
+                break;
+                
+            case "nodeleted":
+                alert("Data Gagal Di Hapus");
                 break;
             case "noedit":
                 alert("Data Persiapan Dokumen Tidak Dapat Di Edit Karena Sudah Dilalukan  Verifikasi Dokumen");

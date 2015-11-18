@@ -4,11 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.UI.HtmlControls;
 using System.Configuration;
+using System.Collections;
 using System.Data;
 using System.Data.Sql;
 using System.Data.SqlClient;
 using System.IO;
+using Waindo.Conn;
 
 using System.Web.Services;
 
@@ -26,7 +29,8 @@ public partial class Pages_LandLiti_VerifikasiForm : System.Web.UI.Page
     protected String except = "";
     protected String userid = "";
     protected String groups = "";
-    private string _stFAsli; 
+    protected String Upload = "";
+    string _stFAsli;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -176,6 +180,153 @@ public partial class Pages_LandLiti_VerifikasiForm : System.Web.UI.Page
                 Response.End();
                 return false;
 
+            case "df":
+                Response.Clear();
+                string namafile = (Request.Params["filelama"] is object ? Request.Params["filelama"].ToString() : "");
+                String urlfile = (Request.Params["namafile"] is object ? Request.Params["namafile"].ToString() : "");
+                String randomfile = (Request.Params["random"] is object ? Request.Params["random"].ToString() : "");
+                string type = "";
+                switch (namafile.Substring(namafile.Length - 4))
+                {
+                    case ".htm":
+                    case ".html":
+                        type = "text/HTML";
+                        break;
+
+                    case ".txt":
+                        type = "text/plain";
+                        break;
+
+                    case ".doc":
+                    case ".docx":
+                    case ".rtf":
+                        type = "Application/msword";
+                        break;
+                    case ".xls":
+                    case ".xlsx":
+                        type = "Application/msexcel";
+                        break;
+
+                    case ".zip":
+                    case ".rar":
+                        type = "application/zip";
+                        break;
+
+                    case ".pdf":
+                        type = "application/pdf";
+                        break;
+                    case ".jpg":
+                        type = "image/JPG";
+                        break;
+                    case ".pgn":
+                        type = "image/PNG";
+                        break;
+                    case ".tif":
+                        type = "image/tif";
+                        break;
+                }
+
+                Response.AddHeader("content-disposition", "attachment;filename=" + namafile + "");
+                Response.ContentType = type;
+
+                Response.WriteFile(Server.MapPath(@"~/uploaddocument/" + Request.Params["namafile"].ToString().Replace("&amp;", "&")));
+
+                Response.End();
+                return false;
+                break;
+
+            case "LP":
+
+                String path_pic = (HttpContext.Current.Request.Url.AbsolutePath).ToLower();
+
+                 var param1 = Request.Params["param1"].ToString();
+                 var param2 = Request.Params["param2"].ToString();
+
+                ALMIS.ExecuteSTP eSTPx = new ALMIS.ExecuteSTP();
+                eSTPx.Datas();
+                DataSet dsx = new DataSet();
+                dsx = eSTPx.List9("P_VERDOK_D", param1, param2, "", "", "", "", "", "", "");
+
+                dt = dsx.Tables[0];
+
+                Response.ContentType = "application/xhtml+xml";
+                Response.Write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+                Response.Write("<rows>");
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    Random r = new Random();
+                    Response.Write("<row id=\"" + (i + 1).ToString() + "\">");
+
+                    Response.Write("<cell>" + (i + 1).ToString() + "</cell>");
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["PredokNmrPid"].ToString()) + "</cell>");
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["MidentNamass"].ToString()) + "</cell>");
+
+                    if (dt.Rows[i]["hdocumIdSour"].ToString() != "")
+                    {
+                        Response.Write("<cell>" + "Download^" + path_pic + "?sm=df&amp;namafile=" + dt.Rows[i]["hdocumIdLink"].ToString() + "&amp;filelama=" + dt.Rows[i]["hdocumFiless"].ToString() + "</cell>");
+                        //Response.Write("<cell>" + "Delete^" + path_pic + "?sm=Deletepic&amp;IDSOURCE=" + dt.Rows[i]["IDSource"].ToString() + "</cell>");
+                        Response.Write("<cell>" + RemoveWhiteSpace("Delete^javascript:DeletePic(\"" + dt.Rows[i]["hdocumIdLink"].ToString()) + "\",\"" + param2 + "\");^_self" + "</cell>");
+                    }
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["hdocumIdSour"].ToString()) + "</cell>");
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["hdocumIdLink"].ToString()) + "</cell>");
+
+                    Response.Write("</row>");
+                }
+                Response.Write("</rows>");
+                dt.Dispose();
+                Response.End();
+
+
+                return false;
+
+            case "SavePic":
+                Response.ContentType = "text/plain";
+                Response.Write(SaveUploadKlaimUser());
+                Response.End();
+                return false;
+
+            case "DOCpic":
+
+                String path_pic1 = (HttpContext.Current.Request.Url.AbsolutePath).ToLower();
+
+                string IDPerdok = Request.Params["IDPerdok"].ToString();
+                string param1z = Request.Params["param1"].ToString();
+
+                ALMIS.ExecuteSTP eSTPxz = new ALMIS.ExecuteSTP();
+                eSTPxz.Datas();
+                DataSet dsxz = new DataSet();
+                dsxz = eSTPxz.List9("P_VERDOK_D", param1z, IDPerdok, "", "", "", "", "", "", "");
+
+                dt = dsxz.Tables[0];
+
+                Response.ContentType = "application/xhtml+xml";
+                Response.Write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+                Response.Write("<rows>");
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    Random r = new Random();
+                    Response.Write("<row id=\"" + (i + 1).ToString() + "\">");
+
+                    Response.Write("<cell>" + (i + 1).ToString() + "</cell>");
+                   
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["hdocumFiless"].ToString()) + "</cell>");
+
+                    Response.Write("<cell>" + "Download^" + path_pic1 + "?sm=df&amp;namafile=" + dt.Rows[i]["hdocumIdLink"].ToString() + "&amp;filelama=" + dt.Rows[i]["hdocumFiless"].ToString() + "</cell>");
+                    //Response.Write("<cell>" + "Delete^" + path_pic + "?sm=Deletepic&amp;IDSOURCE=" + dt.Rows[i]["IDSource"].ToString() + "</cell>");
+                    Response.Write("<cell>" + RemoveWhiteSpace("Delete^javascript:DeletePic(\"" + dt.Rows[i]["hdocumIdLink"].ToString()) + "\",\"" + IDPerdok + "\");^_self" + "</cell>");
+
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["hdocumIdSour"].ToString()) + "</cell>");
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["hdocumIdLink"].ToString()) + "</cell>");
+
+                    Response.Write("</row>");
+                }
+                Response.Write("</rows>");
+                dt.Dispose();
+                Response.End();
+
+
+                return false;
+
             case "CRUD":
                 Response.ContentType = "text/plain";
                 Response.Write(CRUD());
@@ -260,7 +411,7 @@ public partial class Pages_LandLiti_VerifikasiForm : System.Web.UI.Page
     }
 
 
-    public void AjaxFileUploadIdentitasLahan_UploadComplete(object sender, AjaxControlToolkit.AjaxFileUploadEventArgs e)
+    public void AjaxFileUploadVerifikasi_UploadComplete(object sender, AjaxControlToolkit.AjaxFileUploadEventArgs e)
     {
 
         if (Session["userid"] is object)
@@ -289,12 +440,55 @@ public partial class Pages_LandLiti_VerifikasiForm : System.Web.UI.Page
             _stFAsli = System.IO.Path.GetFileName(e.FileName);
 
 
-            _stNomor = gn.GenerateNumber("", 101, 10, _stDates, userid);
+            _stNomor = gn.GenerateNumber("", 100, 12, _stDates, userid);
 
-            AjaxFileUploadIdentitasLahan.SaveAs(uploadFolder + _stNomor + ext.getExtsion());
+            AjaxFileUploadVerifikasi.SaveAs(uploadFolder + _stNomor + ext.getExtsion());
             e.PostedUrl = string.Format(e.FileName + "|" + _stNomor + "|" + userid + "|" + wilayah);
 
         }
     }
-  
+
+    private String SaveUploadKlaimUser()
+    {
+        string IDPerdok = Request.Params["IDPerdok"].ToString();
+        string _stNamaFile = Request.Params["NAMA"].ToString();
+        string _stKeterangan = Request.Params["KETERANGAN"].ToString();
+        string _stNomor = Request.Params["NOMOR"].ToString();
+
+        ALMIS.UploadFile uf = new ALMIS.UploadFile();
+        uf.Datas();
+
+        string _stDates = DateTime.Today.ToString("yyyyMMdd");
+
+        string param1 = Request.Params["param1"].ToString();
+        string param5 = Request.Params["param5"].ToString();
+        string user = Request.Params["user"].ToString();
+        string wilayah = Request.Params["wilay"].ToString();
+
+
+        string _stUploadKeterangan = "";
+        _stUploadKeterangan = _stKeterangan;
+
+        string uploadFolder = Request.PhysicalApplicationPath + "uploadDocument\\";
+        string extension = Path.GetExtension(_stNamaFile);
+
+        ALMIS.paramz ext = new ALMIS.paramz();
+
+        ALMIS.ExecuteSTP eSTP = new ALMIS.ExecuteSTP();
+        eSTP.Datas();
+        DataSet ds = new DataSet();
+
+        eSTP.save9("P_VERDOK_D", param1, IDPerdok, "", param5, _stKeterangan, "", "", "", "");
+
+        if (extension != ".exe")
+        {
+
+            uf.UploadFilesWeb("I", user, _stDates, "Verifikasi Dokumen", param5, uploadFolder, IDPerdok, _stNomor + extension, _stNamaFile, _stUploadKeterangan, "", "");
+        }
+
+        var _stOutput = ID;
+
+        return _stOutput;
+    }
+
 }

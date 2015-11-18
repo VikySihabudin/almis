@@ -186,6 +186,147 @@ public partial class Pages_LandLiti_LegalForm : System.Web.UI.Page
                 Response.End();
                 return false;
 
+            case "LP":
+
+                String path_pic = (HttpContext.Current.Request.Url.AbsolutePath).ToLower();
+
+                var param1LP = Request.Params["param1"].ToString();
+                var param2LP = Request.Params["param2"].ToString();
+
+                ALMIS.ExecuteSTP eSTPx = new ALMIS.ExecuteSTP();
+                eSTPx.Datas();
+                DataSet dsx = new DataSet();
+                dsx = eSTPx.List9("P_VERDOK_D", param1LP, param2LP, "", "", "", "", "", "", "");
+
+                dt = dsx.Tables[0];
+
+                Response.ContentType = "application/xhtml+xml";
+                Response.Write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+                Response.Write("<rows>");
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    Random r = new Random();
+                    Response.Write("<row id=\"" + (i + 1).ToString() + "\">");
+
+                    Response.Write("<cell>" + (i + 1).ToString() + "</cell>");
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["PredokNmrPid"].ToString()) + "</cell>");
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["MidentNamass"].ToString()) + "</cell>");
+
+                    if (dt.Rows[i]["hdocumIdSour"].ToString() != "")
+                    {
+                        Response.Write("<cell>" + "Download^" + path_pic + "?sm=df&amp;namafile=" + dt.Rows[i]["hdocumIdLink"].ToString() + "&amp;filelama=" + dt.Rows[i]["hdocumFiless"].ToString() + "</cell>");
+                        //Response.Write("<cell>" + "Delete^" + path_pic + "?sm=Deletepic&amp;IDSOURCE=" + dt.Rows[i]["IDSource"].ToString() + "</cell>");
+                        Response.Write("<cell>" + RemoveWhiteSpace("Delete^javascript:DeletePic(\"" + dt.Rows[i]["hdocumIdLink"].ToString()) + "\",\"" + param2 + "\");^_self" + "</cell>");
+                    }
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["hdocumIdSour"].ToString()) + "</cell>");
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["hdocumIdLink"].ToString()) + "</cell>");
+
+                    Response.Write("</row>");
+                }
+                Response.Write("</rows>");
+                dt.Dispose();
+                Response.End();
+
+
+                return false;
+
+            case "DOCpic":
+
+                String path_pic1 = (HttpContext.Current.Request.Url.AbsolutePath).ToLower();
+
+                string IDPerdok = Request.Params["IDPerdok"].ToString();
+                string param1z = Request.Params["param1"].ToString();
+
+                ALMIS.ExecuteSTP eSTPxz = new ALMIS.ExecuteSTP();
+                eSTPxz.Datas();
+                DataSet dsxz = new DataSet();
+                dsxz = eSTPxz.List9("P_VERDOK_D", param1z, IDPerdok, "", "", "", "", "", "", "");
+
+                dt = dsxz.Tables[0];
+
+                Response.ContentType = "application/xhtml+xml";
+                Response.Write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+                Response.Write("<rows>");
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    Random r = new Random();
+                    Response.Write("<row id=\"" + (i + 1).ToString() + "\">");
+
+                    Response.Write("<cell>" + (i + 1).ToString() + "</cell>");
+
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["hdocumFiless"].ToString()) + "</cell>");
+
+                    Response.Write("<cell>" + "Download^" + path_pic1 + "?sm=df&amp;namafile=" + dt.Rows[i]["hdocumIdLink"].ToString() + "&amp;filelama=" + dt.Rows[i]["hdocumFiless"].ToString() + "</cell>");
+                    //Response.Write("<cell>" + "Delete^" + path_pic + "?sm=Deletepic&amp;IDSOURCE=" + dt.Rows[i]["IDSource"].ToString() + "</cell>");
+                    Response.Write("<cell>" + RemoveWhiteSpace("Delete^javascript:DeletePic(\"" + dt.Rows[i]["hdocumIdLink"].ToString()) + "\",\"" + IDPerdok + "\");^_self" + "</cell>");
+
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["hdocumIdSour"].ToString()) + "</cell>");
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["hdocumIdLink"].ToString()) + "</cell>");
+
+                    Response.Write("</row>");
+                }
+                Response.Write("</rows>");
+                dt.Dispose();
+                Response.End();
+
+
+                return false;
+
+            case "df":
+                Response.Clear();
+                string namafile = (Request.Params["filelama"] is object ? Request.Params["filelama"].ToString() : "");
+                String urlfile = (Request.Params["namafile"] is object ? Request.Params["namafile"].ToString() : "");
+                String randomfile = (Request.Params["random"] is object ? Request.Params["random"].ToString() : "");
+                string type = "";
+                switch (namafile.Substring(namafile.Length - 4))
+                {
+                    case ".htm":
+                    case ".html":
+                        type = "text/HTML";
+                        break;
+
+                    case ".txt":
+                        type = "text/plain";
+                        break;
+
+                    case ".doc":
+                    case ".docx":
+                    case ".rtf":
+                        type = "Application/msword";
+                        break;
+                    case ".xls":
+                    case ".xlsx":
+                        type = "Application/msexcel";
+                        break;
+
+                    case ".zip":
+                    case ".rar":
+                        type = "application/zip";
+                        break;
+
+                    case ".pdf":
+                        type = "application/pdf";
+                        break;
+                    case ".jpg":
+                        type = "image/JPG";
+                        break;
+                    case ".pgn":
+                        type = "image/PNG";
+                        break;
+                    case ".tif":
+                        type = "image/tif";
+                        break;
+                }
+
+                Response.AddHeader("content-disposition", "attachment;filename=" + namafile + "");
+                Response.ContentType = type;
+
+                Response.WriteFile(Server.MapPath(@"~/uploaddocument/" + Request.Params["namafile"].ToString().Replace("&amp;", "&")));
+
+                Response.End();
+                return false;
+                break;
+
             case "CRUD":
                 Response.ContentType = "text/plain";
                 Response.Write(CRUD());

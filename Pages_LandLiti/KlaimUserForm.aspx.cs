@@ -31,9 +31,10 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
-        Upload = Request.Params["param1"].ToString();
-
+        if (Request.Params["param1"] is object)
+        {
+            Upload = Request.Params["param1"].ToString();
+        }
         if (Session["userid"] is object)
         {
             userid = Session["userid"].ToString();

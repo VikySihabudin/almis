@@ -19,20 +19,20 @@
 	<form role="form" class="form-horizontal" action="#">
         <div class="form-group">
             <label for="identitas" class="control-label col-md-2">Date</label>
-            <div class="col-md-3"><asp:TextBox ID="txtNoIdentitas" class="form-control input-md" runat="server" value="" ></asp:TextBox></div>			           
+            <div class="col-md-3"><asp:TextBox ID="txtDate" class="form-control input-md" runat="server" value="" ></asp:TextBox></div>			           
         </div>
 
         
 		<div class="form-group">
             <label for="nama" class="control-label col-md-2">Company</label>
-            <div class="col-md-3"><asp:TextBox ID="txtNama" class="form-control input-md" runat="server" value= "ASNAWI "></asp:TextBox></div>
-            <div class="col-md-3"><input type="button" id="Button3" value="Cari"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>
+            <div class="col-md-3"><asp:TextBox ID="txtCompany" class="form-control input-md" runat="server" value= ""></asp:TextBox></div>
+            <div class="col-md-3"><input type="button" id="BtnCompany" value="Cari"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>
         </div>
 
 		<div class="form-group">
             <label for="nama" class="control-label col-md-2">Matter</label>
 			<div class="col-md-3">
-				<asp:TextBox id="txtAlamat" TextMode="multiline" class="form-control input-md" value ="Jalan Bogor Raya" Columns="15" Rows="3" runat="server" placeholder= "DESKIPSI"/>
+				<asp:TextBox id="txtMatter" TextMode="multiline" class="form-control input-md" value ="" Columns="15" Rows="3" runat="server"/>
 			</div>
         </div>
 
@@ -40,8 +40,8 @@
 		
 		<div class="form-group">
             <label for="nama" class="control-label col-md-2">Request by Position</label>
-            <div class="col-md-3"><asp:TextBox ID="txtNoHandphone" class="form-control input-md" runat="server" value="Manager" ></asp:TextBox></div>
-            <div class="col-md-3"><input type="button" id="Button2" value="Add Person"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>        
+            <div class="col-md-3"><asp:TextBox ID="txtRequestBy" class="form-control input-md" runat="server" value="" ></asp:TextBox></div>
+            <div class="col-md-3"><input type="button" id="BtnRequstBy" value="Add Person"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>        
         </div>
 
        <div class="form-group">
@@ -64,7 +64,7 @@
         <div class="form-group">
             <asp:Label  ID="LEksepsi" runat="server"  for="identitas" class="control-label col-md-2" Text="Identified Key Objectives And Their Relevant Issues" Font-Bold="True"></asp:Label>
             <div class="col-md-3">
-            <asp:CheckBox ID="cbEksepsi" runat="server" text="Yes" onclick="validasi()" /></div>
+            <asp:CheckBox ID="cbIdentified" runat="server" text="Yes" onclick="validasi()" /></div>
         </div>
         </div>
 
@@ -72,7 +72,7 @@
         <div class="form-group">
             <asp:Label  ID="Label1" runat="server"  for="identitas" class="control-label col-md-2" Text="Collect The Data And Information" Font-Bold="True"></asp:Label>
             <div class="col-md-3">
-            <asp:CheckBox ID="CheckBox1" runat="server" text="Yes" onclick="validasi()" /></div>
+            <asp:CheckBox ID="cbCollect" runat="server" text="Yes" onclick="validasi()" /></div>
         </div>
         </div>
 
@@ -82,20 +82,20 @@
 
 		<div class="form-group">
             <label for="nama" class="control-label col-md-2">LMS Project Analyst</label>
-            <div class="col-md-3"><asp:TextBox ID="TextBox1" class="form-control input-md" runat="server" value="Tony" ></asp:TextBox></div>
-            <div class="col-md-3"><input type="button" id="Button1" value="Cari"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>        
+            <div class="col-md-3"><asp:TextBox ID="txtLMSPA" class="form-control input-md" runat="server" value="" ></asp:TextBox></div>
+            <div class="col-md-3"><input type="button" id="btnLMSPA" value="Cari"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>        
         </div>
 
 		<div class="form-group">
             <label for="nama" class="control-label col-md-2">PIC Applicant Company</label>
-            <div class="col-md-3"><asp:TextBox ID="TextBox2" class="form-control input-md" runat="server" value="Chandara" ></asp:TextBox></div>
-            <div class="col-md-3"><input type="button" id="Button4" value="Cari"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>        
+            <div class="col-md-3"><asp:TextBox ID="txtPIC" class="form-control input-md" runat="server" value="" ></asp:TextBox></div>
+            <div class="col-md-3"><input type="button" id="btnPIC" value="Cari"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>        
         </div>
 
 		<div class="form-group">
             <label for="nama" class="control-label col-md-2">LMS Project Manager</label>
-            <div class="col-md-3"><asp:TextBox ID="TextBox3" class="form-control input-md" runat="server" value="Asep saepullah" ></asp:TextBox></div>
-            <div class="col-md-3"><input type="button" id="Button5" value="Cari"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>        
+            <div class="col-md-3"><asp:TextBox ID="txtLMSPM" class="form-control input-md" runat="server" value="" ></asp:TextBox></div>
+            <div class="col-md-3"><input type="button" id="btnLMSPM" value="Cari"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>        
         </div>
 
         <hr />
@@ -119,7 +119,7 @@
        
                      <input type="button" id="btnCancel" value="Cancel" class="btn btn-lg btn-default"  onclick="btnClick(this)" PostBackUrl="~/Pages/PraRegistrasiForm.aspx"/> 
                      <input type="button" id="btnSave" value="Save"  class="btn btn-lg btn-success" onclick="btnClick(this)" />  
-                     <input type="button" id="Button6" value="Print"  class="btn btn-info btn-lg" onclick="btnAdd(this)" />
+                     <input type="button" id="btnPrint" value="Print"  class="btn btn-info btn-lg" onclick="btnAdd(this)" />
               
             </div>
     </div>
@@ -140,12 +140,35 @@
 
 <script type="text/javascript">
 
+    var txtDate = document.getElementById("<%= txtDate.ClientID %>");
+    var txtCompany = document.getElementById("<%= txtCompany.ClientID %>");
+    var txtMatter = document.getElementById("<%= txtMatter.ClientID %>");
+    var txtRequestBy = document.getElementById("<%= txtRequestBy.ClientID %>");
+    var cbIdentified = document.getElementById("<%= cbIdentified.ClientID %>");
+    var cbCollect = document.getElementById("<%= cbCollect.ClientID %>");
+    var txtLMSPA = document.getElementById("<%= txtLMSPA.ClientID %>");
+    var txtPIC = document.getElementById("<%= txtPIC.ClientID %>");
+    var txtLMSPM = document.getElementById("<%= txtLMSPM.ClientID %>");
+    var ddLanjut = document.getElementById("<%= ddLanjut.ClientID %>");
+
+    var btnSave = document.getElementById("btnSave");
+    var btnCancel = document.getElementById("btnCancel");
+    var btnPrint = document.getElementById("btnPrint");
+    var Hidmode = document.getElementById("Hidmode");
+
+    var BtnCompany = document.getElementById("BtnCompany");
+    var BtnRequestBy = document.getElementById("BtnRequestBy");
+    var btnLMSPA = document.getElementById("btnLMSPA");
+    var btnPIC = document.getElementById("btnPIC");
+    var btnLMSPM = document.getElementById("btnLMSPM");
+    
+
     listFCMF();
     SearchlistFCMF();
 
 
-    $(function txtNoIdentitas() {
-        $("[id$=txtNoIdentitas]").datepicker({
+    $(function txtDate() {
+        $("[id$=txtDate]").datepicker({
             dateFormat: "yy-mm-dd",
             buttonImageOnly: true,
             changeYear: true,

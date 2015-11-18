@@ -19,39 +19,39 @@
 	<form role="form" class="form-horizontal" action="#">
         <div class="form-group">
             <label for="identitas" class="control-label col-md-2">Date</label>
-            <div class="col-md-3"><asp:TextBox ID="txtNoIdentitas" class="form-control input-md" runat="server" value="" ></asp:TextBox></div>			           
+            <div class="col-md-3"><asp:TextBox ID="txtDate" class="form-control input-md" runat="server" value="" ></asp:TextBox></div>			           
         </div>
 
         
 		<div class="form-group">
             <label for="nama" class="control-label col-md-2">Company</label>
-            <div class="col-md-3"><asp:TextBox ID="txtNama" class="form-control input-md" runat="server" value= "VIRAMA KARYA"></asp:TextBox></div>
-          <div class="col-md-3"><input type="button" id="Button2" value="Cari"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>
+            <div class="col-md-3"><asp:TextBox ID="txtCompany" class="form-control input-md" runat="server" value= ""></asp:TextBox></div>
+          <div class="col-md-3"><input type="button" id="btnCompany" value="Cari"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>
         </div>
 
 		<div class="form-group">
             <label for="nama" class="control-label col-md-2">Project</label>
-            <div class="col-md-3"><asp:TextBox ID="TextBox13" class="form-control input-md" runat="server" value="PENENTUAN JARAK JAUH " ></asp:TextBox></div>
+            <div class="col-md-3"><asp:TextBox ID="txtProject" class="form-control input-md" runat="server" value="" ></asp:TextBox></div>
         </div>
 		
         <div class="form-group">
             <label for="nama" class="control-label col-md-2">Objectives</label>
-            <div class="col-md-3"><asp:TextBox ID="TextBox5" class="form-control input-md" runat="server" value="LAYER" ></asp:TextBox></div>
+            <div class="col-md-3"><asp:TextBox ID="txtObjectives" class="form-control input-md" runat="server" value="" ></asp:TextBox></div>
         </div>
 
 		<div class="form-group">
             <label for="nama" class="control-label col-md-2">Process</label>
-            <div class="col-md-3"><asp:TextBox ID="txtNoHandphone" class="form-control input-md" runat="server" value="DALAM PROSES" ></asp:TextBox></div>
+            <div class="col-md-3"><asp:TextBox ID="txtProcess" class="form-control input-md" runat="server" value="" ></asp:TextBox></div>
         </div>
 		
 		<div class="form-group">
             <label for="nama" class="control-label col-md-2">Waktu</label>
-            <div class="col-md-3"><asp:TextBox ID="TextBox1" class="form-control input-md" runat="server" value="12:13" ></asp:TextBox></div>
+            <div class="col-md-3"><asp:TextBox ID="txtWaktu" class="form-control input-md" runat="server" value="" ></asp:TextBox></div>
         </div>
 		
 		<div class="form-group">
             <label for="nama" class="control-label col-md-2">Biaya</label>
-            <div class="col-md-3"><asp:TextBox ID="TextBox2" class="form-control input-md" runat="server" value="RP : 300000000" ></asp:TextBox></div>
+            <div class="col-md-3"><asp:TextBox ID="txtBiaya" class="form-control input-md" runat="server" value="" ></asp:TextBox></div>
         </div>
 		
             <hr />
@@ -60,14 +60,14 @@
 
 		<div class="form-group">
             <label for="nama" class="control-label col-md-2">Nama Perusahaan</label>
-            <div class="col-md-3"><asp:TextBox ID="TextBox14" class="form-control input-md" runat="server" value= "ATMA JAYA"></asp:TextBox></div>
-          <div class="col-md-3"><input type="button" id="Button3" value="Cari"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>
+            <div class="col-md-3"><asp:TextBox ID="txtNamaPerusahaan" class="form-control input-md" runat="server" value= ""></asp:TextBox></div>
+          <div class="col-md-3"><input type="button" id="BtnNamaPerusahaan" value="Cari"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>
         </div>
 
 		<div class="form-group">
             <label for="nama" class="control-label col-md-2">Nama</label>
-            <div class="col-md-3"><asp:TextBox ID="TextBox15" class="form-control input-md" runat="server" value= "SAEPULLAH"></asp:TextBox></div>
-          <div class="col-md-3"><input type="button" id="Button10" value="Cari"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>
+            <div class="col-md-3"><asp:TextBox ID="txtNama" class="form-control input-md" runat="server" value= ""></asp:TextBox></div>
+          <div class="col-md-3"><input type="button" id="BtnNama" value="Cari"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>
         </div>
 
         <hr />
@@ -76,14 +76,14 @@
 
 		<div class="form-group">
             <label for="nama" class="control-label col-md-2">Nama Perusahaan</label>
-            <div class="col-md-3"><asp:TextBox ID="TextBox3" class="form-control input-md" runat="server" value= "PT ENERJI INDONESIA"></asp:TextBox></div>
-          <div class="col-md-3"><input type="button" id="Button1" value="Cari"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>
+            <div class="col-md-3"><asp:TextBox ID="txtApprovedBy" class="form-control input-md" runat="server" value= ""></asp:TextBox></div>
+          <div class="col-md-3"><input type="button" id="BtnApprovedBy" value="Cari"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>
         </div>
 
 		<div class="form-group">
             <label for="nama" class="control-label col-md-2">Nama</label>
-            <div class="col-md-3"><asp:TextBox ID="TextBox4" class="form-control input-md" runat="server" value= "PUJIANTA"></asp:TextBox></div>
-          <div class="col-md-3"><input type="button" id="Button4" value="Cari"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>
+            <div class="col-md-3"><asp:TextBox ID="txtApprovedNama" class="form-control input-md" runat="server" value= ""></asp:TextBox></div>
+          <div class="col-md-3"><input type="button" id="BtnApprovedNama" value="Cari"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>
         </div>
 
         <hr />
@@ -109,7 +109,7 @@
        
                      <input type="button" id="btnCancel" value="Cancel" class="btn btn-lg btn-default"  onclick="btnClick(this)" PostBackUrl="~/Pages/PraRegistrasiForm.aspx"/> 
                      <input type="button" id="btnSave" value="Save"  class="btn btn-lg btn-success" onclick="btnClick(this)" />  
-                     <input type="button" id="Button9" value="Print"  class="btn btn-info btn-lg" onclick="btnAdd(this)" />  
+                     <input type="button" id="btnPrint" value="Print"  class="btn btn-info btn-lg" onclick="btnAdd(this)" />  
             </div>
     </div>
 
@@ -129,8 +129,32 @@
 
     <script type="text/jscript">
 
-        $(function txtNoIdentitas() {
-            $("[id$=txtNoIdentitas]").datepicker({
+        var txtDate = document.getElementById("<%= txtDate.ClientID %>");
+        var txtCompany = document.getElementById("<%= txtCompany.ClientID %>");
+        var txtProject = document.getElementById("<%= txtProject.ClientID %>");
+        var txtObjectives = document.getElementById("<%= txtObjectives.ClientID %>");
+        var txtProcess = document.getElementById("<%= txtProcess.ClientID %>");
+        var txtWaktu = document.getElementById("<%= txtWaktu.ClientID %>");
+        var txtBiaya = document.getElementById("<%= txtBiaya.ClientID %>");
+        var txtNamaPerusahaan = document.getElementById("<%= txtNamaPerusahaan.ClientID %>");
+        var txtNama = document.getElementById("<%= txtNama.ClientID %>");
+        var txtApprovedBy = document.getElementById("<%= txtApprovedBy.ClientID %>");
+        var txtApprovedNama = document.getElementById("<%= txtApprovedNama.ClientID %>");
+        var ddLanjut = document.getElementById("<%= ddLanjut.ClientID %>");
+
+        var btnSave = document.getElementById("btnSave");
+        var btnCancel = document.getElementById("btnCancel");
+        var btnPrint = document.getElementById("btnPrint");
+        var Hidmode = document.getElementById("Hidmode");
+
+        var BtnCompany = document.getElementById("BtnCompany");
+        var BtnNamaPerusahaan = document.getElementById("BtnNamaPerusahaan");
+        var BtnNama = document.getElementById("BtnNama");
+        var BtnApprovedBy = document.getElementById("BtnApprovedBy");
+        var BtnApprovedNama = document.getElementById("BtnApprovedNama");
+
+        $(function txtDate() {
+            $("[id$=txtDate]").datepicker({
                 dateFormat: "yy-mm-dd",
                 buttonImageOnly: true,
                 changeYear: true,
