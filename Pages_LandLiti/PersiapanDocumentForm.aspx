@@ -65,11 +65,8 @@
 		<br />
 
         <div class="form-group">
-            <label for="nama" class="control-label col-md-2">No PID</label>
-            <div class="col-md-2"><asp:TextBox ID="txtPid" class="form-control input-md"  runat="server"></asp:TextBox></div>
-
             <div class="col-md-2">
-                <input type="button" onclick="CRUD_D()" id="btnTambah" value="Tambah" class="btn btn-info btn-md" />
+                <input type="button" onclick="OpenDialog()" id="btnTambah" value="Tambah PID" class="btn btn-info btn-md" />
                 
             </div>
         </div>
@@ -106,6 +103,28 @@
       </footer>
     <%--Footer Akhir--%>
 
+
+
+<div id="dialogPersiapan" title="Cari PID" style="font-size:small;">
+    <div role="form" class="form-horizontal" >
+
+    <div class="form-group">
+
+    </div>
+
+       <div class="form-group">
+       <div class="col-md-10">
+            <div style=" width:560px; height:250px;">
+                <div id="GridPidCari" style=" width:100%; height:100%; background-color:white; border: 1px solid #A4BED4"></div>
+                <div id="PagePidCari"> </div>
+            </div>
+        </div>
+        </div>
+
+
+    </div>
+</div>
+
 <script type="text/javascript">
 
     var localURL = "PersiapanDocumentForm.aspx";
@@ -121,7 +140,6 @@
 
     var ddprs = document.getElementById("<%= ddprs.ClientID %>");
 
-    var txtPid = document.getElementById("<%= txtPid.ClientID %>");
     
     var hidMode = document.getElementById("hidMode");
 
@@ -131,7 +149,78 @@
     
 
     listPID();
+    listPidCari();
     terimaURL();
+
+
+    $(function () {
+        $("#dialogPersiapan").dialog
+        ({
+            autoOpen: false,
+            width: 620,
+            height: 420,
+            modal: true
+        });
+
+        $(".btnSubmit").on("click", function () {
+
+            $("#dialogPersiapan").dialog("close");
+        });
+    });
+
+    function OpenDialog() {
+
+        $("#dialogPersiapan").dialog("open");
+
+    }
+
+    function onRowSelected(rowId, cellIndex) {
+
+        var r = confirm("Apakah Anda Ingin Menambahkan Pid " + listPidCari.cells(rowId, 1).getValue() );
+        if (r == true) {
+
+            var s = ""
+                    + "rnd=" + Math.random() * 4
+                    + "&sm=CRUD_D"
+                    + "&param1=I"
+                    + "&param2=" + txtNoClam.value
+                    + "&param3="
+                    + "&param4="
+                    + "&param5=" + listPidCari.cells(rowId, 1).getValue()
+                    + "&param6="
+                    + "&param7="
+                    + "&param8=" + ddprs.value
+                    + "&param9="
+                    + "";
+
+            dhtmlxAjax.post(localURL, s, outputResponse);
+            SearchlistPID();
+
+            $("#dialogPersiapan").dialog("close");
+        }
+    }
+
+
+    function Hapus(sm, param1, param5) {
+        var r = confirm("Delete?");
+        if (r == true) {
+            var s = ""
+                    + "rnd=" + Math.random() * 4
+			        + "&sm=CRUD_D"
+                    + "&param1=" + param1
+                    + "&param2=" + txtNoClam.value
+                    + "&param3="
+                    + "&param4="
+                    + "&param5=" + param5
+                    + "&param6="
+                    + "&param7="
+                    + "&param8=" + ddprs.value
+                    + "&param9="
+                    + "";
+            dhtmlxAjax.post(localURL, s, outputResponse);
+            SearchlistPID();
+        }
+    }
     
 
     function terimaURL() {
@@ -218,47 +307,10 @@
             ddprs.value = b[6];
         }
         SearchlistPID();
+        SearchlistPIDCari();
     }
 
-    function CRUD_D() {
-        var s = ""
-                + "rnd=" + Math.random() * 4
-			    + "&sm=CRUD_D"
-                + "&param1=I" 
-                + "&param2=" + txtNoClam.value
-                + "&param3="
-                + "&param4="
-                + "&param5=" + txtPid.value
-                + "&param6="
-                + "&param7="
-                + "&param8=" + ddprs.value
-                + "&param9="
-                + "";
 
-        dhtmlxAjax.post(localURL, s, outputResponse);
-        SearchlistPID();
-    }
-
-    function Hapus(sm, param1, param5) {
-        var r = confirm("Delete?");
-        if (r == true) {
-            var s = ""
-                    + "rnd=" + Math.random() * 4
-			        + "&sm=CRUD_D"
-                    + "&param1=" + param1
-                    + "&param2=" + txtNoClam.value
-                    + "&param3="
-                    + "&param4="
-                    + "&param5=" + param5
-                    + "&param6="
-                    + "&param7="
-                    + "&param8=" + ddprs.value
-                    + "&param9="
-                    + "";
-            dhtmlxAjax.post(localURL, s, outputResponse);
-            SearchlistPID();
-        }
-    }
 
     function SearchlistPID(id) {
 
@@ -271,6 +323,39 @@
         listPID.clearAll();
         listPID.loadXML(localURL + "?" + s);
     }
+
+    function SearchlistPIDCari(id) {
+
+        var s = ""
+			+ "rnd=" + Math.random() * 4
+			+ "&sm=LP"
+            + "&param1=LP"
+            + "&param2="
+			+ "";
+        listPidCari.clearAll();
+        listPidCari.loadXML(localURL + "?" + s);
+    }
+
+
+
+    function listPidCari() {
+        listPidCari = new dhtmlXGridObject('GridPidCari');
+        listPidCari.setImagePath("../JavaScript/codebase/imgs/");
+        listPidCari.setHeader("No,No PID,Nama Penjual");
+        listPidCari.setInitWidths("60,200,300");
+        listPidCari.setColAlign("left,left,left");
+        listPidCari.setColTypes("ro,ro,ro");
+        listPidCari.init();
+        listPidCari.setSkin("dhx_skyblue");
+
+        listPidCari.attachEvent("onRowSelect", onRowSelected);
+
+        listPidCari.setColSorting("str,str,str");
+        listPidCari.attachHeader("#text_filter,#text_filter,#text_filter");
+        listPidCari.enablePaging(true, 15, 5, "PagePidCari", true);
+        listPidCari.setPagingSkin("bricks");
+    }
+
 
 
     function listPID() {
@@ -297,7 +382,7 @@
         ddKabupaten.disabled = true;
         ddKecamatan.disabled = true;
         ddDesa.disabled = true;
-        txtPid.disabled = true;
+        
         ddprs.disabled = true;
         document.getElementById('btnSave').style.visibility = 'hidden';
         document.getElementById('btnTambah').style.visibility = 'hidden';
@@ -323,7 +408,7 @@
         ddKabupaten.disabled = true;
         ddKecamatan.disabled = true;
         ddDesa.disabled = true;
-        txtPid.disabled = true;
+        
         ddprs.disabled = true;
         document.getElementById('btnTambah').style.visibility = 'hidden';
 
@@ -394,13 +479,13 @@
                 close();
                 break;
             case "ID":
-                txtPid.value = "";
+                
                 alert("Data Berhasil di Input");
                 //window.location.replace(newUrl);
                 //close();
                 break;
             case "DD":
-                txtPid.value = "";
+                
                 alert("Data Berhasil di Delete");
                 //window.location.replace(newUrl);
                 //close();

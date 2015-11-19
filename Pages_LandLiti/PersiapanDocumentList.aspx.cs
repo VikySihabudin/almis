@@ -87,7 +87,7 @@ public partial class Pages_LandLiti_PersiapanDocumentList : System.Web.UI.Page
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["ClausrLokKab"].ToString()) + "</cell>");
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["ClausrLokKec"].ToString()) + "</cell>");
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["ClausrLokDes"].ToString()) + "</cell>");
-                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["PredokKodPer"].ToString()) + "</cell>");
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["perusaNamass"].ToString()) + "</cell>");
                     if (dt.Rows[i]["ClausrNmrClm"].ToString() != "")
                     {
 

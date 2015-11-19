@@ -134,15 +134,15 @@
     function listMasterKlaimUser() {
         listMasterKlaimUser = new dhtmlXGridObject('gridMasterIdentitas');
         listMasterKlaimUser.setImagePath("../JavaScript/codebase/imgs/");
-        listMasterKlaimUser.setHeader("No,No Claim,Nama , Kabupaten, Kecamatan,Desa,Action,#cspan,#cspan,#cspan");
-        listMasterKlaimUser.setInitWidths("50,188,188,150,150,150,62,62,62");
-        listMasterKlaimUser.setColAlign("left,left,left,left,left,left,left,left,left");
-        listMasterKlaimUser.setColTypes("ed,ed,ed,ed,ed,ed,link,link,link");
+        listMasterKlaimUser.setHeader("No,No Claim,Nama , Kabupaten, Kecamatan,Desa,Nama Perusahaan,Action,#cspan,#cspan,#cspan");
+        listMasterKlaimUser.setInitWidths("50,188,188,150,150,150,150,62,62,62");
+        listMasterKlaimUser.setColAlign("left,left,left,left,left,left,left,left,left,left");
+        listMasterKlaimUser.setColTypes("ed,ed,ed,ed,ed,ed,ed,link,link,link");
         listMasterKlaimUser.init();
         listMasterKlaimUser.setSkin("dhx_skyblue");
 
-        listMasterKlaimUser.setColSorting("str,str,str,str,str,str,str");
-        listMasterKlaimUser.attachHeader("#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter");
+        listMasterKlaimUser.setColSorting("str,str,str,str,str,str,str,str");
+        listMasterKlaimUser.attachHeader("#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter");
         listMasterKlaimUser.enablePaging(true, 15, 5, "pageMasterIdentitas", true);
         listMasterKlaimUser.setPagingSkin("bricks");
     }

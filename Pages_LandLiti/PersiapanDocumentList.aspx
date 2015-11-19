@@ -120,7 +120,7 @@
     function listPersiapanDocument() {
         listPersiapanDocument = new dhtmlXGridObject('gridMasterIdentitas');
         listPersiapanDocument.setImagePath("../JavaScript/codebase/imgs/");
-        listPersiapanDocument.setHeader("No,No Persiapan Document,No klaim,Nama,Kabupaten,Kecamatan,Desa ,Kode Perusahaan,Action,#cspan,#cspan,#cspan");
+        listPersiapanDocument.setHeader("No,No Persiapan Document,No klaim,Nama,Kabupaten,Kecamatan,Desa ,Nama Perusahaan,Action,#cspan,#cspan,#cspan");
         listPersiapanDocument.setInitWidths("50,188,188,150,120,120,150,150,62,62,62");
         listPersiapanDocument.setColAlign("left,left,left,left,left,left,left,left,left,left,left");
         listPersiapanDocument.setColTypes("ed,ed,ed,ed,ed,ed,ed,ed,link,link,link");

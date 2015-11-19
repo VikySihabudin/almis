@@ -13,7 +13,7 @@
 <div class="form-group"> 
      <div class="col-lg-12" style=" width:100%; height:100%;">
            <div class="col-sm-2">
-                <asp:DropDownList ID="ddprg" runat="server" class="form-control" >
+                <asp:DropDownList ID="ddprg" runat="server" class="form-control" onclick="handleClick()" >
                 </asp:DropDownList>
             </div>
 
@@ -30,7 +30,7 @@
             </div>
 
             <div class="col-lg-1">
-                <input type="button" id="btnRefresh" value="Refresh" class="btn btn-info btn-md"  />
+                <input type="button" id="btnRefresh" value="Refresh" class="btn btn-info btn-md" onclick="refresh()"  />
             </div>
 
 
@@ -142,8 +142,8 @@
             + "&param5=" + txtDateAkhir.value
 			+ "";
             listVerikasi.clearAll();
-            listVerikasi.loadXML("../xml/ListVerifikasi.xml");
-            //listVerikasi.loadXML(localURL + "?" + s);
+            //listVerikasi.loadXML("../xml/ListVerifikasi.xml");
+            listVerikasi.loadXML(localURL + "?" + s);
             //alert(s);
         }
     }

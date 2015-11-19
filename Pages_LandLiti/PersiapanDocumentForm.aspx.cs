@@ -179,6 +179,8 @@ public partial class Pages_LandLiti_PersiapanDocumentForm : System.Web.UI.Page
                 Response.End();
                 return false;
 
+
+
             case "L":
 
                 param1 = Request.Params["param1"].ToString();
@@ -208,6 +210,38 @@ public partial class Pages_LandLiti_PersiapanDocumentForm : System.Web.UI.Page
                 dt.Dispose();
 
                 Response.End();
+                Response.End();
+
+                return false;
+
+            case "LP":
+
+                var param1l = Request.Params["param1"].ToString();
+                var param2l = Request.Params["param2"].ToString();
+
+                ALMIS.ExecuteSTP eSTPx = new ALMIS.ExecuteSTP();
+                eSTPx.Datas();
+                DataSet dsx = new DataSet();
+                dsx = eSTPx.List9("P_PREDOK_D", param1l, param2l, "", "", "", "", "", "", "");
+                dt = dsx.Tables[0];
+
+                Response.ContentType = "application/xhtml+xml";
+                Response.Write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+                Response.Write("<rows>");
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    Random r = new Random();
+                    Response.Write("<row id=\"" + (i + 1).ToString() + "\">");
+
+                    Response.Write("<cell>" + (i + 1).ToString() + "</cell>");
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["pengtoNmrPid"].ToString()) + "</cell>");
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["MidentNamass"].ToString()) + "</cell>");
+
+                    Response.Write("</row>");
+                }
+
+                Response.Write("</rows>");
+                dt.Dispose();
                 Response.End();
 
                 return false;
