@@ -28,7 +28,6 @@ public partial class Pages_PraRegistrasiList : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
         bool normal = true;
         if (normal && (Request.Params["sm"] is object)) normal = ServiceSelect(Request.Params["sm"].ToString());
 
@@ -55,20 +54,20 @@ public partial class Pages_PraRegistrasiList : System.Web.UI.Page
         {
             Response.Write("<script language=\"javascript\" type=\"text/javascript\">");
             Response.Write("alert('Session sudah habis. Silakan login kembali.');");
-            Response.Write("location.href = '../Pages/login.aspx';");
+            Response.Write("location.href = '../login.aspx';");
             Response.Write("</script>");
         }
         
         ALMIS.ExecuteSTP eSTP = new ALMIS.ExecuteSTP();
         eSTP.Datas();
         DataSet ds = new DataSet();
-        ds = eSTP.List8("P_MENU", "CHA", "", groups, "", "", "", "", "");
+        ds = eSTP.List8("P_MENU", "CHA", "", groups, "Pra Registrasi", "", "", "", "");
         dt = ds.Tables[0];
-        
-        PraRegistrasiView = dt.Rows[0]["PraRegistrasi"].ToString(); //0
-        PraRegistrasiEdit = dt.Rows[0]["PraRegistrasiEdit"].ToString(); //1
-        PraRegistrasiDelete = dt.Rows[0]["PraRegistrasiDelete"].ToString(); //2
-        PraRegistrasiAssign = dt.Rows[0]["PraRegistrasiAssign"].ToString(); //3
+
+        PraRegistrasiView = dt.Rows[0]["VIEWXXX"].ToString(); //0
+        PraRegistrasiEdit = dt.Rows[0]["EDITXXX"].ToString(); //1
+        PraRegistrasiDelete = dt.Rows[0]["DELETEX"].ToString(); //2
+        PraRegistrasiAssign = dt.Rows[0]["ASSIGNX"].ToString(); //3
 
         dt.Dispose();
 

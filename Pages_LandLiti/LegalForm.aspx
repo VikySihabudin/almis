@@ -12,6 +12,7 @@
 <h2>Form Legal</h2>
 
 <hr />
+<br />
 
    <div role="form" class="form-horizontal">
         <div class="form-group">

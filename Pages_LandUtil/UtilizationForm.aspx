@@ -9,9 +9,10 @@
 <input type="hidden" id="hidMode" value="0" />
 <asp:HiddenField ID="namaFile" runat="server" />
 
-<h1>Form Land Utilization</h1>
+<h1>Land Utilization</h1>
 	
 <hr />
+
 
     <div class="form-group">
     <div class="col-md-2">

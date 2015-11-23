@@ -10,6 +10,7 @@
 
 <h2>Legal</h2>  
 <hr />
+<br>
 <div class="form-group"> 
      <div class="col-lg-12" style=" width:100%; height:100%;">
            <div class="col-sm-2">
@@ -17,20 +18,20 @@
                 </asp:DropDownList>
             </div>
 
-            <label for="nama" class="control-label col-md-1">Date Awal</label>
+            <label for="nama" class="control-label col-md-1">Start Date</label>
             
             <div class="col-lg-2">
             <asp:TextBox id="txtDateAwal" type="text" runat="server" class="form-control" />
             </div>
 
-            <label for="nama" class="control-label col-md-1">Date Akhir</label>
+            <label for="nama" class="control-label col-md-1">End Date</label>
 
             <div class="col-lg-2">
                 <asp:TextBox id="txtDateAkhir" type="text" runat="server" class="form-control" />
             </div>
 
             <div class="col-lg-1">
-                <input type="button" id="btnRefresh" value="Refresh" class="btn btn-info btn-md" onclick="refresh()" />
+                <input type="button" id="btnRefresh" value="Search" class="btn btn-info btn-md" onclick="refresh()" />
             </div>
 
 

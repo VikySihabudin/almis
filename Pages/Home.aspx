@@ -4,17 +4,16 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-
 <script type="text/javascript" src="../Javascript/fusionchart/Contents/assets/ui/js/whver.js"></script>
     <script type="text/javascript" src="../Javascript/fusionchart/Contents/assets/ui/js/whutils.js"></script>
-    <script type="text/javascript" src="../Javascript/fusionchart/Contents/assets/ui/js/whmsg.js"></script>
+   <script type="text/javascript" src="../Javascript/fusionchart/Contents/assets/ui/js/whmsg.js"></script>
     <script type="text/javascript" src="../Javascript/fusionchart/Contents/assets/ui/js/whstub.js"></script>
 
         <script type="text/javascript" src="../Javascript/fusionchart/Charts/jquery.min.js"></script>
         <script type="text/javascript" src="../Javascript/fusionchart/Charts/FusionCharts.js"></script>
-        <script type="text/javascript" src="../Javascript/fusionchart/Contents/assets/prettify/prettify.js"></script>
+    <script type="text/javascript" src="../Javascript/fusionchart/Contents/assets/prettify/prettify.js"></script>
         <script type="text/javascript" src="../Javascript/fusionchart/Contents/assets/ui/js/json2.js"></script>
-         <script type="text/javascript" src="../Javascript/fusionchart/Contents/assets/ui/js/lib.js" ></script>
+            <%--<script type="text/javascript" src="../Javascript/fusionchart/Contents/assets/ui/js/lib.js" ></script>--%>
 
 
     <script type="text/javascript" src="../Javascript/fusionchart/Contents/assets/ui/js/whstart.js"></script>
@@ -115,6 +114,7 @@
 
 
 
+
                       <%--Chart--%>
 
 
@@ -200,7 +200,7 @@
         listHome.attachHeader("#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter");
         listHome.setInitWidths("40,150,150,180,150,150,200,200,200");
         listHome.setColAlign("left,left,left,left,left,left,left,left,left");
-        listHome.setColTypes("ro,ro,ro,ro,ro,ro,ro,ro,ro");
+        listHome.setColTypes("ed,ed,ed,ed,ed,ed,ed,ed,ed");
         listHome.init();
         listHome.setSkin("dhx_skyblue");
 
@@ -212,5 +212,7 @@
     </script>
 
 <!--start main -->
+
+
 
 </asp:Content>

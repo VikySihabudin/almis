@@ -12,9 +12,11 @@
 
 
 
-<h1>Form Claim User</h1>
+<h1>Claim User</h1>
 	
-	<hr />    
+	<hr />  
+
+    <br />
     
 	<div role="form" class="form-horizontal">
 
@@ -36,7 +38,7 @@
             <label for="identitas" class="control-label col-md-2">Nomor Identitas</label>
             <div class="col-md-3"><asp:TextBox ID="txtNmrIdn" class="form-control input-md" runat="server" ></asp:TextBox></div>
 			<div class="col-md-1">
-                     <input type="button" id="btnCari" value="Cari"  class="btn btn-md btn-success" onclick="OpenDialog()" />  
+                     <input type="button" id="btnCari" value="Search"  class="btn btn-md btn-success" onclick="OpenDialog()" />  
             </div>            
             			           
         </div>        
@@ -133,6 +135,21 @@
         </div>
         </div>
 
+<hr />
+<br />
+
+        <div class="form-group">
+
+            <div class="col-md-2">
+            <asp:Label ID="Label27" runat="server" Text="Label">Lanjut</asp:Label>
+            </div>
+
+            <div class="col-md-3">
+                <asp:DropDownList ID="ddLanjut" runat="server" class="form-control input-md">
+                </asp:DropDownList>
+            </div>
+
+       </div>
 
 
     <br /><hr />
@@ -141,7 +158,7 @@
             <div class="col-md-10">
        
                      <input type="button" id="btnCancel" value="Cancel" class="btn btn-lg btn-default"  onclick="btnClick(this)"/> 
-                     <input type="button" id="btnSave" value="Save"  class="btn btn-lg btn-success" onclick="btnClick(this)" />  
+                     <input type="button" id="btnSave" value="Save"  class="btn btn-lg btn-success" onclick="btnClick(this)" />   
               
             </div>
     </div>
@@ -192,7 +209,7 @@
 <script type="text/javascript">
     var localURL = "KlaimUserForm.aspx";
     var newUrl = "KlaimUserList.aspx";
-    var newURLIdn = "../Pages_Landcomp/MasterIdentitasForm.aspx";
+    var newURLIdn = "../Pages_Admintools/MasterIdentitasForm.aspx";
     var txtnoclain = document.getElementById("<%=txtnoclain.ClientID%>");
     var txtNama = document.getElementById("<%=txtNama.ClientID%>");
     var txtAlamat = document.getElementById("<%=txtAlamat.ClientID%>");
@@ -216,8 +233,10 @@
 
     var ddprs = document.getElementById("<%=ddprs.ClientID%>");
     var txtNmrIdn = document.getElementById("<%=txtNmrIdn.ClientID%>");
-    
 
+    var ddLanjut = document.getElementById("<%=ddLanjut.ClientID%>"); 
+    
+    
     txtnoclain.disabled = true;
 
    
@@ -279,6 +298,24 @@
 			+ "";
         listIdentitas.clearAll();
         listIdentitas.loadXML(localURL + "?" + s);
+    }
+
+    function DeletePic(sm, param1, NamDok, KdDok, Sqdok) {
+        var r = confirm("Hapus Data Dokumen Ini ?");
+        if (r == true) {
+            var s = ""
+            + "rnd=" + Math.random() * 4
+            + "&sm=" + sm
+            + "&param1=" + param1
+            + "&NamDok=" + NamDok
+            + "&KdDok=" + KdDok
+            + "&Sqdok=" + Sqdok
+            + "";
+            //alert(s);
+            dhtmlxAjax.post(localURL, s, outputResponse);
+        }
+    
+
     }
     
     
@@ -358,14 +395,7 @@
             b = a.split('|');
 
             //            alert(b[12]);
-            var txtnoclain = document.getElementById("<%=txtnoclain.ClientID%>");
-            var txtNama = document.getElementById("<%=txtNama.ClientID%>");
-            var txtAlamat = document.getElementById("<%=txtAlamat.ClientID%>");
-            var txtNoHandphone = document.getElementById("<%=txtNoHandphone.ClientID%>")
 
-            var ddKabupaten = document.getElementById("<%= ddKabupaten.ClientID %>");
-            var ddKecamatan = document.getElementById("<%= ddKecamatan.ClientID %>");
-            var ddDesa = document.getElementById("<%= ddDesa.ClientID %>");
 
             txtnoclain.value = b[0];
 
@@ -376,6 +406,7 @@
             ddKecamatan.value = b[5];
             ddDesa.value = b[6];
             txtNmrIdn.value = b[7];
+            ddLanjut.value = b[8];
         }
         SearchlistAlas();
     }
@@ -397,6 +428,7 @@
         txtNmrIdn.disabled = true;
 
         ddprs.disabled = true;
+        ddLanjut.disabled = true;
 
         document.getElementById('btnSave').style.visibility = 'hidden';
         document.getElementById('btnCari').style.visibility = 'hidden';
@@ -420,6 +452,7 @@
         txtNoHandphone.disabled = true;
         txtNmrIdn.disabled = true;
         ddprs.disabled = true;
+        ddLanjut.disabled = true;
         document.getElementById('btnCari').style.visibility = 'hidden';
 
     }
@@ -477,6 +510,7 @@
                 + "&param9=" + ddKecamatan.value
                 + "&param10=" + ddDesa.value
                 + "&param13=" + ddprs.value
+                + "&param15=" + ddLanjut.value
                 + "";
 
         dhtmlxAjax.post(localURL, s, outputResponse);
@@ -494,7 +528,7 @@
                 alert("Data Berhasil di Edit");
                 //window.location.replace(newUrl);
                 close();
-                break;
+                break; 
             case "I":
                 alert("Data Berhasil di Input");
                 //window.location.replace(newUrl);
@@ -508,11 +542,18 @@
             case "nodelete":
                 alert("Data Claim User Tidak Dapat Dihapus Karena Sudah Dilalukan Persiapan Dokumen");
                 break;
+            case "DP":
+                alert("Data Dokumen Berhasil Di Delete");
+                SearchlistAlas();
+                break;
             case "noedit":
                 alert("Data Claim User Tidak Dapat Di Edit Karena Sudah Dilalukan Persiapan Dokumen");
                 break;
             case "gagal":
                 alert("Data Gagal Disimpan");
+                break; 
+            case "DP":
+                alert("Folder Di Delete");
                 break;
             default:
                 break;
@@ -650,6 +691,8 @@
 
     }
 
+
+
     function ReloadKlaimUser(id, nama, ket) {
 
         SaveKlaimUser(id, nama, ket);
@@ -707,6 +750,7 @@
 			    + "&wilay=" + b[3]
 			    + "&param1=I"
 			    + "&param5=" + ddshm.value
+                + "&param11=" + ddprs.value
 			    + "";
         +"";
         centerLoadingImage();
@@ -744,14 +788,14 @@
     function ListAlas() {
         ListAlas = new dhtmlXGridObject('gridalas');
         ListAlas.setImagePath("../JavaScript/codebase/imgs/");
-        ListAlas.setHeader("No,Alas Hak,Keterangan,File,Action");
-        ListAlas.setInitWidths("40,280,280,280,160");
-        ListAlas.setColAlign("left,left,left,left,left");
-        ListAlas.setColTypes("ro,ro,ro,ro,link");
+        ListAlas.setHeader("No,Alas Hak,Keterangan,File,Action,Delete");
+        ListAlas.setInitWidths("40,280,280,280,160,160");
+        ListAlas.setColAlign("left,left,left,left,left,left");
+        ListAlas.setColTypes("ro,ro,ro,ro,link,link");
         ListAlas.init();
         ListAlas.setSkin("dhx_skyblue");
         ListAlas.setPagingSkin("bricks");
-        ListAlas.setColSorting("str,str,str,str,str");
+        ListAlas.setColSorting("str,str,str,str,str,str");
     }
 
     function SaveIdentitasLahan(id, nama) {

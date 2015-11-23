@@ -8,8 +8,10 @@
 
 
 
-<h2>Verifikasi</h2>  
+<h2>Verifikasi Dokumen</h2>  
 <hr />
+<br />
+
 <div class="form-group"> 
      <div class="col-lg-12" style=" width:100%; height:100%;">
            <div class="col-sm-2">
@@ -17,22 +19,23 @@
                 </asp:DropDownList>
             </div>
 
-            <label for="nama" class="control-label col-md-1">Date Awal</label>
+            <label for="nama" class="control-label col-md-1">Start Date</label>
             
             <div class="col-lg-2">
             <asp:TextBox id="txtDateAwal" type="text" runat="server" class="form-control" />
             </div>
 
-            <label for="nama" class="control-label col-md-1">Date Akhir</label>
+            <label for="nama" class="control-label col-md-1">End Date</label>
 
             <div class="col-lg-2">
                 <asp:TextBox id="txtDateAkhir" type="text" runat="server" class="form-control" />
             </div>
 
             <div class="col-lg-1">
-                <input type="button" id="btnRefresh" value="Refresh" class="btn btn-info btn-md" onclick="refresh()"  />
+                <input type="button" id="btnRefresh" value="Search" class="btn btn-info btn-md" onclick="refresh()"  />
             </div>
 
+         <asp:Button runat="server" ID="btnTambah" Text="Assign" class="btn btn-lg btn-success" PostBackUrl="~/Pages_LandLiti/VerifikasiAssign.aspx" />
 
     </div>
 </div>    
@@ -51,7 +54,7 @@
     <%--Footer Awal--%>
      <footer class="site-footer">
           <div class="text-center">
-              2015 - Aplikasi Almis
+              2015 - Aplikasi ALMIS
               <a href="#" class="go-top">
                   <i class="fa fa-angle-up"></i>
               </a>

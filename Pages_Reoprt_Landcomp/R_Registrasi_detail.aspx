@@ -10,13 +10,14 @@
     <br />
     <hr class="style-four"></hr>
 </center>
+   
     <form role="form" class="form-horizontal">
-        <div class="form-group">
-            <label for="identitas" class="control-label col-md-2">Bulan</label>
+       <div class="form-group">
+            <label for="identitas" class="control-label col-lg-2">Select Month</label>
             <div class="col-md-3">
                 <asp:DropDownList ID="ddBulan" runat="server" class="form-control input-lg"></asp:DropDownList>
             </div>
-            <label for="identitas" class="control-label col-md-1">Tahun</label>
+            <label for="identitas" class="control-label col-lg-2">Sekect Year</label>
             <div class="col-md-3">
                 <asp:TextBox id="txtTahun" type="text" runat="server" class="form-control input-lg" placeholder= "..." onkeypress="return numbersonly(event, false)"/>
             </div>

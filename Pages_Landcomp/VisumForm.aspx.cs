@@ -110,7 +110,7 @@ public partial class Pages_VisumForm : System.Web.UI.Page
         {
             Response.Write("<script language=\"javascript\" type=\"text/javascript\">");
             Response.Write("alert('Session sudah habis. Silakan login kembali.');");
-            Response.Write("location.href = '../Pages/login.aspx';");
+            Response.Write("location.href = '../login.aspx';");
             Response.Write("</script>");
         }
 
@@ -118,13 +118,14 @@ public partial class Pages_VisumForm : System.Web.UI.Page
         eSTP.Datas();
         DataSet ds = new DataSet();
 
-        ds = eSTP.List8("P_MENU", "CHA", "", groups, "", "", "", "", "");
+        ds = eSTP.List8("P_MENU", "CHA", "", groups, "Verifikasi", "", "", "", "");
+
         dt = ds.Tables[0];
 
-        VerifikasiView = dt.Rows[4]["Verifikasi"].ToString(); //0
-        VerifikasiEdit = dt.Rows[4]["VerifikasiEdit"].ToString(); //1
-        VerifikasiDelete = dt.Rows[4]["VerifikasiDelete"].ToString(); //2
-        VerifikasiAssign = dt.Rows[4]["VerifikasiAssign"].ToString(); //3
+        VerifikasiEdit = dt.Rows[0]["EDITXXX"].ToString(); //0
+        VerifikasiDelete = dt.Rows[0]["DELETEX"].ToString(); //1
+        VerifikasiView = dt.Rows[0]["VIEWXXX"].ToString(); //2
+        VerifikasiAssign = dt.Rows[0]["ASSIGNX"].ToString(); //3
 
         dt.Dispose();
 

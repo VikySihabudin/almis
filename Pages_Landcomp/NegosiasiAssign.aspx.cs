@@ -51,7 +51,7 @@ public partial class Pages_NegosiasiAssign : System.Web.UI.Page
         {
             Response.Write("<script language=\"javascript\" type=\"text/javascript\">");
             Response.Write("alert('Session sudah habis. Silakan login kembali.');");
-            Response.Write("location.href = '../Pages/login.aspx';");
+            Response.Write("location.href = '../login.aspx';");
             Response.Write("</script>");
         }
 
@@ -59,14 +59,14 @@ public partial class Pages_NegosiasiAssign : System.Web.UI.Page
         eSTP.Datas();
         DataSet ds = new DataSet();
 
-        ds = eSTP.List8("P_MENU", "CHA", "", groups, "", "", "", "", "");
+        ds = eSTP.List8("P_MENU", "CHA", "", groups, "Negosiasi", "", "", "", "");
 
         dt = ds.Tables[0];
 
-        NegosiasiEdit = dt.Rows[3]["NegosiasiEdit"].ToString(); //0
-        NegosiasiDelete = dt.Rows[3]["NegosiasiDelete"].ToString(); //1
-        NegosiasiView = dt.Rows[3]["Negosiasi"].ToString(); //2
-        NegosiasiAssign = dt.Rows[3]["NegosiasiAssign"].ToString(); //3
+        NegosiasiEdit = dt.Rows[0]["EDITXXX"].ToString(); //0
+        NegosiasiDelete = dt.Rows[0]["DELETEX"].ToString(); //1
+        NegosiasiView = dt.Rows[0]["VIEWXXX"].ToString(); //2
+        NegosiasiAssign = dt.Rows[0]["ASSIGNX"].ToString(); //3
 
         dt.Dispose();
 

@@ -136,7 +136,7 @@
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Menu Almis"></div>
               </div>
             <!--logo start-->
-            <a href="../Pages/home.aspx" class="logo"><b>Adaro Land Management Informasi System</b></a>
+            <a href="../Pages/home.aspx" class="logo"><b>Adaro Land Management Information System</b></a>
             <!--logo end-->
 
             <div class="top-menu">
@@ -158,7 +158,9 @@
  <%--             <img src="../images/logo_adaro.png" width="120px" height="120px" alt=""/>--%>
               	  <p class="centered"><a href="../Pages/Home.aspx"><img src="../images/logo_adaro.png" class="img-circle" width="60"></a></p>
               	  <h5 class="centered">                  
-                    <asp:Label ID="lblnm" runat="server" Text=""></asp:Label>
+                    <b><u><asp:Label ID="lblnm" runat="server" Text=""></asp:Label></u></b>
+                     <br />
+                    <asp:Label ID="lbljb" runat="server" Text=""></asp:Label>
               	  </h5>
               	  	
 
@@ -168,7 +170,7 @@
                           <span>Land Compensation</span>
                       </a>
                       <ul class="sub">
-                        <li><a href="../Pages_Landcomp/MasterIdentitasList.aspx">Master Identitas</a></li>
+                        
                         <li><a href="../Pages_Landcomp/PraRegistrasiList.aspx">Pra Register</a></li>
                         <li><a href="../Pages_Landcomp/PengecekanLapanganList.aspx">Pengecekan Lapangan</a></li>
 	                    <li><a href="../Pages_Landcomp/RegistrasiList.aspx">Registrasi</a></li>
@@ -179,40 +181,6 @@
 	                    <li><a href="../Pages_Landcomp/PembayaranList.aspx">Pembayaran</a></li>
 	                    <li><a href="../Pages_Landcomp/PemberkasanDuaList.aspx">Finalisasi</a></li>
 	                    <li><a href="../Pages_Landcomp/SerahTerimaBerkas.aspx">Serah Terima Berkas</a></li>
-                      </ul>
-              </li>
-
-              <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="fa fa-book"></i>
-                          <span>Land Compensation Report</span>
-                      </a>
-                      <ul class="sub">
-                        <li><a href="../Pages_Reoprt_Landcomp/R_PraRegistrasi.aspx">Report Praregistrasi</a></li>
-                        <li><a href="../Pages_Reoprt_Landcomp/R_PengecekanLapangan.aspx">Report Pengecekan Lapangan</a></li>
-                        <li><a href="../Pages_Reoprt_Landcomp/R_Registrasi.aspx">Report Registrasi</a></li>
-                        <li><a href="../Pages_Reoprt_Landcomp/R_Registrasi_detail.aspx">Report Registrasi Detail</a></li>
-                        <li><a href="../Pages_Reoprt_Landcomp/R_Pengukuran.aspx">Report Pengukuran T0</a></li>
-                        <li><a href="../Pages_Reoprt_Landcomp/R_PraNegosiasi.aspx">Report Negosiasi</a></li>
-                        <li><a href="../Pages_Reoprt_Landcomp/R_Negosiasi.aspx">Report Negosiasi Detail</a></li>
-                        <li><a href="../Pages_Reoprt_Landcomp/R_Visum.aspx">Report Verifikasi</a></li>
-                        <li><a href="../Pages_Reoprt_Landcomp/R_Visum_detail.aspx">Report Verifikasi Detail</a></li>
-                        <li><a href="../Pages_Reoprt_Landcomp/R_PraRegistrasi.aspx">Report Finalisasi</a></li>
-                        <li><a href="../Pages_Reoprt_Landcomp/R_PraRegistrasi.aspx">Report Finalisasi Detail</a></li>
-                      </ul>
-              </li>
-
-              <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="fa fa-book"></i>
-                          <span>Land Compensation Map</span>
-                      </a>
-                      <ul class="sub">
-                        <li><a href="../Map_Landcomp/Top.aspx">Top Priority</a></li>
-                        <li><a href="../Map_Landcomp/FiveYear.aspx">Five Years</a></li>
-                        <li><a href="../Map_Landcomp/LOM.aspx">LOM</a></li>
-                        <li><a href="../Map_Landcomp/Other.aspx">Other</a></li>
-
                       </ul>
               </li>
 
@@ -255,7 +223,7 @@
               <li class="sub-menu">
                       <a href="javascript:;" >
                           <i class="fa fa-book"></i>
-                          <span>Land Compliance</span>
+                          <span>Land Complaince</span>
                       </a>
                       <ul class="sub">
                         <li><a href="../Pages_Landcompla/LandcomplaList.aspx">Land Compliance</a></li>
@@ -315,22 +283,52 @@
                       </a>
                       <ul class="sub">
                         <li><a href="../Pages_LandMap/almisgis/index.html">Map Adaro Indonesia</a></li>
-                        <li><a href="javascript:;" >Map Balangan Coal</a>
+                        <li><a href="#">Map Balangan Coal</a></li>
+                        <li><a href="#">Map Mustika Indah Permai</a></li>
+
+                       <li><a href="javascript:;" >Map Land Compensation </a>
                         <ul class="sub">
-					      <li><a href="../Pages/R_Registrasi.aspx">Registrasi</a></li>
-					      <li><a href="../Pages/R_Registrasi_detail.aspx">Registrasi Detail</a></li>
+                        <li><a href="../Map_Landcomp/Top.aspx">Top Priority</a></li>
+                        <li><a href="../Map_Landcomp/FiveYear.aspx">Five Years</a></li>
+                        <li><a href="../Map_Landcomp/LOM.aspx">LOM</a></li>
+                        <li><a href="../Map_Landcomp/Other.aspx">Other</a></li>
 					    </ul>
                         </li>
-                        <li><a href="#">Map Mustika Indah Permai</a></li>
                       </ul>
               </li>
 
               <li class="sub-menu">
                       <a href="javascript:;" >
-                          <i class="fa fa-cogs"></i>
-                          <span>Admin Tools </span>
+                          <i class="fa fa-book"></i>
+                          <span>Report</span>
                       </a>
                       <ul class="sub">
+                        <li><a href="javascript:;" >Land Compensation Report</a>
+                      <ul class="sub">
+                        <li><a href="../Pages_Reoprt_Landcomp/R_PraRegistrasi.aspx">Report Praregistrasi</a></li>
+                        <li><a href="../Pages_Reoprt_Landcomp/R_PengecekanLapangan.aspx">Report Pengecekan Lapangan</a></li>
+                        <li><a href="../Pages_Reoprt_Landcomp/R_Registrasi.aspx">Report Registrasi</a></li>
+                        <li><a href="../Pages_Reoprt_Landcomp/R_Registrasi_detail.aspx">Report Registrasi Detail</a></li>
+                        <li><a href="../Pages_Reoprt_Landcomp/R_Pengukuran.aspx">Report Pengukuran T0</a></li>
+                        <li><a href="../Pages_Reoprt_Landcomp/R_PraNegosiasi.aspx">Report Negosiasi</a></li>
+                        <li><a href="../Pages_Reoprt_Landcomp/R_Negosiasi.aspx">Report Negosiasi Detail</a></li>
+                        <li><a href="../Pages_Reoprt_Landcomp/R_Visum.aspx">Report Verifikasi</a></li>
+                        <li><a href="../Pages_Reoprt_Landcomp/R_Visum_detail.aspx">Report Verifikasi Detail</a></li>
+                        <li><a href="../Pages_Reoprt_Landcomp/R_PraRegistrasi.aspx">Report Finalisasi</a></li>
+                        <li><a href="../Pages_Reoprt_Landcomp/R_PraRegistrasi.aspx">Report Finalisasi Detail</a></li>
+                      </ul>
+                        </li>
+                      </ul>
+              </li>
+
+
+              <li class="sub-menu">
+                      <a href="javascript:;" >
+                          <i class="fa fa-cogs"></i>
+                          <span>Admin Tools</span>
+                      </a>
+                      <ul class="sub">
+                        <li><a href="../Pages_Admintools/MasterIdentitasList.aspx">Master Identitas</a></li>
                         <li><a href="../Pages_Admintools/UserManagementList.aspx">User Management</a></li>
                         <li><a href="../Pages_Admintools/GroupManagementList.aspx">Group Management</a></li>
                         <li><a href="../Pages_Admintools/MasterMenu.aspx">Master Menu</a></li>
@@ -370,7 +368,7 @@
                         <input type='text' id='lookupKey' value='' onkeypress="enterPressed(event,'lookupSearch(document.getElementById(\'lookupKey\').value);');" />&nbsp;&nbsp;
                         <input type='button' onclick="lookupSearch(document.getElementById('lookupKey').value);" value='Cari' />
                         &nbsp;&nbsp;<input type="button" value="Tutup" onclick="hideLookup('lookup');" />
-                        <a href="MasterIdentitasForm.aspx?param1=I">
+                        <a href="../Pages_Admintools/MasterIdentitasForm.aspx?param1=I">
                         <input type="button" value="Tambah Baru"/>
                         </a>
                        

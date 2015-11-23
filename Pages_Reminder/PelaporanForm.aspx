@@ -12,9 +12,10 @@
 
 
 
-<h1>Form Tahap Pelaporan Dan Perpanjangan</h1>
+<h1>Tahap Pelaporan Dan Perpanjangan</h1>
 	
 	<hr />    
+   
     
         
 		<div class="form-group">

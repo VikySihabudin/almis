@@ -13,6 +13,7 @@ public partial class Pages_Landcompla_LandcomplaList : System.Web.UI.Page
 {
     DataTable dt;
     private string groupsid;
+    protected String userid = "";
 
     string connstring = ConfigurationManager.ConnectionStrings["ConStrLANDCOMPLocal"].ToString();
     SqlDataAdapter sda;
@@ -21,6 +22,10 @@ public partial class Pages_Landcompla_LandcomplaList : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["userid"] is object)
+        {
+            userid = Session["userid"].ToString();
+        }
         bool normal = true;
         if (normal && (Request.Params["sm"] is object)) normal = ServiceSelect(Request.Params["sm"].ToString());
         isiPeriode();
@@ -65,7 +70,7 @@ public partial class Pages_Landcompla_LandcomplaList : System.Web.UI.Page
                 ALMIS.ExecuteSTP eSTP_L = new ALMIS.ExecuteSTP();
                 eSTP_L.Datas();
                 DataSet ds_L = new DataSet();
-                ds_L = eSTP_L.List14("P_CLAUSR", param1L, param2L, "", param4L, param5L, "", "", "", "", "", "", "", "", "");
+                ds_L = eSTP_L.List14("P_COMPLA", param1L, param2L, "", param4L, param5L, "", "", "", "", "", userid, "", "", "");
 
                 dt = ds_L.Tables[0];
 
@@ -79,20 +84,20 @@ public partial class Pages_Landcompla_LandcomplaList : System.Web.UI.Page
                     Random r = new Random();
                     Response.Write("<row id=\"" + (i + 1).ToString() + "\">");
                     Response.Write("<cell>" + (i + 1).ToString() + "</cell>"); // Untuk Membuat Angka
-                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["ClausrNmrClm"].ToString()) + "</cell>");
-                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["ClausrNamass"].ToString()) + "</cell>");
-                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["ClausrLokKab"].ToString()) + "</cell>");
-                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["ClausrLokKec"].ToString()) + "</cell>");
-                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["ClausrLokDes"].ToString()) + "</cell>");
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["complaNmrCom"].ToString()) + "</cell>");
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["perusaNamass"].ToString()) + "</cell>");
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["UserssNamess"].ToString()) + "</cell>");
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["ProjectAnalyst"].ToString()) + "</cell>");
 
 
-                    if (dt.Rows[i]["ClausrNmrClm"].ToString() != "")
+
+                    if (dt.Rows[i]["complaNmrCom"].ToString() != "")
                     {
 
 
-                        Response.Write("<cell>" + RemoveWhiteSpace("View^KlaimUserForm.aspx?rand=" + r.Next() + "&param1=V" + "&param2=" + dt.Rows[i]["ClausrNmrClm"].ToString() + "") + "</cell>");
-                        Response.Write("<cell>" + RemoveWhiteSpace("Edit^KlaimUserForm.aspx?rand=" + r.Next() + "&param1=E" + "&param2=" + dt.Rows[i]["ClausrNmrClm"].ToString() + "") + "</cell>");
-                        Response.Write("<cell>" + RemoveWhiteSpace("Delete^KlaimUserForm.aspx?rand=" + r.Next() + "&param1=D" + "&param2=" + dt.Rows[i]["ClausrNmrClm"].ToString() + "") + "</cell>");
+                        Response.Write("<cell>" + RemoveWhiteSpace("View^LandcomplaForm.aspx?rand=" + r.Next() + "&param1=V" + "&param2=" + dt.Rows[i]["complaNmrCom"].ToString() + "") + "</cell>");
+                        Response.Write("<cell>" + RemoveWhiteSpace("Edit^LandcomplaForm.aspx?rand=" + r.Next() + "&param1=E" + "&param2=" + dt.Rows[i]["complaNmrCom"].ToString() + "") + "</cell>");
+                        Response.Write("<cell>" + RemoveWhiteSpace("Delete^LandcomplaForm.aspx?rand=" + r.Next() + "&param1=D" + "&param2=" + dt.Rows[i]["complaNmrCom"].ToString() + "") + "</cell>");
 
                     }
 

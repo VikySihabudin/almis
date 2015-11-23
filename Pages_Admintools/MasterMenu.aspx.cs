@@ -56,7 +56,7 @@ public partial class Pages_MasterMenu : System.Web.UI.Page
         {
             Response.Write("<script language=\"javascript\" type=\"text/javascript\">");
             Response.Write("alert('Session sudah habis. Silakan login kembali.');");
-            Response.Write("location.href = '../Pages/login.aspx';");
+            Response.Write("location.href = '../login.aspx';");
             Response.Write("</script>");
         }
 
@@ -64,14 +64,14 @@ public partial class Pages_MasterMenu : System.Web.UI.Page
         eSTP.Datas();
         DataSet ds = new DataSet();
 
-        ds = eSTP.List8("P_MENU", "CHA", "", groups, "", "", "", "", "");
+        ds = eSTP.List8("P_MENU", "CHA", "", groups, "Master Menu", "", "", "", "");
 
         dt = ds.Tables[0];
 
-        MasterMenuEdit = dt.Rows[14]["MasterMenuEdit"].ToString(); //0
-        MasterMenuDelete = dt.Rows[14]["MasterMenuDelete"].ToString(); //1
-        MasterMenuView = dt.Rows[14]["MasterMenu"].ToString(); //2
-        MasterMenuAssign = dt.Rows[14]["MasterMenuAssign"].ToString(); //3
+        MasterMenuEdit = dt.Rows[0]["EDITXXX"].ToString(); //0
+        MasterMenuDelete = dt.Rows[0]["DELETEX"].ToString(); //1
+        MasterMenuView = dt.Rows[0]["VIEWXXX"].ToString(); //2
+        MasterMenuAssign = dt.Rows[0]["ASSIGNX"].ToString(); //3
 
         dt.Dispose();
 
@@ -153,6 +153,7 @@ public partial class Pages_MasterMenu : System.Web.UI.Page
 
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
+
                     Random r = new Random();
                     Response.Write("<row id=\"" + (i + 1).ToString() + "\">");
                     Response.Write("<cell>" + (i + 1).ToString() + "</cell>"); // Untuk Membuat Angka
@@ -163,14 +164,6 @@ public partial class Pages_MasterMenu : System.Web.UI.Page
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["Delet"].ToString()) + "</cell>");
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["Vie"].ToString()) + "</cell>");
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["Prin"].ToString()) + "</cell>");
-                    //Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["negosiSepakt"].ToString()) + "</cell>");
-                    //Response.Write("<cell>" + RemoveWhiteSpace("View^NegosiasiForm.aspx?rand=" + r.Next() + "&param1=V" + "&param2=" + dt.Rows[i]["registNmrReg"].ToString() + "") + "</cell>");
-                    //if (dt.Rows[i]["negosiNmrNeg"].ToString() != "")
-                    //{
-                        
-                    //    Response.Write("<cell>" + RemoveWhiteSpace("Edit^NegosiasiForm.aspx?rand=" + r.Next() + "&param1=E" + "&param2=" + dt.Rows[i]["registNmrReg"].ToString() + "") + "</cell>");
-                    //    Response.Write("<cell>" + RemoveWhiteSpace("Delete^NegosiasiForm.aspx?rand=" + r.Next() + "&param1=D" + "&param2=" + dt.Rows[i]["registNmrReg"].ToString() + "") + "</cell>");
-                    //}
                     Response.Write("</row>");
                 }
                 Response.Write("</rows>");

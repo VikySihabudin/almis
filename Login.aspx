@@ -22,7 +22,7 @@
 	 <!-----start-main---->
 	 <div class="main">
 		<div class="login-form">
-			<h1>Login Almis</h1>
+			<h1>Login <b>ALMIS</b></h1>
 					<div class="head">
                         <img src="images/logo_adaro.png" width="120px" height="120px" alt=""/>
 					</div>

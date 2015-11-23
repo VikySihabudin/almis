@@ -5,9 +5,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
 
-<h2>List Master Menu</h2>  
+<h2>Master Menu</h2>  
 <hr />
-
+<br />
 
         <label for="nama" class="control-label col-md-2">Pilih Group</label> 
       

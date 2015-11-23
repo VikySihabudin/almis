@@ -36,6 +36,7 @@ public partial class Pages_LandLiti_LegalForm : System.Web.UI.Page
     protected String param8 = "";
     protected String param9 = "";
     protected String param10 = "";
+    protected String param11 = "";
 
 
     protected void Page_Load(object sender, EventArgs e)
@@ -161,7 +162,7 @@ public partial class Pages_LandLiti_LegalForm : System.Web.UI.Page
                 ALMIS.ExecuteSTP eSTP = new ALMIS.ExecuteSTP();
                 eSTP.Datas();
                 DataSet ds = new DataSet();
-                ds = eSTP.List10("P_LEGALL", param1, "", "", param4, "", "", "", "", "", "");
+                ds = eSTP.List11("P_LEGALL", param1, "", "", param4, "", "", "", "", "", "", "");
 
                 dt = ds.Tables[0];
 
@@ -358,7 +359,7 @@ public partial class Pages_LandLiti_LegalForm : System.Web.UI.Page
         if (Request.Params["param8"] is object) param8 = Request.Params["param8"].ToString();
         if (Request.Params["param9"] is object) param9 = Request.Params["param9"].ToString();
         if (Request.Params["param10"] is object) param10 = Request.Params["param10"].ToString();
-
+        if (Request.Params["param11"] is object) param11 = Request.Params["param11"].ToString();
         param7 = userid;
 
         String sql = "";
@@ -395,7 +396,7 @@ public partial class Pages_LandLiti_LegalForm : System.Web.UI.Page
             //    }
 
                 eSTP.Datas();
-                eSTP.save10("P_LEGALL", param1, param2, param3, param4, param5, param6, param7, param8, param9, param10);
+                eSTP.save11("P_LEGALL", param1, param2, param3, param4, param5, param6, param7, param8, param9, param10, param11);
 
                 return output;
             //}

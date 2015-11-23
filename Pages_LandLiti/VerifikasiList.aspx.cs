@@ -21,9 +21,15 @@ public partial class Pages_LandLiti_VerifikasiList : System.Web.UI.Page
     SqlDataAdapter Sda;
     SqlConnection Conn;
     string Query;
+    protected String userid = "";
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["userid"] is object)
+        {
+            userid = Session["userid"].ToString();
+        }
+
         bool normal = true;
         if (normal && (Request.Params["sm"] is object)) normal = ServiceSelect(Request.Params["sm"].ToString());
         isiPeriode();
@@ -40,12 +46,12 @@ public partial class Pages_LandLiti_VerifikasiList : System.Web.UI.Page
                 //var param3L = Request.Params["param3"].ToString();
                 var param4L = Request.Params["param4"].ToString();
                 var param5L = Request.Params["param5"].ToString();
-                //var param6L = Request.Params["param6"].ToString();
+                //var param6L = Request.Params["param8"].ToString();
                 ALMIS.ExecuteSTP eSTP_L = new ALMIS.ExecuteSTP();
 
                 eSTP_L.Datas();
                 DataSet ds_L = new DataSet();
-                ds_L = eSTP_L.List9("P_VERDOK", param1L, param2L, "", param4L, param5L, "", "", "", "");
+                ds_L = eSTP_L.List10("P_VERDOK", param1L, param2L, "", param4L, param5L, "", userid, "", "", "");
 
                 dt = ds_L.Tables[0];
                 
@@ -67,12 +73,12 @@ public partial class Pages_LandLiti_VerifikasiList : System.Web.UI.Page
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["ClausrLokKec"].ToString()) + "</cell>");
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["ClausrLokKec"].ToString()) + "</cell>");
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["perusaNamass"].ToString()) + "</cell>");
-                    Response.Write("<cell>" + RemoveWhiteSpace("View^VerifikasiForm.aspx?rand=" + r.Next() + "&param1=V" + "&param2=" + dt.Rows[i]["PredokNmrDok"].ToString() + "") + "</cell>");
-                    Response.Write("<cell>" + RemoveWhiteSpace("Edit^VerifikasiForm.aspx?rand=" + r.Next() + "&param1=E" + "&param2=" + dt.Rows[i]["PredokNmrDok"].ToString() + "") + "</cell>");
 
                     if (dt.Rows[i]["VerdokNmrVrd"].ToString() != "")
                     {
-                        Response.Write("<cell>" + RemoveWhiteSpace("Delete^VerifikasiForm.aspx?rand=" + r.Next() + "&param1=D" + "&param2=" + dt.Rows[i]["PredokNmrDok"].ToString() + "") + "</cell>");
+                    Response.Write("<cell>" + RemoveWhiteSpace("View^VerifikasiForm.aspx?rand=" + r.Next() + "&param1=V" + "&param2=" + dt.Rows[i]["VerdokNmrVrd"].ToString() + "") + "</cell>");
+                    Response.Write("<cell>" + RemoveWhiteSpace("Edit^VerifikasiForm.aspx?rand=" + r.Next() + "&param1=E" + "&param2=" + dt.Rows[i]["VerdokNmrVrd"].ToString() + "") + "</cell>");
+                    Response.Write("<cell>" + RemoveWhiteSpace("Delete^VerifikasiForm.aspx?rand=" + r.Next() + "&param1=D" + "&param2=" + dt.Rows[i]["VerdokNmrVrd"].ToString() + "") + "</cell>");
                     }
                     
                     Response.Write("</row>");

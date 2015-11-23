@@ -9,9 +9,10 @@
 <input type="hidden" id="hidMode" value="0" />
 <asp:HiddenField ID="namaFile" runat="server" />
 
-<h1>Form Flow Utilization</h1>
+<h1>Flow Utilization</h1>
 	
 <hr />
+<br>
 
     <div class="form-group">
     <div class="col-md-2">

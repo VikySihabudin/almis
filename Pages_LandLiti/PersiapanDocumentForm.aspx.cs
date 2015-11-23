@@ -35,6 +35,7 @@ public partial class Pages_LandLiti_PersiapanDocumentForm : System.Web.UI.Page
     protected String param7 = "";
     protected String param8 = "";
     protected String param9 = "";
+    protected String param10 = "";
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -49,11 +50,30 @@ public partial class Pages_LandLiti_PersiapanDocumentForm : System.Web.UI.Page
         isikabupaten();
         isiKecamatan();
         isiDesa();
-
+        isiLanjut();
         bool normal = true;
         if (normal && (Request.Params["sm"] is object)) normal = ServiceSelect(Request.Params["sm"].ToString());
 
 
+    }
+
+    public void isiLanjut()
+    {
+        query = @"SELECT  codessCodess ,
+                            codessDescs1
+                    FROM    almis.CODESS
+                    WHERE   codessHeadss = 4
+                            AND codessStatss = 1 ORDER BY codessCodess DESC";
+        dt = getDataTable(query);
+        if (dt.Rows.Count > 0)
+        {
+            ddLanjut.Items.Clear();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                ddLanjut.Items.Add(new ListItem(dt.Rows[i]["codessDescs1"].ToString(), dt.Rows[i]["codessCodess"].ToString()));
+            }
+        }
+        dt.Dispose();
     }
 
     public void isiPerusa()
@@ -159,7 +179,7 @@ public partial class Pages_LandLiti_PersiapanDocumentForm : System.Web.UI.Page
                 ALMIS.ExecuteSTP eSTP = new ALMIS.ExecuteSTP();
                 eSTP.Datas();
                 DataSet ds = new DataSet();
-                ds = eSTP.List8("P_PREDOK", param1, param2, "", "", "", "", "", "");
+                ds = eSTP.List10("P_PREDOK", param1, param2, "", "", "", "", "", "", "", "");
 
                 dt = ds.Tables[0];
 
@@ -171,7 +191,8 @@ public partial class Pages_LandLiti_PersiapanDocumentForm : System.Web.UI.Page
                 Response.Write(dt.Rows[0]["ClausrLokKab"].ToString() + "|"); //3
                 Response.Write(dt.Rows[0]["ClausrLokKec"].ToString() + "|"); //4
                 Response.Write(dt.Rows[0]["ClausrLokDes"].ToString() + "|"); //5
-                Response.Write(dt.Rows[0]["PredokKodPer"].ToString() + "|"); //6
+                Response.Write(dt.Rows[0]["ClausrKodPer"].ToString() + "|"); //6
+                Response.Write(dt.Rows[0]["PredokLanjut"].ToString() + "|"); //7
                 dt.Dispose();
 
 
@@ -282,7 +303,8 @@ public partial class Pages_LandLiti_PersiapanDocumentForm : System.Web.UI.Page
         param6 = Request.Params["param6"].ToString();
         param7 = Request.Params["param7"].ToString();
         param8 = Request.Params["param8"].ToString();
-
+        param9 = Request.Params["param9"].ToString();
+        param10 = Request.Params["param10"].ToString();
 
         String sql = "";
         String output = "";
@@ -300,7 +322,7 @@ public partial class Pages_LandLiti_PersiapanDocumentForm : System.Web.UI.Page
 
                 eSTP.Datas();
                 DataSet ds = new DataSet();
-                ds = eSTP.List8("P_PREDOK", "X", param2, "", param4, "", "", "", "");
+                ds = eSTP.List10("P_PREDOK", "X", param2, "", param4, "", "", "", "", "", "");
                 dt = ds.Tables[0];
 
                 if (dt.Rows.Count > 0)
@@ -318,7 +340,7 @@ public partial class Pages_LandLiti_PersiapanDocumentForm : System.Web.UI.Page
                 }
 
                 eSTP.Datas();
-                eSTP.save8("P_PREDOK", param1, param2, param3, param4, userid, param6, param7, param8);
+                eSTP.save10("P_PREDOK", param1, param2, param3, param4, userid, param6, param7, param8, param9, param10);
 
                 return output;
             }

@@ -116,7 +116,7 @@ public partial class Pages_PemberkasanDuaForm : System.Web.UI.Page
         {
             Response.Write("<script language=\"javascript\" type=\"text/javascript\">");
             Response.Write("alert('Session sudah habis. Silakan login kembali.');");
-            Response.Write("location.href = '../Pages/login.aspx';");
+            Response.Write("location.href = '../login.aspx';");
             Response.Write("</script>");
         }
 
@@ -124,13 +124,13 @@ public partial class Pages_PemberkasanDuaForm : System.Web.UI.Page
         eSTP.Datas();
         DataSet ds = new DataSet();
 
-        ds = eSTP.List8("P_MENU", "CHA", "", groups, "", "", "", "", "");
+        ds = eSTP.List8("P_MENU", "CHA", "", groups, "Finalisasi", "", "", "", "");
         dt = ds.Tables[0];
 
-        FinalisasiView = dt.Rows[8]["Finalisasi"].ToString(); //0
-        FinalisasiEdit = dt.Rows[8]["FinalisasiEdit"].ToString(); //1
-        FinalisasiDelete = dt.Rows[8]["FinalisasiDelete"].ToString(); //2
-        FinalisasiAssign = dt.Rows[8]["FinalisasiAssign"].ToString(); //3
+        FinalisasiView = dt.Rows[0]["VIEWXXX"].ToString(); //0
+        FinalisasiEdit = dt.Rows[0]["EDITXXX"].ToString(); //1
+        FinalisasiDelete = dt.Rows[0]["DELETEX"].ToString(); //2
+        FinalisasiAssign = dt.Rows[0]["ASSIGNX"].ToString(); //3
 
         dt.Dispose();
 

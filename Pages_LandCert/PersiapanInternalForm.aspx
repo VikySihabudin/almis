@@ -9,7 +9,7 @@
 <input type="hidden" id="hidMode" value="0" />
 <asp:HiddenField ID="namaFile" runat="server" />
 
-<h1>Form Tahapan Persiapan Internal</h1>
+<h1>Tahapan Persiapan Internal</h1>
 	
 <hr />
 

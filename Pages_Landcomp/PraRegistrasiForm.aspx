@@ -11,6 +11,7 @@
 <h2>Pra Registrasi</h2><br />
     <h4>Identifikasi identitas diri penjual :</h4>
     <hr />
+    
 
         <div role="form" class="form-horizontal">
     		<div class="form-group">

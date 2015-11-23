@@ -151,7 +151,7 @@ public partial class Pages_PembayaranForm : System.Web.UI.Page
         {
             Response.Write("<script language=\"javascript\" type=\"text/javascript\">");
             Response.Write("alert('Session sudah habis. Silakan login kembali.');");
-            Response.Write("location.href = '../Pages/login.aspx';");
+            Response.Write("location.href = '../login.aspx';");
             Response.Write("</script>");
         }
 
@@ -159,13 +159,13 @@ public partial class Pages_PembayaranForm : System.Web.UI.Page
         eSTP.Datas();
         DataSet ds = new DataSet();
 
-        ds = eSTP.List8("P_MENU", "CHA", "", groups, "", "", "", "", "");
+        ds = eSTP.List8("P_MENU", "CHA", "", groups, "Pembayaran", "", "", "", "");
         dt = ds.Tables[0];
 
-        PembayaranView = dt.Rows[7]["Pembayaran"].ToString(); //0
-        PembayaranEdit = dt.Rows[7]["PembayaranEdit"].ToString(); //1
-        PembayaranDelete = dt.Rows[7]["PembayaranDelete"].ToString(); //2
-        PembayaranAssign = dt.Rows[7]["PembayaranAssign"].ToString(); //3
+        PembayaranView = dt.Rows[0]["VIEWXXX"].ToString(); //0
+        PembayaranEdit = dt.Rows[0]["EDITXXX"].ToString(); //1
+        PembayaranDelete = dt.Rows[0]["DELETEX"].ToString(); //2
+        PembayaranAssign = dt.Rows[0]["ASSIGNX"].ToString(); //3
 
         dt.Dispose();
 

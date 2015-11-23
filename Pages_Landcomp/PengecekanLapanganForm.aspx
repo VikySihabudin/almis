@@ -23,6 +23,7 @@
 <h1>Pengecekan Lapangan</h1>
 	
 	<hr />    
+
     
 	<div role="form" class="form-horizontal" action="#">
 

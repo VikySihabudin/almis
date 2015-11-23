@@ -19,9 +19,15 @@ public partial class Pages_LandLiti_PersiapanDocumentList : System.Web.UI.Page
     SqlDataAdapter sda;
     SqlConnection conn;
     string query;
+    protected String userid = "";
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["userid"] is object)
+        {
+            userid = Session["userid"].ToString();
+        }
+
         bool normal = true;
         if (normal && (Request.Params["sm"] is object)) normal = ServiceSelect(Request.Params["sm"].ToString());
         isiPeriode();
@@ -67,7 +73,7 @@ public partial class Pages_LandLiti_PersiapanDocumentList : System.Web.UI.Page
                 ALMIS.ExecuteSTP eSTP_L = new ALMIS.ExecuteSTP();
                 eSTP_L.Datas();
                 DataSet ds_L = new DataSet();
-                ds_L = eSTP_L.List8("P_PREDOK", param1L, param2L, "", param4L, param5L, "", "","");
+                ds_L = eSTP_L.List10("P_PREDOK", param1L, param2L, "", param4L, param5L, "", userid, "","","");
 
                 dt = ds_L.Tables[0];
 
@@ -88,13 +94,12 @@ public partial class Pages_LandLiti_PersiapanDocumentList : System.Web.UI.Page
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["ClausrLokKec"].ToString()) + "</cell>");
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["ClausrLokDes"].ToString()) + "</cell>");
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["perusaNamass"].ToString()) + "</cell>");
-                    if (dt.Rows[i]["ClausrNmrClm"].ToString() != "")
+                    if (dt.Rows[i]["PredokNmrDok"].ToString() != "")
                     {
 
-
-                        Response.Write("<cell>" + RemoveWhiteSpace("View^PersiapanDocumentForm.aspx?rand=" + r.Next() + "&param1=V" + "&param2=" + dt.Rows[i]["ClausrNmrClm"].ToString() + "") + "</cell>");
-                        Response.Write("<cell>" + RemoveWhiteSpace("Edit^PersiapanDocumentForm.aspx?rand=" + r.Next() + "&param1=E" + "&param2=" + dt.Rows[i]["ClausrNmrClm"].ToString() + "") + "</cell>");
-                        Response.Write("<cell>" + RemoveWhiteSpace("Delete^PersiapanDocumentForm.aspx?rand=" + r.Next() + "&param1=D" + "&param2=" + dt.Rows[i]["ClausrNmrClm"].ToString() + "") + "</cell>");
+                        Response.Write("<cell>" + RemoveWhiteSpace("View^PersiapanDocumentForm.aspx?rand=" + r.Next() + "&param1=V" + "&param2=" + dt.Rows[i]["PredokNmrDok"].ToString() + "") + "</cell>");
+                        Response.Write("<cell>" + RemoveWhiteSpace("Edit^PersiapanDocumentForm.aspx?rand=" + r.Next() + "&param1=E" + "&param2=" + dt.Rows[i]["PredokNmrDok"].ToString() + "") + "</cell>");
+                        Response.Write("<cell>" + RemoveWhiteSpace("Delete^PersiapanDocumentForm.aspx?rand=" + r.Next() + "&param1=D" + "&param2=" + dt.Rows[i]["PredokNmrDok"].ToString() + "") + "</cell>");
 
                     }
 

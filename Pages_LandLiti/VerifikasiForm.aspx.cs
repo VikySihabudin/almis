@@ -157,7 +157,7 @@ public partial class Pages_LandLiti_VerifikasiForm : System.Web.UI.Page
                 ALMIS.ExecuteSTP eSTP = new ALMIS.ExecuteSTP();
                 eSTP.Datas();
                 DataSet ds = new DataSet();
-                ds = eSTP.List9("P_VERDOK", Param1, Param2, "", "", "", "", "", "", "");
+                ds = eSTP.List10("P_VERDOK", Param1, Param2, "", "", "", "", "", "", "", "");
 
                 dt = ds.Tables[0];
 
@@ -171,7 +171,7 @@ public partial class Pages_LandLiti_VerifikasiForm : System.Web.UI.Page
                 Response.Write(dt.Rows[0]["ClausrLokDes"].ToString() + "|"); //5
                 Response.Write(dt.Rows[0]["VerdokNmrVrd"].ToString() + "|"); //6
                 Response.Write(dt.Rows[0]["VerdokLitiga"].ToString() + "|"); //7
-                Response.Write(dt.Rows[0]["VerdokKodPer"].ToString() + "|"); //8
+                Response.Write(dt.Rows[0]["PredokKodPer"].ToString() + "|"); //8
 
                 dt.Dispose();
 
@@ -226,14 +226,45 @@ public partial class Pages_LandLiti_VerifikasiForm : System.Web.UI.Page
                         break;
                 }
 
-                Response.AddHeader("content-disposition", "attachment;filename=" + namafile + "");
-                Response.ContentType = type;
+                String path1 = Server.MapPath(@"~/uploaddocument/" + Request.Params["namafile"].ToString().Replace("&amp;", "&"));
+                if (System.IO.File.Exists(path1)) {
+                    Response.AddHeader("content-disposition", "attachment;filename=" + namafile + "");
+                    Response.ContentType = type;       
+                    Response.WriteFile(path1); 
+                
+                }
 
-                Response.WriteFile(Server.MapPath(@"~/uploaddocument/" + Request.Params["namafile"].ToString().Replace("&amp;", "&")));
+                else {
+
+                    Response.Write("<script language=\"javascript\" type=\"text/javascript\">");
+                    Response.Write("alert('Dokumen Tidak Di Temukan');");
+                    Response.Write("window.close();");
+                    Response.Write("</script>");
+                
+                }
 
                 Response.End();
                 return false;
                 break;
+
+            case "DP":
+                String KdDok = (Request.Params["KdDok"] is object ? Request.Params["KdDok"].ToString() : "");
+                String NamDok = (Request.Params["NamDok"] is object ? Request.Params["NamDok"].ToString() : "");
+                String randomfile1 = (Request.Params["random"] is object ? Request.Params["random"].ToString() : "");
+                String Sqdok = (Request.Params["Sqdok"] is object ? Request.Params["Sqdok"].ToString() : "");
+                String path = Server.MapPath(@"~/uploaddocument/" + NamDok.ToString().Replace("&amp;", "&"));
+
+                if (System.IO.File.Exists(path))
+                {
+                    System.IO.File.Delete(path);
+                }
+
+                Response.ContentType = "text/plain";
+                Response.Write(DP());
+                Response.End();
+
+
+                return false;
 
             case "LP":
 
@@ -260,7 +291,7 @@ public partial class Pages_LandLiti_VerifikasiForm : System.Web.UI.Page
                     Response.Write("<cell>" + (i + 1).ToString() + "</cell>");
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["PredokNmrPid"].ToString()) + "</cell>");
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["MidentNamass"].ToString()) + "</cell>");
-
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["codessDescs1"].ToString()) + "</cell>");
                     if (dt.Rows[i]["hdocumIdSour"].ToString() != "")
                     {
                         Response.Write("<cell>" + "Download^" + path_pic + "?sm=df&amp;namafile=" + dt.Rows[i]["hdocumIdLink"].ToString() + "&amp;filelama=" + dt.Rows[i]["hdocumFiless"].ToString() + "</cell>");
@@ -313,7 +344,7 @@ public partial class Pages_LandLiti_VerifikasiForm : System.Web.UI.Page
 
                     Response.Write("<cell>" + "Download^" + path_pic1 + "?sm=df&amp;namafile=" + dt.Rows[i]["hdocumIdLink"].ToString() + "&amp;filelama=" + dt.Rows[i]["hdocumFiless"].ToString() + "</cell>");
                     //Response.Write("<cell>" + "Delete^" + path_pic + "?sm=Deletepic&amp;IDSOURCE=" + dt.Rows[i]["IDSource"].ToString() + "</cell>");
-                    Response.Write("<cell>" + RemoveWhiteSpace("Delete^javascript:DeletePic(\"" + dt.Rows[i]["hdocumIdLink"].ToString()) + "\",\"" + IDPerdok + "\");^_self" + "</cell>");
+                    Response.Write("<cell>" + RemoveWhiteSpace("Delete^javascript:DeletePic(\"" + "DP" + "\",\"" + "D" + "\",\"" + dt.Rows[i]["hdocumIdLink"].ToString() + "\",\"" + dt.Rows[i]["hdocumIdSour"].ToString() + "\",\"" + dt.Rows[i]["hdocumSequen"].ToString() + "\");^_self") + "</cell>");
 
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["hdocumIdSour"].ToString()) + "</cell>");
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["hdocumIdLink"].ToString()) + "</cell>");
@@ -340,6 +371,78 @@ public partial class Pages_LandLiti_VerifikasiForm : System.Web.UI.Page
         }
     }
 
+    private String DP()
+    {
+
+        if (Session["userid"] is object)
+        {
+            userid = Session["userid"].ToString();
+
+        }
+
+        String param1 = ""; if (Request.Params["param1"] is object) param1 = Request.Params["param1"].ToString();
+        String param2 = ""; if (Request.Params["param2"] is object) param2 = Request.Params["param2"].ToString();
+        String param3 = ""; if (Request.Params["param3"] is object) param3 = Request.Params["param3"].ToString();
+        String param4 = ""; if (Request.Params["param4"] is object) param4 = Request.Params["param4"].ToString();
+        String param5 = ""; if (Request.Params["param5"] is object) param5 = Request.Params["param5"].ToString();
+        String param6 = ""; if (Request.Params["param6"] is object) param6 = Request.Params["param6"].ToString();
+        String param7 = ""; if (Request.Params["param7"] is object) param7 = Request.Params["param7"].ToString();
+        String param8 = ""; if (Request.Params["param8"] is object) param8 = Request.Params["param8"].ToString();
+        String param9 = ""; if (Request.Params["param9"] is object) param9 = Request.Params["param9"].ToString();
+        String param10 = ""; if (Request.Params["param10"] is object) param10 = Request.Params["param10"].ToString();
+        String param11 = ""; if (Request.Params["param11"] is object) param11 = Request.Params["param11"].ToString();
+        String param12 = ""; if (Request.Params["param12"] is object) param12 = Request.Params["param12"].ToString();
+
+        String NamDok = ""; if (Request.Params["NamDok"] is object) NamDok = Request.Params["NamDok"].ToString().Replace("&amp;", "&");
+        String KdDok = ""; if (Request.Params["KdDok"] is object) KdDok = Request.Params["KdDok"].ToString().Replace("&amp;", "&");
+        String Sqdok = ""; if (Request.Params["Sqdok"] is object) Sqdok = Request.Params["Sqdok"].ToString().Replace("&amp;", "&");
+
+        //NamDok = @param7 --IDLink
+        //KdDok = @param6 --IDSource
+        //Sqdok = @param2 --hdocumSequen
+
+        String sql = "";
+        String output = "";
+
+
+
+        try
+        {
+
+            output = param1;
+
+            if (output == "I" || output == "E" || output == "D")
+            {
+                ALMIS.ExecuteSTP eSTP = new ALMIS.ExecuteSTP();
+                eSTP.Datas();
+
+                if (output == "I")
+                {
+                    eSTP.save9("P_VERDOK_D", param1, param2, param3, param4, param5, param6, param7, param8, param9);
+                }
+
+                if (output == "D")
+                {
+                    eSTP.save9("P_VERDOK_D", param1, KdDok, Sqdok, param4, param5, param6, param7, param8, param9);
+                    eSTP.save12("P_HDOCUM", param1, Sqdok, param3, param4, param5, KdDok, NamDok, param8, param9, param10, param11, param12);
+                    output = "DP";
+                }
+                return output;
+
+            }
+            else
+                output = "gagal";
+        }
+        catch (Exception ex)
+        {
+            Response.Write(ex.Message);
+            Response.End();
+            return ex.Message;
+        }
+
+        return output;
+    }
+
     private String CRUD()
     {
 
@@ -358,7 +461,7 @@ public partial class Pages_LandLiti_VerifikasiForm : System.Web.UI.Page
         String param7 = ""; if (Request.Params["param7"] is object) param7 = Request.Params["param7"].ToString();
         String param8 = ""; if (Request.Params["param8"] is object) param8 = Request.Params["param8"].ToString();
         String param9 = ""; if (Request.Params["param9"] is object) param9 = Request.Params["param9"].ToString();
-
+        String param10 = ""; if (Request.Params["param10"] is object) param10 = Request.Params["param10"].ToString();
         String sql = "";
         String output = "";
 
@@ -375,7 +478,7 @@ public partial class Pages_LandLiti_VerifikasiForm : System.Web.UI.Page
 
                 eSTP.Datas();
                 DataSet ds = new DataSet();
-                ds = eSTP.List9("P_VERDOK", "X", param2, "", param4, "", "", "", "", "");
+                ds = eSTP.List10("P_VERDOK", "X", param2, "", param4, "", "", "", "", "", "");
                 dt = ds.Tables[0];
 
                 if (dt.Rows.Count > 0)
@@ -393,7 +496,7 @@ public partial class Pages_LandLiti_VerifikasiForm : System.Web.UI.Page
                 }
 
                 eSTP.Datas();
-                eSTP.save9("P_VERDOK", param1, param2, param3, param4, userid, param6, param7, param8, param9);
+                eSTP.save10("P_VERDOK", param1, param2, param3, param4, userid, param6, param7, param8, param9, param10);
 
                 return output;
             }
@@ -440,7 +543,7 @@ public partial class Pages_LandLiti_VerifikasiForm : System.Web.UI.Page
             _stFAsli = System.IO.Path.GetFileName(e.FileName);
 
 
-            _stNomor = gn.GenerateNumber("", 100, 12, _stDates, userid);
+            _stNomor = gn.GenerateNumber("", 101, 12, _stDates, userid);
 
             AjaxFileUploadVerifikasi.SaveAs(uploadFolder + _stNomor + ext.getExtsion());
             e.PostedUrl = string.Format(e.FileName + "|" + _stNomor + "|" + userid + "|" + wilayah);
@@ -464,7 +567,7 @@ public partial class Pages_LandLiti_VerifikasiForm : System.Web.UI.Page
         string param5 = Request.Params["param5"].ToString();
         string user = Request.Params["user"].ToString();
         string wilayah = Request.Params["wilay"].ToString();
-
+        string param11 = Request.Params["param11"].ToString();
 
         string _stUploadKeterangan = "";
         _stUploadKeterangan = _stKeterangan;
@@ -478,12 +581,12 @@ public partial class Pages_LandLiti_VerifikasiForm : System.Web.UI.Page
         eSTP.Datas();
         DataSet ds = new DataSet();
 
-        eSTP.save9("P_VERDOK_D", param1, IDPerdok, "", param5, _stKeterangan, "", "", "", "");
+        eSTP.save9("P_VERDOK_D", param1, IDPerdok, "", param5, _stKeterangan, param11, "", "", "");
 
         if (extension != ".exe")
         {
 
-            uf.UploadFilesWeb("I", user, _stDates, "Verifikasi Dokumen", param5, uploadFolder, IDPerdok, _stNomor + extension, _stNamaFile, _stUploadKeterangan, "", "");
+            uf.UploadFilesWeb("I", user, _stDates, "Verifikasi Dokumen", param5, uploadFolder, IDPerdok, _stNomor + extension, _stNamaFile, _stUploadKeterangan, param11, "");
         }
 
         var _stOutput = ID;

@@ -24,6 +24,7 @@ public partial class MasterPages_mptamp : System.Web.UI.MasterPage
             {
 
                 lblnm.Text = Session["namass"].ToString();
+                lbljb.Text = Session["groupNm"].ToString();
             }
 
         }

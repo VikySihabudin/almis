@@ -10,7 +10,7 @@
 <input type="hidden" id="hidMode" value="0" />
 <asp:HiddenField ID="namaFile" runat="server" />
 
-<h1>Form Tahapan Proses BPN</h1>
+<h1>Tahapan Proses BPN</h1>
 	
 	<hr />
 

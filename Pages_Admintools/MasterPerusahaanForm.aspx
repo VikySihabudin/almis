@@ -8,9 +8,10 @@
 
 <h1>Master Perusahaan</h1>
 	
-	<hr class="style-four">    
+	<hr />    
+    <br />
     
-	<form role="form" class="form-horizontal" action="#">
+
     
         <div class="form-group">
             <label for="identitas" class="control-label col-md-2">ID Perusahaan</label>

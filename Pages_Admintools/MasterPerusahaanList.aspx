@@ -8,6 +8,7 @@
 
 <h2>Master Perusahaan</h2>  
 <hr />
+<br />
 
         <div class="form-group">            
       
@@ -19,7 +20,7 @@
            </div>
 
 
-           <label for="nama" class="control-label col-md-1">Date Awal</label>
+           <label for="nama" class="control-label col-md-1">Start Date</label>
            <div class="col-md-2">
             <div class="input-group">
             <asp:TextBox id="txtDateAwal" type="text" runat="server" class="form-control" />
@@ -27,7 +28,7 @@
             </div>
            </div>
 
-           <label for="nama" class="control-label col-md-1">Date Akhir</label>
+           <label for="nama" class="control-label col-md-1">End Dater</label>
            <div class="col-md-2">
             <div class="input-group">
              <asp:TextBox id="txtDateAkhir" type="text" runat="server" class="form-control" />
@@ -40,7 +41,7 @@
 
             <%if (MasterPerusahaanAssign.ToString().Equals("1") || groups.ToString().Equals("1"))
             { %> 
-                <asp:Button runat="server" ID="btnTambah" Text="Tambah" class="btn btn-lg btn-success" PostBackUrl="~/Pages_Admintools/MasterPerusahaanForm.aspx?param1=I" />
+                <asp:Button runat="server" ID="btnTambah" Text="Add New" class="btn btn-lg btn-success" PostBackUrl="~/Pages_Admintools/MasterPerusahaanForm.aspx?param1=I" />
             <%}%>
             </div>
         </div>

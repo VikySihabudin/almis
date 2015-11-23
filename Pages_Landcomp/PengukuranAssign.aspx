@@ -7,18 +7,19 @@
 
 <h2>Assign Pengukuran T0</h2>  
 <hr />
+
         
         <div class="form-group">
         <label for="identitas" class="control-label col-md-2">
         <asp:DropDownList ID="ddprg" runat="server" class="form-control" onclick="handleClick()">
         </asp:DropDownList></label>
-        <label for="identitas" class="control-label col-md-1">Date Awal</label>
+        <label for="identitas" class="control-label col-md-1">Start Date</label>
         <div class="col-md-2"><asp:TextBox id="txtDateAwal" type="text" runat="server" class="form-control" /></div>
-        <label for="identitas" class="control-label col-md-1">Date Akhir</label>
+        <label for="identitas" class="control-label col-md-1">End Date</label>
         <div class="col-sm-2"><asp:TextBox id="txtDateAkhir" type="text" runat="server" class="form-control" /></div>
         <label for="identitas" class="control-label col-sm-1"></label>
         <div class="col-md-2">
-        <input type="button" id="btnRefresh" value="Refresh" class="btn btn-info btn-md" onclick="refresh()" />
+        <input type="button" id="btnRefresh" value="Search" class="btn btn-info btn-md" onclick="refresh()" />
         </div>   
       </div>
       <hr class="style-four" />

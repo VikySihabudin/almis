@@ -55,18 +55,22 @@ public partial class Login : System.Web.UI.Page
                 Session["groups"] = rd["groups"].ToString();
                 Session["lanjut"] = rd["lanjut"].ToString();
                 Session["except"] = rd["excepts"].ToString();
-         
+                Session["groupNm"] = rd["groupNm"].ToString();
+                
+                
                 Response.Redirect("Pages/home.aspx");
             }
             else
             {
                 Response.Write("<script language=\"javascript\" type=\"text/javascript\">");
                 Response.Write("alert('Username atau Password Salah..');");
+                
                 Response.Write("location.href = 'login.aspx';");
                 Response.Write("</script>");
 
             }
-            dt.Dispose();
+            con.Close();
+            
         }
 
         else if (ldap.Login(txtusername.Text, txtpassword.Text))

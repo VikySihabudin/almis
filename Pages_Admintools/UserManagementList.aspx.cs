@@ -9,12 +9,15 @@ using System.Data;
 using System.Data.Sql;
 using System.Data.SqlClient;
 
-
 public partial class Pages_UserManagementList : System.Web.UI.Page
 {
     DataTable dt;
-    SqlConnection conn;
+    private string groupsid;
+
+    string connstring = ConfigurationManager.ConnectionStrings["ConStrLANDCOMPLocal"].ToString();
     SqlDataAdapter sda;
+    SqlConnection conn;
+    string query;
 
     protected String userid = "";
     protected String groups = "";
@@ -23,17 +26,13 @@ public partial class Pages_UserManagementList : System.Web.UI.Page
     protected String UserManagementDelete = "";
     protected String UserManagementAssign = "";
 
-    string query;
-    string connstring = ConfigurationManager.ConnectionStrings["ConStrLANDCOMPLocal"].ToString();
-
     protected void Page_Load(object sender, EventArgs e)
     {
         HakAkses();
-        isiTeknis();
 
         bool normal = true;
         if (normal && (Request.Params["sm"] is object)) normal = ServiceSelect(Request.Params["sm"].ToString());
-
+        isiPeriode();
     }
 
     private void HakAkses()
@@ -55,7 +54,7 @@ public partial class Pages_UserManagementList : System.Web.UI.Page
         {
             Response.Write("<script language=\"javascript\" type=\"text/javascript\">");
             Response.Write("alert('Session sudah habis. Silakan login kembali.');");
-            Response.Write("location.href = '../Pages/login.aspx';");
+            Response.Write("location.href = '../login.aspx';");
             Response.Write("</script>");
         }
 
@@ -63,14 +62,14 @@ public partial class Pages_UserManagementList : System.Web.UI.Page
         eSTP.Datas();
         DataSet ds = new DataSet();
 
-        ds = eSTP.List8("P_MENU", "CHA", "", groups, "", "", "", "", "");
+        ds = eSTP.List8("P_MENU", "CHA", "", groups, "User Management", "", "", "", "");
 
         dt = ds.Tables[0];
 
-        UserManagementEdit = dt.Rows[10]["UserManagementEdit"].ToString(); //0
-        UserManagementDelete = dt.Rows[10]["UserManagementDelete"].ToString(); //1
-        UserManagementView = dt.Rows[10]["UserManagement"].ToString(); //2
-        UserManagementAssign = dt.Rows[10]["UserManagementAssign"].ToString(); //3
+        UserManagementEdit = dt.Rows[0]["EDITXXX"].ToString(); //0
+        UserManagementDelete = dt.Rows[0]["DELETEX"].ToString(); //1
+        UserManagementView = dt.Rows[0]["VIEWXXX"].ToString(); //2
+        UserManagementAssign = dt.Rows[0]["ASSIGNX"].ToString(); //3
 
         dt.Dispose();
 
@@ -83,11 +82,26 @@ public partial class Pages_UserManagementList : System.Web.UI.Page
                 {
                     Response.Write("<script language=\"javascript\" type=\"text/javascript\">");
                     Response.Write("alert('Anda Tidak Memiliki Akses Untuk Melihat Modul Ini');");
-                    Response.Write("location.href = '../Pages_Admintools/home.aspx';");
+                    Response.Write("location.href = '../Pages/home.aspx';");
                     Response.Write("</script>");
                 }
             }
         }
+    }
+
+    public void isiPeriode()
+    {
+        query = @"SELECT codessDescs1, codessCodess FROM CODESS WHERE codessHeadss = '9'";
+        dt = getDataTable(query);
+        if (dt.Rows.Count > 0)
+        {
+            ddprg.Items.Clear();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                ddprg.Items.Add(new ListItem(dt.Rows[i]["codessDescs1"].ToString(), dt.Rows[i]["codessCodess"].ToString()));
+            }
+        }
+        dt.Dispose();
     }
 
     private string RemoveWhiteSpace(string value)
@@ -103,7 +117,6 @@ public partial class Pages_UserManagementList : System.Web.UI.Page
 
     private bool ServiceSelect(string sm)
     {
-
         switch (sm)
         {
             case "L":
@@ -112,7 +125,7 @@ public partial class Pages_UserManagementList : System.Web.UI.Page
                 ALMIS.ExecuteSTP eSTP_L = new ALMIS.ExecuteSTP();
                 eSTP_L.Datas();
                 DataSet ds_L = new DataSet();
-                ds_L = eSTP_L.List10("P_USERSS", param1L, "", "", "", "", "", "", "","","");
+                ds_L = eSTP_L.List11("P_USERSS", param1L, "", "", "", "", "", "", "", "", "","");
 
                 dt = ds_L.Tables[0];
 
@@ -120,12 +133,13 @@ public partial class Pages_UserManagementList : System.Web.UI.Page
                 Response.Write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
                 Response.Write("<rows>");
 
-               
+
 
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     Random r = new Random();
                     Response.Write("<row id=\"" + (i + 1).ToString() + "\">");
+                    Response.Write("<cell>" + (i + 1).ToString() + "</cell>"); // Untuk Membuat Angka
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["UserssIDents"].ToString()) + "</cell>");
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["UserssNamess"].ToString()) + "</cell>");
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["UserssGroups"].ToString()) + "</cell>");
@@ -155,9 +169,9 @@ public partial class Pages_UserManagementList : System.Web.UI.Page
 
                         }
                     }
-    
-                        
-                    
+
+
+
                     Response.Write("</row>");
                 }
                 Response.Write("</rows>");
@@ -175,22 +189,6 @@ public partial class Pages_UserManagementList : System.Web.UI.Page
         }
     }
 
-    public void isiTeknis()
-    {
-        query = @"SELECT codessDescs1 codessCodess FROM CODESS WHERE codessHeadss = '9'";
-        dt = getDataTable(query);
-        if (dt.Rows.Count > 0)
-        {
-            ddprg.Items.Clear();
-            //ddLanjut.Items.Add(new ListItem("Pilih Kabupaten", "0"));
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                ddprg.Items.Add(new ListItem(dt.Rows[i]["codessCodess"].ToString()));
-            }
-        }
-        dt.Dispose();
-    }
-
     public DataTable getDataTable(string query)
     {
         dt = new DataTable();
@@ -201,6 +199,6 @@ public partial class Pages_UserManagementList : System.Web.UI.Page
         sda.Fill(dt);
         conn.Close();
         return dt;
-    }
+    } 
 
 }

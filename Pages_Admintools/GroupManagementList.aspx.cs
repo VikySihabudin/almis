@@ -57,7 +57,7 @@ public partial class Pages_GroupManagementList : System.Web.UI.Page
         {
             Response.Write("<script language=\"javascript\" type=\"text/javascript\">");
             Response.Write("alert('Session sudah habis. Silakan login kembali.');");
-            Response.Write("location.href = '../Pages/login.aspx';");
+            Response.Write("location.href = '../login.aspx';");
             Response.Write("</script>");
         }
 
@@ -65,14 +65,14 @@ public partial class Pages_GroupManagementList : System.Web.UI.Page
         eSTP.Datas();
         DataSet ds = new DataSet();
 
-        ds = eSTP.List8("P_MENU", "CHA", "", groups, "", "", "", "", "");
+        ds = eSTP.List8("P_MENU", "CHA", "", groups, "Group Management", "", "", "", "");
 
         dt = ds.Tables[0];
 
-        GroupManagementEdit = dt.Rows[9]["GroupManagementEdit"].ToString(); //0
-        GroupManagementDelete = dt.Rows[9]["GroupManagementDelete"].ToString(); //1
-        GroupManagementView = dt.Rows[9]["GroupManagement"].ToString(); //2
-        GroupManagementAssign = dt.Rows[9]["GroupManagementAssign"].ToString(); //3
+        GroupManagementEdit = dt.Rows[0]["EDITXXX"].ToString(); //0
+        GroupManagementDelete = dt.Rows[0]["DELETEX"].ToString(); //1
+        GroupManagementView = dt.Rows[0]["VIEWXXX"].ToString(); //2
+        GroupManagementAssign = dt.Rows[0]["ASSIGNX"].ToString(); //3
 
         dt.Dispose();
 

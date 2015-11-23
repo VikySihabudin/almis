@@ -18,24 +18,24 @@
 
 			<div class="col-lg-8" align="right">
 
-                <label for="nama" class="control-label col-md-2">Date Awal</label>
+                <label for="nama" class="control-label col-md-2">Start Datel</label>
                 <div class="col-lg-2">
                 <asp:TextBox id="txtDateAwal" type="text" runat="server" class="form-control" />
                 </div>
-                <label for="nama" class="control-label col-md-2">Date Akhir</label>
+                <label for="nama" class="control-label col-md-2">End Date</label>
                 <div class="col-lg-2">
                 <asp:TextBox id="txtDateAkhir" type="text" runat="server" class="form-control" />
                 </div>
 
                 <div class="col-lg-1">
-                <input type="button" id="btnRefresh" value="Refresh" class="btn btn-info btn-sm" onclick="refresh()" />
+                <input type="button" id="btnRefresh" value="Search" class="btn btn-info btn-sm" onclick="refresh()" />
                 </div>
 
             </div>
 
            <div class="col-lg-1">
 
-                <input type="button" onclick="tambah()" id="btnTambah" value="Tambah" class="btn btn-success btn-lg" />  
+                <input type="button" onclick="tambah()" id="btnTambah" value="Add New" class="btn btn-success btn-lg" />  
                    
             </div>
 
@@ -75,7 +75,7 @@
 
 
     listCompliance();
-    //SearchlistCompliance();
+    SearchlistCompliance();
 
     function tambah(lo) {
         var url = window.location.toString();
@@ -127,7 +127,7 @@
             + "&param5="
 			+ "";
         listCompliance.clearAll();
-        //listCompliance.loadXML(localURL + "?" + s);
+        listCompliance.loadXML(localURL + "?" + s);
         //listCompliance.loadXML("../xml/listCompliance.xml");
     }
 
@@ -135,15 +135,15 @@
     function listCompliance() {
         listCompliance = new dhtmlXGridObject('gridCompliance');
         listCompliance.setImagePath("../JavaScript/codebase/imgs/");
-        listCompliance.setHeader("No.,No. Compliance, Company, PIC, Project Analyst, Status, Action,#cspan,#cspan,#cspan");
-        listCompliance.setInitWidths("50,200,200,200,200,200,62,62,62");
-        listCompliance.setColAlign("left,left,left,left,left,left,left,left,left");
-        listCompliance.setColTypes("ed,ed,ed,ed,ed,ed,link,link,link");
+        listCompliance.setHeader("No.,No. Compliance, Company, PIC, Project Analyst, Action,#cspan,#cspan,#cspan");
+        listCompliance.setInitWidths("50,200,200,200,200,62,62,62");
+        listCompliance.setColAlign("left,left,left,left,left,left,left,left");
+        listCompliance.setColTypes("ed,ed,ed,ed,ed,link,link,link");
         listCompliance.init();
         listCompliance.setSkin("dhx_skyblue");
 
-        listCompliance.setColSorting("str,str,str,str,str,str,str");
-        listCompliance.attachHeader("#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter");
+        listCompliance.setColSorting("str,str,str,str,str,str,str,str");
+        listCompliance.attachHeader("#text_filter,#text_filter,#text_filter,#text_filter,#text_filter");
         listCompliance.enablePaging(true, 15, 5, "pageMasterIdentitas", true);
         listCompliance.setPagingSkin("bricks");
     }

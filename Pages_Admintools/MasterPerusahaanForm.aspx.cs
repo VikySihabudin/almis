@@ -53,7 +53,7 @@ public partial class Pages_MasterPerusahaanForm : System.Web.UI.Page
         {
             Response.Write("<script language=\"javascript\" type=\"text/javascript\">");
             Response.Write("alert('Session sudah habis. Silakan login kembali.');");
-            Response.Write("location.href = '../Pages/login.aspx';");
+            Response.Write("location.href = '../login.aspx';");
             Response.Write("</script>");
         }
 
@@ -73,13 +73,13 @@ public partial class Pages_MasterPerusahaanForm : System.Web.UI.Page
             Param1 = "";
         }
 
-        ds = eSTP.List8("P_MENU", "CHA", "", groups, "", "", "", "", "");
+        ds = eSTP.List8("P_MENU", "CHA", "", groups, "Master Perusahaan", "", "", "", "");
         dt = ds.Tables[0];
 
-        MasterPerusahaanView = dt.Rows[12]["MasterPerusahaan"].ToString(); //0
-        MasterPerusahaanEdit = dt.Rows[12]["MasterPerusahaanEdit"].ToString(); //1
-        MasterPerusahaanDelete = dt.Rows[12]["MasterPerusahaanDelete"].ToString(); //2
-        MasterPerusahaanAssign = dt.Rows[12]["MasterPerusahaanAssign"].ToString(); //3
+        MasterPerusahaanView = dt.Rows[0]["VIEWXXX"].ToString(); //0
+        MasterPerusahaanEdit = dt.Rows[0]["EDITXXX"].ToString(); //1
+        MasterPerusahaanDelete = dt.Rows[0]["DELETEX"].ToString(); //2
+        MasterPerusahaanAssign = dt.Rows[0]["ASSIGNX"].ToString(); //3
 
         dt.Dispose();
 

@@ -10,8 +10,9 @@
 <input type="hidden" id="hidMode" value="0" />
 <asp:HiddenField ID="namaFile" runat="server" />
 
-<h1>Form Tahap Perolehan Izin Lokasi</h1>
-		<hr />        
+<h1>Tahap Perolehan Izin Lokasi</h1>
+		<hr />  
+           
 		<div class="form-group">
             <label for="nama" class="control-label col-md-2">No Perolehan Izin Lokasi</label>
             <div class="col-md-2"><asp:TextBox ID="txtIzinLok" class="form-control input-md" runat="server" value= ""></asp:TextBox></div>

@@ -17,10 +17,17 @@ public partial class Pages_LandLiti_KlaimUserList : System.Web.UI.Page
     string connstring = ConfigurationManager.ConnectionStrings["ConStrLANDCOMPLocal"].ToString();
     SqlDataAdapter sda;
     SqlConnection conn;
+    protected String userid = "";
     string query;
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["userid"] is object)
+        {
+            userid = Session["userid"].ToString();
+        }
+
+
         bool normal = true;
         if (normal && (Request.Params["sm"] is object)) normal = ServiceSelect(Request.Params["sm"].ToString());
         isiPeriode();
@@ -65,7 +72,7 @@ public partial class Pages_LandLiti_KlaimUserList : System.Web.UI.Page
                 ALMIS.ExecuteSTP eSTP_L = new ALMIS.ExecuteSTP();
                 eSTP_L.Datas();
                 DataSet ds_L = new DataSet();
-                ds_L = eSTP_L.List14("P_CLAUSR", param1L, param2L, "", param4L, param5L, "", "", "", "", "", "", "", "", "");
+                ds_L = eSTP_L.List15("P_CLAUSR", param1L, param2L, "", param4L, param5L, "", "", "", "", "", userid, "", "", "", "");
 
                 dt = ds_L.Tables[0];
 

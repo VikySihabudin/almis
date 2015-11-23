@@ -92,7 +92,7 @@ public partial class Pages_PraRegistrasiForm : System.Web.UI.Page
         {
             Response.Write("<script language=\"javascript\" type=\"text/javascript\">");
             Response.Write("alert('Session sudah habis. Silakan login kembali.');");
-            Response.Write("location.href = '../Pages/login.aspx';");
+            Response.Write("location.href = '../login.aspx';");
             Response.Write("</script>");
         }
 
@@ -112,13 +112,13 @@ public partial class Pages_PraRegistrasiForm : System.Web.UI.Page
              Param1 = "";
         }
 
-        ds = eSTP.List8("P_MENU", "CHA", "", groups, "", "", "", "", "");
+        ds = eSTP.List8("P_MENU", "CHA", "", groups, "Pra Registrasi", "", "", "", "");
         dt = ds.Tables[0];
 
-        PraRegistrasiView = dt.Rows[0]["PraRegistrasi"].ToString(); //0
-        PraRegistrasiEdit = dt.Rows[0]["PraRegistrasiEdit"].ToString(); //1
-        PraRegistrasiDelete = dt.Rows[0]["PraRegistrasiDelete"].ToString(); //2
-        PraRegistrasiAssign = dt.Rows[0]["PraRegistrasiAssign"].ToString(); //3
+        PraRegistrasiView = dt.Rows[0]["VIEWXXX"].ToString(); //0
+        PraRegistrasiEdit = dt.Rows[0]["EDITXXX"].ToString(); //1
+        PraRegistrasiDelete = dt.Rows[0]["DELETEX"].ToString(); //2
+        PraRegistrasiAssign = dt.Rows[0]["ASSIGNX"].ToString(); //3
 
         dt.Dispose();
 

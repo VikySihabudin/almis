@@ -55,7 +55,7 @@ public partial class Pages_PengukuranAssign : System.Web.UI.Page
         {
             Response.Write("<script language=\"javascript\" type=\"text/javascript\">");
             Response.Write("alert('Session sudah habis. Silakan login kembali.');");
-            Response.Write("location.href = '../Pages/login.aspx';");
+            Response.Write("location.href = '../login.aspx';");
             Response.Write("</script>");
         }
 
@@ -63,14 +63,14 @@ public partial class Pages_PengukuranAssign : System.Web.UI.Page
         eSTP.Datas();
         DataSet ds = new DataSet();
 
-        ds = eSTP.List8("P_MENU", "CHA", "", groups, "", "", "", "", "");
+        ds = eSTP.List8("P_MENU", "CHA", "", groups, "Pengukuran T0", "", "", "", "");
 
         dt = ds.Tables[0];
 
-        PengukuranT0Edit = dt.Rows[5]["PengukuranT0Edit"].ToString(); //0
-        PengukuranT0Delete = dt.Rows[5]["PengukuranT0Delete"].ToString(); //1
-        PengukuranT0View = dt.Rows[5]["PengukuranT0"].ToString(); //2
-        PengukuranT0Assign = dt.Rows[5]["PengukuranT0Assign"].ToString(); //3
+        PengukuranT0Edit = dt.Rows[0]["EDITXXX"].ToString(); //0
+        PengukuranT0Delete = dt.Rows[0]["DELETEX"].ToString(); //1
+        PengukuranT0View = dt.Rows[0]["VIEWXXX"].ToString(); //2
+        PengukuranT0Assign = dt.Rows[0]["ASSIGNX"].ToString(); //3
 
         dt.Dispose();
 

@@ -111,7 +111,7 @@ public partial class Pages_PemberkasanSatuForm : System.Web.UI.Page
         {
             Response.Write("<script language=\"javascript\" type=\"text/javascript\">");
             Response.Write("alert('Session sudah habis. Silakan login kembali.');");
-            Response.Write("location.href = '../Pages/login.aspx';");
+            Response.Write("location.href = '../login.aspx';");
             Response.Write("</script>");
         }
 
@@ -119,13 +119,14 @@ public partial class Pages_PemberkasanSatuForm : System.Web.UI.Page
         eSTP.Datas();
         DataSet ds = new DataSet();
 
-        ds = eSTP.List8("P_MENU", "CHA", "", groups, "", "", "", "", "");
+        ds = eSTP.List8("P_MENU", "CHA", "", groups, "Pemberkasan", "", "", "", "");
+
         dt = ds.Tables[0];
 
-        PemberkasanView = dt.Rows[6]["Pemberkasan"].ToString(); //0
-        PemberkasanEdit = dt.Rows[6]["PemberkasanEdit"].ToString(); //1
-        PemberkasanDelete = dt.Rows[6]["PemberkasanDelete"].ToString(); //2
-        PemberkasanAssign = dt.Rows[6]["PemberkasanAssign"].ToString(); //3
+        PemberkasanEdit = dt.Rows[0]["EDITXXX"].ToString(); //0
+        PemberkasanDelete = dt.Rows[0]["DELETEX"].ToString(); //1
+        PemberkasanView = dt.Rows[0]["VIEWXXX"].ToString(); //2
+        PemberkasanAssign = dt.Rows[0]["ASSIGNX"].ToString(); //3
 
         dt.Dispose();
 

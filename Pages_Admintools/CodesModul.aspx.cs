@@ -56,7 +56,7 @@ public partial class Pages_CodesModul : System.Web.UI.Page
         {
             Response.Write("<script language=\"javascript\" type=\"text/javascript\">");
             Response.Write("alert('Session sudah habis. Silakan login kembali.');");
-            Response.Write("location.href = '../Pages/login.aspx';");
+            Response.Write("location.href = '../login.aspx';");
             Response.Write("</script>");
         }
 
@@ -64,14 +64,14 @@ public partial class Pages_CodesModul : System.Web.UI.Page
         eSTP.Datas();
         DataSet ds = new DataSet();
 
-        ds = eSTP.List8("P_MENU", "CHA", "", groups, "", "", "", "", "");
+        ds = eSTP.List8("P_MENU", "CHA", "", groups, "Master Codes", "", "", "", "");
 
         dt = ds.Tables[0];
 
-        MasterCodesEdit = dt.Rows[13]["MasterCodesEdit"].ToString(); //0
-        MasterCodesDelete = dt.Rows[13]["MasterCodesDelete"].ToString(); //1
-        MasterCodesView = dt.Rows[13]["MasterCodes"].ToString(); //2
-        MasterCodesAssign = dt.Rows[13]["MasterCodesAssign"].ToString(); //3
+        MasterCodesEdit = dt.Rows[0]["EDITXXX"].ToString(); //0
+        MasterCodesDelete = dt.Rows[0]["DELETEX"].ToString(); //1
+        MasterCodesView = dt.Rows[0]["VIEWXXX"].ToString(); //2
+        MasterCodesAssign = dt.Rows[0]["ASSIGNX"].ToString(); //3
 
         dt.Dispose();
 

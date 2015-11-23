@@ -12,7 +12,7 @@
 
 
 
-<h1>Form Proposal Land Management Services</h1>
+<h1>Proposal Land Management Services</h1>
 	
 	<hr />    
     
@@ -26,7 +26,7 @@
 		<div class="form-group">
             <label for="nama" class="control-label col-md-2">Company</label>
             <div class="col-md-3"><asp:TextBox ID="txtCompany" class="form-control input-md" runat="server" value= ""></asp:TextBox></div>
-          <div class="col-md-3"><input type="button" id="btnCompany" value="Cari"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>
+          <div class="col-md-3"><input type="button" id="btnCompany" value="Search"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>
         </div>
 
 		<div class="form-group">
@@ -61,13 +61,13 @@
 		<div class="form-group">
             <label for="nama" class="control-label col-md-2">Nama Perusahaan</label>
             <div class="col-md-3"><asp:TextBox ID="txtNamaPerusahaan" class="form-control input-md" runat="server" value= ""></asp:TextBox></div>
-          <div class="col-md-3"><input type="button" id="BtnNamaPerusahaan" value="Cari"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>
+          <div class="col-md-3"><input type="button" id="BtnNamaPerusahaan" value="Search"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>
         </div>
 
 		<div class="form-group">
             <label for="nama" class="control-label col-md-2">Nama</label>
             <div class="col-md-3"><asp:TextBox ID="txtNama" class="form-control input-md" runat="server" value= ""></asp:TextBox></div>
-          <div class="col-md-3"><input type="button" id="BtnNama" value="Cari"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>
+          <div class="col-md-3"><input type="button" id="BtnNama" value="Search"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>
         </div>
 
         <hr />
@@ -77,13 +77,13 @@
 		<div class="form-group">
             <label for="nama" class="control-label col-md-2">Nama Perusahaan</label>
             <div class="col-md-3"><asp:TextBox ID="txtApprovedBy" class="form-control input-md" runat="server" value= ""></asp:TextBox></div>
-          <div class="col-md-3"><input type="button" id="BtnApprovedBy" value="Cari"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>
+          <div class="col-md-3"><input type="button" id="BtnApprovedBy" value="Search"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>
         </div>
 
 		<div class="form-group">
             <label for="nama" class="control-label col-md-2">Nama</label>
             <div class="col-md-3"><asp:TextBox ID="txtApprovedNama" class="form-control input-md" runat="server" value= ""></asp:TextBox></div>
-          <div class="col-md-3"><input type="button" id="BtnApprovedNama" value="Cari"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>
+          <div class="col-md-3"><input type="button" id="BtnApprovedNama" value="Search"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>
         </div>
 
         <hr />

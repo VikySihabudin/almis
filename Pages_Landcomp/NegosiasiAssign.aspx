@@ -17,16 +17,16 @@
                 <asp:DropDownList ID="ddprg" runat="server" class="form-control" onclick="handleClick()">
                 </asp:DropDownList>
                 </div>
-               <label for="nama" class="control-label col-md-1">Date Awal</label>
+               <label for="nama" class="control-label col-md-1">Start Date</label>
                 <div class="col-lg-2">
                 <asp:TextBox id="txtDateAwal" type="text" runat="server" class="form-control" />
                 </div>
-                <label for="nama" class="control-label col-md-1">Date Akhir</label>
+                <label for="nama" class="control-label col-md-1">End Date</label>
                 <div class="col-lg-2">
                 <asp:TextBox id="txtDateAkhir" type="text" runat="server" class="form-control" />
                 </div>
                 <div class="col-lg-1">
-                 <input type="button" id="btnRefresh" value="Refresh" class="btn btn-info btn-sm" onclick="refresh()" />
+                 <input type="button" id="btnRefresh" value="Search" class="btn btn-info btn-sm" onclick="refresh()" />
                  </div>
 
 

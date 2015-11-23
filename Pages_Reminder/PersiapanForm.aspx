@@ -12,9 +12,10 @@
 
 
 
-<h1>Form Tahap Persiapan</h1>
+<h1>Tahap Persiapan</h1>
 	
 	<hr />    
+    
     
         
 		<div class="form-group">

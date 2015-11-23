@@ -14,9 +14,10 @@
 
 
 
-<h1>Form Persiapan Document</h1>
+<h1>Persiapan Dokumen</h1>
 	
 	<hr />    
+    <br />
     
 	<div role="form" class="form-horizontal" >
 
@@ -33,8 +34,14 @@
             <label for="identitas" class="control-label col-md-2">Nomor Persiapan Document</label>
             <div class="col-md-3"><asp:TextBox ID="txtPerDoc" class="form-control input-md" runat="server" onkeypress="return numbersonly(event, false)"></asp:TextBox></div>			
             
+
+        </div>
+        
+        <div class="form-group">
+
             <label for="nama" class="control-label col-md-2">Nomor Claim</label>
             <div class="col-md-3"><asp:TextBox ID="txtNoClam" class="form-control input-md" runat="server"></asp:TextBox></div>
+
         </div>
 
         
@@ -79,6 +86,22 @@
             </div>                                     
             </div>
         </div>
+
+<hr />
+<br />
+
+        <div class="form-group">
+
+            <div class="col-md-2">
+            <asp:Label ID="Label27" runat="server" Text="Label">Lanjut</asp:Label>
+            </div>
+
+            <div class="col-md-3">
+                <asp:DropDownList ID="ddLanjut" runat="server" class="form-control input-md">
+                </asp:DropDownList>
+            </div>
+
+       </div>
 
             <br /><hr />
 
@@ -139,7 +162,7 @@
     var ddDesa = document.getElementById("<%= ddDesa.ClientID %>");
 
     var ddprs = document.getElementById("<%= ddprs.ClientID %>");
-
+    var ddLanjut = document.getElementById("<%= ddLanjut.ClientID %>"); 
     
     var hidMode = document.getElementById("hidMode");
 
@@ -183,7 +206,7 @@
                     + "rnd=" + Math.random() * 4
                     + "&sm=CRUD_D"
                     + "&param1=I"
-                    + "&param2=" + txtNoClam.value
+                    + "&param2=" + txtPerDoc.value
                     + "&param3="
                     + "&param4="
                     + "&param5=" + listPidCari.cells(rowId, 1).getValue()
@@ -208,7 +231,7 @@
                     + "rnd=" + Math.random() * 4
 			        + "&sm=CRUD_D"
                     + "&param1=" + param1
-                    + "&param2=" + txtNoClam.value
+                    + "&param2=" + txtPerDoc.value
                     + "&param3="
                     + "&param4="
                     + "&param5=" + param5
@@ -305,6 +328,7 @@
             ddKecamatan.value = b[4];
             ddDesa.value = b[5];
             ddprs.value = b[6];
+            ddLanjut.value = b[7];
         }
         SearchlistPID();
         SearchlistPIDCari();
@@ -318,7 +342,7 @@
 			+ "rnd=" + Math.random() * 4
 			+ "&sm=L"
             + "&param1=L"
-            + "&param2=" + txtNoClam.value
+            + "&param2=" + txtPerDoc.value
 			+ "";
         listPID.clearAll();
         listPID.loadXML(localURL + "?" + s);
@@ -384,6 +408,7 @@
         ddDesa.disabled = true;
         
         ddprs.disabled = true;
+        ddLanjut.disabled = true;
         document.getElementById('btnSave').style.visibility = 'hidden';
         document.getElementById('btnTambah').style.visibility = 'hidden';
     }
@@ -393,6 +418,7 @@
         txtPerDoc.disabled = true;
         txtNama.disabled = true;
 
+        ddprs.disabled = true;
         ddKabupaten.disabled = true;
         ddKecamatan.disabled = true;
         ddDesa.disabled = true;
@@ -410,6 +436,7 @@
         ddDesa.disabled = true;
         
         ddprs.disabled = true;
+        ddLanjut.disabled = true;
         document.getElementById('btnTambah').style.visibility = 'hidden';
 
     }
@@ -450,6 +477,8 @@
                 + "&param6="
                 + "&param7=" + ddprs.value
                 + "&param8="
+                + "&param9="
+                + "&param10=" + ddLanjut.value
                 + "";
 
         dhtmlxAjax.post(localURL, s, outputResponse);

@@ -89,7 +89,6 @@
         if (a != '0') {
             var b = new Array();
             b = a.split('&');
-            //            alert(a);
 
 
             var s = ""
@@ -114,33 +113,27 @@
         else if (x == 'E') {
             btnSave.value = 'Save';
             hidMode.value = 'E';
-            //alert(hidMode.value);
         }
         else if (x == 'D') {
             btnSave.value = 'Delete';
             hidMode.value = 'D';
-            //alert(hidMode.value);
         }
     }
 
 
 
     function bindFormGroupManagement(loader) {
-        //alert(loader.xmlDoc.responseText);
         var a = loader.xmlDoc.responseText;
-        //lockPengecekanLapangan();
         if (a != '0') {
             var b = new Array();
             b = a.split('|');
 
-            //alert(b[0]);
 
             hiIdentitas.value = b[0];
             txtGroupsNamess.value = b[1];
             ddLanjut.value = b[2];
             ddExcept.value = b[3];
 
-            //alert(b[2]);
         }
     }
 
@@ -148,10 +141,8 @@
     function btnClick(objBtn) {
         switch (objBtn.value) {
             case "Save":
-                //alert(hidMode.value);
                 Edit(hidMode.value)
-                break;
-            //alert(hidMode.value);   
+                break; 
             case "Delete":
                 if (objBtn.id == 'btnSave') {
                     if (confirm("Hapus Data Ini?"))
@@ -172,8 +163,6 @@
 
         
         if (tipe.replace("param1=", "") == 'I') {
-            //            alert(tipe.replace("param2=", ""));
-            //alert(hiIdentitas.value);
             var s = ""
                         + "rnd=" + Math.random() * 4
 			            + "&sm=CRUD" 
@@ -183,13 +172,9 @@
                         + "&param4=" + ddLanjut.value
                         + "&param5=" + ddExcept.value
 
-            //alert(s);
             dhtmlxAjax.post(localURL, s, outputResponse);
         }
         else if (tipe.replace("param1=", "") == 'E') {
-        //alert("testE");
-            //alert(tipe);e
-            //alert(hiIdentitas.value);//100
             var s = ""
                         + "rnd=" + Math.random() * 4
 			            + "&sm=CRUD"
@@ -199,7 +184,6 @@
                         + "&param4=" + ddLanjut.value
                         + "&param5=" + ddExcept.value
 
-            //alert(s);
             dhtmlxAjax.post(localURL, s, outputResponse);
         }
     }
@@ -231,21 +215,24 @@
         switch (b[0]) {
             case "I":
                 alert("Data Berhasil Di Input");
-                window.location.replace(newUrl);
+                close();
+                //window.location.replace(newUrl);
                 break;
             case "E":
                 alert("Data Berhasil Di Edit");
-                window.location.replace(newUrl);
+                close();
+                //window.location.replace(newUrl);
                 break;
             case "D":
                 alert("Data Berhasil Di Delete");
-                window.location.replace(newUrl);
+                close();
+                //window.location.replace(newUrl);
                 break;
             case "nodelete":
                 alert("Data Master Identitas Tidak Dapat Di Hapus Karena Sudah Dilakukan digunakan");
                 window.location.replace(newUrl);
                 break;
-            
+
             case "gagal":
                 alert("Data Group Gagal Disimpan");
                 window.location.replace(newUrl);

@@ -88,7 +88,7 @@ public partial class Pages_SerahTerimaBerkas : System.Web.UI.Page
         {
             Response.Write("<script language=\"javascript\" type=\"text/javascript\">");
             Response.Write("alert('Session sudah habis. Silakan login kembali.');");
-            Response.Write("location.href = '../Pages/login.aspx';");
+            Response.Write("location.href = '../login.aspx';");
             Response.Write("</script>");
         }
 
@@ -96,14 +96,14 @@ public partial class Pages_SerahTerimaBerkas : System.Web.UI.Page
         eSTP.Datas();
         DataSet ds = new DataSet();
 
-        ds = eSTP.List8("P_MENU", "CHA", "", groups, "", "", "", "", "");
+        ds = eSTP.List8("P_MENU", "CHA", "", groups, "Serah Terima Berkas", "", "", "", "");
 
         dt = ds.Tables[0];
 
-        SerahTerimaBerkasEdit = dt.Rows[15]["SerahTerimaBerkasEdit"].ToString(); //0
-        SerahTerimaBerkasDelete = dt.Rows[15]["SerahTerimaBerkasDelete"].ToString(); //1
-        SerahTerimaBerkasView = dt.Rows[15]["SerahTerimaBerkas"].ToString(); //2
-        SerahTerimaBerkasAssign = dt.Rows[15]["SerahTerimaBerkasAssign"].ToString(); //3
+        SerahTerimaBerkasEdit = dt.Rows[0]["EDITXXX"].ToString(); //0
+        SerahTerimaBerkasDelete = dt.Rows[0]["DELETEX"].ToString(); //1
+        SerahTerimaBerkasView = dt.Rows[0]["VIEWXXX"].ToString(); //2
+        SerahTerimaBerkasAssign = dt.Rows[0]["ASSIGNX"].ToString(); //3
 
 
         dt.Dispose();

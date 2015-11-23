@@ -4,26 +4,28 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-<h2>List Pengukuran T0</h2>  
+<h2>Pengukuran T0</h2>  
 <hr />
+
 
         <div class="form-group">            
             <div class="col-sm-2">
             <asp:DropDownList ID="ddprg" runat="server" class="form-control" onclick="handleClick()">
             </asp:DropDownList>
             </div>
-			<div class="col-md-8" align="right">
-                <label for="nama" class="control-label col-md-1">Date Awal</label>
-                <div class="col-md-2">
+			<div class="col-lg-8" align="right">
+            <label for="nama" class="control-label col-md-2">Start Date</label>
+                <div class="col-lg-2">
                 <asp:TextBox id="txtDateAwal" type="text" runat="server" class="form-control" />
                 </div>
-                <label for="nama" class="control-label col-md-1">Date Akhir</label>
-                <div class="col-md-2">
+                <label for="nama" class="control-label col-md-2">End Date</label>
+                <div class="col-lg-2">
                 <asp:TextBox id="txtDateAkhir" type="text" runat="server" class="form-control" />
                 </div>
-                <div class="col-md-1">
-                   <input type="button" id="btnRefresh" value="Refresh" class="btn btn-info btn-md" onclick="refresh()" />
+                <div class="col-lg-1">
+                 <input type="button" id="btnRefresh" value="Search" class="btn btn-info btn-md" onclick="refresh()" />
                  </div>
+
 
             <%if (PengukuranT0Assign.ToString().Equals("1") || groups.ToString().Equals("1"))
             { %> 

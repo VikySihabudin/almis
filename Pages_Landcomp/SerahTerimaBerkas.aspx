@@ -112,7 +112,7 @@
 
                                 <div class="form-group">
                                     <div class="col-md-6">
-                                        <input type="button" id="btnCancel" value="Cancel" class="btn btn-lg btn-default" onclick="btnClick(this)" />
+                                        <%--<input type="button" id="btnCancel" value="Cancel" class="btn btn-lg btn-default" onclick="btnClick(this)" />--%>
                                         <input type="button" id="btnSave" value="Save"  class="btn btn-lg btn-success" onclick="btnClick(this)" />
                                     </div>
                                 </div>

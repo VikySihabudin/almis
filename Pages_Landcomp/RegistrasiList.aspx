@@ -6,8 +6,9 @@
 
 
 
-<h2>List Registrasi</h2>  
+<h2>Registrasi</h2>  
 <hr />
+
 
         <div class="form-group">            
             <div class="col-sm-2">
@@ -15,16 +16,16 @@
             </asp:DropDownList>
             </div>
 			<div class="col-lg-8" align="right">
-                <label for="nama" class="control-label col-md-1">Date Awal</label>
+            <label for="nama" class="control-label col-md-2">Start Date</label>
                 <div class="col-lg-2">
                 <asp:TextBox id="txtDateAwal" type="text" runat="server" class="form-control" />
                 </div>
-                <label for="nama" class="control-label col-md-1">Date Akhir</label>
+                <label for="nama" class="control-label col-md-2">End Date</label>
                 <div class="col-lg-2">
                 <asp:TextBox id="txtDateAkhir" type="text" runat="server" class="form-control" />
                 </div>
                 <div class="col-lg-1">
-                   <input type="button" id="btnRefresh" value="Refresh" class="btn btn-info btn-md" onclick="refresh()" />
+                 <input type="button" id="btnRefresh" value="Search" class="btn btn-info btn-md" onclick="refresh()" />
                  </div>
 
             <%if (RegistrasiAssign.ToString().Equals("1") || groups.ToString().Equals("1"))

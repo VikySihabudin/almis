@@ -78,7 +78,7 @@ public partial class Pages_UserManagementForm : System.Web.UI.Page
         {
             Response.Write("<script language=\"javascript\" type=\"text/javascript\">");
             Response.Write("alert('Session sudah habis. Silakan login kembali.');");
-            Response.Write("location.href = '../Pages/login.aspx';");
+            Response.Write("location.href = '../login.aspx';");
             Response.Write("</script>");
         }
 
@@ -98,13 +98,13 @@ public partial class Pages_UserManagementForm : System.Web.UI.Page
             Param1 = "";
         }
 
-        ds = eSTP.List8("P_MENU", "CHA", "", groups, "", "", "", "", "");
+        ds = eSTP.List8("P_MENU", "CHA", "", groups, "User Management", "", "", "", "");
         dt = ds.Tables[0];
 
-        UserManagementView = dt.Rows[10]["UserManagement"].ToString(); //0
-        UserManagementEdit = dt.Rows[10]["UserManagementEdit"].ToString(); //1
-        UserManagementDelete = dt.Rows[10]["UserManagementDelete"].ToString(); //2
-        UserManagementAssign = dt.Rows[10]["UserManagementAssign"].ToString(); //3
+        UserManagementView = dt.Rows[0]["VIEWXXX"].ToString(); //0
+        UserManagementEdit = dt.Rows[0]["EDITXXX"].ToString(); //1
+        UserManagementDelete = dt.Rows[0]["DELETEX"].ToString(); //2
+        UserManagementAssign = dt.Rows[0]["ASSIGNX"].ToString(); //3
 
         dt.Dispose();
 
@@ -257,7 +257,7 @@ public partial class Pages_UserManagementForm : System.Web.UI.Page
                 ALMIS.ExecuteSTP eSTP = new ALMIS.ExecuteSTP();
                 eSTP.Datas();
                 DataSet ds = new DataSet();
-                ds = eSTP.List10("P_USERSS", param1, param2, "", "", "", "", "", "", "", "");
+                ds = eSTP.List11("P_USERSS", param1, param2, "", "", "", "", "", "", "", "","");
                 dt = ds.Tables[0];
 
                 Response.ContentType = "text/plain";
@@ -266,6 +266,7 @@ public partial class Pages_UserManagementForm : System.Web.UI.Page
                 Response.Write(dt.Rows[0]["UserssNamess"].ToString() + "|"); //2
                 Response.Write(dt.Rows[0]["UserssGroups"].ToString() + "|"); //3
                 Response.Write(dt.Rows[0]["UserrsActive"].ToString() + "|"); //4
+                Response.Write(dt.Rows[0]["UserssEmails"].ToString() + "|"); //5
 
                 dt.Dispose();
 
@@ -346,6 +347,7 @@ public partial class Pages_UserManagementForm : System.Web.UI.Page
         String param8 = ""; if (Request.Params["param8"] is object) param8 = Request.Params["param8"].ToString();
         String param9 = ""; if (Request.Params["param9"] is object) param9 = Request.Params["param9"].ToString();
         String param10 = ""; if (Request.Params["param10"] is object) param10 = Request.Params["param10"].ToString();
+        String param11 = ""; if (Request.Params["param11"] is object) param11 = Request.Params["param11"].ToString();
         //String sql = "";
         String output = "";
 
@@ -368,7 +370,7 @@ public partial class Pages_UserManagementForm : System.Web.UI.Page
                 ALMIS.ExecuteSTP eSTP = new ALMIS.ExecuteSTP();
                 eSTP.Datas();
                 DataSet ds = new DataSet();
-                ds = eSTP.List10("P_USERSS", "X", param2, param8, "", "", "", userid, "", "", "");
+                ds = eSTP.List11("P_USERSS", "X", param2, param8, "", "", "", userid, "", "", "", "");
                 dt = ds.Tables[0];
 
                 if (dt.Rows.Count > 0)
@@ -391,7 +393,7 @@ public partial class Pages_UserManagementForm : System.Web.UI.Page
 
                 ALMIS.ExecuteSTP eSTP = new ALMIS.ExecuteSTP();
                 eSTP.Datas();
-                eSTP.save10("P_USERSS", param1, param2, param3, param4, param5, param6, userid, param8, param9, param10);
+                eSTP.save11("P_USERSS", param1, param2, param3, param4, param5, param6, userid, param8, param9, param10, param11);
                 return output;
 
             }

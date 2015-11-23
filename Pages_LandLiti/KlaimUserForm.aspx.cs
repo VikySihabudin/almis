@@ -46,10 +46,29 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
         isiKecamatan();
         isiDesa();
         isiShm();
-
+        isiLanjut();
         bool normal = true;
         if (normal && (Request.Params["sm"] is object)) normal = ServiceSelect(Request.Params["sm"].ToString());
 
+    }
+
+    public void isiLanjut()
+    {
+        query = @"SELECT  codessCodess ,
+                            codessDescs1
+                    FROM    almis.CODESS
+                    WHERE   codessHeadss = 4
+                            AND codessStatss = 1 ORDER BY codessCodess DESC";
+        dt = getDataTable(query);
+        if (dt.Rows.Count > 0)
+        {
+            ddLanjut.Items.Clear();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                ddLanjut.Items.Add(new ListItem(dt.Rows[i]["codessDescs1"].ToString(), dt.Rows[i]["codessCodess"].ToString()));
+            }
+        }
+        dt.Dispose();
     }
 
     public void isiPerusa()
@@ -77,7 +96,7 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
         query = @"SELECT  codessCodess ,
                             codessDescs1
                     FROM    almis.CODESS
-                    WHERE   codessHeadss = 102
+                    WHERE   codessHeadss = 16
                             AND codessStatss = 1";
         dt = getDataTable(query);
         if (dt.Rows.Count > 0)
@@ -140,6 +159,42 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
         dt.Dispose();
     }
 
+    private String KabKec()
+    {
+        var Param1 = Request.Params["param1"].ToString();
+        var Param2 = Request.Params["param2"].ToString();
+        string output = "";
+
+        try
+        {
+            ALMIS.ExecuteSTP eSTP = new ALMIS.ExecuteSTP();
+            eSTP.Datas();
+            DataSet ds = new DataSet();
+            ds = eSTP.List2("C_ADMINS", Param1, Param2);
+
+            dt = ds.Tables[0];
+
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                output += dt.Rows[i]["namass"].ToString() + "|";
+                output += dt.Rows[i]["idents"].ToString() + "*";
+            }
+            dt.Dispose();
+        }
+        catch (Exception ex)
+        {
+            Response.Write(ex.Message);
+        }
+        return output;
+    }
+
+    protected void ddKecamatan_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        isiDesa();
+    }
+
+
     private string RemoveWhiteSpace(string value)
     {
         value = value.Replace("&", "&amp;");
@@ -176,7 +231,7 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
                 ALMIS.ExecuteSTP eSTP = new ALMIS.ExecuteSTP();
                 eSTP.Datas();
                 DataSet ds = new DataSet();
-                ds = eSTP.List14("P_CLAUSR", Param1, Param2, "", "", "", "", "", "", "", "", "","","","");
+                ds = eSTP.List15("P_CLAUSR", Param1, Param2, "", "", "", "", "", "", "", "", "", "", "", "", "");
 
                 dt = ds.Tables[0];
 
@@ -190,7 +245,7 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
                 Response.Write(dt.Rows[0]["ClausrLokKec"].ToString() + "|"); //5
                 Response.Write(dt.Rows[0]["ClausrLokDes"].ToString() + "|"); //6
                 Response.Write(dt.Rows[0]["ClausrNmrIdn"].ToString() + "|"); //7
-                
+                Response.Write(dt.Rows[0]["ClausrLanjut"].ToString() + "|"); //8
 
                 dt.Dispose();
 
@@ -294,10 +349,24 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
                         break;
                 }
 
-                Response.AddHeader("content-disposition", "attachment;filename=" + namafile + "");
-                Response.ContentType = type;
 
-                Response.WriteFile(Server.MapPath(@"~/uploaddocument/" + Request.Params["namafile"].ToString().Replace("&amp;", "&")));
+                String path1 = Server.MapPath(@"~/uploaddocument/" + Request.Params["namafile"].ToString().Replace("&amp;", "&"));
+                if (System.IO.File.Exists(path1)) {
+                    Response.AddHeader("content-disposition", "attachment;filename=" + namafile + "");
+                    Response.ContentType = type;       
+                    Response.WriteFile(path1); 
+                
+                }
+
+                else {
+
+                    Response.Write("<script language=\"javascript\" type=\"text/javascript\">");
+                    Response.Write("alert('Dokumen Tidak Di Temukan');");
+                    Response.Write("window.close();");
+                    Response.Write("</script>");
+                
+                }
+            
 
                 Response.End();
                 return false;
@@ -307,6 +376,25 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
                 Response.ContentType = "text/plain";
                 Response.Write(SaveUploadKlaimUser());
                 Response.End();
+                return false;
+
+            case "DP":
+                String KdDok = (Request.Params["KdDok"] is object ? Request.Params["KdDok"].ToString() : "");
+                String NamDok = (Request.Params["NamDok"] is object ? Request.Params["NamDok"].ToString() : "");
+                String randomfile1 = (Request.Params["random"] is object ? Request.Params["random"].ToString() : "");
+                String Sqdok = (Request.Params["Sqdok"] is object ? Request.Params["Sqdok"].ToString() : "");
+                String path = Server.MapPath(@"~/uploaddocument/" + NamDok.ToString().Replace("&amp;", "&"));
+
+                if (System.IO.File.Exists(path))
+                {
+                    System.IO.File.Delete(path);
+                }
+
+                Response.ContentType = "text/plain";
+                Response.Write(DP());
+                Response.End();
+
+              
                 return false;
 
             case "DOCpic":
@@ -337,9 +425,8 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["hdocumFiless"].ToString()) + "</cell>");
 
                     Response.Write("<cell>" + "Download^" + path_pic + "?sm=df&amp;namafile=" + dt.Rows[i]["hdocumIdLink"].ToString() + "&amp;filelama=" + dt.Rows[i]["hdocumFiless"].ToString() + "</cell>");
-                    //Response.Write("<cell>" + "Delete^" + path_pic + "?sm=Deletepic&amp;IDSOURCE=" + dt.Rows[i]["IDSource"].ToString() + "</cell>");
-                    Response.Write("<cell>" + RemoveWhiteSpace("Delete^javascript:DeletePic(\"" + dt.Rows[i]["hdocumIdLink"].ToString()) + "\",\"" + IDKlaimUser + "\");^_self" + "</cell>");
-
+                    //Response.Write("<cell>" + "Delete^" + path_pic + "?sm=DP&amp;NamDok=" + dt.Rows[i]["hdocumIdLink"].ToString() + "&amp;param1=D" + "&amp;KdDok=" + dt.Rows[i]["hdocumIdSour"].ToString() + "&amp;Sqdok=" + dt.Rows[i]["hdocumSequen"].ToString() + "</cell>");
+                    Response.Write("<cell>" + RemoveWhiteSpace("Delete^javascript:DeletePic(\"" + "DP" + "\",\"" + "D" + "\",\"" + dt.Rows[i]["hdocumIdLink"].ToString() + "\",\"" + dt.Rows[i]["hdocumIdSour"].ToString() + "\",\"" + dt.Rows[i]["hdocumSequen"].ToString() + "\");^_self") + "</cell>");
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["hdocumIdSour"].ToString()) + "</cell>");
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["hdocumIdLink"].ToString()) + "</cell>");
 
@@ -359,40 +446,79 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
         }
     }
 
-    private String KabKec()
+ 
+    private String DP()
     {
-        var Param1 = Request.Params["param1"].ToString();
-        var Param2 = Request.Params["param2"].ToString();
-        string output = "";
+
+        if (Session["userid"] is object)
+        {
+            userid = Session["userid"].ToString();
+
+        }
+
+        String param1 = ""; if (Request.Params["param1"] is object) param1 = Request.Params["param1"].ToString();
+        String param2 = ""; if (Request.Params["param2"] is object) param2 = Request.Params["param2"].ToString();
+        String param3 = ""; if (Request.Params["param3"] is object) param3 = Request.Params["param3"].ToString();
+        String param4 = ""; if (Request.Params["param4"] is object) param4 = Request.Params["param4"].ToString();
+        String param5 = ""; if (Request.Params["param5"] is object) param5 = Request.Params["param5"].ToString();
+        String param6 = ""; if (Request.Params["param6"] is object) param6 = Request.Params["param6"].ToString();
+        String param7 = ""; if (Request.Params["param7"] is object) param7 = Request.Params["param7"].ToString();
+        String param8 = ""; if (Request.Params["param8"] is object) param8 = Request.Params["param8"].ToString();
+        String param9 = ""; if (Request.Params["param9"] is object) param9 = Request.Params["param9"].ToString();
+        String param10 = ""; if (Request.Params["param10"] is object) param10 = Request.Params["param10"].ToString();
+        String param11 = ""; if (Request.Params["param11"] is object) param11 = Request.Params["param11"].ToString();
+        String param12 = ""; if (Request.Params["param12"] is object) param12 = Request.Params["param12"].ToString();
+
+        String NamDok = ""; if (Request.Params["NamDok"] is object) NamDok = Request.Params["NamDok"].ToString().Replace("&amp;", "&");
+        String KdDok = ""; if (Request.Params["KdDok"] is object) KdDok = Request.Params["KdDok"].ToString().Replace("&amp;", "&");
+        String Sqdok = ""; if (Request.Params["Sqdok"] is object) Sqdok = Request.Params["Sqdok"].ToString().Replace("&amp;", "&");
+
+        //NamDok = @param7 --IDLink
+        //KdDok = @param6 --IDSource
+        //Sqdok = @param2 --hdocumSequen
+
+        String sql = "";
+        String output = "";
+
+
 
         try
         {
-            ALMIS.ExecuteSTP eSTP = new ALMIS.ExecuteSTP();
-            eSTP.Datas();
-            DataSet ds = new DataSet();
-            ds = eSTP.List2("C_ADMINS", Param1, Param2);
 
-            dt = ds.Tables[0];
+            output = param1;
 
-
-            for (int i = 0; i < dt.Rows.Count; i++)
+            if (output == "I" || output == "E" || output == "D")
             {
-                output += dt.Rows[i]["namass"].ToString() + "|";
-                output += dt.Rows[i]["idents"].ToString() + "*";
+                ALMIS.ExecuteSTP eSTP = new ALMIS.ExecuteSTP();
+                eSTP.Datas();
+
+                if (output == "I")
+                {
+                    eSTP.save7("P_CLAUSR_D", param1, param2, param3, param4, param5, param6, "0");
+                }
+
+                if (output == "D")
+                {
+                    eSTP.save7("P_CLAUSR_D", param1, KdDok, Sqdok, param4, param5, param11, "0");
+                    eSTP.save12("P_HDOCUM", param1, Sqdok, param3, param4, param5, KdDok, NamDok, param8, param9, param10, param11, param12);
+                    output = "DP";
+                }
+                return output;
+                
             }
-            dt.Dispose();
+            else
+                output = "gagal";
         }
         catch (Exception ex)
         {
             Response.Write(ex.Message);
+            Response.End();
+            return ex.Message;
         }
+
         return output;
     }
 
-    protected void ddKecamatan_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        isiDesa();
-    }
 
 
 
@@ -419,7 +545,7 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
         String param12 = ""; if (Request.Params["param12"] is object) param12 = Request.Params["param12"].ToString();
         String param13 = ""; if (Request.Params["param13"] is object) param13 = Request.Params["param13"].ToString();
         String param14 = ""; if (Request.Params["param14"] is object) param14 = Request.Params["param14"].ToString();
-
+        String param15 = ""; if (Request.Params["param15"] is object) param15 = Request.Params["param15"].ToString();
         String sql = "";
         String output = "";
 
@@ -436,7 +562,7 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
 
                 eSTP.Datas();
                 DataSet ds = new DataSet();
-                ds = eSTP.List14("P_CLAUSR", "X", param2, "", "", "", "", "", "", "", "", "", "", "", "");
+                ds = eSTP.List15("P_CLAUSR", "X", param2, "", "", "", "", "", "", "", "", "", "", "", "", "");
                 dt = ds.Tables[0];
 
                 if (dt.Rows.Count > 0)
@@ -454,7 +580,7 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
                 }
 
                 eSTP.Datas();
-                eSTP.save14("P_CLAUSR", param1, param2, param3, param4, param5, param6, param7, param8, param9, param10, userid, param12, param13, param14);
+                eSTP.save15("P_CLAUSR", param1, param2, param3, param4, param5, param6, param7, param8, param9, param10, userid, param12, param13, param14, param15);
 
                 return output;
             }
@@ -500,7 +626,7 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
             _stFAsli = System.IO.Path.GetFileName(e.FileName);
 
 
-            _stNomor = gn.GenerateNumber("", 101, 7, _stDates, userid);
+            _stNomor = gn.GenerateNumber("", 101, 11, _stDates, userid);
 
             FileKlaimUser.SaveAs(uploadFolder + _stNomor + ext.getExtsion());
             e.PostedUrl = string.Format(e.FileName + "|" + _stNomor + "|" + userid + "|" + wilayah);
@@ -524,7 +650,7 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
         string param5 = Request.Params["param5"].ToString();
         string user = Request.Params["user"].ToString();
         string wilayah = Request.Params["wilay"].ToString();
-
+        string param11 = Request.Params["param11"].ToString();
 
         string _stUploadKeterangan = "";
         _stUploadKeterangan = _stKeterangan;
@@ -538,12 +664,14 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
         eSTP.Datas();
         DataSet ds = new DataSet();
 
-        eSTP.save7("P_CLAUSR_D", param1, IDKlaimUser, "", param5, _stKeterangan, "", "");
+        eSTP.save7("P_CLAUSR_D", param1, IDKlaimUser, "", param5, _stKeterangan, param11, "0");
 
         if (extension != ".exe")
         {
+            //eSTP.save12("P_HDOCUM", "I", user, _stDates, "Claim User", param5, uploadFolder, IDKlaimUser, _stNomor + extension, _stNamaFile, _stUploadKeterangan, param11, "0");
+            uf.UploadFilesWeb("I", user, _stDates, "Claim User", param5, uploadFolder, IDKlaimUser, _stNomor + extension, _stNamaFile, _stUploadKeterangan, param11, "0");
 
-            uf.UploadFilesWeb("I", user, _stDates, "Claim User", param5, uploadFolder, IDKlaimUser, _stNomor + extension, _stNamaFile, _stUploadKeterangan, "", "");
+            //uf.UploadFilesWeb("I", user, _stDates, "Claim User", param5, uploadFolder, IDKlaimUser, _stNomor + extension, _stNamaFile, _stUploadKeterangan, param11, "0");
         }
 
         var _stOutput = ID;

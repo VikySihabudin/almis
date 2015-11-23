@@ -9,6 +9,7 @@
 <h2>Group Management</h2>  
 
 <hr />
+<br />
 
            <div class="col-md-2">
             <div class="input-group">
@@ -18,7 +19,7 @@
            </div>
 
 
-           <label for="nama" class="control-label col-md-1">Date Awal</label>
+           <label for="nama" class="control-label col-md-1">Start Date</label>
            <div class="col-md-2">
             <div class="input-group">
             <asp:TextBox id="txtDateAwal" type="text" runat="server" class="form-control" />
@@ -26,7 +27,7 @@
             </div>
            </div>
 
-           <label for="nama" class="control-label col-md-1">Date Akhir</label>
+           <label for="nama" class="control-label col-md-1">End Date</label>
            <div class="col-md-2">
             <div class="input-group">
              <asp:TextBox id="txtDateAkhir" type="text" runat="server" class="form-control" />
@@ -38,7 +39,7 @@
 
            <div class="col-md-1">
             <div class="input-group">
-            <input type="button" id="btnRefresh" value="Refresh" class="btn btn-info btn-sm" onclick="refresh()" />
+            <input type="button" id="btnRefresh" value="Search" class="btn btn-info btn-sm" onclick="refresh()" />
 
             </div>
            </div>
@@ -47,12 +48,12 @@
             <div class="input-group">
              <%if (GroupManagementAssign.ToString().Equals("1") || groups.ToString().Equals("1"))
             { %> 
-                <input type="button" id="Button1" value="Tambah" class="btn btn-md btn-success" onclick="tambah()"/>
+                <input type="button" id="Button1" value="Add New" class="btn btn-md btn-success" onclick="tambah()"/>
             <%}%>
 
             </div>
            </div>
-<br /><br />
+<br /><br /><br /><br />
 
     <div class="form-group"> 
         <div class="col-md-12" style=" width:100%; height:300px;">

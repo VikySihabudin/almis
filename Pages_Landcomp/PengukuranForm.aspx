@@ -18,6 +18,7 @@
 <h2>Pengukuran</h2><br />
     
     <hr />
+   
 
     <div role="form" class="form-horizontal">
         <div class="form-group">

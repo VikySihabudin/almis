@@ -10,6 +10,7 @@
 <h2>User Management</h2>
     
     <hr />
+    <br />
 
 
 
@@ -24,6 +25,13 @@
         <div class="form-group">
             <label for="identitas" class="control-label col-md-2">Nama</label>
             <div class="col-md-3"><asp:TextBox id="txtNama" type="text" runat="server" class="form-control input-md" placeholder= "..." /></div>
+        </div>
+    </div>
+
+        <div role="form" class="form-horizontal">
+        <div class="form-group">
+            <label for="identitas" class="control-label col-md-2">Email</label>
+            <div class="col-md-3"><asp:TextBox id="txtemail" type="text" runat="server" class="form-control input-md" placeholder= "..." /></div>
         </div>
     </div>
 
@@ -147,6 +155,7 @@
     var btnAdd = document.getElementById("btnAdd");
     var txtket = document.getElementById("<%= txtket.ClientID %>");
     var ddprs = document.getElementById("<%= ddprs.ClientID %>");
+    var txtemail = document.getElementById("<%= txtemail.ClientID %>");
     
 
     terimaURL();
@@ -200,6 +209,7 @@
             splitparam(params);
         } else {
             hidMode.value = 'I';
+            document.getElementById('btnAdd').style.visibility = 'hidden';
         }
     }
 
@@ -239,12 +249,14 @@
         }
         else if (x == 'E') {
             lockUserManagementEdit();
-            btnSave.value = 'Edit';
+            btnSave.value = 'Save';
             hidMode.value = 'E';
-
-
         }
 
+        else if (x == 'I') {
+            btnSave.value = 'Save';
+            hidMode.value = 'I';
+        }
     }
 
     function checkPass() {
@@ -354,15 +366,18 @@
         switch (b[0]) {
             case "E":
                 alert("Data Berhasil Di Edit");
-                window.location.replace(newUrl);
+                close();
+                //window.location.replace(newUrl);
                 break;
             case "D":
                 alert("Data Berhasil Di Delete");
-                window.location.replace(newUrl);
+                close();
+                //window.location.replace(newUrl);
                 break;
             case "I":
                 alert("Data Berhasil Di Simpan");
-                window.location.replace(newUrl);
+                close();
+               //window.location.replace(newUrl);
                 break;
             case "ID":
                 alert("Data Berhasil Di Simpan");
@@ -377,7 +392,7 @@
                 break;
              case "gagal":
                 alert("Data Gagal Disimpan");
-                window.location.replace(newUrl);
+                //window.location.replace(newUrl);
                 break;
             default:
                 break;
@@ -388,14 +403,16 @@
         var s = ""
                 + "rnd=" + Math.random() * 4
 			    + "&sm=CRUD"
-                + "&param1=E"
+                + "&param1=" + hidMode.value
                 + "&param2=" + txtUserId.value
                 + "&param3=" + txtNama.value
                 + "&param4=" + txtNewPass.value
                 + "&param5=" + ddGroup.value
                 + "&param6=" + ddStatusActive.value
                 + "&param7="
-                + "&param8=" 
+                + "&param8="
+                + "&param11=" + txtemail.value
+                + "";
         dhtmlxAjax.post(localURL, s, outputResponse);
     }
 
@@ -411,6 +428,7 @@
             txtNama.value = b[1];
             ddGroup.value = b[2];
             ddStatusActive.value = b[3];
+            txtemail.value = b[4];
         }
         SearchlistPrs();
     }
@@ -423,8 +441,9 @@
         ddStatusActive.disabled = true;
         txtconfirmasiPassword.disabled = true;
         txtNewPass.disabled = true;
-        document.getElementById('btnSave').style.visibility = 'hidden';
-      
+        txtemail.disabled = true;
+        document.getElementById('btnSave').style.visibility = 'hidden'; 
+        document.getElementById('btnAdd').style.visibility = 'hidden';
     }
 
     function lockUserManagementEdit() {
@@ -432,6 +451,7 @@
     }
 
     function lockUserManagementDelete() {
+        txtemail.disabled = true;
         txtUserId.disabled = true;
         txtPassword.disabled = true;
         ddGroup.disabled = true;
@@ -439,6 +459,7 @@
         txtNewPass.disabled = true;
         ddStatusActive.disabled = true;
         txtconfirmasiPassword.disabled = true;
+        document.getElementById('btnAdd').style.visibility = 'hidden';
     }
 
     function listPrs() {

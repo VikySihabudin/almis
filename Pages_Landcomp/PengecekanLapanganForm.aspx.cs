@@ -118,21 +118,21 @@ public partial class Pages_PengecekanLapanganForm : System.Web.UI.Page
         {
             Response.Write("<script language=\"javascript\" type=\"text/javascript\">");
             Response.Write("alert('Session sudah habis. Silakan login kembali.');");
-            Response.Write("location.href = '../Pages/login.aspx';");
+            Response.Write("location.href = '../login.aspx';");
             Response.Write("</script>");
         }
 
         ALMIS.ExecuteSTP eSTP = new ALMIS.ExecuteSTP();
         eSTP.Datas();
         DataSet ds = new DataSet();
+        ds = eSTP.List8("P_MENU", "CHA", "", groups, "Pengecekan Lapangan", "", "", "", "");
 
-        ds = eSTP.List8("P_MENU", "CHA", "", groups, "", "", "", "", "");
         dt = ds.Tables[0];
 
-        PengecekanLapanganView = dt.Rows[1]["PengecekanLapangan"].ToString(); //0
-        PengecekanLapanganEdit = dt.Rows[1]["PengecekanLapanganEdit"].ToString(); //1
-        PengecekanLapanganDelete = dt.Rows[1]["PengecekanLapanganDelete"].ToString(); //2
-        PengecekanLapanganAssign = dt.Rows[1]["PengecekanLapanganAssign"].ToString(); //3
+        PengecekanLapanganEdit = dt.Rows[0]["EDITXXX"].ToString(); //0
+        PengecekanLapanganDelete = dt.Rows[0]["DELETEX"].ToString(); //1
+        PengecekanLapanganView = dt.Rows[0]["VIEWXXX"].ToString(); //2
+        PengecekanLapanganAssign = dt.Rows[0]["ASSIGNX"].ToString(); //3
 
         dt.Dispose();
 

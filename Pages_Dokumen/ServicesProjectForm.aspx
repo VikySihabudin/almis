@@ -12,7 +12,7 @@
 
 
 
-<h1>Form Request</h1>
+<h1>Request</h1>
 	
 	<hr class="style-four">    
     
@@ -26,7 +26,7 @@
 		<div class="form-group">
             <label for="nama" class="control-label col-md-2">Company</label>
             <div class="col-md-3"><asp:TextBox ID="txtCompany" class="form-control input-md" runat="server" value= ""></asp:TextBox></div>
-          <div class="col-md-3"><input type="button" id="BtnCompany" value="Cari"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>
+          <div class="col-md-3"><input type="button" id="BtnCompany" value="Search"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>
         </div>
 
 		<div class="form-group">
@@ -39,13 +39,13 @@
 		<div class="form-group">
             <label for="nama" class="control-label col-md-2">Request By</label>
             <div class="col-md-3"><asp:TextBox ID="txtRequestBy" class="form-control input-md" runat="server" value="" ></asp:TextBox></div>
-            <div class="col-md-3"><input type="button" id="BtnRequestBy" value="Cari"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>
+            <div class="col-md-3"><input type="button" id="BtnRequestBy" value="Search"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>
         </div>
 		
 		<div class="form-group">
             <label for="nama" class="control-label col-md-2">Department</label>
             <div class="col-md-3"><asp:TextBox ID="txtDepartment" class="form-control input-md" runat="server" value="" ></asp:TextBox></div>
-            <div class="col-md-3"><input type="button" id="BtnDepartment" value="Cari"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>
+            <div class="col-md-3"><input type="button" id="BtnDepartment" value="Search"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>
         </div>
     
 		<div class="form-group">

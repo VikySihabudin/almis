@@ -9,7 +9,7 @@
 <input type="hidden" id="hidMode" value="0" />
 <asp:HiddenField ID="namaFile" runat="server" />
 
-<h1>Form Tahapan Perolehan Produk</h1>
+<h1>Tahapan Perolehan Produk</h1>
 	
 <hr />
 

@@ -12,7 +12,7 @@
 
 
 
-<h1>Form LMS Add File</h1>
+<h1>LMS Add File</h1>
 	
 	<hr />    
     

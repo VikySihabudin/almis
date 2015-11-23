@@ -12,7 +12,7 @@
 
 
 
-<h1>Form First Coordination Meeting</h1>
+<h1>First Coordination Meeting</h1>
 	
 	<hr />    
     
@@ -26,7 +26,7 @@
 		<div class="form-group">
             <label for="nama" class="control-label col-md-2">Company</label>
             <div class="col-md-3"><asp:TextBox ID="txtCompany" class="form-control input-md" runat="server" value= ""></asp:TextBox></div>
-            <div class="col-md-3"><input type="button" id="BtnCompany" value="Cari"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>
+            <div class="col-md-3"><input type="button" id="BtnCompany" value="Search"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>
         </div>
 
 		<div class="form-group">
@@ -83,19 +83,19 @@
 		<div class="form-group">
             <label for="nama" class="control-label col-md-2">LMS Project Analyst</label>
             <div class="col-md-3"><asp:TextBox ID="txtLMSPA" class="form-control input-md" runat="server" value="" ></asp:TextBox></div>
-            <div class="col-md-3"><input type="button" id="btnLMSPA" value="Cari"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>        
+            <div class="col-md-3"><input type="button" id="btnLMSPA" value="Search"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>        
         </div>
 
 		<div class="form-group">
             <label for="nama" class="control-label col-md-2">PIC Applicant Company</label>
             <div class="col-md-3"><asp:TextBox ID="txtPIC" class="form-control input-md" runat="server" value="" ></asp:TextBox></div>
-            <div class="col-md-3"><input type="button" id="btnPIC" value="Cari"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>        
+            <div class="col-md-3"><input type="button" id="btnPIC" value="Search"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>        
         </div>
 
 		<div class="form-group">
             <label for="nama" class="control-label col-md-2">LMS Project Manager</label>
             <div class="col-md-3"><asp:TextBox ID="txtLMSPM" class="form-control input-md" runat="server" value="" ></asp:TextBox></div>
-            <div class="col-md-3"><input type="button" id="btnLMSPM" value="Cari"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>        
+            <div class="col-md-3"><input type="button" id="btnLMSPM" value="Search"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>        
         </div>
 
         <hr />

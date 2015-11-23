@@ -14,9 +14,10 @@
 
 
 
-<h1>Form Verifikasi</h1>
+<h1> Verifikasi Dokumen</h1>
 	
 	<hr />
+    <br />
 
    <div role="form" class="form-horizontal">
         <div class="form-group">
@@ -307,6 +308,24 @@
 
     }
 
+    function DeletePic(sm, param1, NamDok, KdDok, Sqdok) {
+        var r = confirm("Hapus Data Dokumen Ini ?");
+        if (r == true) {
+            var s = ""
+            + "rnd=" + Math.random() * 4
+            + "&sm=" + sm
+            + "&param1=" + param1
+            + "&NamDok=" + NamDok
+            + "&KdDok=" + KdDok
+            + "&Sqdok=" + Sqdok
+            + "";
+            //alert(s);
+            dhtmlxAjax.post(localURL, s, outputResponse);
+        }
+
+
+    }
+
     function outputResponse(loader) {
         //alert(loader.xmlDoc.responseText);
         //document.getElementById('debug').value = loader.xmlDoc.responseText;
@@ -327,6 +346,11 @@
                 alert("Data Berhasil Di Delete");
                 //window.location.replace(newUrl);
                 close();
+                break;
+
+            case "DP":
+                alert("Data Dokumen Berhasil Di Delete");
+                SearchlistNotulen();
                 break;
 
             case "nodelete":
@@ -419,6 +443,7 @@
         ddKabupaten.disabled = true;
         ddKecamatan.disabled = true;
         ddDesa.disabled = true;
+        ddprs.disabled = true;
     }
 
     function lockVerDokDelete() {
@@ -452,27 +477,27 @@
     function listVer() {
         listVer = new dhtmlXGridObject('gridVer');
         listVer.setImagePath("../JavaScript/codebase/imgs/");
-        listVer.setHeader("No,PID,Nama Penjual,Alas Hak");
-        listVer.setInitWidths("40,200,200,200");
-        listVer.setColAlign("left,left,left,left");
-        listVer.setColTypes("ro,ro,ro,link");
+        listVer.setHeader("No,PID,Nama Penjual,Alas Hak,Aksi");
+        listVer.setInitWidths("40,150,150,150,150");
+        listVer.setColAlign("left,left,left,left,left");
+        listVer.setColTypes("ro,ro,ro,ro,link");
         listVer.init();
         listVer.setSkin("dhx_skyblue");
         listVer.setPagingSkin("bricks");
-        listVer.setColSorting("str,str,str,str");
+        listVer.setColSorting("str,str,str,str,str");
     } 
 
     function listNotulen() {
         listNotulen = new dhtmlXGridObject('gridNotulen');
         listNotulen.setImagePath("../JavaScript/codebase/imgs/");
-        listNotulen.setHeader("No,Nama Notulen,Download");
-        listNotulen.setInitWidths("40,200,200");
-        listNotulen.setColAlign("left,left,left");
-        listNotulen.setColTypes("ro,ro,link");
+        listNotulen.setHeader("No,Nama Notulen,Download,Hapus");
+        listNotulen.setInitWidths("40,200,200,200");
+        listNotulen.setColAlign("left,left,left,left");
+        listNotulen.setColTypes("ro,ro,link,link");
         listNotulen.init();
         listNotulen.setSkin("dhx_skyblue");
         listNotulen.setPagingSkin("bricks");
-        listNotulen.setColSorting("str,str,str");
+        listNotulen.setColSorting("str,str,str,str");
     } 
 
     $(function TextBox4() {
@@ -490,7 +515,7 @@
 
         + "rnd=" + Math.random() * 4
 		+ "&sm=DOCpic"
-		+ "&IDPerdok=" + txtPerDoc.value
+		+ "&IDPerdok=" + txtNoVerDoc.value
 		+ "&param1=L"
         + "";
         //alert(s);
@@ -513,7 +538,7 @@
         var s = ""
 			    + "rnd=" + Math.random() * 4
 			    + "&sm=DOCpic"
-			    + "&IDPerdok=" + txtPerDoc.value
+			    + "&IDPerdok=" + txtNoVerDoc.value
 			    + "&param1=L"
 
 			    + "";
@@ -532,7 +557,7 @@
         var s = ""
 			    + "rnd=" + Math.random() * 4
 			    + "&sm=DOCpic"
-			    + "&IDPerdok=" + txtPerDoc.value
+			    + "&IDPerdok=" + txtNoVerDoc.value
 			    + "&param1=L"
 
 			    + "";
@@ -555,7 +580,7 @@
         var s = ""
 			    + "rnd=" + Math.random() * 4
 			    + "&sm=SavePic"
-			    + "&IDPerdok=" + txtPerDoc.value
+			    + "&IDPerdok=" + txtNoVerDoc.value
 			    + "&NAMA=" + b[0]
 			    + "&KETERANGAN=" 
 			    + "&NOMOR=" + b[1]
@@ -563,6 +588,7 @@
 			    + "&wilay=" + b[3]
 			    + "&param1=I"
 			    + "&param5=99"
+                + "&param11=" + ddprs.value
 			    + "";
         +"";
         centerLoadingImage();
@@ -573,13 +599,13 @@
 
     }
 
-    function ReloadDetail(nomorPerdok) {
+    function ReloadDetail(txtNoVerDoc) {
 
         //        alert(nomorBayar);
         var s = ""
 			    + "rnd=" + Math.random() * 4
 			    + "&sm=DOCpic"
-			    + "&IDPerdok=" + nomorPerdok
+			    + "&IDPerdok=" + txtNoVerDoc
 			    + "&param1=LD"
 
 			    + "";
