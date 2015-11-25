@@ -11,19 +11,23 @@
 <br />
 
         <div class="form-group">
+
+
+            <div class="col-sm-2">
+                <asp:DropDownList ID="ddprs" runat="server" class="form-control" onclick="Perusahaan()" >
+                </asp:DropDownList>
+            </div>
+
             <div class="col-sm-2">
                 <asp:DropDownList ID="ddprg" runat="server" class="form-control" onclick="handleClick()">
                 </asp:DropDownList>
             </div>
 
-
-			<div class="col-lg-8" align="right">
-
-                <label for="nama" class="control-label col-md-2">Start Date</label>
+                <label for="nama" class="control-label col-md-1">Start Date</label>
                 <div class="col-lg-2">
                 <asp:TextBox id="txtDateAwal" type="text" runat="server" class="form-control" />
                 </div>
-                <label for="nama" class="control-label col-md-2">End Date</label>
+                <label for="nama" class="control-label col-md-1">End Date</label>
                 <div class="col-lg-2">
                 <asp:TextBox id="txtDateAkhir" type="text" runat="server" class="form-control" />
                 </div>
@@ -34,14 +38,13 @@
 
                 <asp:Button runat="server" ID="btnTambah" Text="Assign" class="btn btn-lg btn-success" PostBackUrl="~/Pages_LandLiti/PersiapanDocumentAssign.aspx" />
 
-            </div>
         </div>
 
         <div class="form-group">
             <div class="col-lg-12">
             <div style=" width:100%; height:400px;">
-                <div id="gridMasterIdentitas" style=" width:100%; height:100%; background-color:white; border: 1px solid #A4BED4"></div>
-                <div id="pageMasterIdentitas"> </div>
+                <div id="gridPersiapanDokumen" style=" width:100%; height:100%; background-color:white; border: 1px solid #A4BED4"></div>
+                <div id="pagePersiapanDokumen"> </div>
             </div>
             </div>
         </div>
@@ -67,6 +70,7 @@
     var ddprg = document.getElementById("<%= ddprg.ClientID %>");
 
     var btnRefresh = document.getElementById("btnRefresh");
+    var ddprs = document.getElementById("<%= ddprs.ClientID %>");
 
 
 
@@ -101,6 +105,12 @@
 
     }
 
+    function Perusahaan() {
+    
+        SearchlistPersiapanDocument();
+    
+    }
+
     function SearchlistPersiapanDocument(id) {
 
         var s = ""
@@ -110,6 +120,7 @@
             + "&param2=5"
             + "&param4="
             + "&param5="
+            + "&param7=" + ddprs.value
 			+ "";
         listPersiapanDocument.clearAll();
         listPersiapanDocument.loadXML(localURL + "?" + s);
@@ -121,7 +132,7 @@
 
     //listpraregistrasi.loadXML("../xml/1_PraRegistrasi.xml");
     function listPersiapanDocument() {
-        listPersiapanDocument = new dhtmlXGridObject('gridMasterIdentitas');
+        listPersiapanDocument = new dhtmlXGridObject('gridPersiapanDokumen');
         listPersiapanDocument.setImagePath("../JavaScript/codebase/imgs/");
         listPersiapanDocument.setHeader("No,No Persiapan Document,No klaim,Nama,Kabupaten,Kecamatan,Desa ,Nama Perusahaan,Action,#cspan,#cspan,#cspan");
         listPersiapanDocument.setInitWidths("50,188,188,150,120,120,150,150,62,62,62");
@@ -132,7 +143,7 @@
 
         listPersiapanDocument.setColSorting("str,str,str,str,str,str,str,str,");
         listPersiapanDocument.attachHeader("#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter");
-        listPersiapanDocument.enablePaging(true, 15, 5, "pageMasterIdentitas", true);
+        listPersiapanDocument.enablePaging(true, 15, 5, "pagePersiapanDokumen", true);
         listPersiapanDocument.setPagingSkin("bricks");
     }
 
@@ -147,6 +158,7 @@
             + "&param2=4"
             + "&param4=" + txtDateAwal.value
             + "&param5=" + txtDateAkhir.value
+            + "&param7=" + ddprs.value
 			+ "";
             listPersiapanDocument.clearAll();
             listPersiapanDocument.loadXML(localURL + "?" + s);
@@ -162,6 +174,7 @@
             + "&param2=" + ddprg.value
             + "&param4="
             + "&param5="
+            + "&param7=" + ddprs.value
 			+ "";
         listPersiapanDocument.clearAll();
         listPersiapanDocument.loadXML(localURL + "?" + s);

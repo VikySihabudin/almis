@@ -398,6 +398,8 @@
         ddKecamatan.disabled = true;
         ddDesa.disabled = true;
 
+        ddprs.disabled = true;
+
     }
 
     function lockLegalDelete() {
@@ -420,11 +422,6 @@
     }
 
 
-
-
-
-
-
     function SearchlistLegal() {
         var s = ""
         + "rnd=" + Math.random() * 4
@@ -441,9 +438,10 @@
 
         + "rnd=" + Math.random() * 4
 		+ "&sm=DOCpic"
-		+ "&IDPerdok=" + txtNoPer.value
+		+ "&IDPerdok=" + txtverDoc.value
 		+ "&param1=L"
         + "";
+        //alert (s);
         listNotulen.clearAll();
         listNotulen.loadXML(localURL + "?" + s);
 

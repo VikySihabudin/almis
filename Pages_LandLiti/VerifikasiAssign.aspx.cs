@@ -85,12 +85,12 @@ public partial class Pages_LandLiti_VerifikasiAssign : System.Web.UI.Page
                 //var param3L = Request.Params["param3"].ToString();
                 var param4L = Request.Params["param4"].ToString();
                 var param5L = Request.Params["param5"].ToString();
-                //var param6L = Request.Params["param8"].ToString();
+                var param7L = Request.Params["param7"].ToString();
                 ALMIS.ExecuteSTP eSTP_L = new ALMIS.ExecuteSTP();
 
                 eSTP_L.Datas();
                 DataSet ds_L = new DataSet();
-                ds_L = eSTP_L.List10("P_VERDOK", param1L, param2L, "", param4L, param5L, "", userid, "", "", "");
+                ds_L = eSTP_L.List10("P_VERDOK", param1L, param2L, "", param4L, param5L, "", param7L, "", "", userid);
 
                 dt = ds_L.Tables[0];
                 
@@ -128,13 +128,14 @@ public partial class Pages_LandLiti_VerifikasiAssign : System.Web.UI.Page
                 var param1 = Request.Params["param1"].ToString();
                 var param2 = Request.Params["param2"].ToString();
                 var param4 = Request.Params["param4"].ToString();
+                var param7 = Request.Params["param7"].ToString();
                 var param10 = Request.Params["param10"].ToString();
 
 
                 ALMIS.ExecuteSTP eSTP = new ALMIS.ExecuteSTP();
                 eSTP.Datas();
                 DataSet ds = new DataSet();
-                eSTP.save10("P_VERDOK", param1, param2, "", param4, userid, "", "", "", "", param10);
+                eSTP.save10("P_VERDOK", param1, param2, "", param4, userid, "", param7, "", "", param10);
                 Response.End();
                 return false;
 

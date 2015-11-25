@@ -11,34 +11,36 @@
 <h2>Verifikasi Dokumen</h2>  
 <hr />
 <br />
+    
+        <div class="form-group">
 
-<div class="form-group"> 
-     <div class="col-lg-12" style=" width:100%; height:100%;">
-           <div class="col-sm-2">
-                <asp:DropDownList ID="ddprg" runat="server" class="form-control" onclick="handleClick()" >
+
+            <div class="col-sm-2">
+                <asp:DropDownList ID="ddprs" runat="server" class="form-control" onclick="Perusahaan()" >
                 </asp:DropDownList>
             </div>
 
-            <label for="nama" class="control-label col-md-1">Start Date</label>
-            
-            <div class="col-lg-2">
-            <asp:TextBox id="txtDateAwal" type="text" runat="server" class="form-control" />
+            <div class="col-sm-2">
+                <asp:DropDownList ID="ddprg" runat="server" class="form-control" onclick="handleClick()">
+                </asp:DropDownList>
             </div>
 
-            <label for="nama" class="control-label col-md-1">End Date</label>
-
-            <div class="col-lg-2">
+                <label for="nama" class="control-label col-md-1">Start Date</label>
+                <div class="col-lg-2">
+                <asp:TextBox id="txtDateAwal" type="text" runat="server" class="form-control" />
+                </div>
+                <label for="nama" class="control-label col-md-1">End Date</label>
+                <div class="col-lg-2">
                 <asp:TextBox id="txtDateAkhir" type="text" runat="server" class="form-control" />
-            </div>
+                </div>
 
-            <div class="col-lg-1">
-                <input type="button" id="btnRefresh" value="Search" class="btn btn-info btn-md" onclick="refresh()"  />
-            </div>
+                <div class="col-lg-1">
+                <input type="button" id="btnRefresh" value="Search" class="btn btn-info btn-sm" onclick="refresh()" />
+                </div>
 
-         <asp:Button runat="server" ID="btnTambah" Text="Assign" class="btn btn-lg btn-success" PostBackUrl="~/Pages_LandLiti/VerifikasiAssign.aspx" />
+                <asp:Button runat="server" ID="Button2" Text="Assign" class="btn btn-lg btn-success" PostBackUrl="~/Pages_LandLiti/VerifikasiAssign.aspx" />
 
-    </div>
-</div>    
+        </div>        
      
     <div class="form-group"> 
         <div class="col-lg-12">
@@ -74,9 +76,16 @@
     var txtDateAkhir = document.getElementById("<%= txtDateAkhir.ClientID %>");
 
     var btnRefresh = document.getElementById("btnRefresh");
+    var ddprs = document.getElementById("<%= ddprs.ClientID %>");
 
     listVerikasi();
     SearchlistVerikasi();
+
+    function Perusahaan() {
+
+        SearchlistVerikasi();
+
+    }
 
     function tambah(lo) {
         var url = window.location.toString();
@@ -126,6 +135,7 @@
             + "&param2=5"
             + "&param4="
             + "&param5="
+            + "&param7=" + ddprs.value
 			+ "";
         listVerikasi.clearAll();
         //listVerikasi.loadXML("../xml/ListVerifikasi.xml");
@@ -143,6 +153,7 @@
             + "&param2=4"
             + "&param4=" + txtDateAwal.value
             + "&param5=" + txtDateAkhir.value
+            + "&param7=" + ddprs.value
 			+ "";
             listVerikasi.clearAll();
             //listVerikasi.loadXML("../xml/ListVerifikasi.xml");
@@ -159,6 +170,7 @@
             + "&param2=" + ddprg.value
             + "&param4="
             + "&param5="
+            + "&param7=" + ddprs.value
 			+ "";
         listVerikasi.clearAll();
         listVerikasi.loadXML(localURL + "?" + s);

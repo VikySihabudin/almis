@@ -162,28 +162,91 @@
                      <br />
                     <asp:Label ID="lbljb" runat="server" Text=""></asp:Label>
               	  </h5>
-              	  	
 
+              	  	
+<%if (  praregistrasi.ToString().Equals("1") ||
+        PengecekanLapangan.ToString().Equals("1") ||
+        Registrasi.ToString().Equals("1") ||
+        PengukuranT0.ToString().Equals("1")||
+        Negosiasi.ToString().Equals("1") ||
+        Verifikasi.ToString().Equals("1") ||
+        Pemberkasan.ToString().Equals("1") ||
+        Pembayaran.ToString().Equals("1") ||
+        Finalisasi.ToString().Equals("1") ||
+        SerahTerimaBerkas.ToString().Equals("1") ||
+        groups.ToString().Equals("1")
+      )
+{    
+%>
               <li class="sub-menu">
                       <a href="javascript:;" >
                           <i class="fa fa-book"></i>
                           <span>Land Compensation</span>
                       </a>
                       <ul class="sub">
-                        
+
+         <%if (praregistrasi.ToString().Equals("1") || groups.ToString().Equals("1"))
+         { %>                        
                         <li><a href="../Pages_Landcomp/PraRegistrasiList.aspx">Pra Register</a></li>
+         <%}%> 
+
+         <%if (PengecekanLapangan.ToString().Equals("1") || groups.ToString().Equals("1"))
+         { %> 
                         <li><a href="../Pages_Landcomp/PengecekanLapanganList.aspx">Pengecekan Lapangan</a></li>
+         <%}%> 
+
+         <%if (Registrasi.ToString().Equals("1") || groups.ToString().Equals("1"))
+         { %> 
 	                    <li><a href="../Pages_Landcomp/RegistrasiList.aspx">Registrasi</a></li>
+         <%}%> 
+
+         <%if (PengukuranT0.ToString().Equals("1") || groups.ToString().Equals("1"))
+         { %> 
 	                    <li><a href="../Pages_Landcomp/PengukuranList.aspx">Pengukuran TO</a></li>
+         <%}%> 
+
+         <%if (Negosiasi.ToString().Equals("1") || groups.ToString().Equals("1"))
+         { %> 
                         <li><a href="../Pages_Landcomp/NegosiasiList.aspx">Negosiasi</a></li>
+         <%}%> 
+
+         <%if (Verifikasi.ToString().Equals("1") || groups.ToString().Equals("1"))
+         { %> 
 	                    <li><a href="../Pages_Landcomp/VisumList.aspx">Verifikasi</a></li>
+         <%}%> 
+
+         <%if (Pemberkasan.ToString().Equals("1") || groups.ToString().Equals("1"))
+         { %> 
 	                    <li><a href="../Pages_Landcomp/PemberkasanSatuList.aspx">Pemberkasan</a></li>
+        <%}%> 
+
+         <%if (Pembayaran.ToString().Equals("1") || groups.ToString().Equals("1"))
+         { %> 
 	                    <li><a href="../Pages_Landcomp/PembayaranList.aspx">Pembayaran</a></li>
+        <%}%> 
+
+         <%if (Finalisasi.ToString().Equals("1") || groups.ToString().Equals("1"))
+         { %> 
 	                    <li><a href="../Pages_Landcomp/PemberkasanDuaList.aspx">Finalisasi</a></li>
+
+        <%}%>
+
+         <%if (SerahTerimaBerkas.ToString().Equals("1") || groups.ToString().Equals("1"))
+         { %> 
 	                    <li><a href="../Pages_Landcomp/SerahTerimaBerkas.aspx">Serah Terima Berkas</a></li>
+
+        <%}%>
                       </ul>
               </li>
 
+<%}%> 
+
+
+<%if (  LandUse.ToString().Equals("1") ||
+        groups.ToString().Equals("1")
+      )
+{    
+%>
               <li class="sub-menu">
                       <a href="javascript:;" >
                           <i class="fa fa-book"></i>
@@ -198,6 +261,14 @@
                       </ul>
               </li>
 
+<%}%> 
+
+
+<%if (  LandSecure.ToString().Equals("1") ||
+        groups.ToString().Equals("1")
+      )
+{    
+%>
               <li class="sub-menu">
                       <a href="javascript:;" >
                           <i class="fa fa-book"></i>
@@ -210,71 +281,195 @@
                       </ul>
               </li>
 
+<%}%>
+
+
+<%if (  KelasLahan.ToString().Equals("1") ||
+        groups.ToString().Equals("1")
+      )
+{    
+%>
+
              <li class="sub-menu">
                       <a href="javascript:;" >
                           <i class="fa fa-book"></i>
                           <span>Land Utilization</span>
                       </a>
                       <ul class="sub">
+         <%if (KelasLahan.ToString().Equals("1") || groups.ToString().Equals("1"))
+         { %> 
 		                <li><a href="../Pages_LandUtil/KelasLahanList.aspx">Kelas Lahan</a></li>
+        <%}%>
                      </ul>
               </li>
 
+<%}%>
+
+
+
+<%if (  LandComplainceModul.ToString().Equals("1") ||
+        groups.ToString().Equals("1")
+      )
+{    
+%>
               <li class="sub-menu">
                       <a href="javascript:;" >
                           <i class="fa fa-book"></i>
                           <span>Land Complaince</span>
                       </a>
                       <ul class="sub">
+
+         <%if (LandComplainceModul.ToString().Equals("1") || groups.ToString().Equals("1"))
+         { %> 
                         <li><a href="../Pages_Landcompla/LandcomplaList.aspx">Land Compliance</a></li>
+        <%}%>
                       </ul>
               </li>
+<%}%>
 
+
+<%if (  ClaimUser.ToString().Equals("1") ||
+        PersiapanDokumen.ToString().Equals("1") ||
+        VerifikasiDokumen.ToString().Equals("1") ||
+        Legal.ToString().Equals("1") ||
+        groups.ToString().Equals("1")
+      )
+{    
+%>
               <li class="sub-menu">
                       <a href="javascript:;" >
                           <i class="fa fa-book"></i>
                           <span>Land Litigation</span>
                       </a>
                       <ul class="sub">
-                        <li><a href="../Pages_LandLiti/KlaimUserList.aspx">Klaim User</a></li>
+
+         <%if (ClaimUser.ToString().Equals("1") || groups.ToString().Equals("1"))
+         { %> 
+                        <li><a href="../Pages_LandLiti/KlaimUserList.aspx">Claim User</a></li>
+        <%}%>
+
+         <%if (PersiapanDokumen.ToString().Equals("1") || groups.ToString().Equals("1"))
+         { %> 
                         <li><a href="../Pages_LandLiti/PersiapanDocumentList.aspx">Persiapan Dokumen </a></li>
+        <%}%>
+
+         <%if (VerifikasiDokumen.ToString().Equals("1") || groups.ToString().Equals("1"))
+         { %> 
                         <li><a href="../Pages_LandLiti/VerifikasiList.aspx">Verifikasi Dokumen</a></li>
+        <%}%>
+
+         <%if (Legal.ToString().Equals("1") || groups.ToString().Equals("1"))
+         { %> 
                         <li><a href="../Pages_LandLiti/LegalList.aspx">Legal</a></li>
+        <%}%>
+
                       </ul>
               </li>
 
+<%}%>
+
+
+<%if (  Persiapan.ToString().Equals("1") ||
+        ProsesPengurusan.ToString().Equals("1") ||
+        ProsesIzinLokasi.ToString().Equals("1") ||
+        Pelaporan.ToString().Equals("1") ||
+        groups.ToString().Equals("1")
+      )
+{    
+%>
             <li class="sub-menu">
                 <a href="#">
                     <i class="fa fa-book"></i>
                     <span>Izin Lokasi</span>
                 </a>
-                        <ul class="sub">
+                      <ul class="sub">
+
+         <%if (Persiapan.ToString().Equals("1") || groups.ToString().Equals("1"))
+         { %> 
                         <li><a href="../Pages_Reminder/PersiapanList.aspx">Persiapan</a></li>
+        <%}%>
+
+         <%if (ProsesPengurusan.ToString().Equals("1") || groups.ToString().Equals("1"))
+         { %> 
                         <li><a href="../Pages_Reminder/ProsesPengurusanList.aspx">Proses Pengurusan</a></li>
+        <%}%>
+
+         <%if (ProsesIzinLokasi.ToString().Equals("1") || groups.ToString().Equals("1"))
+         { %> 
                         <li><a href="../Pages_Reminder/ProsesIzinLokasiList.aspx">Proses Izin Lokasi</a></li>
+        <%}%>
+
+         <%if (Pelaporan.ToString().Equals("1") || groups.ToString().Equals("1"))
+         { %> 
                         <li><a href="../Pages_Reminder/PelaporanList.aspx">Pelaporan</a></li>
+        <%}%>
+
                       </ul>
 
             </li>
+<%}%>
 
+
+
+<%if (  ProsesLandManagement.ToString().Equals("1") ||
+        PersiapanInternal.ToString().Equals("1") ||
+        TahapanProsesBPN.ToString().Equals("1") ||
+        TahapanPerolehanProduk.ToString().Equals("1") ||
+        groups.ToString().Equals("1")
+      )
+{    
+%>
               <li class="sub-menu">
                       <a href="javascript:;" >
                           <i class="fa fa-book"></i>
                           <span>Land Certification</span>
                       </a>
                       <ul class="sub">
- <%--                       <li><a href="../Pages_LandCert/ServicesProjectList.aspx">Request Form</a></li>
+ <%--                   <li><a href="../Pages_LandCert/ServicesProjectList.aspx">Request Form</a></li>
                         <li><a href="../Pages_LandCert/FirstCoordinationMeetingList.aspx">First Coordination Meeting</a></li>
                         <li><a href="../Pages_LandCert/PropoalLandManagementServicesList.aspx">Propoal Land Management Services</a></li>
                         <li><a href="../Pages_LandCert/LandManagementSupportList.aspx">Land Management Support</a></li>
 			            <li><a href="../Pages_LandCert/LMSAddFileForm.aspx">LMS Add File</a></li>--%>
+
+         <%if (ProsesLandManagement.ToString().Equals("1") || groups.ToString().Equals("1"))
+         { %> 
 		                <li><a href="../Pages_LandCert/ProsesLmsList.aspx">Proses Land Management Support</a></li>
+        <%}%>
+
+         <%if (PersiapanInternal.ToString().Equals("1") || groups.ToString().Equals("1"))
+         { %> 
                         <li><a href="../Pages_LandCert/PersiapanInternalList.aspx">Pesiapan Internal</a></li>
+        <%}%>
+
+         <%if (TahapanProsesBPN.ToString().Equals("1") || groups.ToString().Equals("1"))
+         { %> 
 			            <li><a href="../Pages_LandCert/TahapanProsesBpnList.aspx">Tahapan Proses BPN</a></li>
+        <%}%>
+
+         <%if (TahapanPerolehanProduk.ToString().Equals("1") || groups.ToString().Equals("1"))
+         { %> 
                         <li><a href="../Pages_LandCert/TahapanPerolehanProdukList.aspx">Tahapan Perolehan Produk</a></li>
-			          
+        <%}%>			          
                      </ul>
               </li>
+
+<%}%>	
+
+
+
+
+<%if (  TopPriority.ToString().Equals("1") ||
+        FiveYears.ToString().Equals("1") ||
+        LOM.ToString().Equals("1") ||
+        Other.ToString().Equals("1") ||
+        MapAI.ToString().Equals("1") ||
+        MapBC.ToString().Equals("1") ||
+        MapMIP.ToString().Equals("1") ||
+        groups.ToString().Equals("1")
+      )
+{    
+%>
+
 
               <li class="sub-menu">
                       <a href="javascript:;" >
@@ -282,60 +477,196 @@
                           <span>Land Map</span>
                       </a>
                       <ul class="sub">
+         <%if (MapAI.ToString().Equals("1") || groups.ToString().Equals("1"))
+         { %> 
                         <li><a href="../Pages_LandMap/almisgis/index.html">Map Adaro Indonesia</a></li>
-                        <li><a href="#">Map Balangan Coal</a></li>
-                        <li><a href="#">Map Mustika Indah Permai</a></li>
+        <%}%>
 
+         <%if (MapBC.ToString().Equals("1") || groups.ToString().Equals("1"))
+         { %> 
+                        <li><a href="#">Map Balangan Coal</a></li>
+        <%}%>
+
+         <%if (MapMIP.ToString().Equals("1") || groups.ToString().Equals("1"))
+         { %> 
+                        <li><a href="#">Map Mustika Indah Permai</a></li>
+        <%}%>
+
+<%if (  TopPriority.ToString().Equals("1") ||
+        FiveYears.ToString().Equals("1") ||
+        LOM.ToString().Equals("1") ||
+        Other.ToString().Equals("1") ||
+        groups.ToString().Equals("1")
+      )
+{    
+%>
                        <li><a href="javascript:;" >Map Land Compensation </a>
                         <ul class="sub">
+
+         <%if (TopPriority.ToString().Equals("1") || groups.ToString().Equals("1"))
+         { %> 
                         <li><a href="../Map_Landcomp/Top.aspx">Top Priority</a></li>
+        <%}%>
+
+         <%if (FiveYears.ToString().Equals("1") || groups.ToString().Equals("1"))
+         { %> 
                         <li><a href="../Map_Landcomp/FiveYear.aspx">Five Years</a></li>
+        <%}%>
+
+         <%if (LOM.ToString().Equals("1") || groups.ToString().Equals("1"))
+         { %> 
                         <li><a href="../Map_Landcomp/LOM.aspx">LOM</a></li>
+        <%}%>
+
+         <%if (Other.ToString().Equals("1") || groups.ToString().Equals("1"))
+         { %> 
                         <li><a href="../Map_Landcomp/Other.aspx">Other</a></li>
+        <%}%>
+
 					    </ul>
                         </li>
+<%}%>
+
                       </ul>
               </li>
 
+<%}%>
+
+
+
+<%if (ReportPraRegistrasi.ToString().Equals("1") ||
+        ReportPengecekanLapangan.ToString().Equals("1") ||
+        ReportRegistrasi.ToString().Equals("1") ||
+        ReportPengukuranT0.ToString().Equals("1") ||
+        ReportNegosiasi.ToString().Equals("1") ||
+        ReportVerifikasi.ToString().Equals("1") ||
+        ReportFinalisasi.ToString().Equals("1") ||
+        groups.ToString().Equals("1")
+      )
+{    
+%>
               <li class="sub-menu">
                       <a href="javascript:;" >
                           <i class="fa fa-book"></i>
                           <span>Report</span>
                       </a>
                       <ul class="sub">
+
+
+<%if (ReportPraRegistrasi.ToString().Equals("1") ||
+        ReportPengecekanLapangan.ToString().Equals("1") ||
+        ReportRegistrasi.ToString().Equals("1") ||
+        ReportPengukuranT0.ToString().Equals("1") ||
+        ReportNegosiasi.ToString().Equals("1") ||
+        ReportVerifikasi.ToString().Equals("1") ||
+        ReportFinalisasi.ToString().Equals("1") ||
+        groups.ToString().Equals("1")
+      )
+{    
+%>
                         <li><a href="javascript:;" >Land Compensation Report</a>
                       <ul class="sub">
+
+
+         <%if (ReportPraRegistrasi.ToString().Equals("1") || groups.ToString().Equals("1"))
+         { %> 
                         <li><a href="../Pages_Reoprt_Landcomp/R_PraRegistrasi.aspx">Report Praregistrasi</a></li>
+        <%}%>
+
+         <%if (ReportPengecekanLapangan.ToString().Equals("1") || groups.ToString().Equals("1"))
+         { %> 
                         <li><a href="../Pages_Reoprt_Landcomp/R_PengecekanLapangan.aspx">Report Pengecekan Lapangan</a></li>
+        <%}%>
+
+         <%if (ReportRegistrasi.ToString().Equals("1") || groups.ToString().Equals("1"))
+         { %> 
                         <li><a href="../Pages_Reoprt_Landcomp/R_Registrasi.aspx">Report Registrasi</a></li>
                         <li><a href="../Pages_Reoprt_Landcomp/R_Registrasi_detail.aspx">Report Registrasi Detail</a></li>
+        <%}%>
+
+         <%if (ReportPengukuranT0.ToString().Equals("1") || groups.ToString().Equals("1"))
+         { %> 
                         <li><a href="../Pages_Reoprt_Landcomp/R_Pengukuran.aspx">Report Pengukuran T0</a></li>
+        <%}%>
+
+         <%if (ReportNegosiasi.ToString().Equals("1") || groups.ToString().Equals("1"))
+         { %> 
                         <li><a href="../Pages_Reoprt_Landcomp/R_PraNegosiasi.aspx">Report Negosiasi</a></li>
                         <li><a href="../Pages_Reoprt_Landcomp/R_Negosiasi.aspx">Report Negosiasi Detail</a></li>
+        <%}%>
+
+         <%if (ReportVerifikasi.ToString().Equals("1") || groups.ToString().Equals("1"))
+         { %> 
                         <li><a href="../Pages_Reoprt_Landcomp/R_Visum.aspx">Report Verifikasi</a></li>
                         <li><a href="../Pages_Reoprt_Landcomp/R_Visum_detail.aspx">Report Verifikasi Detail</a></li>
-                        <li><a href="../Pages_Reoprt_Landcomp/R_PraRegistrasi.aspx">Report Finalisasi</a></li>
-                        <li><a href="../Pages_Reoprt_Landcomp/R_PraRegistrasi.aspx">Report Finalisasi Detail</a></li>
+        <%}%>
+
+         <%if (ReportFinalisasi.ToString().Equals("1") || groups.ToString().Equals("1"))
+         { %> 
+                        <li><a href="../Pages_Reoprt_Landcomp/R_LCR.aspx">Report Finalisasi</a></li>
+                        <li><a href="../Pages_Reoprt_Landcomp/R_LCR_detail.aspx">Report Finalisasi Detail</a></li>
+        <%}%>                      
                       </ul>
                         </li>
+<%}%> 
+
+
                       </ul>
               </li>
 
+<%}%> 
 
+
+
+
+<%if (  MasterIdentitas.ToString().Equals("1") ||
+        UserManagement.ToString().Equals("1") ||
+        GroupManagement.ToString().Equals("1") ||
+        MasterMenu.ToString().Equals("1") ||
+        MasterCodes.ToString().Equals("1") ||
+        groups.ToString().Equals("1")
+      )
+{    
+%>
               <li class="sub-menu">
                       <a href="javascript:;" >
                           <i class="fa fa-cogs"></i>
                           <span>Admin Tools</span>
                       </a>
                       <ul class="sub">
+         <%if (MasterIdentitas.ToString().Equals("1") || groups.ToString().Equals("1"))
+         { %> 
                         <li><a href="../Pages_Admintools/MasterIdentitasList.aspx">Master Identitas</a></li>
+        <%}%>
+
+         <%if (UserManagement.ToString().Equals("1") || groups.ToString().Equals("1"))
+         { %> 
                         <li><a href="../Pages_Admintools/UserManagementList.aspx">User Management</a></li>
+        <%}%>
+
+         <%if (GroupManagement.ToString().Equals("1") || groups.ToString().Equals("1"))
+         { %> 
                         <li><a href="../Pages_Admintools/GroupManagementList.aspx">Group Management</a></li>
+        <%}%>
+
+         <%if (MasterMenu.ToString().Equals("1") || groups.ToString().Equals("1"))
+         { %> 
                         <li><a href="../Pages_Admintools/MasterMenu.aspx">Master Menu</a></li>
+        <%}%>
+
+         <%if (MasterCodes.ToString().Equals("1") || groups.ToString().Equals("1"))
+         { %> 
                         <li><a href="../Pages_Admintools/CodesModul.aspx">Master Codes</a></li>
+        <%}%>
+
+         <%if (MasterPerusahaan.ToString().Equals("1") || groups.ToString().Equals("1"))
+         { %> 
                         <li><a href="../Pages_Admintools/MasterPerusahaanList.aspx">Master Perusahaan</a></li>
+        <%}%>
                       </ul>
               </li>
+
+<%}%> 
 
 
   

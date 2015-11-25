@@ -29,10 +29,32 @@ public partial class Pages_LandLiti_VerifikasiList : System.Web.UI.Page
         {
             userid = Session["userid"].ToString();
         }
+        isiPerusa();
+        isiPeriode();
 
         bool normal = true;
         if (normal && (Request.Params["sm"] is object)) normal = ServiceSelect(Request.Params["sm"].ToString());
-        isiPeriode();
+        
+    }
+
+    public void isiPerusa()
+    {
+
+        Query = @"SELECT perusaNamass,perusaIdents FROM USRPRS 
+                  INNER JOIN PERUSA
+	                ON UsrprsPerusa = perusaIdents
+                   WHERE UsrprsUserss =" + "'" + userid + "'" + "";
+
+        dt = getDataTable(Query);
+        if (dt.Rows.Count > 0)
+        {
+            ddprs.Items.Clear();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                ddprs.Items.Add(new ListItem(dt.Rows[i]["perusaNamass"].ToString(), dt.Rows[i]["perusaIdents"].ToString()));
+            }
+        }
+        dt.Dispose();
     }
 
      private bool ServiceSelect(string sm)
@@ -46,12 +68,13 @@ public partial class Pages_LandLiti_VerifikasiList : System.Web.UI.Page
                 //var param3L = Request.Params["param3"].ToString();
                 var param4L = Request.Params["param4"].ToString();
                 var param5L = Request.Params["param5"].ToString();
-                //var param6L = Request.Params["param8"].ToString();
+                var param7L = Request.Params["param7"].ToString();
+
                 ALMIS.ExecuteSTP eSTP_L = new ALMIS.ExecuteSTP();
 
                 eSTP_L.Datas();
                 DataSet ds_L = new DataSet();
-                ds_L = eSTP_L.List10("P_VERDOK", param1L, param2L, "", param4L, param5L, "", userid, "", "", "");
+                ds_L = eSTP_L.List10("P_VERDOK", param1L, param2L, "", param4L, param5L, "", param7L, "", "", userid);
 
                 dt = ds_L.Tables[0];
                 
@@ -71,7 +94,7 @@ public partial class Pages_LandLiti_VerifikasiList : System.Web.UI.Page
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["ClausrNamass"].ToString()) + "</cell>");
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["ClausrLokKab"].ToString()) + "</cell>");
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["ClausrLokKec"].ToString()) + "</cell>");
-                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["ClausrLokKec"].ToString()) + "</cell>");
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["VerdokLitiga"].ToString()) + "</cell>");
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["perusaNamass"].ToString()) + "</cell>");
 
                     if (dt.Rows[i]["VerdokNmrVrd"].ToString() != "")

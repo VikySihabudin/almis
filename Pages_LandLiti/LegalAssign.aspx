@@ -129,46 +129,7 @@
         });
     });
 
-    function doOnCheck(rowId, cellInd, state) {
 
-        if (state == 0) {
-            var r = confirm("Batalkan Assign Kepada " + listVerikasi.cells(rowId, 7).getValue() + " ?");
-            if (r == true) {
-
-                var s = ""
-                + "rnd=" + Math.random() * 4
-                + "&sm=A"
-                + "&param1=A"
-                + "&param2=" + listVerikasi.cells(rowId, 1).getValue()
-                + "&param4=" + listVerikasi.cells(rowId, 2).getValue()
-                + "&param10="
-                + "";
-
-                //alert(s);
-                dhtmlxAjax.post(localURL, s, outputResponse);
-            }
-            SearchlistVerikasi();
-        }
-        else if (state == 1) {
-            var r = confirm("Assign Kepada " + ddteknis.value + " ?");
-            if (r == true) {
-
-                var s = ""
-                + "rnd=" + Math.random() * 4
-                + "&sm=A"
-                + "&param1=A"
-                + "&param2=" + listVerikasi.cells(rowId, 1).getValue()
-                + "&param4=" + listVerikasi.cells(rowId, 2).getValue()
-                + "&param10=" + ddteknis.value
-                + "";
-
-                //alert(s);
-                dhtmlxAjax.post(localURL, s, outputResponse);
-            }
-            SearchlistVerikasi();
-        }
-
-    }
 
     function UsrAsg() {
 
@@ -179,6 +140,7 @@
             + "&param2=" + ddprs.value
 			+ "";
         dhtmlxAjax.post(localURL, s, outputAsg);
+        SearchlistLegal();
 
     }
 
@@ -235,6 +197,7 @@
             + "&param2=5"
             + "&param4="
             + "&param5="
+            + "&param9=" + ddprs.value
 			+ "";
         listLegal.clearAll();
         //listLegal.loadXML("../xml/ListLegal.xml");
@@ -252,6 +215,7 @@
             + "&param2=4"
             + "&param4=" + txtDateAwal.value
             + "&param5=" + txtDateAkhir.value
+            + "&param9=" + ddprs.value
 			+ "";
             listLegal.clearAll();
             //listLegal.loadXML("../xml/ListLegal.xml");
@@ -268,6 +232,7 @@
             + "&param2=" + ddprg.value
             + "&param4="
             + "&param5="
+            + "&param9=" + ddprs.value
 			+ "";
         listLegal.clearAll();
         listLegal.loadXML(localURL + "?" + s);
@@ -284,6 +249,7 @@
         listLegal.setInitWidths("40,160,160,160,160,160,160,160,160,65");
         listLegal.setColAlign("left,left,left,left,left,left,left,left,left,center");
         listLegal.setColTypes("ed,ed,ed,ed,ed,ed,ed,ed,ed,ch");
+        listLegal.attachEvent("onCheckbox", doOnCheck);
         listLegal.init();
         listLegal.setSkin("dhx_skyblue");
 
@@ -292,6 +258,48 @@
         listLegal.setPagingSkin("bricks");
     }
 
+    function doOnCheck(rowId, cellInd, state) {
+
+        if (state == 0) {
+            var r = confirm("Batalkan Assign Kepada " + listLegal.cells(rowId, 8).getValue() + " ?");
+            if (r == true) {
+
+                var s = ""
+                + "rnd=" + Math.random() * 4
+                + "&sm=A"
+                + "&param1=A"
+                + "&param2=" + listLegal.cells(rowId, 1).getValue()
+                + "&param4=" + listLegal.cells(rowId, 2).getValue()
+                + "&param9=" + ddprs.value
+                + "&param12="
+                + "";
+
+                //alert(s);
+                dhtmlxAjax.post(localURL, s, outputResponse);
+            }
+            SearchlistLegal();
+        }
+        else if (state == 1) {
+            var r = confirm("Assign Kepada " + ddteknis.value + " ?");
+            if (r == true) {
+
+                var s = ""
+                + "rnd=" + Math.random() * 4
+                + "&sm=A"
+                + "&param1=A"
+                + "&param2=" + listLegal.cells(rowId, 1).getValue()
+                + "&param4=" + listLegal.cells(rowId, 2).getValue()
+                + "&param9=" + ddprs.value
+                + "&param12=" + ddteknis.value
+                + "";
+
+                //alert(s);
+                dhtmlxAjax.post(localURL, s, outputResponse);
+            }
+            SearchlistLegal();
+        }
+
+    }
 
 </script>
 

@@ -136,6 +136,7 @@
             + "&param2=5"
             + "&param4="
             + "&param5="
+            + "&param7=" + ddprs.value
 			+ "";
         listPersiapanDocument.clearAll();
         listPersiapanDocument.loadXML(localURL + "?" + s);
@@ -151,6 +152,7 @@
             + "&param2=" + ddprs.value
 			+ "";
         dhtmlxAjax.post(localURL, s, outputAsg);
+        SearchlistPersiapanDocument();
 
     }
 
@@ -160,8 +162,9 @@
         var length = select.options.length;
         for (i = 0; i < length; i++) {
             select.options[i] = null;
+            
         }
-        
+
         var a = loader.xmlDoc.responseText;
         if (a != '0') {
             var b = new Array();
@@ -215,6 +218,7 @@
                 + "&param1=A"
                 + "&param2=" + listPersiapanDocument.cells(rowId, 1).getValue()
                 + "&param4=" + listPersiapanDocument.cells(rowId, 2).getValue()
+                + "&param7=" + ddprs.value
                 + "&param9="
                 + "";
 
@@ -233,6 +237,7 @@
                 + "&param1=A"
                 + "&param2=" + listPersiapanDocument.cells(rowId, 1).getValue()
                 + "&param4=" + listPersiapanDocument.cells(rowId, 2).getValue()
+                + "&param7=" + ddprs.value
                 + "&param9=" + ddteknis.value
                 + "";
 
@@ -259,6 +264,7 @@
             + "&param2=4"
             + "&param4=" + txtDateAwal.value
             + "&param5=" + txtDateAkhir.value
+            + "&param7=" + ddprs.value
 			+ "";
             listPersiapanDocument.clearAll();
             listPersiapanDocument.loadXML(localURL + "?" + s);
@@ -274,6 +280,7 @@
             + "&param2=" + ddprg.value
             + "&param4="
             + "&param5="
+            + "&param7=" + ddprs.value
 			+ "";
         listPersiapanDocument.clearAll();
         listPersiapanDocument.loadXML(localURL + "?" + s);

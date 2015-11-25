@@ -37,6 +37,7 @@ public partial class Pages_LandLiti_LegalForm : System.Web.UI.Page
     protected String param9 = "";
     protected String param10 = "";
     protected String param11 = "";
+    protected String param12 = "";
 
 
     protected void Page_Load(object sender, EventArgs e)
@@ -162,7 +163,7 @@ public partial class Pages_LandLiti_LegalForm : System.Web.UI.Page
                 ALMIS.ExecuteSTP eSTP = new ALMIS.ExecuteSTP();
                 eSTP.Datas();
                 DataSet ds = new DataSet();
-                ds = eSTP.List11("P_LEGALL", param1, "", "", param4, "", "", "", "", "", "", "");
+                ds = eSTP.List12("P_LEGALL", param1, "", "", param4, "", "", "", "", "", "", "", "");
 
                 dt = ds.Tables[0];
 
@@ -319,10 +320,22 @@ public partial class Pages_LandLiti_LegalForm : System.Web.UI.Page
                         break;
                 }
 
-                Response.AddHeader("content-disposition", "attachment;filename=" + namafile + "");
-                Response.ContentType = type;
+                String path1 = Server.MapPath(@"~/uploaddocument/" + Request.Params["namafile"].ToString().Replace("&amp;", "&"));
+                if (System.IO.File.Exists(path1)) {
+                    Response.AddHeader("content-disposition", "attachment;filename=" + namafile + "");
+                    Response.ContentType = type;       
+                    Response.WriteFile(path1); 
+                
+                }
 
-                Response.WriteFile(Server.MapPath(@"~/uploaddocument/" + Request.Params["namafile"].ToString().Replace("&amp;", "&")));
+                else {
+
+                    Response.Write("<script language=\"javascript\" type=\"text/javascript\">");
+                    Response.Write("alert('Dokumen Tidak Di Temukan');");
+                    Response.Write("window.close();");
+                    Response.Write("</script>");
+                
+                }
 
                 Response.End();
                 return false;
@@ -360,6 +373,7 @@ public partial class Pages_LandLiti_LegalForm : System.Web.UI.Page
         if (Request.Params["param9"] is object) param9 = Request.Params["param9"].ToString();
         if (Request.Params["param10"] is object) param10 = Request.Params["param10"].ToString();
         if (Request.Params["param11"] is object) param11 = Request.Params["param11"].ToString();
+        if (Request.Params["param12"] is object) param12 = Request.Params["param12"].ToString();
         param7 = userid;
 
         String sql = "";
@@ -372,36 +386,33 @@ public partial class Pages_LandLiti_LegalForm : System.Web.UI.Page
 
             output = param1;
 
-            //if (output == "I" || output == "E" || output == "D")
-            //{
+            if (output == "I" || output == "E" || output == "D")
+            {
             ALMIS.ExecuteSTP eSTP = new ALMIS.ExecuteSTP();
 
             eSTP.Datas();
             DataSet ds = new DataSet();
-            //    ds = eSTP.List10("P_LEGALL", "X", param2, "", "", "", "", "", "", "", "");
-            //    dt = ds.Tables[0];
+            ds = eSTP.List12("P_LEGALL", "X", param2, "", "", "", "", "", "", "", "", "", "");
+            dt = ds.Tables[0];
 
-            //    if (dt.Rows.Count > 0)
-            //    {
-            //        if (output == "E")
-            //            output = "noedit";
+            if (dt.Rows.Count > 0)
+            {
+                if (output == "E")
+                    output = "noedit";
 
-            //        if (output == "D")
-            //            output = "nodelete";
-
-            //        if (output == "A")
-            //            output = "noadd";
-
-            //        return output;
-            //    }
-
-                eSTP.Datas();
-                eSTP.save11("P_LEGALL", param1, param2, param3, param4, param5, param6, param7, param8, param9, param10, param11);
+                if (output == "D")
+                    output = "nodelete";
 
                 return output;
-            //}
-            //else
-            //    output = "gagal";
+            }
+
+                eSTP.Datas();
+                eSTP.save12("P_LEGALL", param1, param2, param3, param4, param5, param6, param7, param8, param9, param10, param11, param12);
+
+                return output;
+            }
+            else
+                output = "gagal";
         }
         catch (Exception ex)
         {

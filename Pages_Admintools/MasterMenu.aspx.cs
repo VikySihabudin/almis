@@ -149,8 +149,6 @@ public partial class Pages_MasterMenu : System.Web.UI.Page
                 Response.Write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
                 Response.Write("<rows>");
 
-                
-
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
 

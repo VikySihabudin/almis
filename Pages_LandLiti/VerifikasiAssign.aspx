@@ -136,7 +136,8 @@
                 + "&param1=A"
                 + "&param2=" + listVerikasi.cells(rowId, 1).getValue()
                 + "&param4=" + listVerikasi.cells(rowId, 2).getValue()
-                + "&param12="
+                + "&param7=" + ddprs.value
+                + "&param10="
                 + "";
 
                 //alert(s);
@@ -154,7 +155,8 @@
                 + "&param1=A"
                 + "&param2=" + listVerikasi.cells(rowId, 1).getValue()
                 + "&param4=" + listVerikasi.cells(rowId, 2).getValue()
-                + "&param12=" + ddteknis.value
+                + "&param7=" + ddprs.value
+                + "&param10=" + ddteknis.value
                 + "";
 
                 //alert(s);
@@ -185,6 +187,7 @@
             + "&param2=5"
             + "&param4="
             + "&param5="
+            + "&param7=" + ddprs.value
 			+ "";
         listVerikasi.clearAll();
         //listVerikasi.loadXML("../xml/ListVerifikasi.xml");
@@ -202,6 +205,7 @@
             + "&param2=4"
             + "&param4=" + txtDateAwal.value
             + "&param5=" + txtDateAkhir.value
+            + "&param7=" + ddprs.value
 			+ "";
             listVerikasi.clearAll();
             //listVerikasi.loadXML("../xml/ListVerifikasi.xml");
@@ -218,6 +222,7 @@
             + "&param2=" + ddprg.value
             + "&param4="
             + "&param5="
+            + "&param7=" + ddprs.value
 			+ "";
         listVerikasi.clearAll();
         listVerikasi.loadXML(localURL + "?" + s);
@@ -233,6 +238,7 @@
             + "&param2=" + ddprs.value
 			+ "";
         dhtmlxAjax.post(localURL, s, outputAsg);
+        SearchlistVerikasi();
 
     }
 

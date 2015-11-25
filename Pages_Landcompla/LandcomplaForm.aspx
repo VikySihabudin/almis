@@ -105,57 +105,16 @@
        <br />
          <hr />
 
-        <div class="form-group">            
-            <div class="col-md-8">
+       <iframe src="http://localhost/peta" width="100%" height="600"></iframe>
 
-                <div id="map" >
-                <div id="addshp">
-              <div enctype="multipart/form-data" method="post" id="uploadForm">
-              <div class="field">
-                  <label class="file-upload">
-                      <span><strong>Add SHP To Map</strong></span>
-                      <!--input type="file" name="file" id="inFile" /-->
-                      <input type="file" name="file" id="inFile" />
-                  </label>
-              </div>
-              </div>
-             
-              <span class="file-upload-status" style="opacity:1;" id="upload-status"></span>
-              <div id="fileInfo"> </div>
-        </div></div> 
-            </div>
-
-            <div class="col-md-4">
-                <div id="cari"> 
-                    Parcel ID: <input type="text" id="pid" value=" " />      
-                    <button id="search" data-dojo-type="dijit.form.Button" type="button" data-dojo-attach-point="button" class="btn btn-sm btn-success">Search       
-                    </button>
-                </div>
-                <div id="gris">
-                    <table height="22em" width="100%" data-dojo-type="dojox/grid/DataGrid" data-dojo-id="grid"  id="grid" data-dojo-props="rowsPerPage:'5', rowSelector:'20px'">
-                    <thead>
-                    <tr>
-                        <th field="PID">Parcel ID</th>
-                        <th field="Status_Lhn" >Status</th>
-                        <th field="Nama">Nama</th>
-                        <th field="Desa">Desa</th>
-                        <th field="Registrasi" >Registrasi</th>
-                    </tr>
-                    </thead>
-                    </table>
-                </div>
-                 
-            </div>
-        </div>
-
-
+    <br />
 
 
         <div class="form-group">
 
-            <label for="nama" class="control-label col-md-2">Ulasan Untuk Update Atribut Project</label>
-			<div class="col-md-2">
-		    <asp:TextBox id="txtUlasan" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
+            <label for="nama" class="control-label col-md-1">Legal Note</label>
+			<div class="col-md-5">
+		    <asp:TextBox id="txtUlasan" TextMode="multiline" class="form-control input-md" Columns="15" Rows="5" runat="server" />
 			</div>
 
             <div class="col-md-1">
@@ -240,10 +199,8 @@
         </div>
         --%>
 
-
-    
-
-<hr />
+    <hr />
+    <br />
       
     <div class="form-group">
             <div class="col-md-10">
@@ -315,18 +272,6 @@
         
 
 </div>
-
-
-               <%--ESRI JS--%>
-    <link href="../JavaScript/webgis/js/313/dijit/themes/claro/claro.css" rel="stylesheet" type="text/css" />
-    <link href="../JavaScript/webgis/js/313/dojox/grid/resources/Grid.css" rel="stylesheet" type="text/css" />
-    <link href="../JavaScript/webgis/js/313/dojox/grid/resources/claroGrid.css" rel="stylesheet" type="text/css" />
-    <link href="../JavaScript/webgis/js/313/esri/css/esri.css" rel="stylesheet" type="text/css" />
-    <link href="../JavaScript/webgis/css/layout.css" rel="stylesheet" type="text/css" />
-    
-    <script src="../JavaScript/webgis/js/313/init.js" type="text/javascript" ></script>
-    <script src="../JavaScript/webgis/adaro.js" type="text/javascript" ></script>
-    <script src="../JavaScript/webgis/js/313/upclick-min.js" type="text/javascript" ></script>
 
 
 <script type="text/javascript">
@@ -416,7 +361,7 @@
                 + "&param13=" + ddprs.value
                 + "&param14=" 
                 + "";
-        alert(s);
+        //alert(s);
         dhtmlxAjax.post(localURL, s, outputResponse);
     }
 
@@ -854,12 +799,6 @@
 
     }
 
-    function onClientUploadCompleteComplaince(sender, e) {
-        document.getElementById('<%=namaFile.ClientID %>').value = e.get_postedUrl();
-        ReloadKlaimUser(document.getElementById('<%=txtnoclain.ClientID %>').value, document.getElementById('<%=namaFile.ClientID %>').value, document.getElementById('<%=txtketshm.ClientID %>').value);
-        alert('Data Berasil diUpload');
-
-    }
 
 
 

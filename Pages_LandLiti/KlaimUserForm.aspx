@@ -151,6 +151,12 @@
 
        </div>
 
+       <br />
+         <hr />
+
+       
+        <iframe src="http://localhost/peta" width="100%" height="600"></iframe>
+
 
     <br /><hr />
 
@@ -203,6 +209,17 @@
 
     </div>
 </div>
+
+     <%--ESRI JS--%>
+    <link href="../JavaScript/webgis/js/313/dijit/themes/claro/claro.css" rel="stylesheet" type="text/css" />
+    <link href="../JavaScript/webgis/js/313/dojox/grid/resources/Grid.css" rel="stylesheet" type="text/css" />
+    <link href="../JavaScript/webgis/js/313/dojox/grid/resources/claroGrid.css" rel="stylesheet" type="text/css" />
+    <link href="../JavaScript/webgis/js/313/esri/css/esri.css" rel="stylesheet" type="text/css" />
+    <link href="../JavaScript/webgis/css/layout.css" rel="stylesheet" type="text/css" />
+    
+    <script src="../JavaScript/webgis/js/313/init.js" type="text/javascript" ></script>
+    <script src="../JavaScript/webgis/adaro.js" type="text/javascript" ></script>
+    <script src="../JavaScript/webgis/js/313/upclick-min.js" type="text/javascript" ></script>
 
 
 

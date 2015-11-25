@@ -97,10 +97,11 @@ public partial class Pages_LandLiti_LegalAssign : System.Web.UI.Page
                 var param2L = Request.Params["param2"].ToString();
                 var param4L = Request.Params["param4"].ToString();
                 var param5L = Request.Params["param5"].ToString();
+                var param9L = Request.Params["param9"].ToString();
                 ALMIS.ExecuteSTP eSTP_L = new ALMIS.ExecuteSTP();
                 eSTP_L.Datas();
                 DataSet ds_L = new DataSet();
-                ds_L = eSTP_L.List12("P_LEGALL", param1L, param2L, "", param4L, param5L, "", userid, "", "", "", "", "");
+                ds_L = eSTP_L.List12("P_LEGALL", param1L, param2L, "", param4L, param5L, "", userid, "", param9L, "", "", "");
 
                 dt = ds_L.Tables[0];
 
@@ -140,13 +141,14 @@ public partial class Pages_LandLiti_LegalAssign : System.Web.UI.Page
                 var param1 = Request.Params["param1"].ToString();
                 var param2 = Request.Params["param2"].ToString();
                 var param4 = Request.Params["param4"].ToString();
+                var param9 = Request.Params["param9"].ToString();
                 var param12 = Request.Params["param12"].ToString();
 
 
                 ALMIS.ExecuteSTP eSTP = new ALMIS.ExecuteSTP();
                 eSTP.Datas();
                 DataSet ds = new DataSet();
-                eSTP.save12("P_LEGALL", param1, param2, "", param4, "", "", userid, "", "", "", "", param12);
+                eSTP.save12("P_LEGALL", param1, param2, "", param4, "", "", userid, "", param9, "", "", param12);
                 Response.End();
                 return false;
 
