@@ -784,6 +784,7 @@
         txtKetEks.disabled = true;
         document.getElementById('btnSave').style.visibility = 'hidden';
         document.getElementById('btnCari').style.visibility = 'hidden';
+        ddprs.disabled = true;
     }
 
     function lockPembayaranEdit() 
@@ -794,6 +795,7 @@
         txtNoNegosiasi.disabled = true;
         txtNoVisum.disabled = true;
         txtNoPemberkasan.disabled = true;
+        ddprs.disabled = true;
     }
 
     function lockPembayaranDelete() {
@@ -816,6 +818,7 @@
         chkEksepsi.disabled = true;
         txtNamaPerusahaan.disabled = true;
         txtKetEks.disabled = true;
+        ddprs.disabled = true;
     }
 
 

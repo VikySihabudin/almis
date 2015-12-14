@@ -27,7 +27,29 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
     protected String userid = "";
     protected String groups = "";
     protected String Upload = "";
+    protected String param1 = "";
+    protected String param2 = "";
+    protected String param3 = "";
+    protected String param4 = "";
+    protected String param5 = "";
+    protected String param6 = "";
+    protected String param7 = "";
+    protected String param8 = "";
+    protected String param9 = "";
+    protected String param10 = "";
+    protected String param11 = "";
+    protected String param12 = "";
+    protected String param13 = "";
+    protected String param14 = "";
+    protected String param15 = "";
+    protected String param16 = "";
+    protected String output = "";
+    protected String sql = "";
+
     string _stFAsli;
+
+    ALMIS.ExecuteSTP eSTP = new ALMIS.ExecuteSTP();
+    DataSet ds = new DataSet();
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -127,6 +149,7 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
         dt.Dispose();
     }
 
+
     public void isiKecamatan()
     {
         query = @"SELECT mcamatIdcamt, mcamatNmcamt FROM almis.MCAMAT";
@@ -161,8 +184,8 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
 
     private String KabKec()
     {
-        var Param1 = Request.Params["param1"].ToString();
-        var Param2 = Request.Params["param2"].ToString();
+        if (Request.Params["param1"] is object) param1 = Request.Params["param1"].ToString();
+        if (Request.Params["param2"] is object) param2 = Request.Params["param2"].ToString();
         string output = "";
 
         try
@@ -170,7 +193,7 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
             ALMIS.ExecuteSTP eSTP = new ALMIS.ExecuteSTP();
             eSTP.Datas();
             DataSet ds = new DataSet();
-            ds = eSTP.List2("C_ADMINS", Param1, Param2);
+            ds = eSTP.List2("C_ADMINS", param1, param2);
 
             dt = ds.Tables[0];
 
@@ -189,10 +212,10 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
         return output;
     }
 
-    protected void ddKecamatan_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        isiDesa();
-    }
+    //protected void ddKecamatan_SelectedIndexChanged(object sender, EventArgs e)
+    //{
+    //    isiDesa();
+    //}
 
 
     private string RemoveWhiteSpace(string value)
@@ -225,16 +248,13 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
             case "V":
 
 
-                var Param1 = Request.Params["param1"].ToString();
-                var Param2 = Request.Params["param2"].ToString();
+                if (Request.Params["param1"] is object) param1 = Request.Params["param1"].ToString();
+                if (Request.Params["param2"] is object) param2 = Request.Params["param2"].ToString();
 
-                ALMIS.ExecuteSTP eSTP = new ALMIS.ExecuteSTP();
                 eSTP.Datas();
-                DataSet ds = new DataSet();
-                ds = eSTP.List15("P_CLAUSR", Param1, Param2, "", "", "", "", "", "", "", "", "", "", "", "", "");
+                ds = eSTP.List16("P_CLAUSR", param1, param2, "", "", "", "", "", "", "", "", "", "", "", "", "", "");
 
                 dt = ds.Tables[0];
-
                 Response.ContentType = "text/plain";
 
                 Response.Write(dt.Rows[0]["ClausrNmrClm"].ToString() + "|"); //0
@@ -244,8 +264,10 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
                 Response.Write(dt.Rows[0]["ClausrLokKab"].ToString() + "|"); //4
                 Response.Write(dt.Rows[0]["ClausrLokKec"].ToString() + "|"); //5
                 Response.Write(dt.Rows[0]["ClausrLokDes"].ToString() + "|"); //6
+                
                 Response.Write(dt.Rows[0]["ClausrNmrIdn"].ToString() + "|"); //7
                 Response.Write(dt.Rows[0]["ClausrLanjut"].ToString() + "|"); //8
+                Response.Write(dt.Rows[0]["ClausrKeteks"].ToString() + "|"); //9
 
                 dt.Dispose();
 
@@ -256,14 +278,12 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
 
             case "L":
 
-                var param1L = Request.Params["param1"].ToString();
-           
-                ALMIS.ExecuteSTP eSTP_L = new ALMIS.ExecuteSTP();
-                eSTP_L.Datas();
-                DataSet ds_L = new DataSet();
-                ds_L = eSTP_L.List7("P_CLAUSR_D", param1L, "", "", "", "", "", "");
+                if (Request.Params["param1"] is object) param1 = Request.Params["param1"].ToString();
 
-                dt = ds_L.Tables[0];
+                eSTP.Datas();
+                ds = eSTP.List7("P_CLAUSR_D", param1, "", "", "", "", "", "");
+
+                dt = ds.Tables[0];
 
                 Response.ContentType = "application/xhtml+xml";
                 Response.Write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
@@ -291,9 +311,78 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
 
                 return false;
 
+            case "LP": //List PID
+
+                if (Request.Params["param1"] is object) param1 = Request.Params["param1"].ToString();
+                if (Request.Params["param2"] is object) param2 = Request.Params["param2"].ToString();
+                if (Request.Params["param8"] is object) param8 = Request.Params["param8"].ToString();
+
+                eSTP.Datas();
+                ds = eSTP.List9("P_CLAUSR_PID", param1, param2, "", "", "", "", "", param8, "");
+
+                dt = ds.Tables[0];
+
+                Response.ContentType = "application/xhtml+xml";
+                Response.Write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+                Response.Write("<rows>");
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    Random r = new Random();
+                    Response.Write("<row id=\"" + (i + 1).ToString() + "\">");
+                    Response.Write("<cell>" + (i + 1).ToString() + "</cell>"); // Untuk Membuat Angka
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["clausrNmrPid"].ToString()) + "</cell>");
+                    Response.Write("<cell>" + RemoveWhiteSpace("Delete^javascript:Hapus(\"" + "DA" + "\",\"" + "D" + "\",\"" + dt.Rows[i]["clausrNmrPid"].ToString() + "\");^_self") + "</cell>");
+
+                    Response.Write("</row>");
+                }
+                Response.Write("</rows>");
+                dt.Dispose();
+
+                Response.End();
+                Response.End();
+
+                return false;
+
+            case "LPS": // List Pid Cari
+
+                if (Request.Params["param1"] is object) param1 = Request.Params["param1"].ToString();
+                if (Request.Params["param2"] is object) param2 = Request.Params["param2"].ToString();
+                if (Request.Params["param8"] is object) param8 = Request.Params["param8"].ToString();
+
+                eSTP.Datas();
+                ds = eSTP.List9("P_CLAUSR_PID", param1, param2, "", "", "", userid, "", param8, "");
+                dt = ds.Tables[0];
+
+                Response.ContentType = "application/xhtml+xml";
+                Response.Write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+                Response.Write("<rows>");
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    Random r = new Random();
+                    Response.Write("<row id=\"" + (i + 1).ToString() + "\">");
+
+                    Response.Write("<cell>" + (i + 1).ToString() + "</cell>");
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["pengtoNmrPid"].ToString()) + "</cell>");
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["MidentNamass"].ToString()) + "</cell>");
+
+                    Response.Write("</row>");
+                }
+
+                Response.Write("</rows>");
+                dt.Dispose();
+                Response.End();
+
+                return false;
+
             case "CRUD":
                 Response.ContentType = "text/plain";
                 Response.Write(CRUD());
+                Response.End();
+                return false;
+
+            case "CRUD_PID":
+                Response.ContentType = "text/plain";
+                Response.Write(CRUD_PID());
                 Response.End();
                 return false;
 
@@ -402,14 +491,12 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
                 String path_pic = (HttpContext.Current.Request.Url.AbsolutePath).ToLower();
 
                 string IDKlaimUser = Request.Params["IDKlaimUser"].ToString();
-                string param1 = Request.Params["param1"].ToString();
+                if (Request.Params["param1"] is object) param1 = Request.Params["param1"].ToString();
 
-                ALMIS.ExecuteSTP eSTPx = new ALMIS.ExecuteSTP();
-                eSTPx.Datas();
-                DataSet dsx = new DataSet();
-                dsx = eSTPx.List7("P_CLAUSR_D", param1, IDKlaimUser, "", "", "", "", "");
+                eSTP.Datas();
+                ds = eSTP.List7("P_CLAUSR_D", param1, IDKlaimUser, "", "", "", "", "");
 
-                dt = dsx.Tables[0];
+                dt = ds.Tables[0];
 
                 Response.ContentType = "application/xhtml+xml";
                 Response.Write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
@@ -456,18 +543,18 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
 
         }
 
-        String param1 = ""; if (Request.Params["param1"] is object) param1 = Request.Params["param1"].ToString();
-        String param2 = ""; if (Request.Params["param2"] is object) param2 = Request.Params["param2"].ToString();
-        String param3 = ""; if (Request.Params["param3"] is object) param3 = Request.Params["param3"].ToString();
-        String param4 = ""; if (Request.Params["param4"] is object) param4 = Request.Params["param4"].ToString();
-        String param5 = ""; if (Request.Params["param5"] is object) param5 = Request.Params["param5"].ToString();
-        String param6 = ""; if (Request.Params["param6"] is object) param6 = Request.Params["param6"].ToString();
-        String param7 = ""; if (Request.Params["param7"] is object) param7 = Request.Params["param7"].ToString();
-        String param8 = ""; if (Request.Params["param8"] is object) param8 = Request.Params["param8"].ToString();
-        String param9 = ""; if (Request.Params["param9"] is object) param9 = Request.Params["param9"].ToString();
-        String param10 = ""; if (Request.Params["param10"] is object) param10 = Request.Params["param10"].ToString();
-        String param11 = ""; if (Request.Params["param11"] is object) param11 = Request.Params["param11"].ToString();
-        String param12 = ""; if (Request.Params["param12"] is object) param12 = Request.Params["param12"].ToString();
+        if (Request.Params["param1"] is object) param1 = Request.Params["param1"].ToString();
+        if (Request.Params["param2"] is object) param2 = Request.Params["param2"].ToString();
+        if (Request.Params["param3"] is object) param3 = Request.Params["param3"].ToString();
+        if (Request.Params["param4"] is object) param4 = Request.Params["param4"].ToString();
+        if (Request.Params["param5"] is object) param5 = Request.Params["param5"].ToString();
+        if (Request.Params["param6"] is object) param6 = Request.Params["param6"].ToString();
+        if (Request.Params["param7"] is object) param7 = Request.Params["param7"].ToString();
+        if (Request.Params["param8"] is object) param8 = Request.Params["param8"].ToString();
+        if (Request.Params["param9"] is object) param9 = Request.Params["param9"].ToString();
+        if (Request.Params["param10"] is object) param10 = Request.Params["param10"].ToString();
+        if (Request.Params["param11"] is object) param11 = Request.Params["param11"].ToString();
+        if (Request.Params["param12"] is object) param12 = Request.Params["param12"].ToString();
 
         String NamDok = ""; if (Request.Params["NamDok"] is object) NamDok = Request.Params["NamDok"].ToString().Replace("&amp;", "&");
         String KdDok = ""; if (Request.Params["KdDok"] is object) KdDok = Request.Params["KdDok"].ToString().Replace("&amp;", "&");
@@ -477,11 +564,6 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
         //KdDok = @param6 --IDSource
         //Sqdok = @param2 --hdocumSequen
 
-        String sql = "";
-        String output = "";
-
-
-
         try
         {
 
@@ -489,7 +571,7 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
 
             if (output == "I" || output == "E" || output == "D")
             {
-                ALMIS.ExecuteSTP eSTP = new ALMIS.ExecuteSTP();
+ 
                 eSTP.Datas();
 
                 if (output == "I")
@@ -531,26 +613,23 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
 
         }
 
-        String param1 = ""; if (Request.Params["param1"] is object) param1 = Request.Params["param1"].ToString();
-        String param2 = ""; if (Request.Params["param2"] is object) param2 = Request.Params["param2"].ToString();
-        String param3 = ""; if (Request.Params["param3"] is object) param3 = Request.Params["param3"].ToString();
-        String param4 = ""; if (Request.Params["param4"] is object) param4 = Request.Params["param4"].ToString();
-        String param5 = ""; if (Request.Params["param5"] is object) param5 = Request.Params["param5"].ToString();
-        String param6 = ""; if (Request.Params["param6"] is object) param6 = Request.Params["param6"].ToString();
-        String param7 = ""; if (Request.Params["param7"] is object) param7 = Request.Params["param7"].ToString();
-        String param8 = ""; if (Request.Params["param8"] is object) param8 = Request.Params["param8"].ToString();
-        String param9 = ""; if (Request.Params["param9"] is object) param9 = Request.Params["param9"].ToString();
-        String param10 = ""; if (Request.Params["param10"] is object) param10 = Request.Params["param10"].ToString();
-        String param11 = ""; if (Request.Params["param11"] is object) param11 = Request.Params["param11"].ToString();
-        String param12 = ""; if (Request.Params["param12"] is object) param12 = Request.Params["param12"].ToString();
-        String param13 = ""; if (Request.Params["param13"] is object) param13 = Request.Params["param13"].ToString();
-        String param14 = ""; if (Request.Params["param14"] is object) param14 = Request.Params["param14"].ToString();
-        String param15 = ""; if (Request.Params["param15"] is object) param15 = Request.Params["param15"].ToString();
-        String sql = "";
-        String output = "";
-
-
-
+        if (Request.Params["param1"] is object) param1 = Request.Params["param1"].ToString();
+        if (Request.Params["param2"] is object) param2 = Request.Params["param2"].ToString();
+        if (Request.Params["param3"] is object) param3 = Request.Params["param3"].ToString();
+        if (Request.Params["param4"] is object) param4 = Request.Params["param4"].ToString();
+        if (Request.Params["param5"] is object) param5 = Request.Params["param5"].ToString();
+        if (Request.Params["param6"] is object) param6 = Request.Params["param6"].ToString();
+        if (Request.Params["param7"] is object) param7 = Request.Params["param7"].ToString();
+        if (Request.Params["param8"] is object) param8 = Request.Params["param8"].ToString();
+        if (Request.Params["param9"] is object) param9 = Request.Params["param9"].ToString();
+        if (Request.Params["param10"] is object) param10 = Request.Params["param10"].ToString();
+        if (Request.Params["param11"] is object) param11 = Request.Params["param11"].ToString();
+        if (Request.Params["param12"] is object) param12 = Request.Params["param12"].ToString();
+        if (Request.Params["param13"] is object) param13 = Request.Params["param13"].ToString();
+        if (Request.Params["param14"] is object) param14 = Request.Params["param14"].ToString();
+        if (Request.Params["param15"] is object) param15 = Request.Params["param15"].ToString();
+        if (Request.Params["param16"] is object) param16 = Request.Params["param16"].ToString();
+        
         try
         {
 
@@ -558,11 +637,9 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
 
             if (output == "I" || output == "E" || output == "D")
             {
-                ALMIS.ExecuteSTP eSTP = new ALMIS.ExecuteSTP();
-
+               
                 eSTP.Datas();
-                DataSet ds = new DataSet();
-                ds = eSTP.List15("P_CLAUSR", "X", param2, "", "", "", "", "", "", "", "", "", "", "", "", "");
+                ds = eSTP.List16("P_CLAUSR", "X", param2, "", "", "", "", "", "", "", "", "", "", "", "", "", "");
                 dt = ds.Tables[0];
 
                 if (dt.Rows.Count > 0)
@@ -580,7 +657,7 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
                 }
 
                 eSTP.Datas();
-                eSTP.save15("P_CLAUSR", param1, param2, param3, param4, param5, param6, param7, param8, param9, param10, userid, param12, param13, param14, param15);
+                eSTP.save16("P_CLAUSR", param1, param2, param3, param4, param5, param6, param7, param8, param9, param10, userid, param12, param13, param14, param15, param16);
 
                 return output;
             }
@@ -596,6 +673,71 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
 
         return output;
     }
+
+    private String CRUD_PID()
+    {
+
+        if (Session["userid"] is object)
+        {
+            userid = Session["userid"].ToString();
+
+        }
+
+        if (Request.Params["param1"] is object) param1 = Request.Params["param1"].ToString();
+        if (Request.Params["param2"] is object) param2 = Request.Params["param2"].ToString();
+        if (Request.Params["param3"] is object) param3 = Request.Params["param3"].ToString();
+        if (Request.Params["param4"] is object) param4 = Request.Params["param4"].ToString();
+        if (Request.Params["param5"] is object) param5 = Request.Params["param5"].ToString();
+        if (Request.Params["param6"] is object) param6 = Request.Params["param6"].ToString();
+        if (Request.Params["param7"] is object) param7 = Request.Params["param7"].ToString();
+        if (Request.Params["param8"] is object) param8 = Request.Params["param8"].ToString();
+        if (Request.Params["param9"] is object) param9 = Request.Params["param9"].ToString();
+
+        try
+        {
+
+            output = param1;
+
+            if (output == "I" || output == "E" || output == "D")
+            {
+
+                eSTP.Datas();
+                ds = eSTP.List9("P_CLAUSR_PID", "X", param2, "", param4, param5, "", "", "", "");
+                dt = ds.Tables[0];
+                if (output == "I")
+                {
+                    if (dt.Rows.Count > 0)
+                    {
+
+                        if (output == "I")
+                            output = "noadd";
+
+                        return output;
+                    }
+                }
+                eSTP.Datas();
+                eSTP.save9("P_CLAUSR_PID", param1, param2, param3, param4, param5, userid, param7, param8, param9);
+
+                if (output == "I")
+                    output = "ID";
+                if (output == "D")
+                    output = "DD";
+
+                return output;
+            }
+            else
+                output = "gagal";
+        }
+        catch (Exception ex)
+        {
+            Response.Write(ex.Message);
+            Response.End();
+            return ex.Message;
+        }
+
+        return output;
+    }
+
 
     public void AjaxFileUploadKlaimUser_UploadComplete(object sender, AjaxControlToolkit.AjaxFileUploadEventArgs e)
     {

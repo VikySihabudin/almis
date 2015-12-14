@@ -422,6 +422,7 @@
         cbEksepsi.disabled = true;
         txtKetEks.disabled = true;
         document.getElementById('btnSave').style.visibility = 'hidden';
+        ddprs.disabled = true;
     }
 
     function lockPemberkasanSatuEdit () {
@@ -430,6 +431,7 @@
         txtPID.disabled = true;
         txtNoNegosiasi.disabled = true;
         txtNoVisum.disabled = true;
+        ddprs.disabled = true;
     }
 
     function lockPemberkasanSatuDelete() {
@@ -446,6 +448,7 @@
         txtKeterangan.disabled = true;
         cbEksepsi.disabled = true;
         txtKetEks.disabled = true;
+        ddprs.disabled = true;
     }
     
     function PerolehanLahan() 

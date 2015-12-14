@@ -25,9 +25,14 @@ public partial class Pages_VisumAssign : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["userid"] is object)
+        {
+            userid = Session["userid"].ToString();
+        }
+
+        isiPerusa();
+        isiPeriode();
         HakAkses();
-        isiTeknis();
-        isiprg();
         bool normal = true;
         if (normal && (Request.Params["sm"] is object)) normal = ServiceSelect(Request.Params["sm"].ToString());
     }
@@ -84,31 +89,27 @@ public partial class Pages_VisumAssign : System.Web.UI.Page
 
     }
 
-    public void isiTeknis()
+    public void isiPerusa()
     {
-        query = @"SELECT a.UserssIdents,a.UserssNamess 
-                    FROM USERSS a";
 
-        //@"SELECT DISTINCT  a.GrupmnModuls,a.GrupmnUserId,b.userssNamess 
-        //                    FROM GRUPMN a
-        //                    INNER JOIN USERSS b 
-        //	                    ON	a.GrupmnUserId = b.UserssIDents
-        //                    WHERE GrupmnModuls ='Pengecekan Lapangan'";
+        query = @"SELECT perusaNamass,perusaIdents FROM USRPRS 
+                  INNER JOIN PERUSA
+	                ON UsrprsPerusa = perusaIdents
+                   WHERE UsrprsUserss =" + "'" + userid + "'" + "";
+
         dt = getDataTable(query);
         if (dt.Rows.Count > 0)
         {
-            ddteknis.Items.Clear();
-            //ddLanjut.Items.Add(new ListItem("Pilih Kabupaten", "0"));
+            ddprs.Items.Clear();
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-                //ddteknis.Items.Add(new ListItem(dt.Rows[i]["userssNamess"].ToString()));
-                ddteknis.Items.Add(new ListItem(dt.Rows[i]["userssNamess"].ToString(), dt.Rows[i]["UserssIdents"].ToString()));
+                ddprs.Items.Add(new ListItem(dt.Rows[i]["perusaNamass"].ToString(), dt.Rows[i]["perusaIdents"].ToString()));
             }
         }
         dt.Dispose();
     }
 
-    public void isiprg()
+    public void isiPeriode()
     {
         query = @"SELECT codessDescs1, codessCodess FROM CODESS WHERE codessHeadss = '9'";
         dt = getDataTable(query);
@@ -159,12 +160,13 @@ public partial class Pages_VisumAssign : System.Web.UI.Page
                 var param4 = Request.Params["param4"].ToString();
                 var param5 = Request.Params["param5"].ToString();
                 var param11 = Request.Params["param11"].ToString();
+                var param12 = Request.Params["param12"].ToString();
                 //var param17 = "hanny"; //session
                 var param9 = Session["userid"].ToString();
                 ALMIS.ExecuteSTP eSTP = new ALMIS.ExecuteSTP();
                 eSTP.Datas();
                 DataSet ds = new DataSet();
-                eSTP.save13("P_VISUMS", param1, param2, "", param4, param5, "", "", "", param9, "", param11,"","");
+                eSTP.save13("P_VISUMS", param1, param2, "", param4, param5, "", "", "", param9, "", param11, param12, "");
                 Response.End();
                 return false;
 
@@ -174,10 +176,11 @@ public partial class Pages_VisumAssign : System.Web.UI.Page
                 var param2L = Request.Params["param2"].ToString();
                 var param4L = Request.Params["param4"].ToString();
                 var param5L = Request.Params["param5"].ToString();
+                var param12L = Request.Params["param12"].ToString();
                 ALMIS.ExecuteSTP eSTP_L = new ALMIS.ExecuteSTP();
                 eSTP_L.Datas();
                 DataSet ds_L = new DataSet();
-                ds_L = eSTP_L.List13("P_VISUMS", param1L, param2L, "", param4L, param5L, "", "", "", "", "", "","","");
+                ds_L = eSTP_L.List13("P_VISUMS", param1L, param2L, "", param4L, param5L, "", "", "", userid, "", "", param12L, "");
 
                 dt = ds_L.Tables[0];
 
@@ -208,10 +211,48 @@ public partial class Pages_VisumAssign : System.Web.UI.Page
 
                 return false;
 
+            case "UA":
+                Response.ContentType = "text/plain";
+                Response.Write(UA());
+                Response.End();
+                return false; 
+
             default:
                 Response.ContentType = "text/plain";
                 Response.End();
                 return true;
         }
     }
+
+    private String UA()
+    {
+        var Param1 = Request.Params["param1"].ToString();
+        var Param2 = Request.Params["param2"].ToString();
+        string output = "";
+
+        try
+        {
+            ALMIS.ExecuteSTP eSTP_p = new ALMIS.ExecuteSTP();
+            eSTP_p.Datas();
+            DataSet ds_p = new DataSet();
+            ds_p = eSTP_p.List2("C_ADMINS", Param1, Param2);
+
+            dt = ds_p.Tables[0];
+
+            Response.ContentType = "text/plain";
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                output += dt.Rows[i]["UserssNamess"].ToString() + "|";
+                output += dt.Rows[i]["UserssIdents"].ToString() + "*";
+            }
+            dt.Dispose();
+        }
+        catch (Exception ex)
+        {
+            Response.Write(ex.Message);
+        }
+
+        return output;
+    }
+
 }

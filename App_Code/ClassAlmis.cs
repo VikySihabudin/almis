@@ -64,6 +64,7 @@ namespace ALMIS
                 vobCommd.CommandText = "[almis].[p_NUMBER]";
                 vobCommd.CommandType = System.Data.CommandType.StoredProcedure;
                 vobCommd.CommandTimeout = 600;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@in_compa", System.Data.SqlDbType.VarChar)).Value = _byCompa;
                 vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@in_clas1", System.Data.SqlDbType.SmallInt)).Value = _stSysc1;
                 vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@in_clas2", System.Data.SqlDbType.SmallInt)).Value = _stSysc2;
                 vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@in_dates", System.Data.SqlDbType.VarChar)).Value = _stDates;
@@ -684,6 +685,49 @@ namespace ALMIS
 
         #region save
 
+        public bool save4(string _stProcs, string _stParam1, string _stParam2, string _stParam3, string _stParam4)
+        {
+            string vstExcep;
+            System.Data.SqlClient.SqlConnection vobConne = new System.Data.SqlClient.SqlConnection(this._stConSt);
+            System.Data.SqlClient.SqlCommand vobCommd = new System.Data.SqlClient.SqlCommand();
+            System.Data.SqlClient.SqlDataAdapter vobAdapt = new System.Data.SqlClient.SqlDataAdapter(vobCommd);
+            System.Data.DataSet vdsDatas = new System.Data.DataSet();
+            try
+            {
+                vobCommd.CommandText = _stProcs;
+                vobCommd.CommandType = System.Data.CommandType.StoredProcedure;
+                vobCommd.CommandTimeout = 600;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param1", System.Data.SqlDbType.VarChar)).Value = _stParam1;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param2", System.Data.SqlDbType.VarChar)).Value = _stParam2;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param3", System.Data.SqlDbType.VarChar)).Value = _stParam3;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param4", System.Data.SqlDbType.VarChar)).Value = _stParam4;
+
+                try
+                {
+                    if (vobConne.State == System.Data.ConnectionState.Closed)
+                    {
+                        vobConne.Open();
+
+                    }
+                    vobCommd.Connection = vobConne;
+                    vobCommd.ExecuteNonQuery();
+                    stSave = true;
+
+                }
+                catch (System.Data.SqlClient.SqlException vsqExcep)
+                { vstExcep = vsqExcep.Message; vobConne.Close(); vdsDatas = null; }
+            }
+            catch (System.Data.SqlClient.SqlException vsqExcep) { vstExcep = vsqExcep.Message; vdsDatas = null; }
+            finally
+            {
+                if (vobConne.State == System.Data.ConnectionState.Open) { vobConne.Close(); };
+                vobAdapt.Dispose(); vobCommd.Dispose(); vobConne.Dispose();
+            }
+
+
+            return stSave;
+        }
+
         public bool save5(string _stProcs, string _stParam1, string _stParam2, string _stParam3, string _stParam4, string _stParam5)
         {
             string vstExcep;
@@ -727,6 +771,7 @@ namespace ALMIS
 
             return stSave;
         }
+
         public bool save6(string _stProcs, string _stParam1, string _stParam2, string _stParam3, string _stParam4, string _stParam5, string _stParam6)
         {
             string vstExcep;
@@ -1901,6 +1946,79 @@ namespace ALMIS
             return stSave;
         }
 
+        public bool save32(string _stProcs, string _stParam1, string _stParam2, string _stParam3, string _stParam4, string _stParam5, string _stParam6, 
+                           string _stParam7, string _stParam8, string _stParam9, string _stParam10, string _stParam11, string _stParam12, string _stParam13, 
+                           string _stParam14, string _stParam15, string _stParam16, string _stParam17, string _stParam18, string _stParam19, string _stParam20, 
+                           string _stParam21, string _stParam22, string _stParam23, string _stParam24, string _stParam25, string _stParam26, string _stParam27, 
+                           string _stParam28, string _stParam29, string _stParam30, string _stParam31, string _stParam32)
+        {
+            string vstExcep;
+            System.Data.SqlClient.SqlConnection vobConne = new System.Data.SqlClient.SqlConnection(this._stConSt);
+            System.Data.SqlClient.SqlCommand vobCommd = new System.Data.SqlClient.SqlCommand();
+            System.Data.SqlClient.SqlDataAdapter vobAdapt = new System.Data.SqlClient.SqlDataAdapter(vobCommd);
+            System.Data.DataSet vdsDatas = new System.Data.DataSet();
+            try
+            {
+                vobCommd.CommandText = _stProcs;
+                vobCommd.CommandType = System.Data.CommandType.StoredProcedure;
+                vobCommd.CommandTimeout = 600;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param1", System.Data.SqlDbType.VarChar)).Value = _stParam1;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param2", System.Data.SqlDbType.VarChar)).Value = _stParam2;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param3", System.Data.SqlDbType.VarChar)).Value = _stParam3;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param4", System.Data.SqlDbType.VarChar)).Value = _stParam4;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param5", System.Data.SqlDbType.VarChar)).Value = _stParam5;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param6", System.Data.SqlDbType.VarChar)).Value = _stParam6;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param7", System.Data.SqlDbType.VarChar)).Value = _stParam7;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param8", System.Data.SqlDbType.VarChar)).Value = _stParam8;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param9", System.Data.SqlDbType.VarChar)).Value = _stParam9;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param10", System.Data.SqlDbType.VarChar)).Value = _stParam10;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param11", System.Data.SqlDbType.VarChar)).Value = _stParam11;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param12", System.Data.SqlDbType.VarChar)).Value = _stParam12;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param13", System.Data.SqlDbType.VarChar)).Value = _stParam13;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param14", System.Data.SqlDbType.VarChar)).Value = _stParam14;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param15", System.Data.SqlDbType.VarChar)).Value = _stParam15;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param16", System.Data.SqlDbType.VarChar)).Value = _stParam16;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param17", System.Data.SqlDbType.VarChar)).Value = _stParam17;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param18", System.Data.SqlDbType.VarChar)).Value = _stParam18;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param19", System.Data.SqlDbType.VarChar)).Value = _stParam19;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param20", System.Data.SqlDbType.VarChar)).Value = _stParam20;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param21", System.Data.SqlDbType.VarChar)).Value = _stParam21;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param22", System.Data.SqlDbType.VarChar)).Value = _stParam22;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param23", System.Data.SqlDbType.VarChar)).Value = _stParam23;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param24", System.Data.SqlDbType.VarChar)).Value = _stParam24;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param25", System.Data.SqlDbType.VarChar)).Value = _stParam25;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param26", System.Data.SqlDbType.VarChar)).Value = _stParam26;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param27", System.Data.SqlDbType.VarChar)).Value = _stParam27;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param28", System.Data.SqlDbType.VarChar)).Value = _stParam28;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param29", System.Data.SqlDbType.VarChar)).Value = _stParam29;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param30", System.Data.SqlDbType.VarChar)).Value = _stParam30;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param31", System.Data.SqlDbType.VarChar)).Value = _stParam31;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param32", System.Data.SqlDbType.VarChar)).Value = _stParam32;
+                try
+                {
+                    if (vobConne.State == System.Data.ConnectionState.Closed)
+                    {
+                        vobConne.Open();
+
+                    }
+                    vobCommd.Connection = vobConne;
+                    vobCommd.ExecuteNonQuery();
+                    stSave = true;
+
+                }
+                catch (System.Data.SqlClient.SqlException vsqExcep)
+                { vstExcep = vsqExcep.Message; vobConne.Close(); vdsDatas = null; }
+            }
+            catch (System.Data.SqlClient.SqlException vsqExcep) { vstExcep = vsqExcep.Message; vdsDatas = null; }
+            finally
+            {
+                if (vobConne.State == System.Data.ConnectionState.Open) { vobConne.Close(); };
+                vobAdapt.Dispose(); vobCommd.Dispose(); vobConne.Dispose();
+            }
+
+
+            return stSave;
+        }
 
         public bool save34(string _stProcs, string _stParam1, string _stParam2, string _stParam3, string _stParam4, string _stParam5, string _stParam6, string _stParam7, string _stParam8, string _stParam9, string _stParam10, string _stParam11, string _stParam12, string _stParam13, string _stParam14, string _stParam15, string _stParam16, string _stParam17, string _stParam18, string _stParam19, string _stParam20, string _stParam21, string _stParam22, string _stParam23, string _stParam24, string _stParam25, string _stParam26, string _stParam27, string _stParam28, string _stParam29, string _stParam30, string _stParam31, string _stParam32, string _stParam33, string _stParam34)
         {
@@ -3071,6 +3189,76 @@ namespace ALMIS
             return vdsDatas;
 
         }
+
+        public System.Data.DataSet List32(string _stProcs, string _stParam1, string _stParam2, string _stParam3, string _stParam4, string _stParam5, string _stParam6, string _stParam7, string _stParam8, string _stParam9, string _stParam10
+                                         , string _stParam11, string _stParam12, string _stParam13, string _stParam14, string _stParam15, string _stParam16, string _stParam17, string _stParam18, string _stParam19, string _stParam20
+                                         , string _stParam21, string _stParam22, string _stParam23, string _stParam24, string _stParam25, string _stParam26, string _stParam27, string _stParam28, string _stParam29, string _stParam30
+                                         , string _stParam31, string _stParam32)
+        {
+            string vstExcep;
+            System.Data.SqlClient.SqlConnection vobConne = new System.Data.SqlClient.SqlConnection(this._stConSt);
+            System.Data.SqlClient.SqlCommand vobCommd = new System.Data.SqlClient.SqlCommand();
+            System.Data.SqlClient.SqlDataAdapter vobAdapt = new System.Data.SqlClient.SqlDataAdapter(vobCommd);
+            System.Data.DataSet vdsDatas = new System.Data.DataSet();
+            try
+            {
+                vobCommd.CommandText = _stProcs;
+                vobCommd.CommandType = System.Data.CommandType.StoredProcedure;
+                vobCommd.CommandTimeout = 600;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param1", System.Data.SqlDbType.VarChar)).Value = _stParam1;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param2", System.Data.SqlDbType.VarChar)).Value = _stParam2;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param3", System.Data.SqlDbType.VarChar)).Value = _stParam3;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param4", System.Data.SqlDbType.VarChar)).Value = _stParam4;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param5", System.Data.SqlDbType.VarChar)).Value = _stParam5;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param6", System.Data.SqlDbType.VarChar)).Value = _stParam6;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param7", System.Data.SqlDbType.VarChar)).Value = _stParam7;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param8", System.Data.SqlDbType.VarChar)).Value = _stParam8;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param9", System.Data.SqlDbType.VarChar)).Value = _stParam9;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param10", System.Data.SqlDbType.VarChar)).Value = _stParam10;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param11", System.Data.SqlDbType.VarChar)).Value = _stParam11;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param12", System.Data.SqlDbType.VarChar)).Value = _stParam12;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param13", System.Data.SqlDbType.VarChar)).Value = _stParam13;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param14", System.Data.SqlDbType.VarChar)).Value = _stParam14;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param15", System.Data.SqlDbType.VarChar)).Value = _stParam15;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param16", System.Data.SqlDbType.VarChar)).Value = _stParam16;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param17", System.Data.SqlDbType.VarChar)).Value = _stParam17;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param18", System.Data.SqlDbType.VarChar)).Value = _stParam18;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param19", System.Data.SqlDbType.VarChar)).Value = _stParam19;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param20", System.Data.SqlDbType.VarChar)).Value = _stParam20;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param21", System.Data.SqlDbType.VarChar)).Value = _stParam21;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param22", System.Data.SqlDbType.VarChar)).Value = _stParam22;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param23", System.Data.SqlDbType.VarChar)).Value = _stParam23;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param24", System.Data.SqlDbType.VarChar)).Value = _stParam24;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param25", System.Data.SqlDbType.VarChar)).Value = _stParam25;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param26", System.Data.SqlDbType.VarChar)).Value = _stParam26;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param27", System.Data.SqlDbType.VarChar)).Value = _stParam27;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param28", System.Data.SqlDbType.VarChar)).Value = _stParam28;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param29", System.Data.SqlDbType.VarChar)).Value = _stParam29;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param30", System.Data.SqlDbType.VarChar)).Value = _stParam30;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param31", System.Data.SqlDbType.VarChar)).Value = _stParam31;
+                vobCommd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@param32", System.Data.SqlDbType.VarChar)).Value = _stParam32;
+
+
+                try
+                {
+                    if (vobConne.State == System.Data.ConnectionState.Closed) { vobConne.Open(); }
+                    vobCommd.Connection = vobConne;
+                    vobAdapt.MissingSchemaAction = System.Data.MissingSchemaAction.AddWithKey;
+                    vobAdapt.Fill(vdsDatas, "param32");
+                }
+                catch (System.Data.SqlClient.SqlException vsqExcep)
+                { vstExcep = vsqExcep.Message; vobConne.Close(); vdsDatas = null; }
+            }
+            catch (System.Data.SqlClient.SqlException vsqExcep) { vstExcep = vsqExcep.Message; vdsDatas = null; }
+            finally
+            {
+                if (vobConne.State == System.Data.ConnectionState.Open) { vobConne.Close(); };
+                vobAdapt.Dispose(); vobCommd.Dispose(); vobConne.Dispose();
+            }
+            return vdsDatas;
+
+        }
+
 
         public System.Data.DataSet List34(string _stProcs, string _stParam1, string _stParam2, string _stParam3, string _stParam4, string _stParam5, string _stParam6, string _stParam7, string _stParam8, string _stParam9, string _stParam10
                                         , string _stParam11, string _stParam12, string _stParam13, string _stParam14, string _stParam15, string _stParam16, string _stParam17, string _stParam18, string _stParam19, string _stParam20

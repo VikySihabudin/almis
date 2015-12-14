@@ -102,7 +102,7 @@ public partial class Pages_LandLiti_LegalList : System.Web.UI.Page
                 ALMIS.ExecuteSTP eSTP_L = new ALMIS.ExecuteSTP();
                 eSTP_L.Datas();
                 DataSet ds_L = new DataSet();
-                ds_L = eSTP_L.List12("P_LEGALL", param1L, param2L, "", param4L, param5L, "", userid, "", param9L, "", "", "");
+                ds_L = eSTP_L.List14("P_LEGALL", param1L, param2L, "", param4L, param5L, "", userid, "", param9L, "", "", "", "", "");
 
                 dt = ds_L.Tables[0];
 
@@ -118,10 +118,11 @@ public partial class Pages_LandLiti_LegalList : System.Web.UI.Page
                     Response.Write("<cell>" + (i + 1).ToString() + "</cell>"); // Untuk Membuat Angka
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["LegallNmrLeg"].ToString()) + "</cell>");
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["VerdokNmrVrd"].ToString()) + "</cell>");
-                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["PredokNmrDok"].ToString()) + "</cell>");
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["ClausrNmrClm"].ToString()) + "</cell>");
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["ClausrNmrIdn"].ToString()) + "</cell>");
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["ClausrNamass"].ToString()) + "</cell>");
-                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["ClausrLokDes"].ToString()) + "</cell>");
+                    Response.Write("<cell>" + "Selesai" + "</cell>");
+                    Response.Write("<cell>" + "Ketearngan" + (i + 1).ToString() + "</cell>");
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["perusaNamass"].ToString()) + "</cell>");
 
                     if (dt.Rows[i]["LegallNmrLeg"].ToString() != "")

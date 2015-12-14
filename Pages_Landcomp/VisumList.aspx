@@ -7,36 +7,44 @@
 
 <h2>Visum</h2>  
 <hr />
+<br />
 
 
-        <div class="form-group">            
+        <div class="form-group">
+
             <div class="col-sm-2">
-            <asp:DropDownList ID="ddprg" runat="server" class="form-control" onclick="handleClick()">
-            </asp:DropDownList>
+                <asp:DropDownList ID="ddprs" runat="server" class="form-control" onclick="Perusahaan()" >
+                </asp:DropDownList>
             </div>
-			<div class="col-lg-8" align="right">
-            <label for="nama" class="control-label col-md-2">Start Date</label>
+
+            <div class="col-sm-2">
+                <asp:DropDownList ID="ddprg" runat="server" class="form-control" onclick="handleClick()">
+                </asp:DropDownList>
+            </div>
+
+                <label for="nama" class="control-label col-md-1">Start Date</label>
                 <div class="col-lg-2">
                 <asp:TextBox id="txtDateAwal" type="text" runat="server" class="form-control" />
                 </div>
-                <label for="nama" class="control-label col-md-2">End Date</label>
+                <label for="nama" class="control-label col-md-1">End Date</label>
                 <div class="col-lg-2">
                 <asp:TextBox id="txtDateAkhir" type="text" runat="server" class="form-control" />
                 </div>
+
                 <div class="col-lg-1">
-                 <input type="button" id="btnRefresh" value="Search" class="btn btn-info btn-md" onclick="refresh()" />
-                 </div>
-
-
+                <input type="button" id="btnRefresh" value="Search" class="btn btn-info btn-sm" onclick="refresh()" />
+                </div>
 
             <%if (VerifikasiAssign.ToString().Equals("1") || groups.ToString().Equals("1"))
             { %> 
-
              <asp:Button runat="server" ID="btnTambah" Text="Assign" class="btn btn-lg btn-success" PostBackUrl="~/Pages_Landcomp/VisumAssign.aspx"/>
-
             <%}%>
-            </div>
-        </div>
+
+        </div>  
+
+
+
+
         <div class="form-group">
             <div class="col-lg-12">
             <div style=" width:100%; height:400px;">
@@ -50,7 +58,7 @@
     <%--Footer Awal--%>
      <footer class="site-footer">
           <div class="text-center">
-              2015 - Aplikasi Almis
+              2015 - Aplikasi ALMIS
               <a href="#" class="go-top">
                   <i class="fa fa-angle-up"></i>
               </a>
@@ -65,6 +73,7 @@
     var ddprg = document.getElementById("<%= ddprg.ClientID %>");
     var txtDateAwal = document.getElementById("<%= txtDateAwal.ClientID %>");
     var txtDateAkhir = document.getElementById("<%= txtDateAkhir.ClientID %>");
+    var ddprs = document.getElementById("<%= ddprs.ClientID %>");
 
     ListVisum();
     SearchListVisum();
@@ -89,6 +98,12 @@
         });
     });
 
+    function Perusahaan() {
+
+        SearchListVisum();
+
+    }
+
     function SearchListVisum(id) {
 
         var s = ""
@@ -98,6 +113,7 @@
             + "&param2=5"
             + "&param4="
             + "&param5="
+            + "&param12=" + ddprs.value
 			+ "";
         ListVisum.clearAll();
         ListVisum.loadXML(localURL + "?" + s);
@@ -105,7 +121,7 @@
 
     function refresh() {
         if ((txtDateAkhir.value == 0) || (txtDateAwal.value == 0))
-        { alert('Date Awal Dan Akhir Date Akhir Tidak Boleh Kosong') }
+        { alert('Start Date Dan End Date \n    Tidak Boleh Kosong') }
         else {
             var s = ""
 			+ "rnd=" + Math.random() * 4
@@ -114,6 +130,7 @@
             + "&param2=4"
             + "&param4=" + txtDateAwal.value
             + "&param5=" + txtDateAkhir.value
+            + "&param12=" + ddprs.value
 			+ "";
             ListVisum.clearAll();
             ListVisum.loadXML(localURL + "?" + s);
@@ -129,6 +146,7 @@
             + "&param2=" + ddprg.value
             + "&param4="
             + "&param5="
+            + "&param12=" + ddprs.value
 			+ "";
         ListVisum.clearAll();
         ListVisum.loadXML(localURL + "?" + s);

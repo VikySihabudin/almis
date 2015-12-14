@@ -27,13 +27,39 @@ public partial class Pages_PengukuranAssign : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
+            if (Session["userid"] is object)
+            {
+                userid = Session["userid"].ToString();
+            }
+
+            isiPerusa();
             HakAkses();
+
             isiPeriode();
-            isiTeknis();
             bool normal = true;
             if (normal && (Request.Params["sm"] is object)) normal = ServiceSelect(Request.Params["sm"].ToString());
         }
 
+    }
+
+    public void isiPerusa()
+    {
+
+        query = @"SELECT perusaNamass,perusaIdents FROM USRPRS 
+                  INNER JOIN PERUSA
+	                ON UsrprsPerusa = perusaIdents
+                   WHERE UsrprsUserss =" + "'" + userid + "'" + "";
+
+        dt = getDataTable(query);
+        if (dt.Rows.Count > 0)
+        {
+            ddprs.Items.Clear();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                ddprs.Items.Add(new ListItem(dt.Rows[i]["perusaNamass"].ToString(), dt.Rows[i]["perusaIdents"].ToString()));
+            }
+        }
+        dt.Dispose();
     }
 
     private void HakAkses()
@@ -103,29 +129,6 @@ public partial class Pages_PengukuranAssign : System.Web.UI.Page
         dt.Dispose();
     }
 
-    public void isiTeknis()
-    {
-        query = @"SELECT a.UserssIdents,a.UserssNamess 
-                    FROM USERSS a";
-
-        //@"SELECT DISTINCT  a.GrupmnModuls,a.GrupmnUserId,b.userssNamess 
-        //                    FROM GRUPMN a
-        //                    INNER JOIN USERSS b 
-        //	                    ON	a.GrupmnUserId = b.UserssIDents
-        //                    WHERE GrupmnModuls ='Pengecekan Lapangan'";
-        dt = getDataTable(query);
-        if (dt.Rows.Count > 0)
-        {
-            ddteknis.Items.Clear();
-            //ddLanjut.Items.Add(new ListItem("Pilih Kabupaten", "0"));
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                //ddteknis.Items.Add(new ListItem(dt.Rows[i]["userssNamess"].ToString()));
-                ddteknis.Items.Add(new ListItem(dt.Rows[i]["userssNamess"].ToString(), dt.Rows[i]["UserssIdents"].ToString()));
-            }
-        }
-        dt.Dispose();
-    }
 
     public DataTable getDataTable(string query)
     {
@@ -166,12 +169,12 @@ public partial class Pages_PengukuranAssign : System.Web.UI.Page
                 var param6 = Request.Params["param6"].ToString();
                 var param20 = Request.Params["param20"].ToString();
                 var param3 = Request.Params["param3"].ToString();
-                //var param17 = "hanny"; //session
+                var param23 = Request.Params["param23"].ToString();
                 var param18 = Session["userid"].ToString();
                 ALMIS.ExecuteSTP eSTP = new ALMIS.ExecuteSTP();
                 eSTP.Datas();
                 DataSet ds = new DataSet();
-                eSTP.save24("P_PENGTO", param1, param2, param3, "", param5, param6, "", "", "", "", "", "", "", "", "", "", "", param18, "", param20, "", "", "0", "");
+                eSTP.save24("P_PENGTO", param1, param2, param3, "", param5, param6, "", "", "", "", "", "", "", "", "", "", "", param18, "", param20, "", "", param23, "");
                     Response.End();
                     return false;
                
@@ -181,10 +184,11 @@ public partial class Pages_PengukuranAssign : System.Web.UI.Page
                 var param2L = Request.Params["param2"].ToString();
                 var param4L = Request.Params["param4"].ToString();
                 var param5L = Request.Params["param5"].ToString();
+                var param23L = Request.Params["param23"].ToString();
                 ALMIS.ExecuteSTP eSTP_L = new ALMIS.ExecuteSTP();
                 eSTP_L.Datas();
                 DataSet ds_L = new DataSet();
-                ds_L = eSTP_L.List24("P_PENGTO", param1L, param2L, "", param4L, param5L, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
+                ds_L = eSTP_L.List24("P_PENGTO", param1L, param2L, "", param4L, param5L, "", "", "", "", "", "", "", "", "", "", "", "", userid, "", "", "", "", param23L, "");
 
                 dt = ds_L.Tables[0];
 
@@ -213,13 +217,50 @@ public partial class Pages_PengukuranAssign : System.Web.UI.Page
                 Response.End();
                 Response.End();
 
-                return false;  
+                return false;
+
+            case "UA":
+                Response.ContentType = "text/plain";
+                Response.Write(UA());
+                Response.End();
+                return false; 
 
             default:
                 Response.ContentType = "text/plain";
                 Response.End();
                 return true;
         }
+    }
+
+    private String UA()
+    {
+        var Param1 = Request.Params["param1"].ToString();
+        var Param2 = Request.Params["param2"].ToString();
+        string output = "";
+
+        try
+        {
+            ALMIS.ExecuteSTP eSTP_p = new ALMIS.ExecuteSTP();
+            eSTP_p.Datas();
+            DataSet ds_p = new DataSet();
+            ds_p = eSTP_p.List2("C_ADMINS", Param1, Param2);
+
+            dt = ds_p.Tables[0];
+
+            Response.ContentType = "text/plain";
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                output += dt.Rows[i]["UserssNamess"].ToString() + "|";
+                output += dt.Rows[i]["UserssIdents"].ToString() + "*";
+            }
+            dt.Dispose();
+        }
+        catch (Exception ex)
+        {
+            Response.Write(ex.Message);
+        }
+
+        return output;
     }
 
 

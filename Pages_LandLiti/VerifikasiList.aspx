@@ -182,7 +182,7 @@
     function listVerikasi() {
         listVerikasi = new dhtmlXGridObject('gridlegal');
         listVerikasi.setImagePath("../JavaScript/codebase/imgs/");
-        listVerikasi.setHeader("No,No Verifikasi,No Persiapan Dokumen,No Claim,Nama,Kabupaten,Kecamatan,Status,Nama Perusahaan,Action,#cspan,#cspan");
+        listVerikasi.setHeader("No,No Verifikasi,No Claim,No Identitas,Nama,Kabupaten,Status,Keterangan,Nama Perusahaan,Action,#cspan,#cspan");
         listVerikasi.attachHeader("#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,,,#rspan");
         listVerikasi.setInitWidths("40,160,160,160,160,160,160,160,160,45,45,45");
         listVerikasi.setColAlign("left,left,left,left,left,left,left,left,left,left,left,left");

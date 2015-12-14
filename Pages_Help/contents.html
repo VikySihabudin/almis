@@ -1,0 +1,221 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link type="text/css" href="jqueryui.css" rel="stylesheet" />	
+		<link rel="stylesheet" href="jquery.treeview.css" />
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript" src="jqueryui.js"></script>
+		<script type="text/javascript" src="index.js"></script>
+		<script type="text/javascript" src="search.js"></script>
+
+		<script type="text/javascript">
+			$(function() {
+				$("#tabs").tabs();
+			});
+		</script>
+
+		<script src="jquery.treeview.js" type="text/javascript"></script>
+		<script>
+			$(document).ready(function(){
+		
+				$("#contents").treeview({
+					persist: "location",
+					collapsed: true,
+					unique: true
+				});
+
+				$("#index").treeview({
+					persist: "location",
+					collapsed: true,
+					unique: true
+				});
+
+		        });
+
+		function SelectTocItem(sLinkHref)
+		{
+			$(".file a").each(function()
+			{
+				if ($.inArray(sLinkHref + '.htm', this.href) > -1) $(this).css('font-weight', 'bold')
+				else $(this).css('font-weight', '');
+			});
+		}
+
+		</script>
+		<style type="text/css">
+			/*demo page css*/
+			body{ font-size: 70%;}
+		</style>	
+
+</head>
+<body>
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Contents</a></li>
+		<li><a href="#tabs-2">Index</a></li>
+		<li><a href="#tabs-3">Search</a></li>
+	</ul>
+	<div id="tabs-1">
+<ul id="contents" class="filetree">
+<li><span class="file"><a href="about.html" target="RightFrame">Pengenalan ALMIS</a></span>
+</li>
+<li><span class="file"><a href="login.html" target="RightFrame">Login</a></span>
+</li>
+<li><span class="folder"><a href="halamanutama.html" target="RightFrame">Halaman Utama</a></span>
+<ul>
+<li><span class="folder"><a href="mainmenu.html" target="RightFrame">Land Compensation</a></span>
+<ul>
+<li><span class="file"><a href="praregister.html" target="RightFrame">Pra Register</a></span>
+</li>
+<li><span class="file"><a href="pengecekanlapangan0.html" target="RightFrame">Pengecekan Lapangan</a></span>
+</li>
+<li><span class="file"><a href="registrasi.html" target="RightFrame">Registrasi</a></span>
+</li>
+<li><span class="file"><a href="pengukuranto.html" target="RightFrame">Pengukuran TO</a></span>
+</li>
+<li><span class="file"><a href="negosiasi.html" target="RightFrame">Negosiasi</a></span>
+</li>
+<li><span class="file"><a href="verifikasi.html" target="RightFrame">Verifikasi</a></span>
+</li>
+<li><span class="file"><a href="pemberkasan.html" target="RightFrame">Pemberkasan</a></span>
+</li>
+<li><span class="file"><a href="pembayaran.html" target="RightFrame">Pembayaran</a></span>
+</li>
+<li><span class="file"><a href="finalisasi.html" target="RightFrame">Finalisasi</a></span>
+</li>
+<li><span class="file"><a href="serahterimaberkas.html" target="RightFrame">Serah Terima Berkas</a></span>
+</li>
+
+</ul>
+</li>
+<li><span class="file"><a href="landuse0.html" target="RightFrame">Land Use</a></span>
+</li>
+<li><span class="file"><a href="landsecure0.html" target="RightFrame">Land Secure</a></span>
+</li>
+<li><span class="file"><a href="landutilization.html" target="RightFrame">Land Utilization</a></span>
+</li>
+<li><span class="file"><a href="landcomplaince.html" target="RightFrame">Land Complaince</a></span>
+</li>
+<li><span class="folder"><a href="landlitigation.html" target="RightFrame">Land Litigation</a></span>
+<ul>
+<li><span class="file"><a href="claimuser.html" target="RightFrame">Claim User</a></span>
+</li>
+<li><span class="file"><a href="verifikasidokumen.html" target="RightFrame">Verifikasi Dokumen</a></span>
+</li>
+<li><span class="file"><a href="legal.html" target="RightFrame">Legal</a></span>
+</li>
+
+</ul>
+</li>
+<li><span class="file"><a href="1.html" target="RightFrame">1</a></span>
+</li>
+<li><span class="file"><a href="2.html" target="RightFrame">2</a></span>
+</li>
+<li><span class="file"><a href="3.html" target="RightFrame">3</a></span>
+</li>
+<li><span class="file"><a href="4.html" target="RightFrame">4</a></span>
+</li>
+<li><span class="folder"><a href="admintools.html" target="RightFrame">Admin Tools</a></span>
+<ul>
+<li><span class="file"><a href="masteridentitas.html" target="RightFrame">Master Identitas</a></span>
+</li>
+<li><span class="file"><a href="usermanagement.html" target="RightFrame">User Management</a></span>
+</li>
+<li><span class="file"><a href="groupmanagement.html" target="RightFrame">Group Management</a></span>
+</li>
+<li><span class="file"><a href="mastermenu.html" target="RightFrame">Master Menu</a></span>
+</li>
+<li><span class="file"><a href="mastercodes.html" target="RightFrame">Master Codes</a></span>
+</li>
+<li><span class="file"><a href="masterperusahaan.html" target="RightFrame">Master Perusahaan</a></span>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</li>
+</ul>
+
+	</div>
+	<div id="tabs-2">
+<ul id="index">
+<li><a href="kw-Admin-Tools.html" target="RightFrame">Admin Tools</a>
+</li>
+<li><a href="claimuser.html" target="RightFrame">Claim User</a>
+</li>
+<li><a href="kw-Finalisasi.html" target="RightFrame">Finalisasi</a>
+</li>
+<li><a href="kw-Group-Managemen.html" target="RightFrame">Group Managemen</a>
+</li>
+<li><a href="halamanutama.html" target="RightFrame">Halaman Utama</a>
+</li>
+<li><a href="kw-Land-Compensation.html" target="RightFrame">Land Compensation</a>
+</li>
+<li><a href="halamanutama.html" target="RightFrame">Land Complaince</a>
+</li>
+<li><a href="kw-Land-Litigation.html" target="RightFrame">Land Litigation</a>
+</li>
+<li><a href="halamanutama.html" target="RightFrame">Land Secure</a>
+</li>
+<li><a href="halamanutama.html" target="RightFrame">Land Use</a>
+</li>
+<li><a href="halamanutama.html" target="RightFrame">Land Utilization</a>
+</li>
+<li><a href="kw-Legal.html" target="RightFrame">Legal</a>
+</li>
+<li><a href="login.html" target="RightFrame">Login</a>
+</li>
+<li><a href="kw-Master-Codes.html" target="RightFrame">Master Codes</a>
+</li>
+<li><a href="kw-Master-Identitas.html" target="RightFrame">Master Identitas</a>
+</li>
+<li><a href="kw-Master-Menu.html" target="RightFrame">Master Menu</a>
+</li>
+<li><a href="kw-Master-Perusahaan.html" target="RightFrame">Master Perusahaan</a>
+</li>
+<li><a href="kw-Negosiasi.html" target="RightFrame">Negosiasi</a>
+</li>
+<li><a href="kw-Pembayaran.html" target="RightFrame">Pembayaran</a>
+</li>
+<li><a href="kw-Pemberkasan.html" target="RightFrame">Pemberkasan</a>
+</li>
+<li><a href="kw-Pengecekan-Lapangan.html" target="RightFrame">Pengecekan Lapangan</a>
+</li>
+<li><a href="pengukuranto.html" target="RightFrame">Pengukuran T0</a>
+</li>
+<li><a href="kw-Pra-Registrasi.html" target="RightFrame">Pra Registrasi</a>
+</li>
+<li><a href="kw-Registrasi.html" target="RightFrame">Registrasi</a>
+</li>
+<li><a href="kw-Serah-Terima-Berkas.html" target="RightFrame">Serah Terima Berkas</a>
+</li>
+<li><a href="kw-Tentang-ALMIS.html" target="RightFrame">Tentang ALMIS</a>
+</li>
+<li><a href="kw-User-Managemen.html" target="RightFrame">User Managemen</a>
+</li>
+<li><a href="kw-Verifikasi.html" target="RightFrame">Verifikasi</a>
+</li>
+<li><a href="kw-verifikasidokumen.html" target="RightFrame">verifikasidokumen</a>
+</li>
+</ul>
+
+	</div>
+	<div id="tabs-3">
+		<form onsubmit="requery();return false">
+			<input id="squery" type="text" name="q" autocomplete="off"/>
+			<input type="button" value=">" onclick="requery()">
+		</form>
+
+		<p>
+		<div id="results">
+		</div>
+
+	</div>
+</div>
+
+</body>
+</html>

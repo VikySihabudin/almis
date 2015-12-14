@@ -41,13 +41,6 @@
 
     <div role="form" class="form-horizontal">
         <div class="form-group">
-            <label for="identitas" class="control-label col-md-2">Nomor Persiapan Dokumen</label>
-            <div class="col-md-3"><asp:TextBox id="txtNoPer" type="text" runat="server" class="form-control input-md"  ></asp:TextBox></div>
-        </div>
-    </div>
-
-    <div role="form" class="form-horizontal">
-        <div class="form-group">
             <label for="identitas" class="control-label col-md-2">Nomor Claim</label>
             <div class="col-md-3">
             <asp:TextBox id="txtNoClam" type="text" runat="server" class="form-control input-md"  ></asp:TextBox></div>
@@ -104,9 +97,22 @@
         </div>
         </div>
 
+<hr />
+
+
+<%--<iframe src="http://Viky-PC/peta" width="100%" height="600"></iframe>--%>
+
 
 <hr />
 
+		<div class="form-group">
+            <label for="nama" class="control-label col-md-2">Legal Note</label>
+			<div class="col-md-3">
+				<asp:TextBox id="TxtKetLeg" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
+			</div>
+        </div>
+
+<hr />
 
     <div role="form" class="form-horizontal">
         <div class="form-group">
@@ -122,12 +128,30 @@
         </div>
     </div>
 
+
     <br /><hr />
+    <div role="form" class="form-horizontal">
+        <div class="form-group">
+            <asp:Label  ID="LSelesai" runat="server"  for="identitas" class="control-label col-md-2"  Text="Selesai" Font-Bold="True"></asp:Label>
+            <div class="col-md-3"><asp:DropDownList ID="ddLSelesai" runat="server" class="form-control input-md">
+                </asp:DropDownList></div>
+        </div>
+    </div>
+
+		<div class="form-group">
+            <label for="nama" class="control-label col-md-2">Keterangan</label>
+			<div class="col-md-3">
+				<asp:TextBox id="TextBox2" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
+			</div>
+        </div>
+
+    <br /><hr />
+
 
     <div class="form-group">
             <div class="col-md-10">
        
-                     <input type="button" id="btnCancel" value="Cancel" class="btn btn-lg btn-default"  onclick="btnClick(this)" PostBackUrl="~/Pages/PraRegistrasiForm.aspx"/> 
+                     <input type="button" id="btnCancel" value="Cancel" class="btn btn-lg btn-default"  onclick="btnClick(this)"/> 
                      <input type="button" id="btnSave" value="Save"  class="btn btn-lg btn-success" onclick="btnClick(this)" />  
               
             </div>
@@ -156,7 +180,6 @@
 
     var txtlegal = document.getElementById("<%= txtlegal.ClientID %>");
     var txtverDoc = document.getElementById("<%=txtverDoc.ClientID%>");
-    var txtNoPer = document.getElementById("<%=txtNoPer.ClientID%>");
     var txtNoClam = document.getElementById("<%=txtNoClam.ClientID%>");
     var txtNama = document.getElementById("<%=txtNama.ClientID%>");
     
@@ -168,6 +191,9 @@
     var txtNoSrtPts = document.getElementById("<%= txtNoSrtPts.ClientID %>");
     var txtTglSrt = document.getElementById("<%= txtTglSrt.ClientID %>");
     var ddprs = document.getElementById("<%= ddprs.ClientID %>");
+    var TxtKetLeg = document.getElementById("<%= ddprs.ClientID %>");
+
+    var ddLSelesai = document.getElementById("<%= ddLSelesai.ClientID %>");
 
     var btnDwnAlashak = document.getElementById("btnDwnAlashak");
     var btnSave = document.getElementById("btnSave");
@@ -348,16 +374,15 @@
             ddprs.value = b[0];
             txtlegal.value = b[1];
             txtverDoc.value = b[2];
-            txtNoPer.value = b[3];
-            txtNoClam.value = b[4];
-            txtNama.value = b[5];
+            txtNoClam.value = b[3];
+            txtNama.value = b[4];
 
-            ddKabupaten.value = b[6];
-            ddKecamatan.value = b[7];
-            ddDesa.value = b[8];
+            ddKabupaten.value = b[5];
+            ddKecamatan.value = b[6];
+            ddDesa.value = b[7];
 
-            txtNoSrtPts.value = b[9];
-            txtTglSrt.value = b[10];
+            txtNoSrtPts.value = b[8];
+            txtTglSrt.value = b[9];
             
         }
 
@@ -369,7 +394,6 @@
 
         txtlegal.disabled = true;
         txtverDoc.disabled = true;
-        txtNoPer.disabled = true;
         txtNoClam.disabled = true;
         txtNama.disabled = true;
 
@@ -390,7 +414,6 @@
 
         txtlegal.disabled = true;
         txtverDoc.disabled = true;
-        txtNoPer.disabled = true;
         txtNoClam.disabled = true;
         txtNama.disabled = true;
 
@@ -406,7 +429,6 @@
 
         txtlegal.disabled = true;
         txtverDoc.disabled = true;
-        txtNoPer.disabled = true;
         txtNoClam.disabled = true;
         txtNama.disabled = true;
 
@@ -427,7 +449,7 @@
         + "rnd=" + Math.random() * 4
         + "&sm=LP"
         + "&param1=LP"
-        + "&param2=" + txtNoPer.value
+        + "&param2=" + txtNoClam.value
         + "";
         listLegal.clearAll();
         listLegal.loadXML(localURL + "?" + s);

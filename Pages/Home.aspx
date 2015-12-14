@@ -101,15 +101,66 @@
                       </div></div>
 <%}%> 
 
-                    <br />
 
+
+        <div class="form-group">
+            <div class="col-sm-2">
+            </div>
+
+            <div class="col-sm-9">
+            </div>
+
+        </div>
+
+ <hr />
+     
+ <h4>Filter</h4>
+ <br />
+
+        <div class="form-group">
+
+
+            <div class="col-sm-2">
+                <asp:DropDownList ID="ddprs" runat="server" class="form-control" onclick="Perusahaan()" >
+                </asp:DropDownList>
+            </div>
+
+            <div class="col-sm-2">
+                <asp:DropDownList ID="ddprg" runat="server" class="form-control" onclick="handleClick()">
+                </asp:DropDownList>
+            </div>
+
+                <label for="nama" class="control-label col-md-1">Start Date</label>
+                <div class="col-lg-2">
+                <asp:TextBox id="txtDateAwal" type="text" runat="server" class="form-control" />
+                </div>
+                <label for="nama" class="control-label col-md-1">End Date</label>
+                <div class="col-lg-2">
+                <asp:TextBox id="txtDateAkhir" type="text" runat="server" class="form-control" />
+                </div>
+
+                <div class="col-lg-1">
+                <input type="button" id="btnRefresh" value="Search" class="btn btn-info btn-sm" onclick="refresh()" />
+                </div>
+
+        </div>       
+
+  <hr />
+
+  <h4>Landcomp</h4>
+  <br />
+
+
+        <div class="form-group">
+            <div class="col-lg-12">
+                <div style=" width:100%; height:300px;">
+                        <div id="GridLandcomp" style=" width:100%; height:100%; background-color:white; border: 1px solid #A4BED4"></div>
+                        <div id="pagehome"> </div>
+                </div>
+            </div>
+        </div>
                     
-                            <div class="col-sm-7 col-md-10" >
-                            <div style=" width:100%; height:300px;">
-                                    <div id="gridhome" style=" width:100%; height:100%; background-color:white; border: 1px solid #A4BED4"></div>
-                                    <div id="pagehome"> </div>
-                            </div>
-                            </div>
+ 
 
 
 
@@ -177,36 +228,112 @@
 
 
     var localURL = "Home.aspx";
-    listHome();
-    SearchlistHome();
+    var ddprg = document.getElementById("<%= ddprg.ClientID %>");
+    var txtDateAwal = document.getElementById("<%= txtDateAwal.ClientID %>");
+    var txtDateAkhir = document.getElementById("<%= txtDateAkhir.ClientID %>");
+    var ddprs = document.getElementById("<%= ddprs.ClientID %>");
+
+    var btnRefresh = document.getElementById("btnRefresh");
+
+    ListLandcomp();
+    SearchListLandcomp();
     graphic1();
 
-    function SearchlistHome() {
+    $(function txtDateAwal() {
+        $("[id$=txtDateAwal]").datepicker({
+            dateFormat: "yy-mm-dd",
+            buttonImageOnly: true,
+            changeYear: true,
+            changeMonth: true,
+            yearRange: "1900:2100"
+        });
+    });
+
+    $(function txtDateAkhir() {
+        $("[id$=txtDateAkhir]").datepicker({
+            dateFormat: "yy-mm-dd",
+            buttonImageOnly: true,
+            changeYear: true,
+            changeMonth: true,
+            yearRange: "1900:2100"
+        });
+    });
+
+    function Perusahaan() {
+
+        SearchListLandcomp();
+
+    }
+
+    function refresh() {
+        if ((txtDateAkhir.value == 0) || (txtDateAwal.value == 0))
+        { alert('Start Date Dan End Date \n    Tidak Boleh Kosong') }
+        else {
+            var s = ""
+			+ "rnd=" + Math.random() * 4
+			+ "&sm=L"
+            + "&param1=landcomp"
+            + "&param2="
+            + "&param3=" + ddprs.value
+            + "&param4=" + txtDateAwal.value
+            + "&param5=" + txtDateAkhir.value
+            + "&param6=4" 
+			+ "";
+            ListLandcomp.clearAll();
+            ListLandcomp.loadXML(localURL + "?" + s);
+            //alert(s);
+        }
+    }
+
+    function handleClick() {
+        var s = ""
+			+ "rnd=" + Math.random() * 4
+			+ "&sm=L"
+            + "&param1=landcomp"
+            + "&param2="
+            + "&param3=" + ddprs.value
+            + "&param4="
+            + "&param5="
+            + "&param6=" + ddprg.value
+			+ "";
+        ListLandcomp.clearAll();
+        ListLandcomp.loadXML(localURL + "?" + s);
+        //alert(s);
+    }
+
+    function SearchListLandcomp() {
 
         var s = ""
         + "rnd=" + Math.random() * 4
         + "&sm=L"
-        + "&param1=L"
+        + "&param1=landcomp"
         + "&param2="
+        + "&param3=" + ddprs.value
+        + "&param4="
+        + "&param5="
+        + "&param6=5"
         + "";
-        listHome.clearAll();
-        listHome.loadXML(localURL + "?" + s);
+        ListLandcomp.clearAll();
+        ListLandcomp.loadXML(localURL + "?" + s);
     }
 
-    function listHome() {
-        listHome = new dhtmlXGridObject('gridhome');
-        listHome.setImagePath("../JavaScript/codebase/imgs/");
-        listHome.setHeader("No,Nama,No Registrasi,No Pengukuran T0,Status Negosiasi,Status Verifikasi,Status Pemberkasan,Status Pembayaran,Status Finalisasi");
-        listHome.attachHeader("#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter");
-        listHome.setInitWidths("40,150,150,180,150,150,200,200,200");
-        listHome.setColAlign("left,left,left,left,left,left,left,left,left");
-        listHome.setColTypes("ed,ed,ed,ed,ed,ed,ed,ed,ed");
-        listHome.init();
-        listHome.setSkin("dhx_skyblue");
 
-        listHome.setColSorting("str,str,str,str,str,str,str,str,str");
-        listHome.enablePaging(true, 15, 5, "pagehome", true);
-        listHome.setPagingSkin("bricks");
+
+
+    function ListLandcomp() {
+        ListLandcomp = new dhtmlXGridObject('GridLandcomp');
+        ListLandcomp.setImagePath("../JavaScript/codebase/imgs/");
+        ListLandcomp.setHeader("No,No Identitas,Nama,No Registrasi,No Pengukuran T0,Status Negosiasi,Status Verifikasi,Status Pemberkasan,Status Pembayaran,Status Finalisasi");
+        ListLandcomp.attachHeader("#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter");
+        ListLandcomp.setInitWidths("50,150,150,150,180,150,150,170,150,150");
+        ListLandcomp.setColAlign("left,left,left,left,left,left,left,left,left,left");
+        ListLandcomp.setColTypes("ed,ed,ed,ed,ed,ed,ed,ed,ed,ed");
+        ListLandcomp.init();
+        ListLandcomp.setSkin("dhx_skyblue");
+
+        ListLandcomp.setColSorting("str,str,str,str,str,str,str,str,str,str");
+        ListLandcomp.enablePaging(true, 15, 5, "pagehome", true);
+        ListLandcomp.setPagingSkin("bricks");
     }
 
     </script>

@@ -1,0 +1,43 @@
+
+    USE msdb
+    EXEC sp_send_dbmail
+      @profile_name = 'almismail',
+      @recipients = 'heruandri@waindo.co.id;kholid@waindo.co.id;viky@waindo.co.id;sefta@waindo.co.id;nuriluthfi@waindo.co.id;nurindah@waindo.co.id',
+      @subject = 'Adm.almis Mail',
+      @body = '
+      
+ Testing Email Reminder Multiple User
+ Jangan Lupa Balas OK Bila Email Masuk 
+
+Testing Version 1	   
+	  '
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SELECT * FROM dbo.sysmail_faileditems 
+SELECT * FROM dbo.sysmail_event_log
+SELECT * FROM dbo.sysmail_allitems
+
+
+SELECT items.subject,
+    items.last_mod_date
+    ,l.description FROM dbo.sysmail_faileditems as items
+INNER JOIN dbo.sysmail_event_log AS l
+    ON items.mailitem_id = l.mailitem_id
+WHERE items.recipients LIKE '%A%'  
+    OR items.copy_recipients LIKE '%A%' 
+    OR items.blind_copy_recipients LIKE '%A%'
+GO

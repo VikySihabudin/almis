@@ -4,9 +4,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<link rel="shortcut icon" href="../images/logo_adaro.jpg" type="image/x-icon" />	
+	
 <head id="Head1" runat="server">
-    <title>Log In ALMIS</title>
+    <title>Login ALMIS</title>
 
 		<link href="Css/style2.css" rel='stylesheet' type='text/css' />
 
@@ -16,6 +16,9 @@
 		<!--//webfonts-->
 
 </head>
+
+    <link rel="shortcut icon" href="images/logo_adaro.jpg" type="image/x-icon" />
+
 <body>
 
     

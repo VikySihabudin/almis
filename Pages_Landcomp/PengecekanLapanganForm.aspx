@@ -602,6 +602,7 @@
 
         txtKetEksepsi.disabled = false;
         txtKeterangan.disabled = false;
+        ddprs.disabled = true;
     }
 
     function bindFormPengecekanLapangan(loader) {

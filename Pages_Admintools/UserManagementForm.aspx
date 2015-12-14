@@ -387,7 +387,7 @@
                 alert("Kata Sandi Password Lama Salah");
                 break;
             case "notambah":
-                alert("Data Tidak Bisa Di Tambah Karena Username Sudah Ada");
+                alert("Data Tidak Bisa Di Tambah Karena Sudah Ada");
                 SearchlistPrs();
                 break;
              case "gagal":

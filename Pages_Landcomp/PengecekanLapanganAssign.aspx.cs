@@ -25,11 +25,37 @@ public partial class Pages_PengecekanLapanganAssign : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["userid"] is object)
+        {
+            userid = Session["userid"].ToString();
+        }
+
+        isiPerusa();
         HakAkses();
-        isiTeknis();
+
         isiPeriode();
         bool normal = true;
         if (normal && (Request.Params["sm"] is object)) normal = ServiceSelect(Request.Params["sm"].ToString());
+    }
+
+    public void isiPerusa()
+    {
+
+        query = @"SELECT perusaNamass,perusaIdents FROM USRPRS 
+                  INNER JOIN PERUSA
+	                ON UsrprsPerusa = perusaIdents
+                   WHERE UsrprsUserss =" + "'" + userid + "'" + "";
+
+        dt = getDataTable(query);
+        if (dt.Rows.Count > 0)
+        {
+            ddprs.Items.Clear();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                ddprs.Items.Add(new ListItem(dt.Rows[i]["perusaNamass"].ToString(), dt.Rows[i]["perusaIdents"].ToString()));
+            }
+        }
+        dt.Dispose();
     }
 
     private void HakAkses()
@@ -121,10 +147,10 @@ public partial class Pages_PengecekanLapanganAssign : System.Web.UI.Page
                 Response.ContentType = "text/plain";
                 var param1 = Request.Params["param1"].ToString();
                 var param2 = Request.Params["param2"].ToString();
+                var param5 = Request.Params["param5"].ToString();
                 var param6 = Request.Params["param6"].ToString();
                 var param13 = Request.Params["param13"].ToString();
-                var param5 = Request.Params["param5"].ToString();
-
+                var param14 = Request.Params["param14"].ToString();
 
                 if (Session["userid"] is object)
                 {
@@ -135,7 +161,7 @@ public partial class Pages_PengecekanLapanganAssign : System.Web.UI.Page
                 ALMIS.ExecuteSTP eSTP = new ALMIS.ExecuteSTP();
                 eSTP.Datas();
                 DataSet ds = new DataSet();
-                eSTP.save15("P_PENLAP", param1, param2, "", "", param5, param6, "", "", "", "", userid, "", param13,"","0");
+                eSTP.save15("P_PENLAP", param1, param2, "", "", param5, param6, "", "", "", "", userid, "", param13, param14, "0");
                 Response.End();
                 return false;
 
@@ -145,10 +171,12 @@ public partial class Pages_PengecekanLapanganAssign : System.Web.UI.Page
                 var param2L = Request.Params["param2"].ToString();
                 var param4L = Request.Params["param4"].ToString();
                 var param5L = Request.Params["param5"].ToString();
+                var param14L = Request.Params["param14"].ToString();
+
                 ALMIS.ExecuteSTP eSTP_L = new ALMIS.ExecuteSTP();
                 eSTP_L.Datas();
                 DataSet ds_L = new DataSet();
-                ds_L = eSTP_L.List15("P_PENLAP", param1L, param2L, "", param4L, param5L, "", "", "", "", "", "", "", "", "", "");
+                ds_L = eSTP_L.List15("P_PENLAP", param1L, param2L, "", param4L, param5L, "", "", "", "", "", userid, "", "", param14L, "");
 
                 dt = ds_L.Tables[0];
 
@@ -179,6 +207,12 @@ public partial class Pages_PengecekanLapanganAssign : System.Web.UI.Page
 
                 return false;
 
+            case "UA":
+                Response.ContentType = "text/plain";
+                Response.Write(UA());
+                Response.End();
+                return false; 
+
             default:
                 Response.ContentType = "text/plain";
                 Response.End();
@@ -186,29 +220,37 @@ public partial class Pages_PengecekanLapanganAssign : System.Web.UI.Page
         }
     }
 
-    public void isiTeknis()
+    private String UA()
     {
-        query = @"SELECT a.UserssIdents,a.UserssNamess 
-                    FROM USERSS a";
+        var Param1 = Request.Params["param1"].ToString();
+        var Param2 = Request.Params["param2"].ToString();
+        string output = "";
 
-        //@"SELECT DISTINCT  a.GrupmnModuls,a.GrupmnUserId,b.userssNamess 
-        //                    FROM GRUPMN a
-        //                    INNER JOIN USERSS b 
-        //	                    ON	a.GrupmnUserId = b.UserssIDents
-        //                    WHERE GrupmnModuls ='Pengecekan Lapangan'";
-        dt = getDataTable(query);
-        if (dt.Rows.Count > 0)
+        try
         {
-            ddteknis.Items.Clear();
-            //ddLanjut.Items.Add(new ListItem("Pilih Kabupaten", "0"));
+            ALMIS.ExecuteSTP eSTP_p = new ALMIS.ExecuteSTP();
+            eSTP_p.Datas();
+            DataSet ds_p = new DataSet();
+            ds_p = eSTP_p.List2("C_ADMINS", Param1, Param2);
+
+            dt = ds_p.Tables[0];
+
+            Response.ContentType = "text/plain";
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-                //ddteknis.Items.Add(new ListItem(dt.Rows[i]["userssNamess"].ToString()));
-                ddteknis.Items.Add(new ListItem(dt.Rows[i]["userssNamess"].ToString(), dt.Rows[i]["UserssIdents"].ToString()));
+                output += dt.Rows[i]["UserssNamess"].ToString() + "|";
+                output += dt.Rows[i]["UserssIdents"].ToString() + "*";
             }
+            dt.Dispose();
         }
-        dt.Dispose();
+        catch (Exception ex)
+        {
+            Response.Write(ex.Message);
+        }
+
+        return output;
     }
+
 
     public DataTable getDataTable(string query)
     {
@@ -218,6 +260,7 @@ public partial class Pages_PengecekanLapanganAssign : System.Web.UI.Page
         sda = new SqlDataAdapter(query, conn);
         dt = new DataTable();
         sda.Fill(dt);
+        conn.Close();
         return dt;
     }
 }

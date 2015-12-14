@@ -468,6 +468,7 @@
         chkEksepsi.disabled = true
         ddLSelesai.disabled = true
         document.getElementById('btnSave').style.visibility = 'hidden';
+        ddprs.disabled = true;
       
     }
 
@@ -480,6 +481,7 @@
         txtNoVisum.disabled = true;
         txtNoPemberkasanSatu.disabled = true;
         txtNoPembayaran.disabled = true;
+        ddprs.disabled = true;
     }
 
     function lockPemberkasanDuaDelete() {
@@ -499,6 +501,7 @@
         FilePembayaran.disabled = true
         chkEksepsi.disabled = true
         ddLSelesai.disabled = true
+        ddprs.disabled = true;
     }
 
     function listPerolehanLahan() {

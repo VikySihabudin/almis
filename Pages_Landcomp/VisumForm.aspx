@@ -688,13 +688,14 @@
        
         document.getElementById('btnTambahObjek').style.visibility = 'hidden';
         document.getElementById('btnTambahSubjek').style.visibility = 'hidden';
-       
+        ddprs.disabled = true
     }
 
     function lockVisumEdit() {
         txtNoVisum.disabled = true;
         txtNoRegistrasi.disabled = true;
         txtPID.disabled = true;
+        ddprs.disabled = true
     }
 
     function lockVisumDelete() {
@@ -717,6 +718,7 @@
 
         document.getElementById('btnTambahObjek').style.visibility = 'hidden';
         document.getElementById('btnTambahSubjek').style.visibility = 'hidden';
+        ddprs.disabled = true
     }
 
 //    function onRowSelected1(rowId, cellIndex) {

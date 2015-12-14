@@ -16,7 +16,7 @@
 
 
 
-<h1>Land Complaince</h1>
+<h1>Land Compliance</h1>
 	
 	<hr />    
     
@@ -40,14 +40,21 @@
 
          </div>
 
+<%--         <div class="form-group">
+
+            <label for="nama" class="control-label col-md-2">Date</label>
+            <div class="col-md-2">
+            <asp:TextBox ID="txtdate" class="form-control input-md" runat="server"></asp:TextBox>
+            </div>
+
+         </div>--%>
+
 		<div class="form-group">
 
             <label for="nama" class="control-label col-md-2">Jenis Project</label>
             <div class="col-md-2">
-             <asp:DropDownList ID="ddJenis" runat="server" class="form-control" onclick="handleClick()">
-             <asp:ListItem Text="Hauling" Value="0"></asp:ListItem>
-             <asp:ListItem Text="Pit" Value="1"></asp:ListItem>
-             <asp:ListItem Text="Disposa" Value="2"></asp:ListItem>
+             <asp:DropDownList ID="ddJenis" runat="server" class="form-control" onclick="handleClick()">             
+             <asp:ListItem Text="Disposal" Value="2"></asp:ListItem>
              </asp:DropDownList>
             </div>
         </div>
@@ -105,9 +112,367 @@
        <br />
          <hr />
 
-       <iframe src="http://localhost/peta" width="100%" height="600"></iframe>
+      <%-- <iframe src="http://Viky-pcpeta" width="100%" height="600"></iframe>--%>
 
     <br />
+
+    <%--Data Attribut Lancompliance--%>
+ 
+    
+    <div class="form-group">    
+        <label for="nama" class="control-label col-md-1">Kegiatan</label>
+        <label for="nama" class="control-label col-md-1">Jenis</label>
+        <div class="col-md-5">
+		<asp:TextBox id="txtjenis" type="text" runat="server" class="form-control input-md" />
+		</div>
+    </div> 
+    <div class="form-group">        
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-md-1">Deskripsi</label>
+        <div class="col-md-5">
+		<asp:TextBox id="txtdeskripsi" type="text" runat="server" class="form-control input-md" />
+		</div>
+    </div> 
+    <div class="form-group">
+        
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-md-1">Kontraktor</label>
+        <div class="col-md-5">
+		<asp:TextBox id="txtkontraktor" type="text" runat="server" class="form-control input-md" />
+		</div>
+    </div> 
+    <hr />
+    <div class="form-group">    
+        <label for="nama" class="control-label col-md-1">Wilayah Administrasi</label>
+        <label for="nama" class="control-label col-md-1"></label>
+        <div class="col-md-5">
+		<asp:TextBox id="txtwiladmin" type="text" runat="server" class="form-control input-md" />
+		</div>
+    </div> 
+    <hr />
+    <div class="form-group">        
+        <label for="nama" class="control-label col-md-1">Luas Area Kegiatan</label>
+        <label for="nama" class="control-label col-md-1"></label>
+        <div class="col-md-5">
+		<asp:TextBox id="txtluasarea" type="text" runat="server" class="form-control input-md" />
+        
+		</div>
+        <label for="nama" class="control-label">ha</label>
+    </div> 
+    <hr />
+    <div class="form-group">        
+        <label for="nama" class="control-label col-md-1">Data Persil</label>
+        <label for="nama" class="control-label col-md-1"></label>
+        <div class="col-md-5">
+		<asp:TextBox id="txtdatapersil" TextMode="multiline" runat="server" Columns="15" Rows="5"  class="form-control input-md" />
+		</div>
+    </div> 
+    <hr />
+    <div class="form-group">        
+        <label for="nama" class="control-label col-md-1">Status Tanah</label>
+        <label for="nama" class="control-label col-md-1">PKP2B</label>
+        <div class="col-md-5">
+		<asp:TextBox id="txtpkp2b" type="text" runat="server" class="form-control input-md" />
+		</div>
+    </div>
+    <div class="form-group">        
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-md-1">MoU*</label>
+        <div class="col-md-5">
+		<asp:TextBox id="txtmou" type="text" runat="server" class="form-control input-md" />
+		</div>
+    </div>
+    <div class="form-group">        
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-md-1">Reklamasi*</label>
+        <div class="col-md-5">
+		<asp:TextBox id="txtreklamasi" type="text" runat="server" class="form-control input-md" />
+		</div>
+    </div>
+    <hr />
+     <div class="form-group">        
+        <label for="nama" class="control-label col-md-1">Kawasan Hutan</label>
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-md-1">Hutan Lindung</label>
+        <div class="col-md-4">
+		<asp:TextBox id="txthlindung" type="text" runat="server" class="form-control input-md" />
+		</div>
+    </div>
+    <div class="form-group">        
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-md-1">Hutan Produksi Terbatas</label>
+        <div class="col-md-4">
+		<asp:TextBox id="txthproduksiterbatas" type="text" runat="server" class="form-control input-md" />
+		</div>
+    </div>
+    <div class="form-group">        
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-md-1">Hutan Produksi Terbatas</label>
+        <div class="col-md-4">
+		<asp:TextBox id="txthproduksitetap" type="text" runat="server" class="form-control input-md" />
+		</div>
+    </div>
+     <div class="form-group">        
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-md-1">Hutan Produksi Dapat diKonversi</label>
+        <div class="col-md-4">
+		<asp:TextBox id="txthkonversi" type="text" runat="server" class="form-control input-md" />
+		</div>
+    </div>
+     <div class="form-group">        
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-md-1">Diluar Kawasan hutan (APL)</label>
+        <div class="col-md-4">
+		<asp:TextBox id="txtapl" type="text" runat="server" class="form-control input-md" />
+		</div>
+    </div>
+    <hr />
+     <div class="form-group">        
+        <label for="nama" class="control-label col-md-1">Perizinan</label>
+        <label for="nama" class="control-label col-md-1">IPPKH</label>
+        <label for="nama" class="control-label col-sm-1">Tahap I</label>
+        <div class="col-md-4">
+		<asp:TextBox id="txtipkh1" type="text" runat="server" class="form-control input-md" />
+		</div>
+    </div>
+    <div class="form-group">        
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-sm-1">Tahap II</label>
+        <div class="col-md-4">
+		<asp:TextBox id="txtipkh2" type="text" runat="server" class="form-control input-md" />
+		</div>
+    </div>
+    <div class="form-group">        
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-sm-1">Tahap II</label>
+        <div class="col-md-4">
+		<asp:TextBox id="txtipkh3" type="text" runat="server" class="form-control input-md" />
+		</div>
+    </div>
+     <div class="form-group">        
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-sm-1">Tahap VI</label>
+        <div class="col-md-4">
+		<asp:TextBox id="txtipkh4" type="text" runat="server" class="form-control input-md" />
+		</div>
+    </div>
+     <div class="form-group">        
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-sm-1">Di Luar IPPKH</label>
+        <div class="col-md-4">
+		<asp:TextBox id="txtluaripkh" type="text" runat="server" class="form-control input-md" />
+		</div>
+    </div>
+    <div class="form-group">
+        <label for="nama" class="control-label col-md-1"></label> <hr class="control-label col-md-10"/>
+    </div>
+    <div class="form-group">        
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-md-1">Izin Lokasi</label>
+        <div class="col-md-5">
+		<asp:TextBox id="txtizin1" type="text" runat="server" class="form-control input-md" />
+		</div>
+    </div>
+    <div class="form-group">        
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-md-1"></label>
+        <div class="col-md-5">
+		<asp:TextBox id="txtizin2" type="text" runat="server" class="form-control input-md" />
+		</div>
+    </div>
+     <div class="form-group">        
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-md-1"></label>
+        <div class="col-md-5">
+		<asp:TextBox id="txtizin3" type="text" runat="server" class="form-control input-md" />
+		</div>
+    </div>
+     <div class="form-group">        
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-md-1"></label>
+        <div class="col-md-5">
+		<asp:TextBox id="txtizin4" type="text" runat="server" class="form-control input-md" />
+		</div>
+    </div> 
+    <div class="form-group">        
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-md-1"></label>
+        <div class="col-md-5">
+		<asp:TextBox id="txtizin5" type="text" runat="server" class="form-control input-md" />
+		</div>
+    </div>   
+    <%--<asp:PlaceHolder id="PlaceHolder1" runat="server"></asp:PlaceHolder>--%>
+
+    <div class="form-group">
+        <label for="nama" class="control-label col-md-1"></label> <hr class="control-label col-md-10"/>
+    </div>
+    <div class="form-group">        
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-md-1">Izin Dumping</label>
+        <div class="col-md-5">
+		<asp:TextBox id="txtizindumping" type="text" runat="server" class="form-control input-md" />
+		</div>
+    </div>
+    <div class="form-group">        
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-md-1">Izin Reklamasi*</label>
+        <div class="col-md-5">
+		<asp:TextBox id="txtizinreklamasi" type="text" runat="server" class="form-control input-md" />
+		</div>
+    </div>
+     <div class="form-group">        
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-md-1">Izin Penataan</label>
+        <div class="col-md-5">
+		<asp:TextBox id="txtizinpenataan" type="text" runat="server" class="form-control input-md" />
+		</div>
+    </div>
+     <div class="form-group">        
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-md-1">Izin Pemanfaatan Lain*</label>
+        <div class="col-md-5">
+		<asp:TextBox id="txtizinpemanfaatan" type="text" runat="server" class="form-control input-md" />
+		</div>
+    </div>
+     <div class="form-group">        
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-md-1">IMB</label>
+        <div class="col-md-5">
+		<asp:TextBox id="txtizinimb" type="text" runat="server" class="form-control input-md" />
+		</div>
+    </div>
+    <hr />
+    <div class="form-group">        
+        <label for="nama" class="control-label col-md-1">Pola Ruang (RTRW)</label>
+        <label for="nama" class="control-label col-md-1">Status</label>
+        <div class="col-md-5">		
+		</div>
+    </div>
+    <div class="form-group">        
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-md-1">Pertambangan Batu Bara : </label>
+        <div class="col-md-4">        
+		<asp:TextBox id="txtBatubara" type="text" runat="server" class="form-control input-md" />
+		</div>
+    </div>
+    <div class="form-group">        
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-md-1">Hutan Produksi Tetap</label>
+        <div class="col-md-4">
+		<asp:TextBox id="txthutanproduksi" type="text" runat="server" class="form-control input-md" />
+		</div>
+    </div>
+     <div class="form-group">        
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-md-1">Pemukiman</label>
+        <div class="col-md-4">
+		<asp:TextBox id="txtpemukiman" type="text" runat="server" class="form-control input-md" />
+		</div>
+    </div>
+     <div class="form-group">        
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-md-1">Industri</label>
+        <div class="col-md-4">
+		<asp:TextBox id="txtindustri" type="text" runat="server" class="form-control input-md" />
+		</div>
+    </div>
+    <div class="form-group">        
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-md-1">Tahun RTRW</label>
+        <div class="col-md-5">
+		<asp:TextBox id="txttahunrtrw" type="text" runat="server" class="form-control input-md" />
+		</div>
+    </div>
+    <hr />    
+     <div class="form-group">        
+        <label for="nama" class="control-label col-md-1">Overlaping</label>
+        <label for="nama" class="control-label col-md-1">HGU</label>
+        <div class="col-md-5">
+		<asp:TextBox id="txthgu1" type="text" runat="server" class="form-control input-md" />
+		</div>
+    </div>
+     <div class="form-group">        
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-md-1"></label>
+        <div class="col-md-5">
+		<asp:TextBox id="txthgu2" type="text" runat="server" class="form-control input-md" />
+		</div>
+    </div>
+    <div class="form-group">        
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-md-1"></label>
+        <div class="col-md-5">
+		<asp:TextBox id="txthgu3" type="text" runat="server" class="form-control input-md" />
+		</div>
+    </div>
+    <div class="form-group">        
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-md-1"></label>
+        <div class="col-md-5">
+		<asp:TextBox id="txthgu4" type="text" runat="server" class="form-control input-md" />
+		</div>
+    </div>
+    <div class="form-group">        
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-md-1"></label>
+        <div class="col-md-5">
+		<asp:TextBox id="txthgu5" type="text" runat="server" class="form-control input-md" />
+		</div>
+    </div>
+    <%--<asp:PlaceHolder id="PlaceHolder2" runat="server"></asp:PlaceHolder>--%>
+
+     <div class="form-group">        
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-md-1"></label>
+        <div class="col-md-5">
+		<asp:TextBox id="txthguluar" type="text" runat="server" class="form-control input-md" />
+		</div>
+    </div>
+    <div class="form-group">        
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-md-1">IUP Sekitar/IUP Lain</label>
+        <div class="col-md-5">
+		<asp:TextBox id="txtiup1" type="text" runat="server" class="form-control input-md" />
+		</div>
+    </div>
+    <hr />
+      <div class="form-group">        
+        <label for="nama" class="control-label col-md-1">Fasilitas/Asset yang ada</label>
+        <label for="nama" class="control-label col-md-1">Jenis</label>
+        <div class="col-md-5">
+		<asp:TextBox id="txtjenisaset" type="text" runat="server" class="form-control input-md" />
+		</div>
+    </div>
+    <div class="form-group">        
+        <label for="nama" class="control-label col-md-1"></label>
+        <label for="nama" class="control-label col-md-1">Status</label>
+        <div class="col-md-5">
+		<asp:TextBox id="txtstatusaset" type="text" runat="server" class="form-control input-md" />
+		</div>
+    </div>
+    <hr />
+    <div class="form-group">        
+        <label for="nama" class="control-label col-md-1">Pemanfaatan Oleh Pihak Lain</label>
+        <label for="nama" class="control-label col-md-1"></label>
+        <div class="col-md-5">
+		<asp:TextBox id="txtpemanfPhkLain" type="text" runat="server" class="form-control input-md" />
+		</div>
+    </div> 
+
+    <%--Membuat Text Berulang--%>
+     <%--<asp:PlaceHolder id="PlaceHolder1" runat="server"></asp:PlaceHolder>--%>
 
 
         <div class="form-group">
@@ -125,7 +490,7 @@
    <br />
    <hr />
 
-        <div class="form-group">
+       <%-- <div class="form-group">
 
             <div class="col-md-1">
             <asp:Label ID="Label6" runat="server" Text="Label">Start Date</asp:Label>
@@ -153,7 +518,7 @@
 
         </div>
 
-    <hr />
+    <hr />--%>
 
 
             <div class="form-group">
@@ -284,9 +649,8 @@
     var txtUlasan = document.getElementById("<%=txtUlasan.ClientID%>");
     var txtProjectAnalyst = document.getElementById("<%=txtProjectAnalyst.ClientID%>");
     var txtUlasan = document.getElementById("<%=txtUlasan.ClientID%>");
-    var txtStDAte = document.getElementById("<%=txtStDAte.ClientID%>");
-    var txtInterv = document.getElementById("<%=txtInterv.ClientID%>");
-    var txtEndDate = document.getElementById("<%=txtEndDate.ClientID%>");
+
+
     
     var ddprs = document.getElementById("<%=ddprs.ClientID%>");
     var ddJenis = document.getElementById("<%=ddJenis.ClientID%>");
@@ -304,6 +668,61 @@
     var txtPICHid = document.getElementById("txtPICHid");
     var txtProjectAnalystHid = document.getElementById("txtProjectAnalystHid");
     var txtNamaProjectHid = document.getElementById("txtNamaProjectHid");
+
+    //atribut
+    var txtjenis = document.getElementById("<%=txtjenis.ClientID%>");
+    var txtdeskripsi = document.getElementById("<%=txtdeskripsi.ClientID%>");
+    var txtkontraktor = document.getElementById("<%=txtkontraktor.ClientID%>");
+    
+    var txtwiladmin = document.getElementById("<%=txtwiladmin.ClientID%>");
+    var txtluasarea = document.getElementById("<%=txtluasarea.ClientID%>");
+    var txtdatapersil = document.getElementById("<%=txtdatapersil.ClientID%>");
+    
+    var txtpkp2b = document.getElementById("<%=txtpkp2b.ClientID%>");
+    var txtmou = document.getElementById("<%=txtmou.ClientID%>");
+    var txtreklamasi = document.getElementById("<%=txtreklamasi.ClientID%>");
+   
+    var txthlindung = document.getElementById("<%=txthlindung.ClientID%>");
+    var txthproduksiterbatas = document.getElementById("<%=txthproduksiterbatas.ClientID%>");
+    var txthproduksitetap = document.getElementById("<%=txthproduksitetap.ClientID%>");
+    var txthkonversi = document.getElementById("<%=txthkonversi.ClientID%>");
+    var txtapl = document.getElementById("<%=txtapl.ClientID%>");
+     
+    var txtipkh1 = document.getElementById("<%=txtipkh1.ClientID%>");
+    var txtipkh2 = document.getElementById("<%=txtipkh2.ClientID%>");
+    var txtipkh3 = document.getElementById("<%=txtipkh3.ClientID%>");
+    var txtipkh4 = document.getElementById("<%=txtipkh4.ClientID%>");
+    var txtluaripkh = document.getElementById("<%=txtluaripkh.ClientID%>");
+   
+    var txtizin1 = document.getElementById("<%=txtizin1.ClientID%>");
+    var txtizin2 = document.getElementById("<%=txtizin2.ClientID%>");
+    var txtizin3 = document.getElementById("<%=txtizin3.ClientID%>");
+    var txtizin4 = document.getElementById("<%=txtizin4.ClientID%>");
+    var txtizin5 = document.getElementById("<%=txtizin5.ClientID%>");
+   
+    var txtizindumping = document.getElementById("<%=txtizindumping.ClientID%>");
+    var txtizinreklamasi = document.getElementById("<%=txtizinreklamasi.ClientID%>");
+    var txtizinpenataan = document.getElementById("<%=txtizinpenataan.ClientID%>");
+    var txtizinpemanfaatan = document.getElementById("<%=txtizinpemanfaatan.ClientID%>");
+    var txtizinimb = document.getElementById("<%=txtizinimb.ClientID%>");
+
+    var txthgu1 = document.getElementById("<%=txthgu1.ClientID%>");
+    var txthgu2 = document.getElementById("<%=txthgu2.ClientID%>");
+    var txthgu3 = document.getElementById("<%=txthgu3.ClientID%>");
+    var txthgu4 = document.getElementById("<%=txthgu4.ClientID%>");
+    var txthgu5 = document.getElementById("<%=txthgu5.ClientID%>");
+    var txthguluar = document.getElementById("<%=txthguluar.ClientID%>");
+    var txtiup1 = document.getElementById("<%=txtiup1.ClientID%>");
+
+    var txtjenisaset = document.getElementById("<%=txtjenisaset.ClientID%>");
+    var txtstatusaset = document.getElementById("<%=txtstatusaset.ClientID%>");
+    var txtpemanfPhkLain = document.getElementById("<%=txtpemanfPhkLain.ClientID%>");
+
+    var txtBatubara = document.getElementById("<%=txtBatubara.ClientID%>");
+    var txthutanproduksi = document.getElementById("<%=txthutanproduksi.ClientID%>");
+    var txtpemukiman = document.getElementById("<%=txtpemukiman.ClientID%>");
+    var txtindustri = document.getElementById("<%=txtindustri.ClientID%>");  
+
 
 
     lisNamaProject();
@@ -549,7 +968,60 @@
         document.getElementById('btnCariProjectAnalyst').style.visibility = 'hidden';
         document.getElementById('btnUpload').style.visibility = 'hidden';
         document.getElementById('btnUlasan').style.visibility = 'hidden';
-        
+
+
+        txtjenis.disabled = true;
+        txtdeskripsi.disabled = true; 
+        txtkontraktor.disabled = true;
+
+        txtwiladmin.disabled = true; 
+        txtluasarea.disabled = true; 
+        txtdatapersil.disabled = true; 
+
+        txtpkp2b.disabled = true;  
+        txtmou.disabled = true;  
+        txtreklamasi.disabled = true;  
+
+        txthlindung.disabled = true;  
+        txthproduksiterbatas.disabled = true; 
+        txthproduksitetap.disabled = true;  
+        txthkonversi.disabled = true;  
+        txtapl.disabled = true; 
+
+        txtipkh1.disabled = true; 
+        txtipkh2.disabled = true;  
+        txtipkh3.disabled = true;  
+        txtipkh4.disabled = true; 
+        txtluaripkh.disabled = true;  
+
+        txtizin1.disabled = true;  
+        txtizin2.disabled = true; 
+        txtizin3.disabled = true;  
+        txtizin4.disabled = true;  
+        txtizin5.disabled = true;  
+
+        txtizindumping.disabled = true;  
+        txtizinreklamasi.disabled = true;  
+        txtizinpenataan.disabled = true;  
+        txtizinpemanfaatan.disabled = true;  
+        txtizinimb.disabled = true;  
+
+        txthgu1.disabled = true;  
+        txthgu2.disabled = true;  
+        txthgu3.disabled = true; 
+        txthgu4.disabled = true;  
+        txthgu5.disabled = true; 
+        txthguluar.disabled = true;  
+        txtiup1.disabled = true;  
+
+        txtjenisaset.disabled = true;  
+        txtstatusaset.disabled = true;  
+        txtpemanfPhkLain.disabled = true;  
+
+        txtBatubara.disabled = true;  
+        txthutanproduksi.disabled = true;  
+        txtpemukiman.disabled = true;  
+        txtindustri.disabled = true;   
 
 
     }
@@ -559,6 +1031,59 @@
         txtPIC.disabled = true;
         txtProjectAnalyst.disabled = true;
         txtNmrComplaH.disabled = true;
+
+        txtjenis.disabled = true;
+        txtdeskripsi.disabled = true;
+        txtkontraktor.disabled = true;
+
+        txtwiladmin.disabled = true;
+        txtluasarea.disabled = true;
+        txtdatapersil.disabled = true;
+
+        txtpkp2b.disabled = true;
+        txtmou.disabled = true;
+        txtreklamasi.disabled = true;
+
+        txthlindung.disabled = true;
+        txthproduksiterbatas.disabled = true;
+        txthproduksitetap.disabled = true;
+        txthkonversi.disabled = true;
+        txtapl.disabled = true;
+
+        txtipkh1.disabled = true;
+        txtipkh2.disabled = true;
+        txtipkh3.disabled = true;
+        txtipkh4.disabled = true;
+        txtluaripkh.disabled = true;
+
+        txtizin1.disabled = true;
+        txtizin2.disabled = true;
+        txtizin3.disabled = true;
+        txtizin4.disabled = true;
+        txtizin5.disabled = true;
+
+        txtizindumping.disabled = true;
+        txtizinreklamasi.disabled = true;
+        txtizinpenataan.disabled = true;
+        txtizinpemanfaatan.disabled = true;
+        txtizinimb.disabled = true;
+
+        txthgu1.disabled = true;
+        txthgu2.disabled = true;
+        txthgu3.disabled = true;
+        txthgu4.disabled = true;
+        txthgu5.disabled = true;
+        txthguluar.disabled = true;
+        txtiup1.disabled = true;
+
+        txtjenisaset.disabled = true;
+        txtstatusaset.disabled = true;
+        txtpemanfPhkLain.disabled = true;
+
+        txtBatubara.disabled = true;
+        txthutanproduksi.disabled = true;
+        txtpemukiman.disabled = true;
+        txtindustri.disabled = true;  
     }
 
     function lockComplaDelete() {
@@ -578,6 +1103,59 @@
         document.getElementById('btnUpload').style.visibility = 'hidden';
         document.getElementById('btnUlasan').style.visibility = 'hidden';
 
+        txtjenis.disabled = true;
+        txtdeskripsi.disabled = true;
+        txtkontraktor.disabled = true;
+
+        txtwiladmin.disabled = true;
+        txtluasarea.disabled = true;
+        txtdatapersil.disabled = true;
+
+        txtpkp2b.disabled = true;
+        txtmou.disabled = true;
+        txtreklamasi.disabled = true;
+
+        txthlindung.disabled = true;
+        txthproduksiterbatas.disabled = true;
+        txthproduksitetap.disabled = true;
+        txthkonversi.disabled = true;
+        txtapl.disabled = true;
+
+        txtipkh1.disabled = true;
+        txtipkh2.disabled = true;
+        txtipkh3.disabled = true;
+        txtipkh4.disabled = true;
+        txtluaripkh.disabled = true;
+
+        txtizin1.disabled = true;
+        txtizin2.disabled = true;
+        txtizin3.disabled = true;
+        txtizin4.disabled = true;
+        txtizin5.disabled = true;
+
+        txtizindumping.disabled = true;
+        txtizinreklamasi.disabled = true;
+        txtizinpenataan.disabled = true;
+        txtizinpemanfaatan.disabled = true;
+        txtizinimb.disabled = true;
+
+        txthgu1.disabled = true;
+        txthgu2.disabled = true;
+        txthgu3.disabled = true;
+        txthgu4.disabled = true;
+        txthgu5.disabled = true;
+        txthguluar.disabled = true;
+        txtiup1.disabled = true;
+
+        txtjenisaset.disabled = true;
+        txtstatusaset.disabled = true;
+        txtpemanfPhkLain.disabled = true;
+
+        txtBatubara.disabled = true;
+        txthutanproduksi.disabled = true;
+        txtpemukiman.disabled = true;
+        txtindustri.disabled = true;  
+
     }
 
 
@@ -589,20 +1167,97 @@
     function SearchlisNmPro() {
         var s = ""
         + "rnd=" + Math.random() * 4
-        + "&sm=L"
-        + "&param1="
+        + "&sm=LNP"
+        + "&param1=LNP"
         + "&param2="
         + "";
         lisNamaProject.clearAll();
-        //lisNamaProject.loadXML(localURL + "?" + s);
+        lisNamaProject.loadXML(localURL + "?" + s);
     }
 
     function onRowSelectedNmPro(rowId, cellIndex) {
 
         txtNamaProjectHid.value = lisNamaProject.cells(rowId, 1).getValue();
-        txtNamaProject.value = lisNamaProject.cells(rowId, 2).getValue();
+        txtNamaProject.value = lisNamaProject.cells(rowId, 1).getValue();
+
+        //alert(txtNamaProject.value);
+
+        var s = ""
+        + "rnd=" + Math.random() * 4
+        + "&sm=cekRepeat"
+        + "&param1=PRJ"
+        + "&param2=" + lisNamaProject.cells(rowId, 1).getValue()
+        + "";
+
+        dhtmlxAjax.post(localURL, s, bindCekRepatJS);
         $("#dialogcom").dialog("close");
 
+
+    }
+
+
+    function bindCekRepatJS(loader) {
+        //alert(loader.xmlDoc.responseText);
+        var a = loader.xmlDoc.responseText;
+        //        lockKlaimUser();
+        if (a != '0') {
+            var b = new Array();
+            b = a.split('|');
+
+            txtjenis.value = b[0];
+            txtdeskripsi.value = b[1];
+            txtkontraktor.value = b[2];
+
+            txtwiladmin.value = b[3];
+            txtluasarea.value = b[4].toFixed2;
+            txtdatapersil.value = b[5];
+
+            txtpkp2b.value = b[6];
+            txtmou.value = b[7];
+            txtreklamasi.value = b[8];
+
+            txthlindung.value = b[9];
+            txthproduksiterbatas.value = b[10];
+            txthproduksitetap.value = b[11];
+            txthkonversi.value = b[12];
+            txtapl.value = b[13];
+
+            txtipkh1.value = b[14];
+            txtipkh2.value = b[15];
+            txtipkh3.value = b[16];
+            txtipkh4.value = b[17];
+            txtluaripkh.value = b[18];
+
+            txtizin1.value = b[19];
+            txtizin2.value = b[20];
+            txtizin3.value = b[21];
+            txtizin4.value = b[22];
+            txtizin5.value = b[23];
+
+            txtizindumping.value = b[24];
+            txtizinreklamasi.value = b[25];
+            txtizinpenataan.value = b[26];
+            txtizinpemanfaatan.value = b[27];
+            txtizinimb.value = b[28];
+
+            txthgu1.value = b[29];
+            txthgu2.value = b[30];
+            txthgu3.value = b[31];
+            txthgu4.value = b[32];
+            txthgu5.value = b[33];
+            txthguluar.value = b[34];
+            txtiup1.value = b[35];
+
+            txtjenisaset.value = b[36];
+            txtstatusaset.value = b[37];
+            txtpemanfPhkLain.value = b[38];
+
+            txtBatubara.value = b[39];
+            txthutanproduksi.value = b[40];
+            txtpemukiman.value = b[41];
+            txtindustri.value = b[42];          
+
+        }
     }
 
 
@@ -735,7 +1390,7 @@
         lisNamaProject = new dhtmlXGridObject('gridNmPro');
         lisNamaProject.setImagePath("../JavaScript/codebase/imgs/");
         lisNamaProject.setHeader("No.,Kode Project,Nama Project");
-        lisNamaProject.setInitWidths("50,250,250");
+        lisNamaProject.setInitWidths("50,250,0");
         lisNamaProject.setColAlign("left,left,left");
         lisNamaProject.setColTypes("ro,ro,ro");
         lisNamaProject.init();

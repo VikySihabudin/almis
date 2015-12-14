@@ -826,7 +826,7 @@
         txtKetEksepsi.disable = true;
 
         document.getElementById('btnSave').style.visibility = 'hidden';
-
+        ddprs.disabled = true
 
 
     }
@@ -845,7 +845,7 @@
         ddKecamatan.disabled = true;
         ddDesa.disabled = true;
         cbOverLap.disabled = false;
-        
+        ddprs.disabled = true
         
     }
 
@@ -872,7 +872,8 @@
         ddKabupaten.disabled = true;
         ddKecamatan.disabled = true;
         ddDesa.disabled = true;
- 
+        ddprs.disabled = true
+
     }
 
     

@@ -23,7 +23,7 @@
         <div class="form-group">
             <label for="identitas" class="control-label col-md-2">Nama Perusahaan</label>
             <div class="col-md-3">
-                <asp:DropDownList ID="ddprs" runat="server" class="form-control">
+                <asp:DropDownList ID="ddprs" runat="server" class="form-control" onclick="CariPid()">
                 </asp:DropDownList>
             </div>			           
         </div>
@@ -135,6 +135,35 @@
         </div>
         </div>
 
+       <br />
+       <hr />
+
+       
+        <%--<iframe src="http://Viky-PC/peta" width="100%" height="600"></iframe>--%>
+
+<br />
+<hr />
+<br />
+
+		<h4>Data PID :</h4>
+		<br />
+
+        <div class="form-group">
+            <div class="col-md-2">
+                <input type="button" onclick="OpenDialog2()" id="btnTambah" value="Tambah PID" class="btn btn-info btn-md" />
+                
+            </div>
+        </div>
+       
+
+       <div class="form-group">
+            <div class="col-md-10">
+            <div style=" width:50%; height:130px;">
+                <div id="gridPID" style=" width:100%; height:100%; background-color:white; border: 1px solid #A4BED4"></div>	
+            </div>                                     
+            </div>
+        </div>
+
 <hr />
 <br />
 
@@ -151,11 +180,13 @@
 
        </div>
 
-       <br />
-         <hr />
-
-       
-        <iframe src="http://localhost/peta" width="100%" height="600"></iframe>
+		<div class="form-group">
+            <label for="nama" class="control-label col-md-2">Keterangan</label>
+			<div class="col-md-3">
+				<asp:TextBox id="TxtKetLan" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
+			</div>
+        </div>
+		
 
 
     <br /><hr />
@@ -210,22 +241,35 @@
     </div>
 </div>
 
-     <%--ESRI JS--%>
-    <link href="../JavaScript/webgis/js/313/dijit/themes/claro/claro.css" rel="stylesheet" type="text/css" />
-    <link href="../JavaScript/webgis/js/313/dojox/grid/resources/Grid.css" rel="stylesheet" type="text/css" />
-    <link href="../JavaScript/webgis/js/313/dojox/grid/resources/claroGrid.css" rel="stylesheet" type="text/css" />
-    <link href="../JavaScript/webgis/js/313/esri/css/esri.css" rel="stylesheet" type="text/css" />
-    <link href="../JavaScript/webgis/css/layout.css" rel="stylesheet" type="text/css" />
-    
-    <script src="../JavaScript/webgis/js/313/init.js" type="text/javascript" ></script>
-    <script src="../JavaScript/webgis/adaro.js" type="text/javascript" ></script>
-    <script src="../JavaScript/webgis/js/313/upclick-min.js" type="text/javascript" ></script>
+
+<div id="dialogPersiapan" title="Cari PID" style="font-size:small;">
+    <div role="form" class="form-horizontal" >
+
+    <div class="form-group">
+
+    </div>
+
+       <div class="form-group">
+       <div class="col-md-10">
+            <div style=" width:560px; height:250px;">
+                <div id="GridPidCari" style=" width:100%; height:100%; background-color:white; border: 1px solid #A4BED4"></div>
+                <div id="PagePidCari"> </div>
+            </div>
+        </div>
+        </div>
+
+
+    </div>
+</div>
+
 
 
 
 <script type="text/javascript">
     var localURL = "KlaimUserForm.aspx";
     var newUrl = "KlaimUserList.aspx";
+    var tesUrl = "PersiapanDocumentForm.aspx";     //Jangan Lupa Di Hapus
+
     var newURLIdn = "../Pages_Admintools/MasterIdentitasForm.aspx";
     var txtnoclain = document.getElementById("<%=txtnoclain.ClientID%>");
     var txtNama = document.getElementById("<%=txtNama.ClientID%>");
@@ -251,7 +295,9 @@
     var ddprs = document.getElementById("<%=ddprs.ClientID%>");
     var txtNmrIdn = document.getElementById("<%=txtNmrIdn.ClientID%>");
 
-    var ddLanjut = document.getElementById("<%=ddLanjut.ClientID%>"); 
+    var ddLanjut = document.getElementById("<%=ddLanjut.ClientID%>");
+    
+    var TxtKetLan = document.getElementById("<%=TxtKetLan.ClientID%>");
     
     
     txtnoclain.disabled = true;
@@ -260,10 +306,19 @@
   
     ListAlas();
     listIdentitas();
+    listPID();
+    listPidCari();
     terimaURL();
     SearchlistIdentitas();
 
+    //SearchlistPID();      //Jangan Lupa Di Hapus
 
+    function CariPid() {
+    
+        SearchlistPIDCari();
+        SearchlistPID();
+    
+    }
 
 
     function tambah() {
@@ -294,6 +349,27 @@
 
     }
 
+    $(function () {
+        $("#dialogPersiapan").dialog
+        ({
+            autoOpen: false,
+            width: 620,
+            height: 420,
+            modal: true
+        });
+
+        $(".btnSubmit").on("click", function () {
+
+            $("#dialogPersiapan").dialog("close");
+        });
+    });
+
+    function OpenDialog2() {
+
+        $("#dialogPersiapan").dialog("open");
+
+    }
+
     function onRowSelected(rowId, cellIndex) {
 
         txtNmrIdn.value = listIdentitas.cells(rowId, 1).getValue();
@@ -303,6 +379,66 @@
 
         $("#dialogKlaim").dialog("close");
 
+    }
+
+    function onRowSelected2(rowId, cellIndex) {
+
+        var r = confirm("Apakah Anda Ingin Menambahkan Pid " + listPidCari.cells(rowId, 1).getValue());
+        if (r == true) {
+
+            var s = ""
+                    + "rnd=" + Math.random() * 4
+                    + "&sm=CRUD_PID"
+                    + "&param1=I"
+                    + "&param2=" + txtnoclain.value
+                    + "&param3="
+                    + "&param4="
+                    + "&param5=" + listPidCari.cells(rowId, 1).getValue()
+                    + "&param6="
+                    + "&param7="
+                    + "&param8=" + ddprs.value
+                    + "&param9="
+                    + "";
+
+            dhtmlxAjax.post(localURL, s, outputResponse);
+            SearchlistPID();
+
+            $("#dialogPersiapan").dialog("close");
+        }
+    }
+
+    function SearchlistPID(id) {
+
+        var s = ""
+			+ "rnd=" + Math.random() * 4
+			+ "&sm=LP"
+            + "&param1=L"
+            + "&param2=" + txtnoclain.value
+            + "&param8=" + ddprs.value
+			+ "";
+        listPID.clearAll();
+        listPID.loadXML(localURL + "?" + s);
+    }
+
+    function Hapus(sm, param1, param5) {
+        var r = confirm("Delete?");
+        if (r == true) {
+            var s = ""
+                    + "rnd=" + Math.random() * 4
+			        + "&sm=CRUD_PID"
+                    + "&param1=" + param1
+                    + "&param2=" + txtnoclain.value
+                    + "&param3="
+                    + "&param4="
+                    + "&param5=" + param5
+                    + "&param6="
+                    + "&param7="
+                    + "&param8=" + ddprs.value
+                    + "&param9="
+                    + "";
+            dhtmlxAjax.post(localURL, s, outputResponse);
+            SearchlistPID();
+        }
     }
 
 
@@ -334,6 +470,8 @@
     
 
     }
+
+
     
     
     function terimaURL() {
@@ -424,8 +562,25 @@
             ddDesa.value = b[6];
             txtNmrIdn.value = b[7];
             ddLanjut.value = b[8];
+            TxtKetLan.value = b[9];
         }
+
         SearchlistAlas();
+        SearchlistPID();      //Jangan Lupa Di Hapus
+        SearchlistPIDCari();    
+    }
+
+    function SearchlistPIDCari(id) {    
+
+        var s = ""
+			+ "rnd=" + Math.random() * 4
+			+ "&sm=LPS"
+            + "&param1=LP"
+            + "&param2="
+            + "&param8=" + ddprs.value
+			+ "";
+        listPidCari.clearAll();
+        listPidCari.loadXML(localURL + "?" + s);
     }
 
 
@@ -527,7 +682,8 @@
                 + "&param9=" + ddKecamatan.value
                 + "&param10=" + ddDesa.value
                 + "&param13=" + ddprs.value
-                + "&param15=" + ddLanjut.value
+                + "&param15=" + ddLanjut.value 
+                + "&param16=" + TxtKetLan.value
                 + "";
 
         dhtmlxAjax.post(localURL, s, outputResponse);
@@ -544,18 +700,35 @@
             case "E":
                 alert("Data Berhasil di Edit");
                 //window.location.replace(newUrl);
-                close();
+                //close();
                 break; 
             case "I":
                 alert("Data Berhasil di Input");
                 //window.location.replace(newUrl);
-                close();
+                //close();
                 break;
             case "D":
                 alert("Data Berhasil di Delete");
                 //window.location.replace(newUrl);
                 close();
                 break;
+            case "ID":
+
+                alert("Data Berhasil di Input");
+                //window.location.replace(newUrl);
+                //close();
+                break;
+            case "DD":
+
+                alert("Data Berhasil di Delete");
+                //window.location.replace(newUrl);
+                //close();
+                break;
+            case "noadd":
+                alert("Data PID Sudah Ada");
+                break;
+
+
             case "nodelete":
                 alert("Data Claim User Tidak Dapat Dihapus Karena Sudah Dilalukan Persiapan Dokumen");
                 break;
@@ -576,6 +749,37 @@
                 break;
         }
 
+    }
+
+    function listPID() {
+        listPID = new dhtmlXGridObject('gridPID');
+        listPID.setImagePath("../JavaScript/codebase/imgs/");
+        listPID.setHeader("No,No PID,Action");
+        listPID.setInitWidths("40,200,150");
+        listPID.setColAlign("left,left,left");
+        listPID.setColTypes("ro,ro,link");
+        listPID.init();
+        listPID.setSkin("dhx_skyblue");
+        listPID.setPagingSkin("bricks");
+        listPID.setColSorting("str,str,str");
+    }
+
+    function listPidCari() {
+        listPidCari = new dhtmlXGridObject('GridPidCari');
+        listPidCari.setImagePath("../JavaScript/codebase/imgs/");
+        listPidCari.setHeader("No,No PID,Nama Penjual");
+        listPidCari.setInitWidths("60,200,300");
+        listPidCari.setColAlign("left,left,left");
+        listPidCari.setColTypes("ro,ro,ro");
+        listPidCari.init();
+        listPidCari.setSkin("dhx_skyblue");
+
+        listPidCari.attachEvent("onRowSelect", onRowSelected2);
+
+        listPidCari.setColSorting("str,str,str");
+        listPidCari.attachHeader("#text_filter,#text_filter,#text_filter");
+        listPidCari.enablePaging(true, 15, 5, "PagePidCari", true);
+        listPidCari.setPagingSkin("bricks");
     }
  
     function listAlas() {

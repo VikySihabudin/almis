@@ -244,7 +244,7 @@
     function listLegal() {
         listLegal = new dhtmlXGridObject('gridlegal');
         listLegal.setImagePath("../JavaScript/codebase/imgs/");
-        listLegal.setHeader("No,No Legal,No Verifikasi,No Persiapan,No Claim,Nama,Desa,Nama Perushaan,Assign,Action");
+        listLegal.setHeader("No,No Legal,No Verifikasi,No Claim,No Identitas,Nama,Desa,Nama Perushaan,Assign,Action");
         listLegal.attachHeader("#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter");
         listLegal.setInitWidths("40,160,160,160,160,160,160,160,160,65");
         listLegal.setColAlign("left,left,left,left,left,left,left,left,left,center");

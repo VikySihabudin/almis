@@ -26,7 +26,7 @@
 		<div class="form-group">
             <label for="nama" class="control-label col-md-2">Company</label>
             <div class="col-md-3"><asp:TextBox ID="txtCompany" class="form-control input-md" runat="server" value= ""></asp:TextBox></div>
-          <div class="col-md-3"><input type="button" id="btnCompany" value="Search"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>
+          <div class="col-md-3"><input type="button" id="btnCompany" value="Search"  class="btn btn-info btn-md" onclick="CariCompany(this)" /></div>
         </div>
 
 		<div class="form-group">
@@ -61,13 +61,13 @@
 		<div class="form-group">
             <label for="nama" class="control-label col-md-2">Nama Perusahaan</label>
             <div class="col-md-3"><asp:TextBox ID="txtNamaPerusahaan" class="form-control input-md" runat="server" value= ""></asp:TextBox></div>
-          <div class="col-md-3"><input type="button" id="BtnNamaPerusahaan" value="Search"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>
+          <div class="col-md-3"><input type="button" id="BtnNamaPerusahaan" value="Search"  class="btn btn-info btn-md" onclick="CariCompany(this)" /></div>
         </div>
 
 		<div class="form-group">
             <label for="nama" class="control-label col-md-2">Nama</label>
             <div class="col-md-3"><asp:TextBox ID="txtNama" class="form-control input-md" runat="server" value= ""></asp:TextBox></div>
-          <div class="col-md-3"><input type="button" id="BtnNama" value="Search"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>
+          <div class="col-md-3"><input type="button" id="BtnNama" value="Search"  class="btn btn-info btn-md" onclick="CariCompany(this)" /></div>
         </div>
 
         <hr />
@@ -77,13 +77,13 @@
 		<div class="form-group">
             <label for="nama" class="control-label col-md-2">Nama Perusahaan</label>
             <div class="col-md-3"><asp:TextBox ID="txtApprovedBy" class="form-control input-md" runat="server" value= ""></asp:TextBox></div>
-          <div class="col-md-3"><input type="button" id="BtnApprovedBy" value="Search"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>
+          <div class="col-md-3"><input type="button" id="BtnApprovedBy" value="Search"  class="btn btn-info btn-md" onclick="CariCompany(this)" /></div>
         </div>
 
 		<div class="form-group">
             <label for="nama" class="control-label col-md-2">Nama</label>
             <div class="col-md-3"><asp:TextBox ID="txtApprovedNama" class="form-control input-md" runat="server" value= ""></asp:TextBox></div>
-          <div class="col-md-3"><input type="button" id="BtnApprovedNama" value="Search"  class="btn btn-info btn-md" onclick="btnAdd(this)" /></div>
+          <div class="col-md-3"><input type="button" id="BtnApprovedNama" value="Search"  class="btn btn-info btn-md" onclick="CariCompany(this)" /></div>
         </div>
 
         <hr />
@@ -109,7 +109,7 @@
        
                      <input type="button" id="btnCancel" value="Cancel" class="btn btn-lg btn-default"  onclick="btnClick(this)" PostBackUrl="~/Pages/PraRegistrasiForm.aspx"/> 
                      <input type="button" id="btnSave" value="Save"  class="btn btn-lg btn-success" onclick="btnClick(this)" />  
-                     <input type="button" id="btnPrint" value="Print"  class="btn btn-info btn-lg" onclick="btnAdd(this)" />  
+                     <input type="button" id="btnPrint" value="Print"  class="btn btn-info btn-lg" onclick="CariCompany(this)" />  
             </div>
     </div>
 
@@ -126,6 +126,25 @@
           </div>
       </footer>
     <%--Footer Akhir--%>
+
+
+    <%--DIALOG--%>
+
+<div id="dialogcompany" title="Cari Nama Company" style="font-size:small;">
+
+    <br />
+
+     <div class="form-group">      
+       <div class="col-md-12">
+            <div style=" width:550px; height:250px;">
+                <div id="gridNmCompnay" style=" width:100%; height:100%; background-color:white; border: 1px solid #A4BED4"></div>
+                <div id="pageNmCompany"> </div>
+            </div>
+        </div>
+    </div>
+        
+
+</div>
 
     <script type="text/jscript">
 
@@ -146,12 +165,15 @@
         var btnCancel = document.getElementById("btnCancel");
         var btnPrint = document.getElementById("btnPrint");
         var Hidmode = document.getElementById("Hidmode");
+      
 
         var BtnCompany = document.getElementById("BtnCompany");
         var BtnNamaPerusahaan = document.getElementById("BtnNamaPerusahaan");
         var BtnNama = document.getElementById("BtnNama");
         var BtnApprovedBy = document.getElementById("BtnApprovedBy");
         var BtnApprovedNama = document.getElementById("BtnApprovedNama");
+
+        lisNamaCompany();
 
         $(function txtDate() {
             $("[id$=txtDate]").datepicker({
@@ -162,7 +184,46 @@
                 yearRange: "1900:2100"
             });
         });
-    
+
+
+        function CariCompany() {
+
+            $("#dialogcompany").dialog("open");
+
+        }
+
+        $(function () {
+            $("#dialogcompany").dialog
+        ({
+            autoOpen: false,
+            width: 610,
+            height: 330,
+            modal: true
+        });
+
+            $(".btnSubmit").on("click", function () {
+
+                $("#dialogcompany").dialog("close");
+            });
+        });
+
+        function lisNamaCompany() {
+            lisNamaCompany = new dhtmlXGridObject('gridNmCompnay');
+            lisNamaCompany.setImagePath("../JavaScript/codebase/imgs/");
+            lisNamaCompany.setHeader("No.,Kode Project,Nama Project");
+            lisNamaCompany.setInitWidths("50,250,250");
+            lisNamaCompany.setColAlign("left,left,left");
+            lisNamaCompany.setColTypes("ro,ro,ro");
+            lisNamaCompany.init();
+            lisNamaCompany.setSkin("dhx_skyblue");
+
+//            lisNamaCompany.attachEvent("onRowSelect", onRowSelectedNmPro);
+
+            lisNamaCompany.setColSorting("str,str,str");
+            lisNamaCompany.attachHeader("#text_filter,#text_filter,#text_filter");
+            lisNamaCompany.enablePaging(true, 15, 5, "pageNmCompany", true);
+            lisNamaCompany.setPagingSkin("bricks");
+        }
     </script>
 
 

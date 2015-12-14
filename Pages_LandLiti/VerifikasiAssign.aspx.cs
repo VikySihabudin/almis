@@ -90,7 +90,7 @@ public partial class Pages_LandLiti_VerifikasiAssign : System.Web.UI.Page
 
                 eSTP_L.Datas();
                 DataSet ds_L = new DataSet();
-                ds_L = eSTP_L.List10("P_VERDOK", param1L, param2L, "", param4L, param5L, "", param7L, "", "", userid);
+                ds_L = eSTP_L.List11("P_VERDOK", param1L, param2L, "", param4L, param5L, "", param7L, "", "", userid,"");
 
                 dt = ds_L.Tables[0];
                 
@@ -105,12 +105,12 @@ public partial class Pages_LandLiti_VerifikasiAssign : System.Web.UI.Page
                     Response.Write("<row id=\"" + (i + 1).ToString() + "\">");
                     Response.Write("<cell>" + (i + 1).ToString() + "</cell>"); // Untuk Membuat Angka
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["VerdokNmrVrd"].ToString()) + "</cell>");
-                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["PredokNmrDok"].ToString()) + "</cell>");
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["ClausrNmrClm"].ToString()) + "</cell>");
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["ClausrNamass"].ToString()) + "</cell>");
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["ClausrLokKab"].ToString()) + "</cell>");
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["VerdokLitiga"].ToString()) + "</cell>");
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["VerdokAssign"].ToString()) + "</cell>");
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["VerdokKeteks"].ToString()) + "</cell>");
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["perusaNamass"].ToString()) + "</cell>");
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["Assign"].ToString()) + "</cell>");
                     Response.Write("</row>");
@@ -135,7 +135,7 @@ public partial class Pages_LandLiti_VerifikasiAssign : System.Web.UI.Page
                 ALMIS.ExecuteSTP eSTP = new ALMIS.ExecuteSTP();
                 eSTP.Datas();
                 DataSet ds = new DataSet();
-                eSTP.save10("P_VERDOK", param1, param2, "", param4, userid, "", param7, "", "", param10);
+                eSTP.save11("P_VERDOK", param1, param2, "", param4, userid, "", param7, "", "", param10,"");
                 Response.End();
                 return false;
 

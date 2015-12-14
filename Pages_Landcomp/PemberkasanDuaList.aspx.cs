@@ -18,10 +18,6 @@ public partial class Pages_PemberkasanDuaList : System.Web.UI.Page
 
     SqlConnection conn;
     SqlDataAdapter sda;
-    //private string userid;
-    //private string groups;
-    //private string groupsid;
-    //private string lanjut;
     string query;
     string connstring = ConfigurationManager.ConnectionStrings["ConStrLANDCOMPLocal"].ToString();
     protected String userid = "";
@@ -33,46 +29,37 @@ public partial class Pages_PemberkasanDuaList : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        //if (!IsPostBack)
-        //{
 
-        //    //if ((Session["userid"] is object) && (Session["groups"] is object))
-        //    if ((Session["userid"] is object) && (Session["groups"] is object))
-        //    {
-        //        userid = Session["userid"].ToString();
-        //        //lanjut = Session["lanjut"].ToString();
-        //        //namass = Session["namass"].ToString();
-
-        //        //Response.Write(lanjut);
-        //    }
-        //    else
-        //    {
-        //        Response.Write("<script language=\"javascript\" type=\"text/javascript\">");
-        //        Response.Write("alert('Session Sudah Habis. Silakan Login Kembali.');");
-        //        Response.Write("location.href = '../login.aspx';");
-        //        Response.Write("</script>");
-        //    }
-
-        //    //if (Session["groupID"] is object) groupid = (string)Session["groupID"].ToString();
-        //    //if ((Session["usersWilay"] is object) && (Session["userID"] is object))
-        //    //{
-        //    //    wilayah = Session["usersWilay"].ToString();
-        //    //    user = Session["userID"].ToString();
-        //    //}
-        //    //else
-        //    //{
-        //    //    Response.Write("<script language=\"javascript\" type=\"text/javascript\">");
-        //    //    Response.Write("alert('Session Sudah Habis. Silakan Login Kembali.');");
-        //    //    Response.Write("location.href = '../login.aspx';");
-        //    //    Response.Write("</script>");
-        //    //}
-        //}
-
+        if (Session["userid"] is object)
+        {
+            userid = Session["userid"].ToString();
+        }
+        isiPerusa();
         HakAkses();
         isiTeknis();
 
         bool normal = true;
         if (normal && (Request.Params["sm"] is object)) normal = ServiceSelect(Request.Params["sm"].ToString());
+    }
+
+    public void isiPerusa()
+    {
+
+        query = @"SELECT perusaNamass,perusaIdents FROM USRPRS 
+                  INNER JOIN PERUSA
+	                ON UsrprsPerusa = perusaIdents
+                   WHERE UsrprsUserss =" + "'" + userid + "'" + "";
+
+        dt = getDataTable(query);
+        if (dt.Rows.Count > 0)
+        {
+            ddprs.Items.Clear();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                ddprs.Items.Add(new ListItem(dt.Rows[i]["perusaNamass"].ToString(), dt.Rows[i]["perusaIdents"].ToString()));
+            }
+        }
+        dt.Dispose();
     }
 
     private void HakAkses()
@@ -150,10 +137,11 @@ public partial class Pages_PemberkasanDuaList : System.Web.UI.Page
                 var param2L = Request.Params["param2"].ToString();
                 var param4L = Request.Params["param4"].ToString();
                 var param5L = Request.Params["param5"].ToString();
+                var param18L = Request.Params["param18"].ToString();
                 ALMIS.ExecuteSTP eSTP_L = new ALMIS.ExecuteSTP();
                 eSTP_L.Datas();
                 DataSet ds_L = new DataSet();
-                ds_L = eSTP_L.List19("P_BERKS2", param1L, param2L, "", param4L, param5L, "", "", "", "", "", "", "", "", "", "", "", "","","");
+                ds_L = eSTP_L.List19("P_BERKS2", param1L, param2L, "", param4L, param5L, "", "", "", "", "", "", "", "", "", "", userid, "", param18L, "");
 
                 dt = ds_L.Tables[0];
 
@@ -161,7 +149,6 @@ public partial class Pages_PemberkasanDuaList : System.Web.UI.Page
                 Response.Write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
                 Response.Write("<rows>");
 
-                //groupsid = Session["groups"].ToString();
 
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {

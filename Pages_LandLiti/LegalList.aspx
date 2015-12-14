@@ -48,7 +48,7 @@
         <div class="col-lg-12">
         <div style=" width:100%; height:300px;">
             <div id="gridlegal" style=" width:100%; height:100%; background-color:white; border: 1px solid #A4BED4"></div>
-            <div id="pagePraregistrasi"></div>      
+            <div id="PageLegal"></div>      
         </div>
         </div>
     </div>
@@ -184,16 +184,16 @@
     function listLegal() {
         listLegal = new dhtmlXGridObject('gridlegal');
         listLegal.setImagePath("../JavaScript/codebase/imgs/");
-        listLegal.setHeader("No,No Legal,No Verifikasi,No Persiapan,No Claim,Nama,Desa,Nama Perushaan,Action,#cspan,#cspan");
-        listLegal.attachHeader("#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,,,#rspan");
-        listLegal.setInitWidths("40,160,160,160,160,160,160,160,45,45,45");
-        listLegal.setColAlign("left,left,left,left,left,left,left,left,left,left,left");
-        listLegal.setColTypes("ed,ed,ed,ed,ed,ed,ed,ed,link,link,link");
+        listLegal.setHeader("No,No Legal,No Verifikasi,No Claim,No Identitas,Nama,Status,Keterangan,Nama Perushaan,Action,#cspan,#cspan");
+        listLegal.attachHeader("#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,,,#rspan");
+        listLegal.setInitWidths("40,160,160,160,160,160,160,160,160,45,45,45");
+        listLegal.setColAlign("left,left,left,left,left,left,left,left,left,left,left,left");
+        listLegal.setColTypes("ed,ed,ed,ed,ed,ed,ed,ed,ed,link,link,link");
         listLegal.init();
         listLegal.setSkin("dhx_skyblue");
 
-        listLegal.setColSorting("str,str,str,str,str,str,str,str,str,str,str");
-        listLegal.enablePaging(true, 15, 5, "pagePraregistrasi", true);
+        listLegal.setColSorting("str,str,str,str,str,str,str,str,str,str,str,str");
+        listLegal.enablePaging(true, 15, 5, "PageLegal", true);
         listLegal.setPagingSkin("bricks");
     }
 

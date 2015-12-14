@@ -692,6 +692,7 @@
         txtKetEksepsi.disabled = true;
         chEksepsi.disabled = true;
         document.getElementById('btnSave').style.visibility = 'hidden';
+        ddprs.disabled = true
        
     }
 
@@ -701,6 +702,7 @@
         txtNoPID.disabled = true;
         txtTHargaPermintaan.disabled = true;
         txtTHargaPenawaran.disabled = true;
+        ddprs.disabled = true
     }
 
     function lockNegosiasiDelete() {
@@ -720,6 +722,7 @@
         cbSKGRPHAT.disabled = true;
         txtKetEksepsi.disabled = true;
         chEksepsi.disabled = true;
+        ddprs.disabled = true
     }
 
 

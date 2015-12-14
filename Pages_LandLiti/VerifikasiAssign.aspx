@@ -196,7 +196,7 @@
 
     function refresh() {
         if ((txtDateAkhir.value == 0) || (txtDateAwal.value == 0))
-        { alert('Date Awal Dan Akhir Date Akhir Tidak Boleh Kosong') }
+        { alert('Start Date Dan End Date \n    Tidak Boleh Kosong') }
         else {
             var s = ""
 			+ "rnd=" + Math.random() * 4
@@ -279,8 +279,8 @@
     function listVerikasi() {
         listVerikasi = new dhtmlXGridObject('gridVerikasi');
         listVerikasi.setImagePath("../JavaScript/codebase/imgs/");
-        listVerikasi.setHeader("No,No Verifikasi,No Persiapan Dokumen,No Claim,Nama,Kabupaten,Status,Assign,Nama Perusahaan,Action");
-        listVerikasi.setInitWidths("40,160,220,160,160,160,160,160,160,65");
+        listVerikasi.setHeader("No,No Verifikasi Dokumen,No Claim,Nama,Kabupaten,Status,Assign,Keterangan,Nama Perusahaan,Action");
+        listVerikasi.setInitWidths("40,220,160,160,160,160,160,160,160,65");
         listVerikasi.setColAlign("left,left,left,left,left,left,left,left,left,center");
         listVerikasi.setColTypes("ed,ed,ed,ed,ed,ed,ed,ed,ed,ch");
         listVerikasi.attachEvent("onCheckbox", doOnCheck);

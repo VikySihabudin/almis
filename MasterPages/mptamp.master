@@ -275,8 +275,8 @@
                           <span>Land Secure</span>
                       </a>
                       <ul class="sub">
-                        <li><a href="#">Tipe Pengalaman</a></li>
-                        <li><a href="#">Status Pengalaman</a></li>
+                        <li><a href="#">Tipe Pengamanan</a></li>
+                        <li><a href="#">Status Pengamanan</a></li>
                         <li><a href="#">Asset</a></li>
                       </ul>
               </li>
@@ -315,13 +315,15 @@
               <li class="sub-menu">
                       <a href="javascript:;" >
                           <i class="fa fa-book"></i>
-                          <span>Land Complaince</span>
+                          <span>Land Compliance</span>
                       </a>
                       <ul class="sub">
 
          <%if (LandComplainceModul.ToString().Equals("1") || groups.ToString().Equals("1"))
          { %> 
                         <li><a href="../Pages_Landcompla/LandcomplaList.aspx">Land Compliance</a></li>
+                        <li><a href="../Pages_Landcompla/UpdateDataForm.aspx">Update Data Compliance</a></li>
+                          
         <%}%>
                       </ul>
               </li>
@@ -350,7 +352,7 @@
 
          <%if (PersiapanDokumen.ToString().Equals("1") || groups.ToString().Equals("1"))
          { %> 
-                        <li><a href="../Pages_LandLiti/PersiapanDocumentList.aspx">Persiapan Dokumen </a></li>
+                        <%--<li><a href="../Pages_LandLiti/PersiapanDocumentList.aspx">Persiapan Dokumen </a></li>--%>
         <%}%>
 
          <%if (VerifikasiDokumen.ToString().Equals("1") || groups.ToString().Equals("1"))
@@ -668,6 +670,14 @@
 
 <%}%> 
 
+        <li class="sub-menu">
+             <a href="http://Viky-PC/Help" target="_blank">
+                <i class="fa fa-cogs"></i>
+                <span>Help</span>
+
+            </a>
+          </li>
+
 
   
 				  
@@ -780,22 +790,34 @@
 
 
           <script type="text/javascript">
-              var menu = document.querySelector('.sub');
-              var anchors = menu.getElementsByTagName('a');
 
-              for (var i = 0; i < anchors.length; i += 1) {
-                  anchors[i].addEventListener('click', function () { clickHandler(anchors[i]) }, false);
-              }
 
-              function clickHandler(anchor) {
-                  var hasClass = anchor.getAttribute('class');
-                  if (hasClass !== 'active') {
-                      anchor.setAttribute('class', 'active');
-                  }
-              }
+              //$(document).ready(function () {
+              //    $(document).click(function (event) {
+              //        var clickover = $(event.target);
+              //        var _opened = $(".navbar-collapse").hasClass("navbar-collapse in");
+              //        if (_opened === true && !clickover.hasClass("navbar-toggle")) {
+              //            $("button.navbar-toggle").click();
+              //        }
+              //    });
+              //});
+
+              //var menu = document.querySelector('.sub');
+              //var anchors = menu.getElementsByTagName('a');
+
+              //for (var i = 0; i < anchors.length; i += 1) {
+              //    anchors[i].addEventListener('click', function () { clickHandler(anchors[i]) }, false);
+              //}
+
+              //function clickHandler(anchor) {
+              //    var hasClass = anchor.getAttribute('class');
+              //    if (hasClass !== 'active') {
+              //        anchor.setAttribute('class', 'active');
+              //    }
+              //}
+
           </script>
 
-</script>
 
 
 </body>

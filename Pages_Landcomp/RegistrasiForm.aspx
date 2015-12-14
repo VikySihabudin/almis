@@ -1210,6 +1210,7 @@
         document.getElementById('btnSave').style.visibility = 'hidden';
         document.getElementById('Button2').style.visibility = 'hidden';
         //document.getElementById('btnCancel').style.visibility = 'hidden';
+        ddprs.disabled = true
 
     }
 
@@ -1245,7 +1246,9 @@
         ddKabupaten.disabled = true;
         ddKecamatan.disabled = true;
         ddDesa.disabled = true;
+        ddprs.disabled = true
     }
+
     function lockRegistrasiDelete() {
            txtNoRegister.disabled = true;
         txtNoPL.disabled = true;
@@ -1323,7 +1326,7 @@
         //document.getElementById('btnSave').style.visibility = 'hidden';
         document.getElementById('Button2').style.visibility = 'hidden';
         //document.getElementById('btnCancel').style.visibility = 'hidden';
-        
+        ddprs.disabled = true
 
     }
 

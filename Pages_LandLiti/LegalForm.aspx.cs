@@ -38,6 +38,14 @@ public partial class Pages_LandLiti_LegalForm : System.Web.UI.Page
     protected String param10 = "";
     protected String param11 = "";
     protected String param12 = "";
+    protected String param13 = "";
+    protected String param14 = "";
+    protected String sql = ""; 
+    protected String output = "";
+    ALMIS.ExecuteSTP eSTP = new ALMIS.ExecuteSTP();
+    DataSet ds = new DataSet();
+
+
 
 
     protected void Page_Load(object sender, EventArgs e)
@@ -52,10 +60,29 @@ public partial class Pages_LandLiti_LegalForm : System.Web.UI.Page
         isikabupaten();
         isiKecamatan();
         isiDesa();
+        isiSelesai();
 
         bool normal = true;
         if (normal && (Request.Params["sm"] is object)) normal = ServiceSelect(Request.Params["sm"].ToString());
 
+    }
+
+    public void isiSelesai()
+    {
+        query = @"SELECT  codessCodess ,
+                            codessDescs1
+                    FROM    almis.CODESS
+                    WHERE   codessHeadss = 6
+                            AND codessStatss = 1 ORDER BY codessCodess DESC";
+        dt = getDataTable(query);
+        if (dt.Rows.Count > 0)
+        {
+            ddLSelesai.Items.Clear();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                ddLSelesai.Items.Add(new ListItem(dt.Rows[i]["codessDescs1"].ToString(), dt.Rows[i]["codessCodess"].ToString()));
+            }
+        }
     }
 
     public void isiPerusa()
@@ -155,15 +182,11 @@ public partial class Pages_LandLiti_LegalForm : System.Web.UI.Page
         {
             case "V":
 
+                if (Request.Params["param1"] is object) param1 = Request.Params["param1"].ToString();
+                if (Request.Params["param4"] is object) param4 = Request.Params["param4"].ToString();
 
-                param1 = Request.Params["param1"].ToString();
-                param4 = Request.Params["param4"].ToString();
-
-
-                ALMIS.ExecuteSTP eSTP = new ALMIS.ExecuteSTP();
                 eSTP.Datas();
-                DataSet ds = new DataSet();
-                ds = eSTP.List12("P_LEGALL", param1, "", "", param4, "", "", "", "", "", "", "", "");
+                ds = eSTP.List14("P_LEGALL", param1, "", "", param4, "", "", "", "", "", "", "", "", "", "");
 
                 dt = ds.Tables[0];
 
@@ -172,14 +195,13 @@ public partial class Pages_LandLiti_LegalForm : System.Web.UI.Page
                 Response.Write(dt.Rows[0]["LegallKodPer"].ToString() + "|"); //0
                 Response.Write(dt.Rows[0]["LegallNmrLeg"].ToString() + "|"); //1
                 Response.Write(dt.Rows[0]["VerdokNmrVrd"].ToString() + "|"); //2
-                Response.Write(dt.Rows[0]["PredokNmrDok"].ToString() + "|"); //3
-                Response.Write(dt.Rows[0]["ClausrNmrClm"].ToString() + "|"); //4
-                Response.Write(dt.Rows[0]["ClausrNamass"].ToString() + "|"); //5
-                Response.Write(dt.Rows[0]["ClausrLokKab"].ToString() + "|"); //6
-                Response.Write(dt.Rows[0]["ClausrLokKec"].ToString() + "|"); //7
-                Response.Write(dt.Rows[0]["ClausrLokDes"].ToString() + "|"); //8
-                Response.Write(dt.Rows[0]["LegallNoSuPu"].ToString() + "|"); //9
-                Response.Write(dt.Rows[0]["LegallTaSuPu"].ToString() + "|"); //10
+                Response.Write(dt.Rows[0]["ClausrNmrClm"].ToString() + "|"); //3
+                Response.Write(dt.Rows[0]["ClausrNamass"].ToString() + "|"); //4
+                Response.Write(dt.Rows[0]["ClausrLokKab"].ToString() + "|"); //5
+                Response.Write(dt.Rows[0]["ClausrLokKec"].ToString() + "|"); //6
+                Response.Write(dt.Rows[0]["ClausrLokDes"].ToString() + "|"); //7
+                Response.Write(dt.Rows[0]["LegallNoSuPu"].ToString() + "|"); //8
+                Response.Write(dt.Rows[0]["LegallTaSuPu"].ToString() + "|"); //9
                 
 
                 dt.Dispose();
@@ -192,15 +214,13 @@ public partial class Pages_LandLiti_LegalForm : System.Web.UI.Page
 
                 String path_pic = (HttpContext.Current.Request.Url.AbsolutePath).ToLower();
 
-                var param1LP = Request.Params["param1"].ToString();
-                var param2LP = Request.Params["param2"].ToString();
+                if (Request.Params["param1"] is object) param1 = Request.Params["param1"].ToString();
+                if (Request.Params["param2"] is object) param2 = Request.Params["param2"].ToString();
 
-                ALMIS.ExecuteSTP eSTPx = new ALMIS.ExecuteSTP();
-                eSTPx.Datas();
-                DataSet dsx = new DataSet();
-                dsx = eSTPx.List9("P_VERDOK_D", param1LP, param2LP, "", "", "", "", "", "", "");
+                eSTP.Datas();
+                ds = eSTP.List9("P_VERDOK_D", param1, param2, "", "", "", "", "", "", "");
 
-                dt = dsx.Tables[0];
+                dt = ds.Tables[0];
 
                 Response.ContentType = "application/xhtml+xml";
                 Response.Write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
@@ -211,7 +231,7 @@ public partial class Pages_LandLiti_LegalForm : System.Web.UI.Page
                     Response.Write("<row id=\"" + (i + 1).ToString() + "\">");
 
                     Response.Write("<cell>" + (i + 1).ToString() + "</cell>");
-                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["PredokNmrPid"].ToString()) + "</cell>");
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["ClausrNmrPid"].ToString()) + "</cell>");
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["MidentNamass"].ToString()) + "</cell>");
 
                     if (dt.Rows[i]["hdocumIdSour"].ToString() != "")
@@ -237,14 +257,12 @@ public partial class Pages_LandLiti_LegalForm : System.Web.UI.Page
                 String path_pic1 = (HttpContext.Current.Request.Url.AbsolutePath).ToLower();
 
                 string IDPerdok = Request.Params["IDPerdok"].ToString();
-                string param1z = Request.Params["param1"].ToString();
+                if (Request.Params["param1"] is object) param1 = Request.Params["param1"].ToString();
 
-                ALMIS.ExecuteSTP eSTPxz = new ALMIS.ExecuteSTP();
-                eSTPxz.Datas();
-                DataSet dsxz = new DataSet();
-                dsxz = eSTPxz.List9("P_VERDOK_D", param1z, IDPerdok, "", "", "", "", "", "", "");
+                eSTP.Datas();
+                ds = eSTP.List9("P_VERDOK_D", param1, IDPerdok, "", "", "", "", "", "", "");
 
-                dt = dsxz.Tables[0];
+                dt = ds.Tables[0];
 
                 Response.ContentType = "application/xhtml+xml";
                 Response.Write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
@@ -374,10 +392,10 @@ public partial class Pages_LandLiti_LegalForm : System.Web.UI.Page
         if (Request.Params["param10"] is object) param10 = Request.Params["param10"].ToString();
         if (Request.Params["param11"] is object) param11 = Request.Params["param11"].ToString();
         if (Request.Params["param12"] is object) param12 = Request.Params["param12"].ToString();
+        if (Request.Params["param13"] is object) param13 = Request.Params["param13"].ToString();
+        if (Request.Params["param14"] is object) param14 = Request.Params["param14"].ToString();
+        
         param7 = userid;
-
-        String sql = "";
-        String output = "";
 
 
 
@@ -388,11 +406,8 @@ public partial class Pages_LandLiti_LegalForm : System.Web.UI.Page
 
             if (output == "I" || output == "E" || output == "D")
             {
-            ALMIS.ExecuteSTP eSTP = new ALMIS.ExecuteSTP();
-
             eSTP.Datas();
-            DataSet ds = new DataSet();
-            ds = eSTP.List12("P_LEGALL", "X", param2, "", "", "", "", "", "", "", "", "", "");
+            ds = eSTP.List14("P_LEGALL", "X", param2, "", "", "", "", "", "", "", "", "", "", "", "");
             dt = ds.Tables[0];
 
             if (dt.Rows.Count > 0)
@@ -407,7 +422,7 @@ public partial class Pages_LandLiti_LegalForm : System.Web.UI.Page
             }
 
                 eSTP.Datas();
-                eSTP.save12("P_LEGALL", param1, param2, param3, param4, param5, param6, param7, param8, param9, param10, param11, param12);
+                eSTP.save14("P_LEGALL", param1, param2, param3, param4, param5, param6, param7, param8, param9, param10, param11, param12, param13, param14);
 
                 return output;
             }

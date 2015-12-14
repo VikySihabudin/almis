@@ -101,7 +101,7 @@ public partial class Pages_LandLiti_LegalAssign : System.Web.UI.Page
                 ALMIS.ExecuteSTP eSTP_L = new ALMIS.ExecuteSTP();
                 eSTP_L.Datas();
                 DataSet ds_L = new DataSet();
-                ds_L = eSTP_L.List12("P_LEGALL", param1L, param2L, "", param4L, param5L, "", userid, "", param9L, "", "", "");
+                ds_L = eSTP_L.List14("P_LEGALL", param1L, param2L, "", param4L, param5L, "", userid, "", param9L, "", "", "", "", "");
 
                 dt = ds_L.Tables[0];
 
@@ -117,8 +117,8 @@ public partial class Pages_LandLiti_LegalAssign : System.Web.UI.Page
                     Response.Write("<cell>" + (i + 1).ToString() + "</cell>"); // Untuk Membuat Angka
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["LegallNmrLeg"].ToString()) + "</cell>"); //1
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["VerdokNmrVrd"].ToString()) + "</cell>"); //2
-                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["PredokNmrDok"].ToString()) + "</cell>"); //3
-                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["ClausrNmrClm"].ToString()) + "</cell>"); //4
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["ClausrNmrClm"].ToString()) + "</cell>"); //3
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["ClausrNmrIdn"].ToString()) + "</cell>"); //4
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["ClausrNamass"].ToString()) + "</cell>"); //5
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["ClausrLokDes"].ToString()) + "</cell>"); //6
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["perusaNamass"].ToString()) + "</cell>"); //7
@@ -148,7 +148,7 @@ public partial class Pages_LandLiti_LegalAssign : System.Web.UI.Page
                 ALMIS.ExecuteSTP eSTP = new ALMIS.ExecuteSTP();
                 eSTP.Datas();
                 DataSet ds = new DataSet();
-                eSTP.save12("P_LEGALL", param1, param2, "", param4, "", "", userid, "", param9, "", "", param12);
+                eSTP.save14("P_LEGALL", param1, param2, "", param4, "", "", userid, "", param9, "", "", param12, "", "");
                 Response.End();
                 return false;
 

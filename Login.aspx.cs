@@ -56,8 +56,8 @@ public partial class Login : System.Web.UI.Page
                 Session["lanjut"] = rd["lanjut"].ToString();
                 Session["except"] = rd["excepts"].ToString();
                 Session["groupNm"] = rd["groupNm"].ToString();
-                
-                
+
+                con.Close();
                 Response.Redirect("Pages/home.aspx");
             }
             else

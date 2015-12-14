@@ -37,13 +37,6 @@
         </div>
     </div>
 
-    <div role="form" class="form-horizontal">
-        <div class="form-group">
-            <label for="identitas" class="control-label col-md-2">Nomor Periapan Dokumen</label>
-            <div class="col-md-3">
-            <asp:TextBox id="txtPerDoc" type="text" runat="server" class="form-control input-md" ></asp:TextBox></div>
-        </div>
-    </div>
 
     <div role="form" class="form-horizontal">
         <div class="form-group">
@@ -87,7 +80,7 @@
 
       <div class="form-group">
        <div class="col-lg-10">
-            <div style=" width:650px; height:180px;">
+            <div style=" width:750px; height:180px;">
                 <div id="gridVer" style=" width:100%; height:100%; background-color:white; border: 1px solid #A4BED4">
             </div>
             </div>
@@ -109,7 +102,7 @@
         <div class="col-md-3">
             <asp:Label runat="server" ID="myThrobber" Style="display: none;"><img align="absmiddle" alt="" src="../images/uploading.gif"/></asp:Label>
                 <asp:AjaxFileUpload ID="AjaxFileUploadVerifikasi" runat="server"
-                    onuploadcomplete="AjaxFileUploadVerifikasi_UploadComplete" 
+                    onuploadcomplete="AjaxFileUploadVerifikasi_UploadComplete"
                     ThrobberID="myThrobber" 
                     MaximumNumberOfFiles="8" 
                     AllowedFileTypes="jpg,jpeg,png,pdf,doc,docx,xls,xlxs,txt,zip,rar,7z"
@@ -133,13 +126,20 @@
     <br />
     <hr />
 
-        <div role="form" class="form-horizontal">
+        
         <div class="form-group">
             <asp:Label  ID="LEksepsi" runat="server"  for="identitas" class="control-label col-md-2" Text="Litigasi" Font-Bold="True"></asp:Label>
             <div class="col-md-3">
             <asp:CheckBox ID="cbLitigasi" runat="server"  CssClass="form-control checkbox-md" onclick="validasi()"/></div>
         </div>
-    </div>
+       
+
+		<div class="form-group">
+            <label for="nama" class="control-label col-md-2">Keterangan</label>
+			<div class="col-md-3">
+				<asp:TextBox id="TxtKetLit" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
+			</div>
+        </div>
 
     <br /><hr />
 
@@ -180,12 +180,13 @@
     var ddKecamatan = document.getElementById("<%= ddKecamatan.ClientID %>");
     var ddDesa = document.getElementById("<%= ddDesa.ClientID %>");
 
-    var txtPerDoc = document.getElementById("<%=txtPerDoc.ClientID%>");
     var cbLitigasi = document.getElementById("<%=cbLitigasi.ClientID%>");
     var hidMode = document.getElementById('hidMode');
     var litigasi = document.getElementById('litigasi');
 
     var ddprs = document.getElementById("<%=ddprs.ClientID%>");
+
+    var TxtKetLit = document.getElementById("<%=TxtKetLit.ClientID%>");
     
 
     terimaURL();
@@ -296,12 +297,13 @@
     + "&param1=" + hidMode.value
     + "&param2=" + txtNoVerDoc.value
     + "&param3=" 
-    + "&param4=" + txtPerDoc.value
+    + "&param4=" + txtNoClam.value
     + "&param5=" 
     + "&param6=" 
     + "&param7=" + ddprs.value
     + "&param8="  
     + "&param9=" + litigasi.value
+    + "&param11=" + TxtKetLit.value
     + "";
   
     dhtmlxAjax.post(localURL, s, outputResponse);
@@ -394,21 +396,21 @@
 
             
             txtNoClam.value = b[0];
-            txtPerDoc.value = b[1];
-            txtNama.value = b[2];
 
-            ddKabupaten.value = b[3];
-            ddKecamatan.value = b[4];
-            ddDesa.value = b[5];
+            txtNama.value = b[1];
 
-            txtNoVerDoc.value = b[6];
+            ddKabupaten.value = b[2];
+            ddKecamatan.value = b[3];
+            ddDesa.value = b[4];
 
-            if (b[7] == '1') {
+            txtNoVerDoc.value = b[5];
+
+            if (b[6] == '1') {
                 document.getElementById("<%= cbLitigasi.ClientID %>").checked = true;
-                litigasi.value = b[7];
+                litigasi.value = b[6];
             }
 
-            ddprs.value = b[8];
+            ddprs.value = b[7];
 
         }
 
@@ -420,7 +422,6 @@
 
         txtNoVerDoc.disabled = true;
         txtNoClam.disabled = true;
-        txtPerDoc.disabled = true;
         txtNama.disabled = true;
 
         ddKabupaten.disabled = true;
@@ -437,7 +438,6 @@
 
         txtNoVerDoc.disabled = true;
         txtNoClam.disabled = true;
-        txtPerDoc.disabled = true;
         txtNama.disabled = true;
 
         ddKabupaten.disabled = true;
@@ -450,7 +450,6 @@
 
         txtNoVerDoc.disabled = true;
         txtNoClam.disabled = true;
-        txtPerDoc.disabled = true;
         txtNama.disabled = true;
 
         ddKabupaten.disabled = true;
@@ -468,7 +467,7 @@
         + "rnd=" + Math.random() * 4
         + "&sm=LP"
         + "&param1=LP"
-        + "&param2=" + txtPerDoc.value
+        + "&param2=" + txtNoClam.value
         + "";
         listVer.clearAll();
         listVer.loadXML(localURL + "?" + s);
@@ -477,14 +476,14 @@
     function listVer() {
         listVer = new dhtmlXGridObject('gridVer');
         listVer.setImagePath("../JavaScript/codebase/imgs/");
-        listVer.setHeader("No,PID,Nama Penjual,Alas Hak,Aksi");
-        listVer.setInitWidths("40,150,150,150,150");
-        listVer.setColAlign("left,left,left,left,left");
-        listVer.setColTypes("ro,ro,ro,ro,link");
+        listVer.setHeader("No,PID,Nama Penjual,Alas Hak,Nama Dokumen,Download");
+        listVer.setInitWidths("40,150,150,150,150,150");
+        listVer.setColAlign("left,left,left,left,left,left");
+        listVer.setColTypes("ro,ro,ro,ro,ro,link");
         listVer.init();
         listVer.setSkin("dhx_skyblue");
         listVer.setPagingSkin("bricks");
-        listVer.setColSorting("str,str,str,str,str");
+        listVer.setColSorting("str,str,str,str,str,str");
     } 
 
     function listNotulen() {
@@ -526,7 +525,7 @@
 
     function onClientUploadCompleteVerifikasi(sender, e) {
         document.getElementById('<%=namaFile.ClientID %>').value = e.get_postedUrl();
-        ReloadVerifikasi(document.getElementById('<%=txtPerDoc.ClientID %>').value, document.getElementById('<%=namaFile.ClientID %>').value);
+        ReloadVerifikasi(document.getElementById('<%=txtNoClam.ClientID %>').value, document.getElementById('<%=namaFile.ClientID %>').value);
         alert('Data Berasil diUpload');
     }
 
