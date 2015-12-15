@@ -9,6 +9,7 @@
     
 <input type="hidden" id="hidMode" value="0" />
 <asp:HiddenField ID="namaFile" runat="server" />
+ <input type="hidden" id="txtNmrSem" value="0" />
 
 
 
@@ -97,10 +98,10 @@
             <div class="col-md-3"><asp:TextBox id="txtketshm" class="form-control input-md" TextMode="multiline" Columns="15" Rows="3" runat="server" /></div>
 
 
- <%if (Upload.ToString().Equals("I") )
+<%-- <%if (Upload.ToString().Equals("I") )
  { %>
         <div class="hidden" >
-<%}%>  
+<%}%>  --%>
             <div class="col-md-3">
                 
                 <asp:Label runat="server" ID="Label2" Style="display: none;"><img align="absmiddle" alt="" src="../images/uploading.gif"/></asp:Label>
@@ -115,10 +116,10 @@
 
             
             </div>    
- <%if (Upload.ToString().Equals("I") )
+<%-- <%if (Upload.ToString().Equals("I") )
  { %>
 </div>
-<%}%>  
+<%}%>  --%>
 
                     
         </div>
@@ -298,6 +299,9 @@
     var ddLanjut = document.getElementById("<%=ddLanjut.ClientID%>");
     
     var TxtKetLan = document.getElementById("<%=TxtKetLan.ClientID%>");
+
+    var txtNmrSem = document.getElementById('txtNmrSem');
+    
     
     
     txtnoclain.disabled = true;
@@ -310,6 +314,7 @@
     listPidCari();
     terimaURL();
     SearchlistIdentitas();
+
 
     //SearchlistPID();      //Jangan Lupa Di Hapus
 
@@ -972,6 +977,7 @@
 			    + "&param1=I"
 			    + "&param5=" + ddshm.value
                 + "&param11=" + ddprs.value
+                + "&NmrSem=" + txtNmrSem.value
 			    + "";
         +"";
         centerLoadingImage();

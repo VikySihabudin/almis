@@ -253,32 +253,33 @@ public partial class Pages_Landcompla_LandcomplaForm : System.Web.UI.Page
 
                 Response.Write(dt.Rows[0]["izinl1"].ToString() + "|"); //19
                 Response.Write(dt.Rows[0]["izinl2"].ToString() + "|"); //20
-                Response.Write(dt.Rows[0]["izinl3"].ToString() + "|"); //
-                Response.Write(dt.Rows[0]["izinl4"].ToString() + "|"); //11
-                Response.Write(dt.Rows[0]["izinl5"].ToString() + "|"); //10
+                Response.Write(dt.Rows[0]["izinl3"].ToString() + "|"); //21
+                Response.Write(dt.Rows[0]["izinl4"].ToString() + "|"); //22
+                Response.Write(dt.Rows[0]["izinl5"].ToString() + "|"); //23
 
-                Response.Write(dt.Rows[0]["dumpi"].ToString() + "|"); //11
-                Response.Write(dt.Rows[0]["irekla"].ToString() + "|"); //10
-                Response.Write(dt.Rows[0]["pentaa"].ToString() + "|"); //11
-                Response.Write(dt.Rows[0]["manfaa"].ToString() + "|"); //11
-                Response.Write(dt.Rows[0]["imbxxx"].ToString() + "|"); //10
+                Response.Write(dt.Rows[0]["dumpi"].ToString() + "|"); //24
+                Response.Write(dt.Rows[0]["irekla"].ToString() + "|"); //25
+                Response.Write(dt.Rows[0]["pentaa"].ToString() + "|"); //26
+                Response.Write(dt.Rows[0]["manfaa"].ToString() + "|"); //27
+                Response.Write(dt.Rows[0]["imbxxx"].ToString() + "|"); //28
 
-                Response.Write(dt.Rows[0]["hgu1xx"].ToString() + "|"); //11
-                Response.Write(dt.Rows[0]["hgu2xx"].ToString() + "|"); //11
-                Response.Write(dt.Rows[0]["hgu3xx"].ToString() + "|"); //11
-                Response.Write(dt.Rows[0]["hgu4xx"].ToString() + "|"); //11
-                Response.Write(dt.Rows[0]["hgu5xx"].ToString() + "|"); //11
-                Response.Write(dt.Rows[0]["iup1xx"].ToString() + "|"); //11
+                Response.Write(dt.Rows[0]["hgu1xx"].ToString() + "|"); //29
+                Response.Write(dt.Rows[0]["hgu2xx"].ToString() + "|"); //30
+                Response.Write(dt.Rows[0]["hgu3xx"].ToString() + "|"); //31
+                Response.Write(dt.Rows[0]["hgu4xx"].ToString() + "|"); //32
+                Response.Write(dt.Rows[0]["hgu5xx"].ToString() + "|"); //33
+                Response.Write(dt.Rows[0]["hgulua"].ToString() + "|"); //34
+                Response.Write(dt.Rows[0]["iup1xx"].ToString() + "|"); //35
 
-                Response.Write(dt.Rows[0]["jenase"].ToString() + "|"); //11
-                Response.Write(dt.Rows[0]["staase"].ToString() + "|"); //11
-                Response.Write(dt.Rows[0]["pemanf"].ToString() + "|"); //11
+                Response.Write(dt.Rows[0]["jenase"].ToString() + "|"); //36
+                Response.Write(dt.Rows[0]["staase"].ToString() + "|"); //37
+                Response.Write(dt.Rows[0]["pemanf"].ToString() + "|"); //38
 
 
-                Response.Write(dt.Rows[0]["btbara"].ToString() + "|"); //11
-                Response.Write(dt.Rows[0]["hptxxx"].ToString() + "|"); //11
-                Response.Write(dt.Rows[0]["pemuki"].ToString() + "|"); //11
-                Response.Write(dt.Rows[0]["indust"].ToString() + "|"); //11
+                Response.Write(dt.Rows[0]["btbara"].ToString() + "|"); //39
+                Response.Write(dt.Rows[0]["hptxxx"].ToString() + "|"); //40
+                Response.Write(dt.Rows[0]["pemuki"].ToString() + "|"); //41
+                Response.Write(dt.Rows[0]["indust"].ToString() + "|"); //42
 
                 dt.Dispose();
 

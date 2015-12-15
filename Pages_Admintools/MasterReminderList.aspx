@@ -1,12 +1,12 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="UserManagementList.aspx.cs" Inherits="Pages_UserManagementList" MasterPageFile="~/MasterPages/mptamp.master" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/mptamp.master" AutoEventWireup="true" CodeFile="MasterReminderList.aspx.cs" Inherits="Pages_Admintools_MasterReminderList" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
-
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
 
-<h2>User Management</h2>   
+
+<h2>Master Reminder</h2>   
 <hr />
 <br />
 
@@ -36,10 +36,9 @@
 
            <div class="col-lg-1">
 
-            <%if (UserManagementAssign.ToString().Equals("1") || groups.ToString().Equals("1"))
-            { %> 
+     
              <input type="button" onclick="tambah()" id="Button1" value="Add New" class="btn btn-success btn-lg" />  
-            <%}%> 
+  
                    
             </div>
 
@@ -49,7 +48,7 @@
       <div class="form-group">
             <div class="col-lg-12">
             <div style=" width:100%; height:400px;">
-                <div id="gridUserManagement" style="width:100%; height:100%; background-color:white; border: 1px solid #A4BED4"></div>
+                <div id="gridMasterReminder" style="width:100%; height:100%; background-color:white; border: 1px solid #A4BED4"></div>
                 <div id="pageUser"></div>   
             </div>
             </div>
@@ -69,8 +68,8 @@
 
 <script type="text/javascript">
 
-    var localURL = "UserManagementList.aspx";
-    var newURL = "UserManagementForm.aspx?param1=I";
+    var localURL = "MasterReminderList.aspx";
+    var newURL = "MasterReminderForm.aspx?param1=I";
     var ddprg = document.getElementById("<%= ddprg.ClientID %>");
     var txtDateAwal = document.getElementById("<%= txtDateAwal.ClientID %>");
     var txtDateAkhir = document.getElementById("<%= txtDateAkhir.ClientID %>");
@@ -78,18 +77,17 @@
     var btnRefresh = document.getElementById("btnRefresh");
 
 
-    ListUserManagement();
-    SearchListUserManagement();
+    ListMasterReminder();
+    SearchListMasterReminder();
 
     function tambah(lo) {
         var url = window.location.toString();
         url = url.replace(localURL, newURL);
-        //window.location.replace(url);
         window.open(newURL);
 
     }
 
-    
+
 
     $(function txtDateAwal() {
         $("[id$=txtDateAwal]").datepicker({
@@ -111,7 +109,7 @@
         });
     });
 
-    function SearchListUserManagement(id) {
+    function SearchListMasterReminder(id) {
 
         var s = ""
 			+ "rnd=" + Math.random() * 4
@@ -121,23 +119,23 @@
             + "&param4="
             + "&param5="
 			+ "";
-        ListUserManagement.clearAll();
-        ListUserManagement.loadXML(localURL + "?" + s);
+        ListMasterReminder.clearAll();
+        ListMasterReminder.loadXML(localURL + "?" + s);
     }
 
-    function ListUserManagement() {
-        ListUserManagement = new dhtmlXGridObject('gridUserManagement');
-        ListUserManagement.setImagePath("../JavaScript/codebase/imgs/");
-        ListUserManagement.setHeader("No,User Id,Nama,Group,User Active,Kode Perusahaan,Action,#cspan,#cspan");
-        ListUserManagement.attachHeader("#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,,,#rspan");
-        ListUserManagement.setInitWidths("60,226,226,226,226,0,78,78,78");
-        ListUserManagement.setColAlign("left,left,left,left,left,left,left,left,left");
-        ListUserManagement.setColTypes("ed,ed,ed,ed,ed,ed,link,link,link");
-        ListUserManagement.init();
-        ListUserManagement.setSkin("dhx_skyblue");
-        ListUserManagement.setColSorting("str,str,str,str,str,str,str,str,str");
-        ListUserManagement.enablePaging(true, 15, 5, "pageUser", true);
-        ListUserManagement.setPagingSkin("bricks");
+    function ListMasterReminder() {
+        ListMasterReminder = new dhtmlXGridObject('gridMasterReminder');
+        ListMasterReminder.setImagePath("../JavaScript/codebase/imgs/");
+        ListMasterReminder.setHeader("No,Modul,Sub Modul,Keterangan Modul,Subject,Body,Action,#cspan,#cspan");
+        ListMasterReminder.attachHeader("#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,,,#rspan");
+        ListMasterReminder.setInitWidths("60,226,226,226,226,226,78,78,78");
+        ListMasterReminder.setColAlign("left,left,left,left,left,left,left,left,left");
+        ListMasterReminder.setColTypes("ed,ed,ed,ed,ed,ed,link,link,link");
+        ListMasterReminder.init();
+        ListMasterReminder.setSkin("dhx_skyblue");
+        ListMasterReminder.setColSorting("str,str,str,str,str,str,str,str,str");
+        ListMasterReminder.enablePaging(true, 15, 5, "pageUser", true);
+        ListMasterReminder.setPagingSkin("bricks");
     }
 
 
@@ -154,8 +152,8 @@
             + "&param4=" + txtDateAwal.value
             + "&param5=" + txtDateAkhir.value
 			+ "";
-            ListUserManagement.clearAll();
-            ListUserManagement.loadXML(localURL + "?" + s);
+            ListMasterReminder.clearAll();
+            ListMasterReminder.loadXML(localURL + "?" + s);
             //alert(s);
         }
     }
@@ -169,10 +167,11 @@
             + "&param4="
             + "&param5="
 			+ "";
-        ListUserManagement.clearAll();
-        ListUserManagement.loadXML(localURL + "?" + s);
+        ListMasterReminder.clearAll();
+        ListMasterReminder.loadXML(localURL + "?" + s);
         //alert(s);
     }
 
 </script>
 </asp:Content>
+

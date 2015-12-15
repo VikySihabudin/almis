@@ -141,7 +141,7 @@
 		<div class="form-group">
             <label for="nama" class="control-label col-md-2">Keterangan</label>
 			<div class="col-md-3">
-				<asp:TextBox id="TextBox2" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
+				<asp:TextBox id="txtKet" TextMode="multiline" class="form-control input-md" Columns="15" Rows="3" runat="server" />
 			</div>
         </div>
 
@@ -194,6 +194,10 @@
     var TxtKetLeg = document.getElementById("<%= ddprs.ClientID %>");
 
     var ddLSelesai = document.getElementById("<%= ddLSelesai.ClientID %>");
+
+    var txtKet = document.getElementById("<%= txtKet.ClientID %>");
+    var TxtKetLeg = document.getElementById("<%= TxtKetLeg.ClientID %>");
+    
 
     var btnDwnAlashak = document.getElementById("btnDwnAlashak");
     var btnSave = document.getElementById("btnSave");
@@ -312,6 +316,8 @@
         + "&param7=" 
         + "&param8="
         + "&param9=" + ddprs.value
+        + "&param13=" + txtKet.value
+        + "&param14=" + TxtKetLeg.value
         + "";
 
         dhtmlxAjax.post(localURL, s, outputResponse);

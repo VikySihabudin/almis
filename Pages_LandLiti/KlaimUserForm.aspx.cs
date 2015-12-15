@@ -747,8 +747,8 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
             userid = Session["userid"].ToString();
         }
 
-        //string user = "";
         string wilayah = "";
+        param13 = ddprs.SelectedValue.ToString();
 
         ALMIS.generateNUm gn = new ALMIS.generateNUm();
         gn.Datas();
@@ -768,7 +768,7 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
             _stFAsli = System.IO.Path.GetFileName(e.FileName);
 
 
-            _stNomor = gn.GenerateNumber("", 101, 11, _stDates, userid);
+            _stNomor = gn.GenerateNumber(param13, 101, 11, _stDates, userid);
 
             FileKlaimUser.SaveAs(uploadFolder + _stNomor + ext.getExtsion());
             e.PostedUrl = string.Format(e.FileName + "|" + _stNomor + "|" + userid + "|" + wilayah);
@@ -793,6 +793,8 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
         string user = Request.Params["user"].ToString();
         string wilayah = Request.Params["wilay"].ToString();
         string param11 = Request.Params["param11"].ToString();
+        string NmrSem = Request.Params["NmrSem"].ToString();
+        
 
         string _stUploadKeterangan = "";
         _stUploadKeterangan = _stKeterangan;
@@ -806,6 +808,33 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
         eSTP.Datas();
         DataSet ds = new DataSet();
 
+        
+
+        if (IDKlaimUser == null)
+        {
+
+            if (NmrSem == "0")
+            {
+                string txtNmrIdn =  this.txtNmrIdn.Text;
+                string txtNama = this.txtNama.Text;
+                string txtAlamat = this.txtAlamat.Text;
+                string txtNoHandphone = this.txtNoHandphone.Text;
+                string ddKabupaten = this.ddKabupaten.SelectedValue.ToString();
+                ////param13 = ddprs.SelectedValue.ToString();
+                    
+                
+
+                eSTP.Datas();
+                eSTP.save16("P_CLAUSR", "I", NmrSem, "", txtNmrIdn, txtNama, txtAlamat, txtNoHandphone, "", "", "", userid, "", "", "", "", "");
+
+            
+            }
+            
+
+
+        }
+
+
         eSTP.save7("P_CLAUSR_D", param1, IDKlaimUser, "", param5, _stKeterangan, param11, "0");
 
         if (extension != ".exe")
@@ -815,6 +844,7 @@ public partial class Pages_LandLiti_KlaimUserForm : System.Web.UI.Page
 
             //uf.UploadFilesWeb("I", user, _stDates, "Claim User", param5, uploadFolder, IDKlaimUser, _stNomor + extension, _stNamaFile, _stUploadKeterangan, param11, "0");
         }
+
 
         var _stOutput = ID;
 

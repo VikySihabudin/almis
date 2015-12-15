@@ -665,6 +665,12 @@
          { %> 
                         <li><a href="../Pages_Admintools/MasterPerusahaanList.aspx">Master Perusahaan</a></li>
         <%}%>
+
+
+         <li><a href="../Pages_Admintools/MasterReminderList.aspx">Master Reminder</a></li>
+
+         <%--<li><a href="../Pages_Admintools/MasterReminderForm.aspx">Master Reminder</a></li>--%>
+
                       </ul>
               </li>
 

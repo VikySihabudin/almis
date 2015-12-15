@@ -470,7 +470,7 @@
 		<asp:TextBox id="txtpemanfPhkLain" type="text" runat="server" class="form-control input-md" />
 		</div>
     </div> 
-
+    <hr />
     <%--Membuat Text Berulang--%>
      <%--<asp:PlaceHolder id="PlaceHolder1" runat="server"></asp:PlaceHolder>--%>
 
@@ -721,7 +721,9 @@
     var txtBatubara = document.getElementById("<%=txtBatubara.ClientID%>");
     var txthutanproduksi = document.getElementById("<%=txthutanproduksi.ClientID%>");
     var txtpemukiman = document.getElementById("<%=txtpemukiman.ClientID%>");
-    var txtindustri = document.getElementById("<%=txtindustri.ClientID%>");  
+    var txtindustri = document.getElementById("<%=txtindustri.ClientID%>");
+
+    var txttahunrtrw = document.getElementById("<%=txttahunrtrw.ClientID%>"); 
 
 
 
@@ -1021,9 +1023,9 @@
         txtBatubara.disabled = true;  
         txthutanproduksi.disabled = true;  
         txtpemukiman.disabled = true;  
-        txtindustri.disabled = true;   
+        txtindustri.disabled = true;
 
-
+        txttahunrtrw.disabled = true;
     }
 
     function lockComplaEdit() {
@@ -1083,7 +1085,9 @@
         txtBatubara.disabled = true;
         txthutanproduksi.disabled = true;
         txtpemukiman.disabled = true;
-        txtindustri.disabled = true;  
+        txtindustri.disabled = true;
+
+        txttahunrtrw.disabled = true;
     }
 
     function lockComplaDelete() {
@@ -1154,8 +1158,9 @@
         txtBatubara.disabled = true;
         txthutanproduksi.disabled = true;
         txtpemukiman.disabled = true;
-        txtindustri.disabled = true;  
+        txtindustri.disabled = true;
 
+        txttahunrtrw.disabled = true;
     }
 
 
@@ -1209,7 +1214,7 @@
             txtkontraktor.value = b[2];
 
             txtwiladmin.value = b[3];
-            txtluasarea.value = b[4].toFixed2;
+            txtluasarea.value = b[4];
             txtdatapersil.value = b[5];
 
             txtpkp2b.value = b[6];

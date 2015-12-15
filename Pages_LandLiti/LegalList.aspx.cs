@@ -121,8 +121,8 @@ public partial class Pages_LandLiti_LegalList : System.Web.UI.Page
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["ClausrNmrClm"].ToString()) + "</cell>");
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["ClausrNmrIdn"].ToString()) + "</cell>");
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["ClausrNamass"].ToString()) + "</cell>");
-                    Response.Write("<cell>" + "Selesai" + "</cell>");
-                    Response.Write("<cell>" + "Ketearngan" + (i + 1).ToString() + "</cell>");
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["legallLanjut"].ToString()) + "</cell>");
+                    Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["LegallKeteks"].ToString()) + "</cell>");
                     Response.Write("<cell>" + RemoveWhiteSpace(dt.Rows[i]["perusaNamass"].ToString()) + "</cell>");
 
                     if (dt.Rows[i]["LegallNmrLeg"].ToString() != "")
